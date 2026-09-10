@@ -257,11 +257,11 @@ html[data-display="serif"] .hero h1 em { font-style: italic; }
 .faq .a { padding: 0 40px 22px 52px; font-size: 15px; color: var(--body); max-width: 60ch; }
 
 /* ---------- closing CTA band (A5 / S5: the same request button, repeated) ---------- */
-.cta-band { margin-top: clamp(64px, 8vw, 112px); background: var(--navy); color: #fff; padding: clamp(48px, 6vw, 84px) 0; }
+.cta-band { margin-top: clamp(64px, 8vw, 112px); background: var(--indigo); color: #fff; padding: clamp(48px, 6vw, 84px) 0; }
 .cta-band .inner { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; }
 .cta-band h2 { color: #fff; font-size: clamp(30px, 3.6vw, 46px); max-width: 16ch; }
-.cta-band .sub { color: var(--on-dark); margin-top: 14px; max-width: 520px; font-size: 15.5px; }
-.cta-band .path { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark-2); margin-top: 22px; }
+.cta-band .sub { color: rgba(255,255,255,0.82); margin-top: 14px; max-width: 520px; font-size: 15.5px; }
+.cta-band .path { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 22px; }
 .cta-band .actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
 /* ---------- footer ---------- */

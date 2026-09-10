@@ -33,24 +33,24 @@ window.PM = {
     },
     ko: {
       selectGrade: '학년 선택', chooseTz: '시간대 선택', chooseArea: '영역 선택', chooseAp: 'AP 과목 선택',
-      expertAdm: '아직 모르겠어요 — 추천해 주세요', expertTut: '없음 — 운영팀 추천에 맡길게요', expertNone: '서비스를 먼저 골라 주세요',
-      labelExpertAdm: '희망 전문가', labelExpertTut: '관심 있는 튜터',
-      helpExpertAdm: '사정관을 적으면 희망 사항으로 기록됩니다. 일정은 그 뒤에 확인하고, 당분간 어렵다면 그렇게 말씀드리고 다른 분을 제안합니다.',
-      helpExpertTut: '튜터를 적으면 관심 표시로 기록됩니다. 배정은 아닙니다. 운영팀이 가능 여부와 적합성을 확인하고, 선택은 후보 중에서 직접 하십니다.',
-      helpMsgAdm: '지금 위치, 고민 중인 것, 아니면 결정 하나. 대강 적어도 괜찮습니다.',
-      helpMsgTut: '현재 수준(점수, 모의고사, 아직 없음), 목표나 시험 날짜, 선호하는 학습 방식. 대강 적어도 괜찮습니다.',
-      helpMsgNone: '대강 적어도 괜찮습니다. 몇 문장이면 충분합니다.',
+      expertAdm: '아직 정하지 않음 — 운영팀 추천', expertTut: '없음 — 운영팀 추천', expertNone: '서비스를 먼저 선택해 주세요',
+      labelExpertAdm: '희망 전문가', labelExpertTut: '희망 튜터',
+      helpExpertAdm: '사정관을 지정하면 희망 사항으로 기록됩니다. 일정은 신청 후에 확인하며, 어려운 경우 다른 분을 제안합니다.',
+      helpExpertTut: '튜터를 지정하면 희망 사항으로 기록됩니다. 배정이 확정되는 것은 아니며, 운영팀이 가능 여부와 적합성을 확인한 뒤 후보 가운데 직접 선택합니다.',
+      helpMsgAdm: '현재 준비 상황, 고민하는 부분, 또는 결정하지 못한 문제 하나. 간단히 적어도 됩니다.',
+      helpMsgTut: '현재 수준(점수나 모의고사 결과, 없으면 없다고), 목표나 시험 날짜, 선호하는 학습 방식. 간단히 적어도 됩니다.',
+      helpMsgNone: '간단히 적어도 됩니다. 몇 문장이면 충분합니다.',
       names: { admissions: '입학사정관 상담', sat: 'SAT 튜터링', ap: 'AP 튜터링' },
-      rowService: '서비스', rowArea: '영역', rowAp: 'AP 과목', notChosen: '아직 선택 안 함', notSure: '아직 모르겠어요', noneYet: '아직 없음', change: '변경',
-      noticeService: '‘{v}’은(는) 저희가 제공하는 서비스가 아닙니다. 하나를 골라 시작해 주세요.',
-      noticeArea: '‘{v}’은(는) 저희 SAT 영역 목록에 없습니다. 아래에서 골라 주세요.',
-      noticeAp: '‘{v}’은(는) AP 과목 목록에 없습니다. 아래에서 고르거나 ‘목록에 없음’을 선택하고 과목을 설명해 주세요.',
-      noticeExpert: '‘{v}’ 프로필은 이 선택에서 이용할 수 없어 전문가 칸을 비워 두었습니다. 이름은 적지 않아도 됩니다.',
-      required: '필수 항목입니다.', emailMsg: 'name@example.com 형식의 이메일을 적어 주세요. 답장은 이메일로 드립니다.',
+      rowService: '서비스', rowArea: '영역', rowAp: 'AP 과목', notChosen: '선택 안 함', notSure: '미정', noneYet: '없음', change: '변경',
+      noticeService: '‘{v}’은(는) 제공하지 않는 서비스입니다. 아래에서 하나를 선택해 주세요.',
+      noticeArea: '‘{v}’은(는) 목록에 없는 SAT 영역입니다. 아래에서 선택해 주세요.',
+      noticeAp: '‘{v}’은(는) 목록에 없는 AP 과목입니다. 아래에서 선택하거나 ‘목록에 없음’을 고르고 과목을 적어 주세요.',
+      noticeExpert: '‘{v}’ 프로필은 현재 선택에서 지정할 수 없어 비워 두었습니다. 지정하지 않아도 됩니다.',
+      required: '필수 항목입니다.', emailMsg: 'name@example.com 형식으로 적어 주세요. 답장은 이메일로 드립니다.',
       errOne: '확인이 필요한 항목이 1개 있습니다.', errMany: '확인이 필요한 항목이 {n}개 있습니다.', sending: '보내는 중…',
-      failNotConnected: '이 신청서는 아직 저희 메일함에 연결되지 않아 아무것도 전송되지 않았습니다. 적으신 내용은 그대로 남아 있습니다. 우선 {contact}로 메일 주세요.',
-      failGeneric: '신청을 보내지 못했습니다. 적으신 내용은 그대로 남아 있습니다. 다시 시도하시거나 {contact}로 메일 주세요.',
-      doneExpertAdm: '아직 미정 — 추천해 드립니다', doneExpertTut: '없음 — 운영팀이 추천합니다'
+      failNotConnected: '이 신청서는 아직 접수 시스템에 연결되지 않아 전송되지 않았습니다. 적으신 내용은 그대로 남아 있습니다. 우선 {contact}로 메일을 보내 주세요.',
+      failGeneric: '신청서를 보내지 못했습니다. 적으신 내용은 그대로 남아 있습니다. 다시 시도하거나 {contact}로 메일을 보내 주세요.',
+      doneExpertAdm: '미정 — 운영팀이 추천합니다', doneExpertTut: '없음 — 운영팀이 추천합니다'
     }
   },
 
@@ -72,7 +72,7 @@ window.PM = {
     { id: 'rw',     label: 'Reading & Writing' },
     { id: 'math',   label: 'Math' },
     { id: 'both',   label: 'Both sections', label_ko: '두 영역 모두' },
-    { id: 'unsure', label: "Not sure yet — help me decide", label_ko: '아직 모르겠어요 — 함께 정해 주세요' }
+    { id: 'unsure', label: "Not sure yet — help me decide", label_ko: '아직 모르겠어요' }
   ],
 
   // DEC (spec p.11): replace with the subjects you can actually staff before launch. Keep ids in sync with tutoring/ap/.
@@ -94,7 +94,7 @@ window.PM = {
     { id: 'macroeconomics',     label: 'Macroeconomics',                    group: 'Social sciences', group_ko: '사회과학' },
     { id: 'psychology',         label: 'Psychology',                        group: 'Social sciences', group_ko: '사회과학' },
     { id: 'us-government',      label: 'US Government & Politics',          group: 'Social sciences', group_ko: '사회과학' },
-    { id: 'other',              label: 'Not listed — I\'ll describe it below', label_ko: '목록에 없음 — 아래에 설명할게요', group: 'Other', group_ko: '기타' }
+    { id: 'other',              label: 'Not listed — I\'ll describe it below', label_ko: '목록에 없음 — 아래에 적겠습니다', group: 'Other', group_ko: '기타' }
   ],
 
   grades: [
