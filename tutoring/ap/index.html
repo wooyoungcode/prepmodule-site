@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AP tutoring — PrepModule</title>
+<meta name="description" content="Tutoring matched to your AP course and learning goals — the way your school teaches it, and what the exam asks. About three suggestions, and you choose.">
+<script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<script src="../../assets/site.js" defer></script>
+</head>
+<body>
+
+<!-- NAV — AP is the current product; CTA opens F02 with subject=ap (and the chosen apSubject) preselected -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="wordmark" href="../../" aria-label="PrepModule — home"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../../admissions/">Admissions</a></li>
+        <li><a href="../sat/">SAT</a></li>
+        <li><a href="./" aria-current="page">AP</a></li>
+        <li><a href="../../#experts">Our experts</a></li>
+        <li class="cta"><a href="../../request/tutoring/?subject=ap" data-carry>Find my AP tutor</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- P1 — same template as SAT; the subject is chosen here and follows you to the form (apSubject) -->
+  <section class="hero hero--landing dark" id="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">AP tutoring · Matched to your course</span>
+        <h1 id="hero-title">Get support for the <em>subject in front of you.</em></h1>
+        <p class="lead">Tutoring matched to your AP course and learning goals — the way your school teaches it, and what the exam asks. About three suggestions, with reasons. You choose.</p>
+        <div class="hero-actions">
+          <a class="btn btn-lime" href="../../request/tutoring/?subject=ap" data-carry>Find my AP tutor <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-outline" href="#subject">Choose a subject <span class="arr" aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-meta">
+          <span class="t">Online · About three suggestions · You choose · A request is not a booking</span>
+        </div>
+      </div>
+
+      <div class="picker" data-picker="apSubject" role="group" aria-labelledby="pick-lbl">
+        <span class="lbl" id="pick-lbl">Your AP subject <button type="button" class="clear" data-pick-clear>Clear</button></span>
+        <label class="select">
+          <span class="visually-hidden" style="position:absolute;left:-9999px">Choose your AP subject</span>
+          <select data-picker-select>
+            <option value="">Choose a subject…</option>
+            <optgroup label="Math & computer science">
+              <option value="calculus-ab">Calculus AB</option>
+              <option value="calculus-bc">Calculus BC</option>
+              <option value="statistics">Statistics</option>
+              <option value="computer-science-a">Computer Science A</option>
+            </optgroup>
+            <optgroup label="Sciences">
+              <option value="physics-1">Physics 1</option>
+              <option value="physics-c-mechanics">Physics C: Mechanics</option>
+              <option value="chemistry">Chemistry</option>
+              <option value="biology">Biology</option>
+            </optgroup>
+            <optgroup label="English & history">
+              <option value="english-language">English Language &amp; Composition</option>
+              <option value="english-literature">English Literature &amp; Composition</option>
+              <option value="us-history">US History</option>
+              <option value="world-history">World History: Modern</option>
+              <option value="european-history">European History</option>
+            </optgroup>
+            <optgroup label="Social sciences">
+              <option value="microeconomics">Microeconomics</option>
+              <option value="macroeconomics">Macroeconomics</option>
+              <option value="psychology">Psychology</option>
+              <option value="us-government">US Government &amp; Politics</option>
+            </optgroup>
+          </select>
+        </label>
+        <span class="hint">One subject to start. Need more than one? Say so in the request — our team sorts it out with you.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- P3 — choose your AP subject: the list, what tutoring covers for it, and who teaches it (or a request prompt when no one public does) -->
+  <section class="section" id="subject" aria-labelledby="subject-title">
+    <div class="wrap">
+      <div class="notice" id="pickNotice" hidden>
+        <span class="k">Check your subject</span>
+        <span>“<span data-bad></span>” isn't in our current list. Pick a subject below — or send a request and describe the course; our team will follow up.</span>
+      </div>
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">01 · Your subject</span>
+          <h2 id="subject-title">Choose your AP subject.</h2>
+        </div>
+        <p class="sub">We list the subjects we can currently support. Pick one to see what tutoring covers for it and who teaches it.</p>
+      </div>
+
+      <div class="subjects reveal" role="group" aria-label="AP subjects">
+        <span class="grp">Math &amp; computer science</span>
+        <button type="button" class="subj" data-option="calculus-ab" aria-pressed="false">Calculus AB</button>
+        <button type="button" class="subj" data-option="calculus-bc" aria-pressed="false">Calculus BC</button>
+        <button type="button" class="subj" data-option="statistics" aria-pressed="false">Statistics</button>
+        <button type="button" class="subj" data-option="computer-science-a" aria-pressed="false">Computer Science A</button>
+        <span class="grp">Sciences</span>
+        <button type="button" class="subj" data-option="physics-1" aria-pressed="false">Physics 1</button>
+        <button type="button" class="subj" data-option="physics-c-mechanics" aria-pressed="false">Physics C: Mechanics</button>
+        <button type="button" class="subj" data-option="chemistry" aria-pressed="false">Chemistry</button>
+        <button type="button" class="subj" data-option="biology" aria-pressed="false">Biology</button>
+        <span class="grp">English &amp; history</span>
+        <button type="button" class="subj" data-option="english-language" aria-pressed="false">English Language &amp; Composition</button>
+        <button type="button" class="subj" data-option="english-literature" aria-pressed="false">English Literature &amp; Composition</button>
+        <button type="button" class="subj" data-option="us-history" aria-pressed="false">US History</button>
+        <button type="button" class="subj" data-option="world-history" aria-pressed="false">World History: Modern</button>
+        <button type="button" class="subj" data-option="european-history" aria-pressed="false">European History</button>
+        <span class="grp">Social sciences</span>
+        <button type="button" class="subj" data-option="microeconomics" aria-pressed="false">Microeconomics</button>
+        <button type="button" class="subj" data-option="macroeconomics" aria-pressed="false">Macroeconomics</button>
+        <button type="button" class="subj" data-option="psychology" aria-pressed="false">Psychology</button>
+        <button type="button" class="subj" data-option="us-government" aria-pressed="false">US Government &amp; Politics</button>
+      </div>
+
+      <!-- what tutoring covers, by subject family; the default shows until a subject is picked -->
+      <div class="blurb reveal" data-for="*">
+        <div><h4>What AP tutoring covers</h4><p>Two things at once: keeping up with your school's version of the course, and preparing for the exam's format — multiple choice, free response, and whatever the subject adds on top.</p></div>
+        <div><span class="who">Who teaches it</span><p class="names">Pick a subject above to see the tutors with a public profile for it.</p></div>
+      </div>
+      <div class="blurb" data-for="calculus-ab calculus-bc statistics" hidden>
+        <div><h4>For <span data-pick-label="your subject">your subject</span></h4><p>Concepts your class moved past too fast, problem sets that match your teacher's style, and free-response practice graded the way the exam grades it — with the justification, not just the answer.</p></div>
+        <div><span class="who">Who teaches it</span><p class="names" data-names>—</p></div>
+      </div>
+      <div class="blurb" data-for="computer-science-a" hidden>
+        <div><h4>For Computer Science A</h4><p>Java fundamentals your class assumes, reading and writing code by hand for the free-response section, and the object-oriented design questions students most often lose points on.</p></div>
+        <div><span class="who">Who teaches it</span><p class="names" data-names>—</p></div>
+      </div>
+      <div class="blurb" data-for="physics-1 physics-c-mechanics chemistry biology" hidden>
+        <div><h4>For <span data-pick-label="your subject">your subject</span></h4><p>Concepts before formulas, lab and data questions the way the exam frames them, and free-response answers that show the reasoning the rubric is looking for.</p></div>
+        <div><span class="who">Who teaches it</span><p class="names" data-names>—</p></div>
+      </div>
+      <div class="blurb" data-for="english-language english-literature us-history world-history european-history" hidden>
+        <div><h4>For <span data-pick-label="your subject">your subject</span></h4><p>Reading with the exam's questions in mind, and writing under time — argument, analysis, and document-based essays built and rebuilt until the structure is automatic.</p></div>
+        <div><span class="who">Who teaches it</span><p class="names" data-names>—</p></div>
+      </div>
+      <div class="blurb" data-for="microeconomics macroeconomics psychology us-government" hidden>
+        <div><h4>For <span data-pick-label="your subject">your subject</span></h4><p>The models and vocabulary your course is built on, applied to the exam's scenario questions — and free-response answers that define, apply, and explain in the order the rubric expects.</p></div>
+        <div><span class="who">Who teaches it</span><p class="names" data-names>—</p></div>
+      </div>
+
+      <p class="note">This list is the subjects we can currently support with tutoring. If your course isn't here, send a request anyway and describe it — we'll tell you honestly whether we can help.</p>
+    </div>
+  </section>
+
+  <!-- P2 — tutor profiles: school · AP subjects taught · what they cover of school pace and exam prep -->
+  <section class="section" id="experts" aria-labelledby="experts-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">02 · The tutors</span>
+          <h2 id="experts-title">Meet the AP subject tutors.</h2>
+        </div>
+        <p class="sub">Not "AP" in general — the specific courses each tutor teaches, how long they've taught them, and how far they go with school work and exam prep.</p>
+      </div>
+
+      <p class="pick-status" id="pickStatus" aria-live="polite"><span>Showing all tutors</span> <button type="button" class="clear" data-pick-clear>Show all</button></p>
+
+      <div class="profiles">
+        <article class="profile reveal" id="expert-ap-1" data-match="calculus-ab calculus-bc statistics" data-name="[Name]">
+          <div class="photo ap"><span class="idx">AP · 01</span><span class="big" aria-hidden="true">AP</span><small>Photo · 4:5</small></div>
+          <div>
+            <div class="role">AP subject tutor · Calculus · Statistics</div>
+            <h3>[Name]</h3>
+            <p class="meta">[School] · [Degree] · Teaching AP since [year]</p>
+            <div class="areas" aria-label="AP subjects this tutor teaches">
+              <span class="chip">Calculus AB</span><span class="chip">Calculus BC</span><span class="chip">Statistics</span>
+            </div>
+            <details>
+              <summary>Experience · What sessions cover <span class="plus" aria-hidden="true">+</span></summary>
+              <p class="bio">[Two or three sentences, in the tutor's own words: what they studied, how long they've taught these courses, and the kind of student they've worked with most.]</p>
+              <p class="bio">[School work and exam prep — e.g. follows the student's syllabus week to week, and switches to past free-response questions from March.]</p>
+              <ul class="helps" aria-label="What this tutor can help with">
+                <li>Keeping up when the class moves faster than the textbook</li>
+                <li>Free-response answers that earn the method points, not just the answer point</li>
+                <li>BC students covering the extra topics without dropping AB fundamentals</li>
+              </ul>
+              <div class="video-slot">
+                <div class="thumb dark">
+                  <button class="play" aria-label="Play: a sample explanation from [Name]"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                  <span class="dur">[0:00]</span>
+                </div>
+                <div><h4>Sample explanation</h4><p>Subtitled. Plays here when ready.</p></div>
+              </div>
+              <div class="actions">
+                <a class="btn btn-navy" href="../../request/tutoring/?subject=ap&amp;expertId=ap-1" data-carry>Find my tutor — interested in [Name] <span class="arr" aria-hidden="true">→</span></a>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="profile reveal" id="expert-ap-2" data-match="physics-1 physics-c-mechanics chemistry" data-name="[Name]">
+          <div class="photo ap"><span class="idx">AP · 02</span><span class="big" aria-hidden="true">AP</span><small>Photo · 4:5</small></div>
+          <div>
+            <div class="role">AP subject tutor · Physics · Chemistry</div>
+            <h3>[Name]</h3>
+            <p class="meta">[School] · [Degree] · Teaching AP since [year]</p>
+            <div class="areas" aria-label="AP subjects this tutor teaches">
+              <span class="chip">Physics 1</span><span class="chip">Physics C: Mechanics</span><span class="chip">Chemistry</span>
+            </div>
+            <details>
+              <summary>Experience · What sessions cover <span class="plus" aria-hidden="true">+</span></summary>
+              <p class="bio">[Two or three sentences, in the tutor's own words.]</p>
+              <p class="bio">[School work and exam prep — e.g. lab reports and problem sets during the year, then experimental-design and data questions before the exam.]</p>
+              <ul class="helps" aria-label="What this tutor can help with">
+                <li>Students who can do the math but can't set up the problem</li>
+                <li>Lab and data-analysis questions in the exam's format</li>
+                <li>Physics 1 to Physics C — what changes and what carries over</li>
+              </ul>
+              <div class="video-slot">
+                <div class="thumb dark">
+                  <button class="play" aria-label="Play: a sample explanation from [Name]"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                  <span class="dur">[0:00]</span>
+                </div>
+                <div><h4>Sample explanation</h4><p>Subtitled. Plays here when ready.</p></div>
+              </div>
+              <div class="actions">
+                <a class="btn btn-navy" href="../../request/tutoring/?subject=ap&amp;expertId=ap-2" data-carry>Find my tutor — interested in [Name] <span class="arr" aria-hidden="true">→</span></a>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="profile reveal" id="expert-ap-3" data-match="english-language english-literature us-history" data-name="[Name]">
+          <div class="photo ap"><span class="idx">AP · 03</span><span class="big" aria-hidden="true">AP</span><small>Photo · 4:5</small></div>
+          <div>
+            <div class="role">AP subject tutor · English · US History</div>
+            <h3>[Name]</h3>
+            <p class="meta">[School] · [Degree] · Teaching AP since [year]</p>
+            <div class="areas" aria-label="AP subjects this tutor teaches">
+              <span class="chip">English Language</span><span class="chip">English Literature</span><span class="chip">US History</span>
+            </div>
+            <details>
+              <summary>Experience · What sessions cover <span class="plus" aria-hidden="true">+</span></summary>
+              <p class="bio">[Two or three sentences, in the tutor's own words.]</p>
+              <p class="bio">[School work and exam prep — e.g. essay feedback on class assignments through the year, then timed DBQ and argument essays weekly before May.]</p>
+              <ul class="helps" aria-label="What this tutor can help with">
+                <li>Turning a reading into a thesis fast enough for a timed essay</li>
+                <li>Document-based questions — using the sources, not just quoting them</li>
+                <li>Non-native English writers building structure before style</li>
+              </ul>
+              <div class="video-slot">
+                <div class="thumb dark">
+                  <button class="play" aria-label="Play: a sample explanation from [Name]"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                  <span class="dur">[0:00]</span>
+                </div>
+                <div><h4>Sample explanation</h4><p>Subtitled. Plays here when ready.</p></div>
+              </div>
+              <div class="actions">
+                <a class="btn btn-navy" href="../../request/tutoring/?subject=ap&amp;expertId=ap-3" data-carry>Find my tutor — interested in [Name] <span class="arr" aria-hidden="true">→</span></a>
+              </div>
+            </details>
+          </div>
+        </article>
+      </div>
+
+      <!-- P4 — no matching public profile: a request prompt, never a blank list; no promises about numbers or immediate matching -->
+      <div class="empty" id="pickEmpty" hidden>
+        <h4>No public profile for <span data-pick-label="this subject">this subject</span> yet.</h4>
+        <p>That doesn't mean no one is available — send a request and our team checks who can take the course. We don't promise a number of tutors or an immediate match.</p>
+        <a class="btn btn-navy" href="../../request/tutoring/?subject=ap" data-carry>Send a request anyway <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+
+      <p class="note">Naming a tutor on your request records your interest. It isn't an assignment — our team confirms availability and fit, and you make the final choice from the shortlist.</p>
+    </div>
+  </section>
+
+  <!-- P4 — same model as SAT, with the subject and school pace as the starting point -->
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">03 · How it works</span>
+          <h2 id="how-title">Our team shortlists. You choose.</h2>
+        </div>
+        <p class="sub">The site collects what we need and connects you to a conversation — it doesn't book lessons.</p>
+      </div>
+      <div class="flow reveal">
+        <div class="step"><h4>Send a request</h4><p>Your subject, where your class is, and what you want out of it. Name a tutor if one caught your eye.</p></div>
+        <div class="step"><h4>Talk with our team</h4><p>A short conversation to check your syllabus, learning style, schedule, and time zone.</p></div>
+        <div class="step"><h4>Compare your shortlist</h4><p>About three tutors who teach your course, each with the reason we suggest them.</p></div>
+        <div class="step"><h4>Choose your tutor</h4><p>You decide. Schedule and terms are confirmed with you before the first lesson.</p></div>
+      </div>
+      <p class="note note--strong reveal">Sending a request is not a booking and doesn't cost anything. Lesson terms — schedule, pricing, changes — are confirmed by our team before you commit.</p>
+    </div>
+  </section>
+
+  <!-- P5 — conditions before requesting; one subject to start, more in the notes -->
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">04 · Before you request</span>
+          <h2 id="faq-title">Questions people ask first.</h2>
+        </div>
+        <p class="sub">The short version of the terms. Anything else, ask in the form — we answer before scheduling.</p>
+      </div>
+      <div class="faq faq--wide reveal">
+        <details>
+          <summary><span class="n">01</span><span class="q">I need help with more than one AP subject.</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">Choose one subject on the form to start and mention the others in the notes. Our team works out with you whether one tutor or two makes more sense. There's no multi-subject checkout here on purpose — it's a conversation.</div>
+        </details>
+        <details>
+          <summary><span class="n">02</span><span class="q">Is tutoring separate from the admissions sessions?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">Yes. Tutoring is its own service with its own request. You don't need an admissions session first, and having one never commits you to tutoring.</div>
+        </details>
+        <details>
+          <summary><span class="n">03</span><span class="q">Does the tutor follow my school's course or the exam?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">Both, and you set the balance. Most students start with school work and shift toward exam format in the spring. Tell us where your class is and when your exam is; the shortlist reflects that.</div>
+        </details>
+        <details>
+          <summary><span class="n">04</span><span class="q">Where do lessons happen, and what about time zones?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">Online, on a video platform confirmed with you. We shortlist only tutors whose hours overlap with yours.</div>
+        </details>
+        <details>
+          <summary><span class="n">05</span><span class="q">What happens after I choose a tutor?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">Our team confirms the schedule and the lesson terms with you — including how changes and cancellations work — before the first lesson. Nothing starts until you've agreed to those.</div>
+        </details>
+        <details>
+          <summary><span class="n">06</span><span class="q">Is there a free trial lesson?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">We don't promise anything here that hasn't been confirmed. If a trial or a particular pricing arrangement applies, our team tells you before you commit — not the website.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band dark" aria-labelledby="cta-title">
+    <div class="wrap inner">
+      <div>
+        <span class="eyebrow">Find my AP tutor</span>
+        <h2 id="cta-title" style="margin-top: 14px;">Ready to find your tutor?</h2>
+        <p class="sub">Tell us your subject, where your class is, and what you're aiming for. We come back with about three tutors and why — and you choose.</p>
+        <p class="path">Request → We talk → Your shortlist → You choose</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-lime" href="../../request/tutoring/?subject=ap" data-carry>Find my AP tutor <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer footer--flush dark" id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="wordmark" href="../../"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
+        <p class="tagline">Admissions guidance and SAT / AP tutoring for students preparing for US universities — wherever you are.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="../../#support">Get started</a></li>
+        <li><a href="mailto:[contact@domain]">Contact</a></li>
+        <li><a href="../../privacy/">Privacy</a></li>
+        <li><a href="../../terms/">Terms</a></li>
+      </ul>
+    </div>
+    <div class="footer-meta">
+      <span>© 2026 [LEGAL ENTITY] · [BUSINESS REG.] · [ADDRESS]</span>
+      <span>PAID SERVICES · A REQUEST IS NOT A CONFIRMED BOOKING</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PrepModule — Admissions guidance & SAT / AP tutoring</title>
+<meta name="description" content="Talk with a former admissions officer about your US college preparation, or find a SAT / AP tutor who fits your goals.">
+<script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+
+<!-- NAV — logo → home, Admissions / SAT / AP → P01 / P02 / P03, Our experts → #experts -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="wordmark" href="./" aria-label="PrepModule — home"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="admissions/">Admissions</a></li>
+        <li><a href="tutoring/sat/">SAT</a></li>
+        <li><a href="tutoring/ap/">AP</a></li>
+        <li><a href="#experts">Our experts</a></li>
+        <li class="cta"><a href="#support">Get started</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- H01 — brand area + product banners. Both products visible at once, no carousel. -->
+  <section class="hero dark" id="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Admissions guidance · SAT / AP</span>
+        <h1 id="hero-title">Big questions.<br><em>The right people.</em></h1>
+        <p class="lead">Get an experienced perspective on your US college preparation. Find a tutor who fits your goals. Choose one, or both — each is its own service.</p>
+        <div class="hero-meta">
+          <div class="avatars" aria-label="Who you can meet">
+            <span class="avatar ao">AO</span><span class="avatar sat">SAT</span><span class="avatar ap">AP</span>
+          </div>
+          <span class="t">Former admissions officers · SAT / AP tutors</span>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <a class="banner" href="admissions/">
+          <div>
+            <span class="idx">01 — Admissions</span>
+            <h2>Admissions conversations</h2>
+            <p>Talk through your questions with a former admissions officer over Zoom.</p>
+          </div>
+          <span class="btn btn-lime">Explore admissions <span class="arr" aria-hidden="true">→</span></span>
+        </a>
+        <a class="banner" href="#support">
+          <div>
+            <span class="idx">02 — Tutoring</span>
+            <h2>SAT &amp; AP tutoring</h2>
+            <p>Tell us your subject and goals. We shortlist about three tutors — you choose.</p>
+          </div>
+          <span class="btn btn-outline">Find a tutor <span class="arr" aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- H02 — experts. Role is always labelled; card links to the matching landing #expert-{id}. -->
+  <section class="section" id="experts" aria-labelledby="experts-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">01 · Our experts</span>
+          <h2 id="experts-title">Meet your experts.</h2>
+        </div>
+        <p class="sub">Real people you can actually meet — with the experience that matters for the help you need.</p>
+      </div>
+      <div class="experts">
+        <article class="card reveal">
+          <div class="photo ao"><span class="idx">AO · 01</span><span class="big" aria-hidden="true">AO</span><small>Photo · 4:5</small></div>
+          <div>
+            <div class="role">Former admissions officer</div>
+            <h3>[Name]</h3>
+          </div>
+          <p class="meta">[University] · [Role in admissions] · [Years]</p>
+          <p class="desc">Where you stand, what to prioritize, and how a reader sees an application. Bring your questions.</p>
+          <a class="mlink" href="admissions/#expert-ao-1">View expertise <span class="arr" aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="card reveal">
+          <div class="photo sat"><span class="idx">SAT · 01</span><span class="big" aria-hidden="true">SAT</span><small>Photo · 4:5</small></div>
+          <div>
+            <div class="role">SAT subject tutor</div>
+            <h3>[Name]</h3>
+          </div>
+          <p class="meta">[School] · [Degree] · Reading &amp; Writing / Math</p>
+          <p class="desc">Teaching experience and how the sessions are explained — so you know what to expect before you commit.</p>
+          <a class="mlink" href="tutoring/sat/#expert-sat-1">View expertise <span class="arr" aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="card reveal">
+          <div class="photo ap"><span class="idx">AP · 01</span><span class="big" aria-hidden="true">AP</span><small>Photo · 4:5</small></div>
+          <div>
+            <div class="role">AP subject tutor</div>
+            <h3>[Name]</h3>
+          </div>
+          <p class="meta">[School] · [AP subjects taught]</p>
+          <p class="desc">Support that follows your school's pace and the exam — for the specific course in front of you.</p>
+          <a class="mlink" href="tutoring/ap/#expert-ap-1">View expertise <span class="arr" aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- H03 — three product entries. Whole card is the link (keyboard + click). -->
+  <section class="support dark" id="support" aria-labelledby="support-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">02 · Choose your path</span>
+          <h2 id="support-title">What would help you most?</h2>
+        </div>
+        <p class="sub">Each service is purchased on its own. Start where your question is.</p>
+      </div>
+      <div class="support-grid">
+        <a class="support-card reveal" href="admissions/">
+          <span class="k">Admissions</span>
+          <h3>Talk with a former admissions officer</h3>
+          <p>A conversation about your preparation, priorities, and the choices ahead.</p>
+          <span class="mlink">Explore <span class="arr" aria-hidden="true">→</span></span>
+        </a>
+        <a class="support-card reveal" href="tutoring/sat/">
+          <span class="k">SAT tutoring</span>
+          <h3>Reading &amp; Writing, Math</h3>
+          <p>Tell us where you need support. Compare a shortlist of tutors and pick one.</p>
+          <span class="mlink">Explore <span class="arr" aria-hidden="true">→</span></span>
+        </a>
+        <a class="support-card reveal" href="tutoring/ap/">
+          <span class="k">AP tutoring</span>
+          <h3>Help for your AP course</h3>
+          <p>Matched to the subject you're taking and how your school teaches it.</p>
+          <span class="mlink">Explore <span class="arr" aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- H04 — two paths shown side by side via tabs; tutoring is not a prerequisite step. -->
+  <section class="section" aria-labelledby="steps-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">03 · How it works</span>
+          <h2 id="steps-title">Your next step, made simple.</h2>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Choose a path" style="justify-self: end;">
+          <button class="tab" role="tab" id="tab-adm" aria-selected="true" aria-controls="panel-adm">Admissions</button>
+          <button class="tab" role="tab" id="tab-tut" aria-selected="false" aria-controls="panel-tut" tabindex="-1">Tutoring</button>
+        </div>
+      </div>
+
+      <div class="panel reveal" role="tabpanel" id="panel-adm" aria-labelledby="tab-adm">
+        <div class="flow flow--top">
+          <div class="step"><h4>Choose an expert</h4><p>Pick a former admissions officer, or let us suggest one.</p></div>
+          <div class="step"><h4>Send your questions</h4><p>A short form — your situation and what you want to discuss.</p></div>
+          <div class="step"><h4>Confirm a time</h4><p>Our team follows up on availability and the session terms.</p></div>
+          <div class="step"><h4>Meet on Zoom</h4><p>A private conversation on a link we set up for you.</p></div>
+        </div>
+        <p class="note">Sending a request is not a confirmed booking. Schedule, pricing, and payment are arranged with you afterwards.</p>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-tut" aria-labelledby="tab-tut" hidden>
+        <div class="flow flow--top">
+          <div class="step"><h4>Tell us your needs</h4><p>Subject or area, your current level, and your goals.</p></div>
+          <div class="step"><h4>Talk with our team</h4><p>We check your learning style and available times.</p></div>
+          <div class="step"><h4>Compare your shortlist</h4><p>About three tutors, with the reason we suggest each.</p></div>
+          <div class="step"><h4>Choose your tutor</h4><p>You decide. Nothing is assigned without you.</p></div>
+        </div>
+        <p class="note">Tutoring can be requested directly — an admissions session is not required first.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- H05 — public intro / sample videos. No autoplay. Hide this section until real videos exist. -->
+  <section class="section" aria-labelledby="video-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">04 · Class footage</span>
+          <h2 id="video-title">See how they think. And teach.</h2>
+        </div>
+        <p class="sub">Short introductions with subtitles. Press play when you're ready.</p>
+      </div>
+      <div class="video-grid">
+        <figure class="video reveal" style="margin:0">
+          <div class="thumb dark">
+            <span class="tag">Admissions officer · intro</span>
+            <button class="play" aria-label="Play: an admissions officer on how applications are read">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <span class="dur">[0:00]</span>
+          </div>
+          <figcaption>
+            <h3>How an application is actually read</h3>
+            <p>[Name], former admissions officer · Subtitles</p>
+          </figcaption>
+        </figure>
+        <figure class="video reveal" style="margin:0">
+          <div class="thumb dark">
+            <span class="tag">Tutor · sample lesson</span>
+            <button class="play" aria-label="Play: a tutor explaining a SAT reading question">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <span class="dur">[0:00]</span>
+          </div>
+          <figcaption>
+            <h3>A SAT reading question, explained</h3>
+            <p>[Name], SAT tutor · Subtitles</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- H06 — who runs this, and the questions people ask before requesting. -->
+  <section class="section" id="about" aria-labelledby="team-title">
+    <div class="wrap team">
+      <div class="team-intro reveal">
+        <span class="eyebrow">05 · The team</span>
+        <h2 id="team-title">A team that listens before it recommends.</h2>
+        <p class="lead">We run this service out of our work with students and families preparing for US universities. The people you'll meet — former admissions officers and subject tutors — are introduced with their real background, and nothing is assigned to you without a conversation first.</p>
+        <ul class="facts">
+          <li>Every profile states the person's role and verified experience.</li>
+          <li>Tutors are suggested only after our team has heard your goals.</li>
+          <li>Your request is a conversation starter, not a booking or a charge.</li>
+        </ul>
+      </div>
+
+      <div class="faq reveal" id="faq">
+        <details>
+          <summary><span class="n">01</span><span class="q">Can I buy just one service?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">Yes. Admissions conversations and tutoring are separate services with separate requests. You can use either one on its own.</div>
+        </details>
+        <details>
+          <summary><span class="n">02</span><span class="q">How are tutors recommended?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">After you send a request, our team talks with you about your subject, level, learning style, and schedule. We then suggest about three tutors and explain why each one fits. You choose.</div>
+        </details>
+        <details>
+          <summary><span class="n">03</span><span class="q">Is everything online?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">Yes. Admissions sessions happen on a Zoom link we prepare, and tutoring is held online. Time zones are confirmed with you before anything is scheduled.</div>
+        </details>
+        <details>
+          <summary><span class="n">04</span><span class="q">Do I need an admissions session before tutoring?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">No. You can request tutoring directly. If you do have an admissions session and learning support comes up, we'll point you to the relevant tutoring — but never automatically.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- H07 — keep an entry point at the bottom; policy links must point at real documents before launch. -->
+<footer class="footer dark" id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="wordmark" href="./"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
+        <p class="tagline">Admissions guidance and SAT / AP tutoring for students preparing for US universities — wherever you are.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#support">Get started</a></li>
+        <li><a href="mailto:[contact@domain]">Contact</a></li>
+        <li><a href="privacy/">Privacy</a></li>
+        <li><a href="terms/">Terms</a></li>
+      </ul>
+    </div>
+    <div class="footer-meta">
+      <span>© 2026 [LEGAL ENTITY] · [BUSINESS REG.] · [ADDRESS]</span>
+      <span>PAID SERVICES · A REQUEST IS NOT A CONFIRMED BOOKING</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

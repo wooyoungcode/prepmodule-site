@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAT tutoring — PrepModule</title>
+<meta name="description" content="Find a SAT tutor who fits your goals. Reading & Writing and Math support matched to your level, your target, and how you learn — about three suggestions, and you choose.">
+<script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<script src="../../assets/site.js" defer></script>
+</head>
+<body>
+
+<!-- NAV — SAT is the current product; CTA opens F02 with subject=sat preselected -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="wordmark" href="../../" aria-label="PrepModule — home"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../../admissions/">Admissions</a></li>
+        <li><a href="./" aria-current="page">SAT</a></li>
+        <li><a href="../ap/">AP</a></li>
+        <li><a href="../../#experts">Our experts</a></li>
+        <li class="cta"><a href="../../request/tutoring/?subject=sat" data-carry>Find my SAT tutor</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- S1 — the area from the ad carries straight through: pick Reading & Writing or Math here, it follows you to the form -->
+  <section class="hero hero--landing dark" id="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">SAT tutoring · Reading &amp; Writing · Math</span>
+        <h1 id="hero-title">Find a SAT tutor who <em>fits your goals.</em></h1>
+        <p class="lead">Reading, writing and math support matched to your needs. Tell us where you need help — we shortlist about three tutors and explain why each one. You choose.</p>
+        <div class="hero-actions">
+          <a class="btn btn-lime" href="../../request/tutoring/?subject=sat" data-carry>Find my SAT tutor <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-outline" href="#experts">Meet the tutors <span class="arr" aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-meta">
+          <span class="t">Online · About three suggestions · You choose · A request is not a booking</span>
+        </div>
+      </div>
+
+      <div class="picker" data-picker="area" role="group" aria-labelledby="pick-lbl">
+        <span class="lbl" id="pick-lbl">Where do you need support? <button type="button" class="clear" data-pick-clear>Clear</button></span>
+        <button type="button" class="pick-opt" data-option="rw" data-label="Reading &amp; Writing" aria-pressed="false">
+          <span class="k">Area 01</span>
+          <strong>Reading &amp; Writing</strong>
+          <span class="p">Passages take too long, evidence questions feel like guesses, grammar rules blur together.</span>
+        </button>
+        <button type="button" class="pick-opt" data-option="math" data-label="Math" aria-pressed="false">
+          <span class="k">Area 02</span>
+          <strong>Math</strong>
+          <span class="p">The concepts are fine — timing, word problems, and the calculator-free set aren't.</span>
+        </button>
+        <span class="hint">Optional. Your choice is kept on the request form; you can change it there.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- S2 — tutor profiles: school · degree · SAT areas, plus how they teach. Interest is recorded on the request, not an assignment. -->
+  <section class="section" id="experts" aria-labelledby="experts-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">01 · The tutors</span>
+          <h2 id="experts-title">Meet the SAT tutors.</h2>
+        </div>
+        <p class="sub">Not just where they studied — which SAT areas they teach, how long they've taught them, and how a session with them actually runs.</p>
+      </div>
+
+      <p class="pick-status" id="pickStatus" aria-live="polite"><span>Showing all tutors</span> <button type="button" class="clear" data-pick-clear>Show all</button></p>
+
+      <div class="profiles">
+        <article class="profile reveal" id="expert-sat-1" data-match="rw math" data-name="[Name]">
+          <div class="photo sat"><span class="idx">SAT · 01</span><span class="big" aria-hidden="true">SAT</span><small>Photo · 4:5</small></div>
+          <div>
+            <div class="role">SAT subject tutor · Reading &amp; Writing · Math</div>
+            <h3>[Name]</h3>
+            <p class="meta">[School] · [Degree] · Teaching SAT since [year]</p>
+            <div class="areas" aria-label="SAT areas this tutor teaches">
+              <span class="chip">Reading &amp; Writing</span><span class="chip">Math</span><span class="chip">Full-test pacing</span>
+            </div>
+            <details>
+              <summary>Experience · How sessions run <span class="plus" aria-hidden="true">+</span></summary>
+              <p class="bio">[Two or three sentences, in the tutor's own words: what they studied, how long they've taught the SAT, and the kind of student they've worked with most.]</p>
+              <p class="bio">[How they explain things — e.g. starts from a timed section, then works backwards from the misses; homework is short and targeted.]</p>
+              <ul class="helps" aria-label="What this tutor can help with">
+                <li>Building a section strategy that survives the clock</li>
+                <li>Turning a practice-test score report into a plan for the next four weeks</li>
+                <li>Students preparing both sections with limited time</li>
+              </ul>
+              <div class="video-slot">
+                <div class="thumb dark">
+                  <button class="play" aria-label="Play: a sample explanation from [Name]"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                  <span class="dur">[0:00]</span>
+                </div>
+                <div><h4>Sample explanation</h4><p>Subtitled. Plays here when ready.</p></div>
+              </div>
+              <div class="actions">
+                <a class="btn btn-navy" href="../../request/tutoring/?subject=sat&amp;expertId=sat-1" data-carry>Find my tutor — interested in [Name] <span class="arr" aria-hidden="true">→</span></a>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="profile reveal" id="expert-sat-2" data-match="rw" data-name="[Name]">
+          <div class="photo sat"><span class="idx">SAT · 02</span><span class="big" aria-hidden="true">SAT</span><small>Photo · 4:5</small></div>
+          <div>
+            <div class="role">SAT subject tutor · Reading &amp; Writing</div>
+            <h3>[Name]</h3>
+            <p class="meta">[School] · [Degree] · Teaching SAT since [year]</p>
+            <div class="areas" aria-label="SAT areas this tutor teaches">
+              <span class="chip">Reading &amp; Writing</span><span class="chip">Evidence questions</span><span class="chip">Grammar &amp; usage</span>
+            </div>
+            <details>
+              <summary>Experience · How sessions run <span class="plus" aria-hidden="true">+</span></summary>
+              <p class="bio">[Two or three sentences, in the tutor's own words.]</p>
+              <p class="bio">[How they explain things — e.g. reads the passage aloud with the student first, names the question type, then drills that type only.]</p>
+              <ul class="helps" aria-label="What this tutor can help with">
+                <li>Students who read carefully but run out of time</li>
+                <li>Evidence and inference questions that feel like guessing</li>
+                <li>Non-native English readers building speed without losing accuracy</li>
+              </ul>
+              <div class="video-slot">
+                <div class="thumb dark">
+                  <button class="play" aria-label="Play: a sample explanation from [Name]"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                  <span class="dur">[0:00]</span>
+                </div>
+                <div><h4>Sample explanation</h4><p>Subtitled. Plays here when ready.</p></div>
+              </div>
+              <div class="actions">
+                <a class="btn btn-navy" href="../../request/tutoring/?subject=sat&amp;expertId=sat-2" data-carry>Find my tutor — interested in [Name] <span class="arr" aria-hidden="true">→</span></a>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="profile reveal" id="expert-sat-3" data-match="math" data-name="[Name]">
+          <div class="photo sat"><span class="idx">SAT · 03</span><span class="big" aria-hidden="true">SAT</span><small>Photo · 4:5</small></div>
+          <div>
+            <div class="role">SAT subject tutor · Math</div>
+            <h3>[Name]</h3>
+            <p class="meta">[School] · [Degree] · Teaching SAT since [year]</p>
+            <div class="areas" aria-label="SAT areas this tutor teaches">
+              <span class="chip">Math</span><span class="chip">Word problems</span><span class="chip">Calculator-free section</span>
+            </div>
+            <details>
+              <summary>Experience · How sessions run <span class="plus" aria-hidden="true">+</span></summary>
+              <p class="bio">[Two or three sentences, in the tutor's own words.]</p>
+              <p class="bio">[How they explain things — e.g. one topic per session, three ways to see it, then timed sets until the method is automatic.]</p>
+              <ul class="helps" aria-label="What this tutor can help with">
+                <li>Students strong in class math who lose points to the SAT's phrasing</li>
+                <li>Timing and choosing which problems to skip</li>
+                <li>Rebuilding algebra foundations quickly before a test date</li>
+              </ul>
+              <div class="video-slot">
+                <div class="thumb dark">
+                  <button class="play" aria-label="Play: a sample explanation from [Name]"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                  <span class="dur">[0:00]</span>
+                </div>
+                <div><h4>Sample explanation</h4><p>Subtitled. Plays here when ready.</p></div>
+              </div>
+              <div class="actions">
+                <a class="btn btn-navy" href="../../request/tutoring/?subject=sat&amp;expertId=sat-3" data-carry>Find my tutor — interested in [Name] <span class="arr" aria-hidden="true">→</span></a>
+              </div>
+            </details>
+          </div>
+        </article>
+      </div>
+
+      <div class="empty" id="pickEmpty" hidden>
+        <h4>No public profile for <span data-pick-label="this area">this area</span> yet.</h4>
+        <p>That doesn't mean no one is available — send a request and our team checks who can take it. We don't promise a number of tutors or an immediate match.</p>
+        <a class="btn btn-navy" href="../../request/tutoring/?subject=sat" data-carry>Send a request anyway <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+
+      <p class="note">Naming a tutor on your request records your interest. It isn't an assignment — our team confirms availability and fit, and you make the final choice from the shortlist.</p>
+    </div>
+  </section>
+
+  <!-- S3 — what we ask, and why: the basis for the shortlist, explained up front -->
+  <section class="section" id="support" aria-labelledby="support-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">02 · What we ask</span>
+          <h2 id="support-title">Tell us where you need support.</h2>
+        </div>
+        <p class="sub">Four things shape the shortlist. The form asks for them; nothing is scored or ranked automatically.</p>
+      </div>
+      <div class="topics reveal" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="topic"><h4>Area</h4><p>Reading &amp; Writing, Math, or both. If you're not sure which is costing more points, say so.</p></div>
+        <div class="topic"><h4>Current level</h4><p>A recent score, a practice test, or "haven't taken one yet" — all fine.</p></div>
+        <div class="topic"><h4>Goal</h4><p>A target score, a test date, or a deadline the score has to be ready for.</p></div>
+        <div class="topic"><h4>How you learn</h4><p>Explanation style, pace, and the time zone and hours you can actually attend.</p></div>
+      </div>
+      <p class="note">Any score or improvement figures on this site come from verified records only. We don't publish averages we can't stand behind.</p>
+    </div>
+  </section>
+
+  <!-- S4 — the model, plainly: our team prepares the shortlist and the reasons; the student chooses. The site books nothing. -->
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">03 · How it works</span>
+          <h2 id="how-title">Our team shortlists. You choose.</h2>
+        </div>
+        <p class="sub">The site collects what we need and connects you to a conversation — it doesn't book lessons.</p>
+      </div>
+      <div class="flow reveal">
+        <div class="step"><h4>Send a request</h4><p>Area, level, goal, and how you learn. Name a tutor if one caught your eye.</p></div>
+        <div class="step"><h4>Talk with our team</h4><p>A short conversation to check learning style, schedule, and time zone.</p></div>
+        <div class="step"><h4>Compare your shortlist</h4><p>About three tutors, each with the reason we suggest them.</p></div>
+        <div class="step"><h4>Choose your tutor</h4><p>You decide. Schedule and terms are confirmed with you before the first lesson.</p></div>
+      </div>
+      <p class="note note--strong reveal">Sending a request is not a booking and doesn't cost anything. Lesson terms — schedule, pricing, changes — are confirmed by our team before you commit.</p>
+    </div>
+  </section>
+
+  <!-- S5 — the conditions people should know before requesting; nothing unconfirmed is promised -->
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">04 · Before you request</span>
+          <h2 id="faq-title">Questions people ask first.</h2>
+        </div>
+        <p class="sub">The short version of the terms. Anything else, ask in the form — we answer before scheduling.</p>
+      </div>
+      <div class="faq faq--wide reveal">
+        <details>
+          <summary><span class="n">01</span><span class="q">Is tutoring separate from the admissions sessions?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">Yes. Tutoring is its own service with its own request. You don't need an admissions session first, and having one never commits you to tutoring.</div>
+        </details>
+        <details>
+          <summary><span class="n">02</span><span class="q">How are the three tutors chosen?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">From your area, current level, goal, learning style, and available hours. Our team writes a reason next to each suggestion so you can compare on something concrete.</div>
+        </details>
+        <details>
+          <summary><span class="n">03</span><span class="q">Where do lessons happen, and what about time zones?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">Online, on a video platform confirmed with you. Tutors and students are in different time zones — we shortlist only tutors whose hours overlap with yours.</div>
+        </details>
+        <details>
+          <summary><span class="n">04</span><span class="q">What happens after I choose a tutor?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">Our team confirms the schedule and the lesson terms with you — including how changes and cancellations work — before the first lesson. Nothing starts until you've agreed to those.</div>
+        </details>
+        <details>
+          <summary><span class="n">05</span><span class="q">Can I ask for a specific tutor?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">Yes. Naming one on the form records your interest, and we'll include them if they're available and a fit. It isn't a guaranteed assignment.</div>
+        </details>
+        <details>
+          <summary><span class="n">06</span><span class="q">Is there a free trial lesson?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="a">We don't promise anything here that hasn't been confirmed. If a trial or a particular pricing arrangement applies, our team tells you before you commit — not the website.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band dark" aria-labelledby="cta-title">
+    <div class="wrap inner">
+      <div>
+        <span class="eyebrow">Find my SAT tutor</span>
+        <h2 id="cta-title" style="margin-top: 14px;">Ready to find your tutor?</h2>
+        <p class="sub">Tell us your area, level and goal. We come back with about three tutors and why — and you choose. <span data-pick-label="">&nbsp;</span></p>
+        <p class="path">Request → We talk → Your shortlist → You choose</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-lime" href="../../request/tutoring/?subject=sat" data-carry>Find my SAT tutor <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer footer--flush dark" id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="wordmark" href="../../"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
+        <p class="tagline">Admissions guidance and SAT / AP tutoring for students preparing for US universities — wherever you are.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="../../#support">Get started</a></li>
+        <li><a href="mailto:[contact@domain]">Contact</a></li>
+        <li><a href="../../privacy/">Privacy</a></li>
+        <li><a href="../../terms/">Terms</a></li>
+      </ul>
+    </div>
+    <div class="footer-meta">
+      <span>© 2026 [LEGAL ENTITY] · [BUSINESS REG.] · [ADDRESS]</span>
+      <span>PAID SERVICES · A REQUEST IS NOT A CONFIRMED BOOKING</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
