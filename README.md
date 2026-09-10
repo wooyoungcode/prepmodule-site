@@ -26,4 +26,5 @@ submit: { endpoint: '' }   // URL that accepts a JSON POST — until set, the fo
 | `/` | Home |
 | `/admissions/` | Admissions conversations |
 | `/tutoring/sat/` · `/tutoring/ap/` | SAT / AP tutoring |
-| `/request/admissions/` · `/request/tutoring/` | Request forms |
+| `/request/` | Request form (Admissions / SAT / AP — `?service=admissions`, `?subject=sat|ap`, plus `area` / `apSubject` / `expertId`) |
+| `/request/admissions/` · `/request/tutoring/` | Forward to `/request/` with parameters kept |

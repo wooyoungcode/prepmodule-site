@@ -1,11 +1,14 @@
-// PrepModule — request forms (F01 admissions, F02 tutoring) and the four S01 states:
+// PrepModule — the request form (/request/) and the four S01 states:
 // input error · sending · received · failed. Success is shown only after the request was actually accepted.
+// One form, three services (admissions / sat / ap). The service decides which fields show and which experts are offered.
 (function () {
   var form = document.getElementById('form'); if (!form || !window.PM) return;
-  var D = window.PM, kind = form.getAttribute('data-form'), q = new URLSearchParams(location.search);
+  var D = window.PM, q = new URLSearchParams(location.search);
   var $ = function (id) { return document.getElementById(id); };
   var notice = $('paramNotice'), notes = [];
   var demo = q.get('demo');
+  var SERVICES = ['admissions', 'sat', 'ap'];
+  var NAMES = { admissions: 'Admissions conversation', sat: 'SAT tutoring', ap: 'AP tutoring' };
 
   function opt(v, t) { var o = document.createElement('option'); o.value = v; o.textContent = t; return o; }
   function fill(sel, items, placeholder) {
@@ -18,7 +21,7 @@
     });
   }
   function has(items, id) { return items.some(function (i) { return i.id === id; }); }
-  function label(items, id) { var f = items.filter(function (i) { return i.id === id; })[0]; return f ? f.label || f.name : ''; }
+  function label(items, id) { var f = items.filter(function (i) { return i.id === id; })[0]; return f ? (f.label || f.name) : ''; }
 
   // ---- shared fields ----
   fill($('grade'), D.grades, 'Select grade');
@@ -28,71 +31,78 @@
   fill(tz, zones.map(function (z) { return { id: z, label: z.replace(/_/g, ' ') }; }), 'Choose your time zone');
   if (zones.indexOf(mine) > -1) tz.value = mine;
 
-  // ---- product-specific fields, prefilled from the landing's URL (ids only) ----
+  // ---- service, area / subject, expert ----
+  var radios = form.querySelectorAll('input[name="service"]'), area = $('area'), ap = $('apSubject'), ex = $('expertId');
+  fill(area, D.satAreas, 'Choose an area');
+  fill(ap, D.apSubjects, 'Choose your AP subject');
+  function service() { var r = form.querySelector('input[name="service"]:checked'); return r ? r.value : ''; }
+  function detail() { var s = service(); return s === 'sat' ? area.value : s === 'ap' ? ap.value : ''; }
+
+  // Prefill from the landing's URL — ids only (spec p.12). ?service=admissions or ?subject=sat|ap, plus area / apSubject / expertId.
+  var s = q.get('service') || q.get('subject');
+  if (s && SERVICES.indexOf(s) === -1) { notes.push('“' + s + '” isn’t a service we offer. Choose one to start.'); s = null; }
+  if (s) form.querySelector('input[name="service"][value="' + s + '"]').checked = true;
+  var a = q.get('area');
+  if (a) { if (has(D.satAreas, a)) area.value = a; else notes.push('“' + a + '” isn’t a SAT area we list — choose one below.'); }
+  var p = q.get('apSubject');
+  if (p) { if (has(D.apSubjects, p)) ap.value = p; else notes.push('“' + p + '” isn’t in our AP subject list — choose one below, or “Not listed” and describe the course.'); }
+
   var sel = $('selection');
-  function row(k, v, href) {
-    return '<div class="item"><span class="k">' + k + '</span><span class="v">' + v + (href ? ' <a href="' + href + '">Change</a>' : '') + '</span></div>';
+  function row(k, v, href) { return '<div class="item"><span class="k">' + k + '</span><span class="v">' + v + (href ? ' <a href="' + href + '">Change</a>' : '') + '</span></div>'; }
+  function expertLabelFor(s) { return s === 'admissions' ? 'Preferred expert' : 'Interested tutor'; }
+  function backFor(s, d) {
+    return s === 'admissions' ? '../admissions/#experts'
+      : s === 'sat' ? '../tutoring/sat/' + (d ? '?area=' + d : '')
+      : s === 'ap' ? '../tutoring/ap/' + (d ? '?apSubject=' + d : '')
+      : '../#support';
   }
-  var renderSel;
+  function renderSel() {
+    var s = service(), d = detail();
+    var who = ex.value ? (s === 'admissions' ? label(D.officers, ex.value) : label(D.tutors, ex.value) + ' (' + label(D.tutors.map(function (t) { return { id: t.id, label: t.meta }; }), ex.value) + ')') : (s === 'admissions' ? 'Not sure yet' : 'None yet');
+    sel.innerHTML = row('Service', s ? NAMES[s] : 'Not chosen yet', backFor(s, d)) +
+      (s === 'sat' ? row('Area', d ? label(D.satAreas, d) : 'Not chosen yet') : '') +
+      (s === 'ap' ? row('AP subject', d ? label(D.apSubjects, d) : 'Not chosen yet') : '') +
+      (s ? row(expertLabelFor(s), who) : '');
+    var back = $('doneBack'); if (back) back.setAttribute('href', s === 'admissions' ? '../admissions/' : s === 'sat' ? '../tutoring/sat/' : s === 'ap' ? '../tutoring/ap/' : '../');
+  }
 
-  if (kind === 'admissions') {
-    var ex = $('expertId');
-    fill(ex, D.officers.map(function (o) { return { id: o.id, label: o.name + ' — ' + o.meta }; }), 'Not sure yet — suggest one');
-    var want = q.get('expertId');
-    if (want) {
-      if (has(D.officers, want)) ex.value = want;
-      else notes.push('The officer profile “' + want + '” isn’t available, so “Preferred expert” was left as “Not sure yet”. You can still pick one below.');
-    }
-    renderSel = function () {
-      sel.innerHTML = row('Service', 'Admissions conversation') +
-        row('Preferred expert', ex.value ? label(D.officers, ex.value) : 'Not sure yet', '../../admissions/#experts');
-    };
-    ex.addEventListener('change', renderSel);
-  } else {
-    var radios = form.querySelectorAll('input[name="subject"]'), area = $('area'), ap = $('apSubject'), tut = $('expertId');
-    fill(area, D.satAreas, 'Choose an area');
-    fill(ap, D.apSubjects, 'Choose your AP subject');
-    var s = q.get('subject');
-    if (s && s !== 'sat' && s !== 'ap') { notes.push('“' + s + '” isn’t a subject we offer. Choose SAT or AP to start.'); s = null; }
-    if (s) form.querySelector('input[name="subject"][value="' + s + '"]').checked = true;
-    var a = q.get('area');
-    if (a) { if (has(D.satAreas, a)) area.value = a; else notes.push('“' + a + '” isn’t a SAT area we list — choose one below.'); }
-    var p = q.get('apSubject');
-    if (p) { if (has(D.apSubjects, p)) ap.value = p; else notes.push('“' + p + '” isn’t in our AP subject list — choose one below, or “Not listed” and describe the course.'); }
-
-    function subject() { var r = form.querySelector('input[name="subject"]:checked'); return r ? r.value : ''; }
-    function detail() { return subject() === 'sat' ? area.value : subject() === 'ap' ? ap.value : ''; }
-    // Spec p.12: when subject / area / apSubject change, values that no longer fit are cleared — including the interested tutor.
-    function sync() {
-      var v = subject(), d = detail();
-      $('areaField').hidden = v !== 'sat'; $('apField').hidden = v !== 'ap';
-      if (v !== 'sat') area.value = ''; if (v !== 'ap') ap.value = '';
+  // Spec p.12: when the service / area / subject change, values that no longer fit are cleared — including the chosen expert.
+  function sync() {
+    var s = service(), d = detail();
+    $('areaField').hidden = s !== 'sat'; $('apField').hidden = s !== 'ap'; $('expertField').hidden = !s;
+    if (s !== 'sat') area.value = ''; if (s !== 'ap') ap.value = '';
+    var list, placeholder;
+    if (s === 'admissions') {
+      list = D.officers.map(function (o) { return { id: o.id, label: o.name + ' — ' + o.meta }; }); placeholder = 'Not sure yet — suggest one';
+    } else if (s) {
       var open = !d || d === 'both' || d === 'unsure' || d === 'other';
-      var list = D.tutors.filter(function (t) { return t.subject === v && (open || t.match.indexOf(d) > -1); });
-      var cur = tut.value;
-      fill(tut, list.map(function (t) { return { id: t.id, label: t.name + ' — ' + t.meta }; }), v ? 'None — let our team suggest' : 'Choose a subject first');
-      tut.disabled = !v;
-      if (cur && list.some(function (t) { return t.id === cur; })) tut.value = cur;
-      renderSel();
-    }
-    renderSel = function () {
-      var v = subject(), d = detail();
-      var back = v === 'sat' ? '../../tutoring/sat/' + (d ? '?area=' + d : '') : v === 'ap' ? '../../tutoring/ap/' + (d ? '?apSubject=' + d : '') : '../../#support';
-      sel.innerHTML = row('Service', v ? (v === 'sat' ? 'SAT tutoring' : 'AP tutoring') : 'Not chosen yet', back) +
-        (v === 'sat' ? row('Area', d ? label(D.satAreas, d) : 'Not chosen yet') : '') +
-        (v === 'ap' ? row('AP subject', d ? label(D.apSubjects, d) : 'Not chosen yet') : '') +
-        row('Interested tutor', tut.value ? label(D.tutors, tut.value) + ' (' + label(D.tutors.map(function (t) { return { id: t.id, label: t.meta }; }), tut.value) + ')' : 'None yet');
-    };
-    Array.prototype.forEach.call(radios, function (r) { r.addEventListener('change', sync); });
-    area.addEventListener('change', sync); ap.addEventListener('change', sync); tut.addEventListener('change', renderSel);
-    sync();
-    var e = q.get('expertId');
-    if (e) {
-      if (Array.prototype.some.call(tut.options, function (o) { return o.value === e; })) { tut.value = e; renderSel(); }
-      else notes.push('The tutor profile “' + e + '” isn’t available for this selection, so “Interested tutor” was left empty. Naming a tutor is optional.');
-    }
+      list = D.tutors.filter(function (t) { return t.subject === s && (open || t.match.indexOf(d) > -1); })
+        .map(function (t) { return { id: t.id, label: t.name + ' — ' + t.meta }; });
+      placeholder = 'None — let our team suggest';
+    } else { list = []; placeholder = 'Choose a service first'; }
+    var cur = ex.value; fill(ex, list, placeholder); ex.disabled = !s;
+    if (cur && list.some(function (i) { return i.id === cur; })) ex.value = cur;
+    $('expertLabel').textContent = expertLabelFor(s);
+    $('expertHelp').textContent = s === 'admissions'
+      ? 'Naming an officer records your preference. Availability is confirmed afterwards — if they can’t take a session soon, we’ll say so and suggest an alternative.'
+      : 'Naming a tutor records your interest. It isn’t an assignment — our team confirms availability and fit, and you choose from the shortlist.';
+    $('messageHelp').textContent = s === 'admissions'
+      ? 'Where you stand, what you’re weighing, or one specific decision. Rough is fine.'
+      : s ? 'Current level (a score, a practice test, or none yet), your goal or test date, and how you like to learn. Rough is fine.'
+      : 'Rough is fine — a few sentences is plenty.';
+    Array.prototype.forEach.call(document.querySelectorAll('.nav-links a[data-service]'), function (l) {
+      if (l.getAttribute('data-service') === s) l.setAttribute('aria-current', 'page'); else l.removeAttribute('aria-current');
+    });
+    renderSel();
   }
-  renderSel();
+  Array.prototype.forEach.call(radios, function (r) { r.addEventListener('change', sync); });
+  area.addEventListener('change', sync); ap.addEventListener('change', sync); ex.addEventListener('change', renderSel);
+  sync();
+  var e = q.get('expertId');
+  if (e) {
+    if (Array.prototype.some.call(ex.options, function (o) { return o.value === e; })) { ex.value = e; renderSel(); }
+    else notes.push('The profile “' + e + '” isn’t available for this selection, so the expert field was left empty. Naming someone is optional.');
+  }
   if (notes.length && notice) { notice.querySelector('[data-text]').innerHTML = notes.map(function (n) { return '<p>' + n + '</p>'; }).join(''); notice.hidden = false; }
 
   // ---- S01-01 input errors: message next to the field, values kept ----
@@ -103,7 +113,7 @@
       if (f.hidden) { f.classList.remove('invalid'); return; }
       var input = f.querySelector('input, select, textarea'), bad, msg = f.getAttribute('data-msg') || 'This field is required.';
       if (input.type === 'checkbox') bad = !input.checked;
-      else if (input.type === 'radio') { bad = !form.querySelector('input[name="' + input.name + '"]:checked'); }
+      else if (input.type === 'radio') bad = !form.querySelector('input[name="' + input.name + '"]:checked');
       else bad = !input.value.trim();
       if (!bad && input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())) { bad = true; msg = 'Enter an email address like name@example.com — it’s how we reply.'; }
       f.classList.toggle('invalid', bad);
@@ -121,13 +131,12 @@
 
   // ---- S01-02 sending · S01-03 received · S01-04 failed ----
   var btn = $('submitBtn'), fail = $('failBanner'), done = $('done');
-  function setSending(on) {
-    btn.disabled = on; btn.setAttribute('aria-busy', String(on));
-    btn.textContent = on ? 'Sending…' : btn.getAttribute('data-label');
-  }
+  function setSending(on) { btn.disabled = on; btn.setAttribute('aria-busy', String(on)); btn.textContent = on ? 'Sending…' : btn.getAttribute('data-label'); }
   function build() {
-    var f = new FormData(form), o = { form: kind, sentAt: new Date().toISOString() };
+    var f = new FormData(form), o = { sentAt: new Date().toISOString() };
     f.forEach(function (v, k) { if (k !== 'website') o[k] = typeof v === 'string' ? v.trim() : v; });
+    o.form = o.service === 'admissions' ? 'admissions' : 'tutoring';
+    if (o.service === 'sat' || o.service === 'ap') o.subject = o.service;
     o.consent = !!form.consent.checked;
     // Campaign / product identifiers only — never the message or contact details (spec p.10)
     var utm = {}; q.forEach(function (v, k) { if (/^utm_/i.test(k)) utm[k] = v; });
@@ -150,21 +159,18 @@
   }
   function showDone(payload) {
     done.querySelector('[data-email]').textContent = payload.email;
-    var facts = done.querySelector('[data-facts]');
-    facts.innerHTML = '';
-    var items = kind === 'admissions'
-      ? [['Service', 'Admissions conversation'], ['Preferred expert', payload.expertId ? label(D.officers, payload.expertId) : 'Not sure yet — we’ll suggest']]
-      : [['Service', payload.subject === 'sat' ? 'SAT tutoring' : 'AP tutoring'],
-         [payload.subject === 'sat' ? 'Area' : 'AP subject', payload.subject === 'sat' ? label(D.satAreas, payload.area) : label(D.apSubjects, payload.apSubject)],
-         ['Interested tutor', payload.expertId ? label(D.tutors, payload.expertId) : 'None — our team will suggest']];
+    var facts = done.querySelector('[data-facts]'); facts.innerHTML = '';
+    var s = payload.service, items = [['Service', NAMES[s]]];
+    if (s === 'sat') items.push(['Area', label(D.satAreas, payload.area)]);
+    if (s === 'ap') items.push(['AP subject', label(D.apSubjects, payload.apSubject)]);
+    items.push([expertLabelFor(s), payload.expertId ? (s === 'admissions' ? label(D.officers, payload.expertId) : label(D.tutors, payload.expertId)) : (s === 'admissions' ? 'Not sure yet — we’ll suggest' : 'None — our team will suggest')]);
     items.forEach(function (i) { var li = document.createElement('li'); li.innerHTML = '<span class="k">' + i[0] + '</span><span>' + i[1] + '</span>'; facts.appendChild(li); });
     form.hidden = true; if (notice) notice.hidden = true;
     var aside = document.querySelector('.rail'); if (aside) aside.hidden = true;
     done.hidden = false; done.focus(); done.scrollIntoView({ block: 'start' });
   }
   form.addEventListener('submit', function (ev) {
-    ev.preventDefault(); attempted = true;
-    fail.hidden = true;
+    ev.preventDefault(); attempted = true; fail.hidden = true;
     if (!validate(true)) return;
     if (form.website && form.website.value) return;           // honeypot: bots fill it, people never see it
     setSending(true);
@@ -178,8 +184,9 @@
     var d = $('demoTag'); if (d) d.hidden = false;
     if (q.get('auto') === '1') {
       var demoFill = function (id, v) { var el = $(id); if (el && !el.value) el.value = v; };
-      if (kind === 'tutoring' && !form.querySelector('input[name="subject"]:checked')) { form.querySelector('input[name="subject"][value="sat"]').checked = true; form.querySelector('input[name="subject"]').dispatchEvent(new Event('change', { bubbles: true })); }
-      if (kind === 'tutoring' && !$('areaField').hidden && !$('area').value) { $('area').value = 'rw'; $('area').dispatchEvent(new Event('change', { bubbles: true })); }
+      if (!service()) { form.querySelector('input[name="service"][value="sat"]').checked = true; sync(); }
+      if (service() === 'sat' && !area.value) { area.value = 'rw'; sync(); }
+      if (service() === 'ap' && !ap.value) { ap.value = 'calculus-ab'; sync(); }
       demoFill('name', 'Demo Student'); demoFill('email', 'demo@example.com'); demoFill('grade', 'g11');
       demoFill('message', 'Demo request — this text is sample content and nothing is sent.');
       form.consent.checked = true;

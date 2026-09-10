@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request — PrepModule</title>
+<meta name="description" content="Request an admissions conversation with a former admissions officer, or ask for a SAT / AP tutor shortlist. A request is not a booking — our team contacts you first.">
+<meta name="robots" content="noindex">
+<script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/data.js"></script>
+<script src="../assets/site.js" defer></script>
+<script src="../assets/forms.js" defer></script>
+</head>
+<body>
+
+<!-- On the form, the product links switch the form's service rather than leaving the page -->
+<header class="nav light" id="nav">
+  <div class="wrap">
+    <a class="wordmark" href="../" aria-label="PrepModule — home"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="./?service=admissions" data-service="admissions">Admissions</a></li>
+        <li><a href="./?subject=sat" data-service="sat">SAT</a></li>
+        <li><a href="./?subject=ap" data-service="ap">AP</a></li>
+        <li><a href="../#experts">Our experts</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap form-page">
+  <div>
+    <div class="form-head">
+      <span class="eyebrow">Request</span>
+      <h1>Tell us what you need.</h1>
+      <p class="sub">Choose a service, tell us a little about the student, and our team gets in touch. Nothing is booked or charged by this form — we confirm availability and the terms with you first.</p>
+    </div>
+
+    <!-- spec p.12: no product → start from the choice; unsupported values → re-select; unavailable expert → cleared with the reason -->
+    <div class="notice" id="paramNotice" hidden>
+      <span class="k">Heads up</span>
+      <div data-text></div>
+    </div>
+
+    <form id="form" class="form" novalidate autocomplete="on">
+      <span class="demo-tag" id="demoTag" hidden>Demo mode · nothing is sent</span>
+
+      <div class="field" id="serviceField" data-required data-msg="Choose a service to start.">
+        <span class="lbl">What would you like? <span class="req">*</span></span>
+        <div class="radios radios-3" role="radiogroup" aria-label="Service">
+          <label class="radio"><input type="radio" name="service" value="admissions"><span><strong>Admissions conversation</strong><small>Talk with a former admissions officer</small></span></label>
+          <label class="radio"><input type="radio" name="service" value="sat"><span><strong>SAT tutoring</strong><small>Reading &amp; Writing · Math</small></span></label>
+          <label class="radio"><input type="radio" name="service" value="ap"><span><strong>AP tutoring</strong><small>One course to start</small></span></label>
+        </div>
+        <span class="err" aria-live="polite"></span>
+      </div>
+
+      <div class="field" id="areaField" data-required data-msg="Choose the SAT area, or “Not sure yet”." hidden>
+        <label for="area">SAT area <span class="req">*</span></label>
+        <select class="input" id="area" name="area"></select>
+        <span class="err" aria-live="polite"></span>
+      </div>
+
+      <div class="field" id="apField" data-required data-msg="Choose your AP subject, or “Not listed” and describe the course below." hidden>
+        <label for="apSubject">AP subject <span class="req">*</span></label>
+        <select class="input" id="apSubject" name="apSubject"></select>
+        <span class="help">Need more than one subject? Choose one here and mention the others below — our team sorts it out with you.</span>
+        <span class="err" aria-live="polite"></span>
+      </div>
+
+      <div class="row">
+        <div class="field" data-required data-msg="Enter the name we should use when we reply.">
+          <label for="name">Contact name <span class="req">*</span></label>
+          <input class="input" id="name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+          <span class="err" aria-live="polite"></span>
+        </div>
+        <div class="field" data-required data-msg="Enter an email address like name@example.com — it’s how we reply.">
+          <label for="email">Email <span class="req">*</span></label>
+          <input class="input" id="email" name="email" type="email" placeholder="name@example.com" autocomplete="email" inputmode="email" required>
+          <span class="err" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field" data-required data-msg="Select the student’s current grade.">
+          <label for="grade">Student grade <span class="req">*</span></label>
+          <select class="input" id="grade" name="grade" required></select>
+          <span class="err" aria-live="polite"></span>
+        </div>
+        <div class="field" data-required data-msg="Choose the time zone you’ll be in.">
+          <label for="timezone">Time zone <span class="req">*</span></label>
+          <select class="input" id="timezone" name="timezone" required></select>
+          <span class="err" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="field" id="expertField" hidden>
+        <label for="expertId"><span id="expertLabel">Preferred expert</span> <span class="opt">Optional</span></label>
+        <select class="input" id="expertId" name="expertId" disabled></select>
+        <span class="help" id="expertHelp"></span>
+      </div>
+
+      <div class="field" data-required data-msg="Tell us at least a sentence or two — it’s what we prepare from.">
+        <label for="message">What would you like help with? <span class="req">*</span></label>
+        <textarea class="input" id="message" name="message" placeholder="Tell us about your questions or learning goals." required></textarea>
+        <span class="help" id="messageHelp">Rough is fine — a few sentences is plenty.</span>
+        <span class="err" aria-live="polite"></span>
+      </div>
+
+      <div class="field" data-required data-msg="Please confirm you’ve read the privacy notice so we can reply to you.">
+        <label class="check">
+          <input type="checkbox" id="consent" name="consent" required>
+          <span>I've read the <a href="../privacy/" style="color: var(--indigo); font-weight: 500;">privacy notice</a> and agree to be contacted about this request. <span class="req">*</span><br><small style="color: var(--muted);">This covers handling this request only. Anything further — for example using what's discussed in a session to suggest tutoring — is asked separately, never assumed. [Wording to be confirmed with the final policy.]</small></span>
+          <span class="err" aria-live="polite"></span>
+        </label>
+      </div>
+
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+      <div class="banner fail" id="failBanner" hidden tabindex="-1" role="alert">
+        <span class="k">Not sent</span>
+        <span data-text></span>
+      </div>
+
+      <div class="submit-row">
+        <span class="err-count" id="errCount" hidden aria-live="polite"></span>
+        <button class="btn btn-navy" type="submit" id="submitBtn" data-label="Send my request">Send my request</button>
+        <p class="help">Sending a request is not a confirmed booking and doesn't cost anything. Our team confirms availability, schedule and terms with you before anything starts.</p>
+      </div>
+    </form>
+
+    <!-- S01-03: shown only after the request was actually accepted. No response time is promised (spec p.12). -->
+    <section class="done" id="done" hidden tabindex="-1" aria-labelledby="done-title">
+      <span class="eyebrow">Request received</span>
+      <h2 id="done-title">Thanks — we have your request.</h2>
+      <p><strong>This is not a confirmed booking.</strong> Our team will contact you at <strong data-email></strong> about availability and next steps.</p>
+      <ul class="recap" data-facts></ul>
+      <div class="next">
+        <a class="btn btn-lime" id="doneBack" href="../">Back to the site <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-outline" href="./">Send another request</a>
+      </div>
+    </section>
+  </div>
+
+  <aside class="rail" aria-label="About this request">
+    <div class="rail-card">
+      <span class="k">What happens next</span>
+      <ol class="steps-mini">
+        <li>Our team reads your request and gets in touch to talk it through.</li>
+        <li>Admissions: we confirm the officer's availability and the session terms. Tutoring: we come back with about three tutors and why each fits.</li>
+        <li>You confirm the time and terms. Nothing starts before that.</li>
+      </ol>
+    </div>
+    <div class="rail-card">
+      <span class="k">Your selection</span>
+      <div class="sel" id="selection"></div>
+    </div>
+    <div class="rail-card">
+      <span class="k">Prefer email?</span>
+      <p>Write to <a href="mailto:[contact@domain]" style="color: var(--indigo); font-weight: 500;">[contact@domain]</a> with the same details. Either way, nothing is booked until you've confirmed the terms with us.</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="footer dark" id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="wordmark" href="../"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
+        <p class="tagline">Admissions guidance and SAT / AP tutoring for students preparing for US universities — wherever you are.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="./">Get started</a></li>
+        <li><a href="mailto:[contact@domain]">Contact</a></li>
+        <li><a href="../privacy/">Privacy</a></li>
+        <li><a href="../terms/">Terms</a></li>
+      </ul>
+    </div>
+    <div class="footer-meta">
+      <span>© 2026 [LEGAL ENTITY] · [BUSINESS REG.] · [ADDRESS]</span>
+      <span>PAID SERVICES · A REQUEST IS NOT A CONFIRMED BOOKING</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
