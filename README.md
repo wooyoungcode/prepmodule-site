@@ -28,3 +28,4 @@ submit: { endpoint: '' }   // URL that accepts a JSON POST — until set, the fo
 | `/tutoring/sat/` · `/tutoring/ap/` | SAT / AP tutoring |
 | `/request/` | Request form (Admissions / SAT / AP — `?service=admissions`, `?subject=sat|ap`, plus `area` / `apSubject` / `expertId`) |
 | `/request/admissions/` · `/request/tutoring/` | Forward to `/request/` with parameters kept |
+| `/ko/…` | Korean edition of every page above. The nav switch (`EN · KO`) links to the same page in the other language and keeps the query string. |

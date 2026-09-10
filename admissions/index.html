@@ -5,20 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Admissions conversations — PrepModule</title>
 <meta name="description" content="A former admissions officer's perspective on your US college preparation. A private Zoom conversation about where you stand, what to prioritize, and the choices ahead.">
+<link rel="canonical" href="https://wooyoungcode.github.io/prepmodule-site/admissions/">
+<link rel="alternate" hreflang="en" href="https://wooyoungcode.github.io/prepmodule-site/admissions/">
+<link rel="alternate" hreflang="ko" href="https://wooyoungcode.github.io/prepmodule-site/ko/admissions/">
+<link rel="alternate" hreflang="x-default" href="https://wooyoungcode.github.io/prepmodule-site/admissions/">
 <script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/site.css?v=dec57719">
-<script src="../assets/site.js?v=c04d1956" defer></script>
+<link rel="stylesheet" href="../assets/site.css?v=c6ce34fd">
+<script src="../assets/site.js?v=7751ebd4" defer></script>
 </head>
 <body>
 
-<!-- NAV — the chosen product is marked (aria-current); CTA goes straight to F01 -->
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="wordmark" href="../" aria-label="PrepModule — home"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <div class="nav-right">
+      <a class="lang-switch" href="../ko/admissions/" hreflang="ko" lang="ko" data-lang-switch="ko" aria-label="한국어로 보기">KO</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    </div>
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
         <li><a href="./" aria-current="page">Admissions</a></li>
@@ -29,8 +35,11 @@
       </ul>
     </nav>
   </div>
+  <div class="lang-banner" id="langBanner" hidden lang="ko">
+    <div class="wrap"><span>이 페이지는 한국어로도 볼 수 있습니다.</span><a href="../ko/admissions/" data-lang-switch="ko">한국어로 보기 →</a><button type="button" class="dismiss" data-dismiss aria-label="Keep English">×</button></div>
+  </div>
+  
 </header>
-
 <main>
 
   <!-- A1 — the ad and the first screen match: topic, audience, request button, and the officer from the ad visible at once -->

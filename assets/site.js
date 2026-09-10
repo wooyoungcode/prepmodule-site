@@ -1,5 +1,25 @@
 // PrepModule — shared behaviour. Every block guards for its elements, so pages include only what they use.
 
+// Language: the switch links to the same page in the other language and keeps the query string + hash.
+// On English pages, a Korean-language browser gets a one-line offer once; either click records the choice.
+(function () {
+  var qs = location.search + location.hash, chosen = null;
+  try { chosen = localStorage.getItem('pm-lang'); } catch (e) {}
+  Array.prototype.forEach.call(document.querySelectorAll('a[data-lang-switch]'), function (a) {
+    a.setAttribute('href', a.getAttribute('href').split('?')[0] + qs);
+    a.addEventListener('click', function () { try { localStorage.setItem('pm-lang', a.getAttribute('data-lang-switch')); } catch (e) {} });
+  });
+  var banner = document.getElementById('langBanner'); if (!banner) return;
+  var langs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || '']);
+  var wantsKo = langs.some(function (l) { return /^ko\b/i.test(l); });
+  var header = document.getElementById('nav');
+  function syncNavH() { if (header) document.documentElement.style.setProperty('--nav-h', header.offsetHeight + 'px'); }
+  var force = new URLSearchParams(location.search).get('banner') === '1';   // preview hook, like ?demo
+  if (document.documentElement.lang === 'en' && ((wantsKo && chosen !== 'en') || force)) { banner.hidden = false; syncNavH(); window.addEventListener('resize', syncNavH); }
+  var x = banner.querySelector('[data-dismiss]');
+  if (x) x.addEventListener('click', function () { banner.hidden = true; document.documentElement.style.removeProperty('--nav-h'); try { localStorage.setItem('pm-lang', 'en'); } catch (e) {} });
+})();
+
 // Nav: dark while the hero is under it, light afterwards
 (function () {
   var nav = document.getElementById('nav'), hero = document.getElementById('hero');
@@ -7,7 +27,7 @@
   if (!hero || !('IntersectionObserver' in window)) { nav.classList.add('light'); return; }
   new IntersectionObserver(function (entries) {
     nav.classList.toggle('light', !entries[0].isIntersecting);
-  }, { rootMargin: '-64px 0px 0px 0px', threshold: 0 }).observe(hero);
+  }, { rootMargin: '-' + (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 64) + 'px 0px 0px 0px', threshold: 0 }).observe(hero);
 })();
 
 // Scroll reveal (skipped when the user prefers reduced motion)
@@ -104,7 +124,10 @@
       pr.classList.toggle('dim', !ok);
       if (ok && v) matches.push(pr.getAttribute('data-name') || '');
     });
-    if (status) status.firstChild.textContent = v ? (matches.length ? 'Showing tutors for ' + labels[v] : 'No public profile for ' + labels[v] + ' yet') : 'Showing all tutors';
+    if (status) {
+      var tpl = v ? status.getAttribute(matches.length ? 'data-for' : 'data-none') : status.getAttribute('data-all');
+      status.firstChild.textContent = (tpl || '').replace('{label}', labels[v] || '');
+    }
     if (empty) empty.hidden = !(v && matches.length === 0);
     if (notice && v) notice.hidden = true;
     Array.prototype.forEach.call(document.querySelectorAll('[data-pick-label]'), function (el) { el.textContent = v ? labels[v] : el.getAttribute('data-pick-label'); });

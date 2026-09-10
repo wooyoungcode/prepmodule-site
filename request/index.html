@@ -6,14 +6,18 @@
 <title>Request — PrepModule</title>
 <meta name="description" content="Request an admissions conversation with a former admissions officer, or ask for a SAT / AP tutor shortlist. A request is not a booking — our team contacts you first.">
 <meta name="robots" content="noindex">
+<link rel="canonical" href="https://wooyoungcode.github.io/prepmodule-site/request/">
+<link rel="alternate" hreflang="en" href="https://wooyoungcode.github.io/prepmodule-site/request/">
+<link rel="alternate" hreflang="ko" href="https://wooyoungcode.github.io/prepmodule-site/ko/request/">
+<link rel="alternate" hreflang="x-default" href="https://wooyoungcode.github.io/prepmodule-site/request/">
 <script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/site.css?v=dec57719">
-<script src="../assets/data.js?v=5fb0fac5"></script>
-<script src="../assets/site.js?v=c04d1956" defer></script>
-<script src="../assets/forms.js?v=71a41541" defer></script>
+<link rel="stylesheet" href="../assets/site.css?v=c6ce34fd">
+<script src="../assets/data.js?v=597bbe43"></script>
+<script src="../assets/site.js?v=7751ebd4" defer></script>
+<script src="../assets/forms.js?v=cbb57828" defer></script>
 </head>
 <body>
 
@@ -21,7 +25,10 @@
 <header class="nav light" id="nav">
   <div class="wrap">
     <a class="wordmark" href="../" aria-label="PrepModule — home"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <div class="nav-right">
+      <a class="lang-switch" href="../ko/request/" hreflang="ko" lang="ko" data-lang-switch="ko" aria-label="한국어로 보기">KO</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    </div>
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
         <li><a href="./?service=admissions" data-service="admissions">Admissions</a></li>
@@ -31,6 +38,10 @@
       </ul>
     </nav>
   </div>
+  <div class="lang-banner" id="langBanner" hidden lang="ko">
+    <div class="wrap"><span>이 페이지는 한국어로도 볼 수 있습니다.</span><a href="../ko/request/" data-lang-switch="ko">한국어로 보기 →</a><button type="button" class="dismiss" data-dismiss aria-label="Keep English">×</button></div>
+  </div>
+  
 </header>
 
 <main class="wrap form-page">
@@ -47,7 +58,7 @@
       <div data-text></div>
     </div>
 
-    <form id="form" class="form" novalidate autocomplete="on">
+    <form id="form" class="form" novalidate autocomplete="on" data-lroot="../">
       <span class="demo-tag" id="demoTag" hidden>Demo mode · nothing is sent</span>
 
       <div class="field" id="serviceField" data-required data-msg="Choose a service to start.">
@@ -100,7 +111,7 @@
       </div>
 
       <div class="field" id="expertField" hidden>
-        <label for="expertId"><span id="expertLabel">Preferred expert</span> <span class="opt">Optional</span></label>
+        <label for="expertId"><span id="expertLabel"></span> <span class="opt">Optional</span></label>
         <select class="input" id="expertId" name="expertId" disabled></select>
         <span class="help" id="expertHelp"></span>
       </div>
@@ -108,7 +119,7 @@
       <div class="field" data-required data-msg="Tell us at least a sentence or two — it’s what we prepare from.">
         <label for="message">What would you like help with? <span class="req">*</span></label>
         <textarea class="input" id="message" name="message" placeholder="Tell us about your questions or learning goals." required></textarea>
-        <span class="help" id="messageHelp">Rough is fine — a few sentences is plenty.</span>
+        <span class="help" id="messageHelp"></span>
         <span class="err" aria-live="polite"></span>
       </div>
 

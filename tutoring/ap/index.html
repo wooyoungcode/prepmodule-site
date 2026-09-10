@@ -5,32 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AP tutoring — PrepModule</title>
 <meta name="description" content="Tutoring matched to your AP course and learning goals — the way your school teaches it, and what the exam asks. About three suggestions, and you choose.">
+<link rel="canonical" href="https://wooyoungcode.github.io/prepmodule-site/tutoring/ap/">
+<link rel="alternate" hreflang="en" href="https://wooyoungcode.github.io/prepmodule-site/tutoring/ap/">
+<link rel="alternate" hreflang="ko" href="https://wooyoungcode.github.io/prepmodule-site/ko/tutoring/ap/">
+<link rel="alternate" hreflang="x-default" href="https://wooyoungcode.github.io/prepmodule-site/tutoring/ap/">
 <script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/site.css?v=dec57719">
-<script src="../../assets/site.js?v=c04d1956" defer></script>
+<link rel="stylesheet" href="../../assets/site.css?v=c6ce34fd">
+<script src="../../assets/site.js?v=7751ebd4" defer></script>
 </head>
 <body>
 
-<!-- NAV — AP is the current product; CTA opens F02 with subject=ap (and the chosen apSubject) preselected -->
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="wordmark" href="../../" aria-label="PrepModule — home"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <div class="nav-right">
+      <a class="lang-switch" href="../../ko/tutoring/ap/" hreflang="ko" lang="ko" data-lang-switch="ko" aria-label="한국어로 보기">KO</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    </div>
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
         <li><a href="../../admissions/">Admissions</a></li>
-        <li><a href="../sat/">SAT</a></li>
+        <li><a href="../../tutoring/sat/">SAT</a></li>
         <li><a href="./" aria-current="page">AP</a></li>
         <li><a href="../../#experts">Our experts</a></li>
         <li class="cta"><a href="../../request/?subject=ap" data-carry>Find my AP tutor</a></li>
       </ul>
     </nav>
   </div>
+  <div class="lang-banner" id="langBanner" hidden lang="ko">
+    <div class="wrap"><span>이 페이지는 한국어로도 볼 수 있습니다.</span><a href="../../ko/tutoring/ap/" data-lang-switch="ko">한국어로 보기 →</a><button type="button" class="dismiss" data-dismiss aria-label="Keep English">×</button></div>
+  </div>
+  
 </header>
-
 <main>
 
   <!-- P1 — same template as SAT; the subject is chosen here and follows you to the form (apSubject) -->
@@ -52,10 +61,10 @@
       <div class="picker" data-picker="apSubject" role="group" aria-labelledby="pick-lbl">
         <span class="lbl" id="pick-lbl">Your AP subject <button type="button" class="clear" data-pick-clear>Clear</button></span>
         <label class="select">
-          <span class="visually-hidden" style="position:absolute;left:-9999px">Choose your AP subject</span>
+          <span style="position:absolute;left:-9999px">Choose your AP subject</span>
           <select data-picker-select>
             <option value="">Choose a subject…</option>
-            <optgroup label="Math & computer science">
+            <optgroup label="Math &amp; computer science">
               <option value="calculus-ab">Calculus AB</option>
               <option value="calculus-bc">Calculus BC</option>
               <option value="statistics">Statistics</option>
@@ -67,7 +76,7 @@
               <option value="chemistry">Chemistry</option>
               <option value="biology">Biology</option>
             </optgroup>
-            <optgroup label="English & history">
+            <optgroup label="English &amp; history">
               <option value="english-language">English Language &amp; Composition</option>
               <option value="english-literature">English Literature &amp; Composition</option>
               <option value="us-history">US History</option>
@@ -167,7 +176,7 @@
         <p class="sub">Not "AP" in general — the specific courses each tutor teaches, how long they've taught them, and how far they go with school work and exam prep.</p>
       </div>
 
-      <p class="pick-status" id="pickStatus" aria-live="polite"><span>Showing all tutors</span> <button type="button" class="clear" data-pick-clear>Show all</button></p>
+      <p class="pick-status" id="pickStatus" aria-live="polite" data-all="Showing all tutors" data-for="Showing tutors for {label}" data-none="No public profile for {label} yet"><span>Showing all tutors</span> <button type="button" class="clear" data-pick-clear>Show all</button></p>
 
       <div class="profiles">
         <article class="profile reveal" id="expert-ap-1" data-match="calculus-ab calculus-bc statistics" data-name="[Name]">
@@ -270,7 +279,7 @@
       <!-- P4 — no matching public profile: a request prompt, never a blank list; no promises about numbers or immediate matching -->
       <div class="empty" id="pickEmpty" hidden>
         <h4>No public profile for <span data-pick-label="this subject">this subject</span> yet.</h4>
-        <p>That doesn't mean no one is available — send a request and our team checks who can take the course. We don't promise a number of tutors or an immediate match.</p>
+        <p>That doesn't mean no one is available — send a request and our team checks who can take it. We don't promise a number of tutors or an immediate match.</p>
         <a class="btn btn-navy" href="../../request/?subject=ap" data-carry>Send a request anyway <span class="arr" aria-hidden="true">→</span></a>
       </div>
 

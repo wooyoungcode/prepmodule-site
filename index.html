@@ -3,34 +3,43 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PrepModule — Admissions guidance & SAT / AP tutoring</title>
+<title>PrepModule — Admissions guidance &amp; SAT / AP tutoring</title>
 <meta name="description" content="Talk with a former admissions officer about your US college preparation, or find a SAT / AP tutor who fits your goals.">
+<link rel="canonical" href="https://wooyoungcode.github.io/prepmodule-site/">
+<link rel="alternate" hreflang="en" href="https://wooyoungcode.github.io/prepmodule-site/">
+<link rel="alternate" hreflang="ko" href="https://wooyoungcode.github.io/prepmodule-site/ko/">
+<link rel="alternate" hreflang="x-default" href="https://wooyoungcode.github.io/prepmodule-site/">
 <script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=dec57719">
-<script src="assets/site.js?v=c04d1956" defer></script>
+<link rel="stylesheet" href="./assets/site.css?v=c6ce34fd">
+<script src="./assets/site.js?v=7751ebd4" defer></script>
 </head>
 <body>
 
-<!-- NAV — logo → home, Admissions / SAT / AP → P01 / P02 / P03, Our experts → #experts -->
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="wordmark" href="./" aria-label="PrepModule — home"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <div class="nav-right">
+      <a class="lang-switch" href="./ko/" hreflang="ko" lang="ko" data-lang-switch="ko" aria-label="한국어로 보기">KO</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    </div>
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
-        <li><a href="admissions/">Admissions</a></li>
-        <li><a href="tutoring/sat/">SAT</a></li>
-        <li><a href="tutoring/ap/">AP</a></li>
+        <li><a href="./admissions/">Admissions</a></li>
+        <li><a href="./tutoring/sat/">SAT</a></li>
+        <li><a href="./tutoring/ap/">AP</a></li>
         <li><a href="#experts">Our experts</a></li>
-        <li class="cta"><a href="request/">Get started</a></li>
+        <li class="cta"><a href="./request/">Get started</a></li>
       </ul>
     </nav>
   </div>
+  <div class="lang-banner" id="langBanner" hidden lang="ko">
+    <div class="wrap"><span>이 페이지는 한국어로도 볼 수 있습니다.</span><a href="./ko/" data-lang-switch="ko">한국어로 보기 →</a><button type="button" class="dismiss" data-dismiss aria-label="Keep English">×</button></div>
+  </div>
+  
 </header>
-
 <main>
 
   <!-- H01 — brand area + product banners. Both products visible at once, no carousel. -->
@@ -49,7 +58,7 @@
       </div>
 
       <div class="hero-side">
-        <a class="banner" href="admissions/">
+        <a class="banner" href="./admissions/">
           <div>
             <span class="idx">01 — Admissions</span>
             <h2>Admissions conversations</h2>
@@ -88,7 +97,7 @@
           </div>
           <p class="meta">[University] · [Role in admissions] · [Years]</p>
           <p class="desc">Where you stand, what to prioritize, and how a reader sees an application. Bring your questions.</p>
-          <a class="mlink" href="admissions/#expert-ao-1">View expertise <span class="arr" aria-hidden="true">→</span></a>
+          <a class="mlink" href="./admissions/#expert-ao-1">View expertise <span class="arr" aria-hidden="true">→</span></a>
         </article>
 
         <article class="card reveal">
@@ -99,7 +108,7 @@
           </div>
           <p class="meta">[School] · [Degree] · Reading &amp; Writing / Math</p>
           <p class="desc">Teaching experience and how the sessions are explained — so you know what to expect before you commit.</p>
-          <a class="mlink" href="tutoring/sat/#expert-sat-1">View expertise <span class="arr" aria-hidden="true">→</span></a>
+          <a class="mlink" href="./tutoring/sat/#expert-sat-1">View expertise <span class="arr" aria-hidden="true">→</span></a>
         </article>
 
         <article class="card reveal">
@@ -110,7 +119,7 @@
           </div>
           <p class="meta">[School] · [AP subjects taught]</p>
           <p class="desc">Support that follows your school's pace and the exam — for the specific course in front of you.</p>
-          <a class="mlink" href="tutoring/ap/#expert-ap-1">View expertise <span class="arr" aria-hidden="true">→</span></a>
+          <a class="mlink" href="./tutoring/ap/#expert-ap-1">View expertise <span class="arr" aria-hidden="true">→</span></a>
         </article>
       </div>
     </div>
@@ -127,19 +136,19 @@
         <p class="sub">Each service is purchased on its own. Start where your question is.</p>
       </div>
       <div class="support-grid">
-        <a class="support-card reveal" href="admissions/">
+        <a class="support-card reveal" href="./admissions/">
           <span class="k">Admissions</span>
           <h3>Talk with a former admissions officer</h3>
           <p>A conversation about your preparation, priorities, and the choices ahead.</p>
           <span class="mlink">Explore <span class="arr" aria-hidden="true">→</span></span>
         </a>
-        <a class="support-card reveal" href="tutoring/sat/">
+        <a class="support-card reveal" href="./tutoring/sat/">
           <span class="k">SAT tutoring</span>
           <h3>Reading &amp; Writing, Math</h3>
           <p>Tell us where you need support. Compare a shortlist of tutors and pick one.</p>
           <span class="mlink">Explore <span class="arr" aria-hidden="true">→</span></span>
         </a>
-        <a class="support-card reveal" href="tutoring/ap/">
+        <a class="support-card reveal" href="./tutoring/ap/">
           <span class="k">AP tutoring</span>
           <h3>Help for your AP course</h3>
           <p>Matched to the subject you're taking and how your school teaches it.</p>
@@ -272,10 +281,10 @@
         <p class="tagline">Admissions guidance and SAT / AP tutoring for students preparing for US universities — wherever you are.</p>
       </div>
       <ul class="footer-links">
-        <li><a href="request/">Get started</a></li>
+        <li><a href="./request/">Get started</a></li>
         <li><a href="mailto:[contact@domain]">Contact</a></li>
-        <li><a href="privacy/">Privacy</a></li>
-        <li><a href="terms/">Terms</a></li>
+        <li><a href="./privacy/">Privacy</a></li>
+        <li><a href="./terms/">Terms</a></li>
       </ul>
     </div>
     <div class="footer-meta">
