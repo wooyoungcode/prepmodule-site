@@ -94,7 +94,7 @@ window.PM = {
     { id: 'macroeconomics',     label: 'Macroeconomics',                    group: 'Social sciences', group_ko: '사회과학' },
     { id: 'psychology',         label: 'Psychology',                        group: 'Social sciences', group_ko: '사회과학' },
     { id: 'us-government',      label: 'US Government & Politics',          group: 'Social sciences', group_ko: '사회과학' },
-    { id: 'other',              label: 'Not listed — I\'ll describe it below', label_ko: '목록에 없음 — 아래에 적겠습니다', group: 'Other', group_ko: '기타' }
+    { id: 'other',              label: 'Not listed — I\'ll describe it below', label_ko: '목록에 없어요 — 아래에 적을게요', group: 'Other', group_ko: '기타' }
   ],
 
   grades: [
