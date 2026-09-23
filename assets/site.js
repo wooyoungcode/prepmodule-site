@@ -164,3 +164,21 @@
   window.addEventListener('hashchange', openFromHash);
   if (document.readyState === 'complete') openFromHash(); else window.addEventListener('load', openFromHash);
 })();
+
+// Design A / B switch — a small pill in the corner. The choice is kept in localStorage ('pm-theme') and
+// can be linked with ?theme=a|b; the head script applies it before first paint.
+(function () {
+  var d = document.documentElement, ko = d.lang === 'ko';
+  var box = document.createElement('div');
+  box.className = 'theme-switch'; box.setAttribute('role', 'group'); box.setAttribute('aria-label', ko ? '디자인 선택' : 'Choose design');
+  box.innerHTML = '<span class="lbl">' + (ko ? '디자인' : 'Design') + '</span><button type="button" data-t="a">A</button><button type="button" data-t="b">B</button>';
+  function sync() { Array.prototype.forEach.call(box.querySelectorAll('button'), function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-t') === (d.dataset.theme || 'a'))); }); }
+  box.addEventListener('click', function (e) {
+    var t = e.target.getAttribute && e.target.getAttribute('data-t'); if (!t) return;
+    d.dataset.theme = t; sync();
+    try { localStorage.setItem('pm-theme', t); } catch (err) {}
+    var u = new URL(location.href); if (u.searchParams.has('theme')) { u.searchParams.set('theme', t); history.replaceState(null, '', u.pathname + u.search + u.hash); }
+    Array.prototype.forEach.call(document.querySelectorAll('a[data-lang-switch]'), function (a) { a.setAttribute('href', a.getAttribute('href').replace(/([?&]theme=)[ab]/, '$1' + t)); });
+  });
+  sync(); document.body.appendChild(box);
+})();

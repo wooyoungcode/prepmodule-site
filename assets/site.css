@@ -492,3 +492,22 @@ html[lang="ko"] .sec-head h2 { max-width: 18ch; }
 .radio:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); background: #fffafa; }
 .input:focus { outline-color: var(--ink); border-color: var(--ink); }
 .faq { border-top-color: var(--ink); }
+
+/* ---------- design A / B switch (review aid; theme-b.css holds design B) ---------- */
+.theme-switch { position: fixed; left: 16px; bottom: 16px; z-index: 60; display: flex; align-items: center; gap: 4px; padding: 4px 4px 4px 12px; border-radius: 999px; background: rgba(24,18,20,0.88); backdrop-filter: blur(10px); color: #fff; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.4); }
+.theme-switch .lbl { margin-right: 6px; opacity: 0.7; }
+.theme-switch button { min-width: 34px; min-height: 30px; border: 0; border-radius: 999px; background: transparent; color: #fff; font: inherit; letter-spacing: 0.04em; cursor: pointer; }
+.theme-switch button:hover { background: rgba(255,255,255,0.12); }
+.theme-switch button[aria-pressed="true"] { background: #fff; color: #181214; }
+.theme-switch button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+@media print { .theme-switch { display: none; } }
+/* hero product cards share .banner with the form banner; on phones stack the button under the text */
+.hero-grid > * { min-width: 0; }
+@media (max-width: 720px) { .hero-side .banner { grid-template-columns: 1fr; } .hero-side .banner .btn { justify-self: start; } }
+.topics--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 960px) { .topics--4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 720px) {
+  .topics--4 { grid-template-columns: 1fr; }
+  .nav > .wrap { gap: 12px; }
+  .wordmark .tag { display: none; }
+}
