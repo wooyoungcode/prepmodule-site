@@ -165,3 +165,34 @@
   if (document.readyState === 'complete') openFromHash(); else window.addEventListener('load', openFromHash);
 })();
 
+
+// Floating chat buttons — KakaoTalk and WhatsApp, bottom right on every page.
+// Fill in the two values below; until then the buttons show and say the link is coming soon.
+(function () {
+  var CHAT = {
+    kakao: '',     // KakaoTalk channel chat link, e.g. 'https://pf.kakao.com/_AbCdE/chat'
+    whatsapp: ''   // WhatsApp number, international format, digits only, e.g. '821012345678'
+  };
+  var ko = document.documentElement.lang === 'ko';
+  var t = ko
+    ? { group: '채팅 문의', kakao: '카카오톡 문의', wa: 'WhatsApp 문의', soon: ' — 곧 연결돼요', hello: '안녕하세요, PrepModule 문의드려요.' }
+    : { group: 'Chat with us', kakao: 'Chat on KakaoTalk', wa: 'Chat on WhatsApp', soon: ' — link coming soon', hello: 'Hi, I have a question about PrepModule.' };
+  var waHref = CHAT.whatsapp ? 'https://wa.me/' + CHAT.whatsapp.replace(/\D/g, '') + '?text=' + encodeURIComponent(t.hello) : '';
+  var icons = {
+    kakao: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#191919" d="M12 3.6c-5.3 0-9.6 3.36-9.6 7.5 0 2.68 1.8 5.03 4.5 6.36l-.96 3.5c-.08.3.26.55.53.37l4.17-2.76c.44.05.9.08 1.36.08 5.3 0 9.6-3.36 9.6-7.5S17.3 3.6 12 3.6z"/></svg>',
+    wa: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.28-.2-.57-.35zM12.05 21.78h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41z"/></svg>'
+  };
+  function btn(cls, href, label, icon) {
+    var a = document.createElement('a');
+    a.className = 'fab ' + cls; a.innerHTML = icon + '<span class="fab-label">' + label + (href ? '' : t.soon) + '</span>';
+    a.setAttribute('aria-label', label + (href ? '' : t.soon));
+    if (href) { a.href = href; a.target = '_blank'; a.rel = 'noopener'; }
+    else { a.href = '#'; a.setAttribute('aria-disabled', 'true'); a.addEventListener('click', function (e) { e.preventDefault(); }); }
+    return a;
+  }
+  var box = document.createElement('div');
+  box.className = 'chat-fab'; box.setAttribute('role', 'group'); box.setAttribute('aria-label', t.group);
+  box.appendChild(btn('kakao', CHAT.kakao, t.kakao, icons.kakao));
+  box.appendChild(btn('whatsapp', waHref, t.wa, icons.wa));
+  document.body.appendChild(box);
+})();
