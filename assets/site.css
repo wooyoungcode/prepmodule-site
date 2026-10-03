@@ -664,9 +664,9 @@ html[lang="ko"] .cyc .cyc-name { font-size: 20px; }
 
 /* ---------- photo heroes (Unsplash, hotlinked) — dark crimson overlay keeps the text readable ---------- */
 .hero--photo { background-color: var(--dark);
-  background-image: linear-gradient(90deg, rgba(21,13,16,0.92) 0%, rgba(21,13,16,0.74) 36%, rgba(21,13,16,calc(0.34 * var(--shade, 1))) 68%, rgba(21,13,16,calc(0.22 * var(--shade, 1))) 100%),
-                    linear-gradient(0deg, rgba(21,13,16,0.88) 0%, rgba(21,13,16,0) 38%),
-                    linear-gradient(180deg, rgba(21,13,16,0.6) 0%, rgba(21,13,16,0) 26%),
+  background-image: linear-gradient(90deg, rgba(21,13,16,calc(0.86 * var(--shade, 1))) 0%, rgba(21,13,16,calc(0.62 * var(--shade, 1))) 36%, rgba(21,13,16,calc(0.22 * var(--shade, 1))) 68%, rgba(21,13,16,calc(0.12 * var(--shade, 1))) 100%),
+                    linear-gradient(0deg, rgba(21,13,16,0.78) 0%, rgba(21,13,16,0) 34%),
+                    linear-gradient(180deg, rgba(21,13,16,0.5) 0%, rgba(21,13,16,0) 22%),
                     var(--photo);
   background-size: cover, cover, cover, cover; background-position: center, center, center, var(--photo-pos, center); background-repeat: no-repeat;
   padding-bottom: clamp(72px, 9vw, 120px); }
@@ -680,3 +680,5 @@ html[lang="ko"] .cyc .cyc-name { font-size: 20px; }
     background-size: cover, cover; background-position: center, var(--photo-pos, center); padding-bottom: 64px; }
   .hero--photo.hero--landing { padding-bottom: 56px; }
 }
+
+.hero--photo h1, .hero--photo .lead, .hero--photo .eyebrow { text-shadow: 0 1px 18px rgba(21,13,16,0.55); }
