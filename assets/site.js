@@ -171,7 +171,7 @@
 (function () {
   var CHAT = {
     kakao: '',     // KakaoTalk channel chat link, e.g. 'https://pf.kakao.com/_AbCdE/chat'
-    whatsapp: ''   // WhatsApp number, international format, digits only, e.g. '821012345678'
+    whatsapp: '821024771661'   // WhatsApp number, international format, digits only, e.g. '821012345678'
   };
   var ko = document.documentElement.lang === 'ko';
   var t = ko
