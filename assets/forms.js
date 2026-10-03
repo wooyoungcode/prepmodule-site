@@ -67,7 +67,7 @@
   function expertLabelFor(s) { return s === 'admissions' ? T.labelExpertAdm : T.labelExpertTut; }
   function backFor(s, pr) {
     return s === 'admissions' ? lroot + 'admissions/#experts'
-      : s === 'tutoring' ? lroot + 'tutoring/' + (pr && pr !== 'other' ? '?program=' + pr : '') + '#programs'
+      : s === 'tutoring' ? lroot + 'tutoring/' + (pr && !(progItem(pr) || {}).open ? '?program=' + pr + '#programs' : (pr === 'project' || pr === 'mentoring' ? '#beyond' : '#programs'))
       : lroot + '#support';
   }
   function renderSel() {
@@ -96,7 +96,8 @@
     if (s === 'admissions') {
       list = D.officers.map(function (o) { return { id: o.id, label: L(o, 'name') + ' — ' + L(o, 'meta') }; }); placeholder = T.expertAdm;
     } else if (s) {
-      list = D.tutors.filter(function (t) { return !pr || pr === 'other' || t.programs.indexOf(pr) > -1; })
+      var open = !pr || (progItem(pr) || {}).open;
+      list = D.tutors.filter(function (t) { return open || t.programs.indexOf(pr) > -1; })
         .map(function (t) { return { id: t.id, label: L(t, 'name') + ' — ' + L(t, 'meta') }; });
       placeholder = T.expertTut;
     } else { list = []; placeholder = T.expertNone; }

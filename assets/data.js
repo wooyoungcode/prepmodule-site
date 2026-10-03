@@ -67,7 +67,8 @@ window.PM = {
     { id: 'tu-4', programs: ['ib', 'alevel', 'igcse', 'ap'],  name: '[Name]', name_ko: '[이름]', meta: 'Chemistry · Biology',          meta_ko: '화학 · 생물' }
   ],
 
-  // Programs on the tutoring page and the request form. subject: required = the form asks for the subject before sending.
+  // Programs on the tutoring page and the request form. required = the form asks for the subject before sending.
+  // open = not tied to particular tutors (every tutor is offered); these also link back to the page without ?program=.
   // DEC: confirm the programs, boards and subjects you can staff before launch.
   programs: [
     { id: 'ap',     label: 'AP',      group: 'School curricula', group_ko: '학교 교과 과정', required: true,  ex: 'Calculus BC, Chemistry' },
@@ -76,7 +77,9 @@ window.PM = {
     { id: 'igcse',  label: 'IGCSE',   group: 'School curricula', group_ko: '학교 교과 과정', required: true,  ex: 'Chemistry (Edexcel), Additional Maths' },
     { id: 'sat',    label: 'SAT',     group: 'Tests', group_ko: '시험', required: false, ex: 'Math, Reading & Writing, or both', ex_ko: 'Math, Reading & Writing, 또는 둘 다' },
     { id: 'toefl',  label: 'TOEFL',   group: 'Tests', group_ko: '시험', required: false, ex: 'Speaking and Writing, or the whole test', ex_ko: 'Speaking과 Writing, 또는 전체' },
-    { id: 'other',  label: 'Other or not sure', label_ko: '기타 · 잘 모르겠어요', group: 'Other', group_ko: '기타', required: true, ex: 'the course or test name', ex_ko: '과목이나 시험 이름' }
+    { id: 'project',   label: 'Project building', label_ko: '프로젝트', group: 'Beyond the classroom', group_ko: '교과 밖', required: false, open: true, ex: 'a biology research project, an app, a portfolio piece', ex_ko: '생물 리서치 프로젝트, 앱 만들기, 포트폴리오 작업' },
+    { id: 'mentoring', label: 'Mentoring',        label_ko: '멘토링',   group: 'Beyond the classroom', group_ko: '교과 밖', required: false, open: true, ex: 'study planning and habits for this term', ex_ko: '이번 학기 공부 계획과 습관 관리' },
+    { id: 'other',  label: 'Other or not sure', label_ko: '기타 · 잘 모르겠어요', group: 'Other', group_ko: '기타', required: true, open: true, ex: 'the course or test name', ex_ko: '과목이나 시험 이름' }
   ],
 
   grades: [
