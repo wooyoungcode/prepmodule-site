@@ -9,14 +9,13 @@
 <link rel="alternate" hreflang="en" href="https://wooyoungcode.github.io/prepmodule-site/admissions/">
 <link rel="alternate" hreflang="ko" href="https://wooyoungcode.github.io/prepmodule-site/ko/admissions/">
 <link rel="alternate" hreflang="x-default" href="https://wooyoungcode.github.io/prepmodule-site/admissions/">
-<script>(function () { var d = document.documentElement, q = new URLSearchParams(location.search), t = q.get('theme'); try { if (t === 'a' || t === 'b') localStorage.setItem('pm-theme', t); else t = localStorage.getItem('pm-theme'); } catch (e) {} d.dataset.theme = t === 'b' ? 'b' : 'a'; if (q.get('display') === 'serif') d.dataset.display = 'serif'; })();</script>
+<script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="../../assets/site.css?v=172b9433">
-<link rel="stylesheet" href="../../assets/theme-b.css?v=e0b2ccf2">
-<script src="../../assets/site.js?v=99697948" defer></script>
+<link rel="stylesheet" href="../../assets/site.css?v=280b2482">
+<script src="../../assets/site.js?v=91e9abf4" defer></script>
 </head>
 <body>
 
@@ -30,8 +29,7 @@
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
         <li><a href="./" aria-current="page">입학 상담</a></li>
-        <li><a href="../../ko/tutoring/sat/">SAT</a></li>
-        <li><a href="../../ko/tutoring/ap/">AP</a></li>
+        <li><a href="../../ko/tutoring/">튜터링</a></li>
         <li><a href="../../ko/#experts">전문가</a></li>
         <li class="cta"><a href="../../ko/request/?service=admissions">상담 신청</a></li>
       </ul>
@@ -179,7 +177,7 @@
         <div class="topic"><h4>에세이 · 자기소개서</h4><p>심사관이 먼저 보는 부분과 초고를 다루는 방법을 이야기해요.</p></div>
         <div class="topic"><h4>결정 하나</h4><p>얼리와 레귤러, 과목 선택, 시험 계획처럼 하나의 결정을 놓고 끝까지 이야기해요.</p></div>
       </div>
-      <p class="note">SAT나 AP 과목 자체를 묻는 질문은 튜터링에 해당하고, 신청도 따로 받아요. 다만 시험이 전체 준비에서 어떤 비중인지는 사정관에게 물어볼 수 있어요.</p>
+      <p class="note">AP나 IB 과목, SAT · TOEFL처럼 과목 자체를 묻는 질문은 튜터링에 해당하고, 신청도 따로 받아요. 다만 과목 선택과 시험이 전체 준비에서 어떤 비중인지는 사정관에게 물어볼 수 있어요.</p>
     </div>
   </section>
 
@@ -200,7 +198,7 @@
         <div class="step"><h4>Zoom 상담</h4><p>회사가 마련한 링크에서 일대일로 이야기해요.</p></div>
       </div>
       <p class="note note--strong reveal">신청은 예약 확정이 아니에요. 운영팀이 사정관의 일정과 상담 조건을 먼저 안내해 드리고, 결제는 그 뒤에 진행해요. 신청서 자체로 결제되는 건 없어요.</p>
-      <p class="note reveal">상담 후 학습 도움이 필요하다는 데 동의하시면, 운영팀이 관련 SAT · AP 튜터링을 안내해 드릴 수 있어요. 자동으로 연결하지는 않아요.</p>
+      <p class="note reveal">상담 후 학습 도움이 필요하다는 데 동의하시면, 운영팀이 맞는 튜터링을 안내해 드릴 수 있어요. 자동으로 연결하지는 않아요.</p>
     </div>
   </section>
 
@@ -237,7 +235,7 @@
         </details>
         <details>
           <summary><span class="n">06</span><span class="q">과목 학습에도 도움이 필요하면요?</span><span class="plus" aria-hidden="true">+</span></summary>
-          <div class="a">튜터링은 따로 신청해요. 상담에서 과목 학습이 필요해 보이고 원하신다면 운영팀이 관련 SAT · AP 튜터링을 안내해 드려요. 요청하신 경우에만요.</div>
+          <div class="a">튜터링은 따로 신청해요. 상담에서 과목 학습이 필요해 보이고 원하신다면 운영팀이 맞는 튜터링을 안내해 드려요. 요청하신 경우에만요.</div>
         </details>
       </div>
     </div>
@@ -264,7 +262,7 @@
     <div class="footer-grid">
       <div>
         <a class="wordmark" href="../../ko/"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
-        <p class="tagline">미국 대학을 준비하는 학생을 위한 입학사정관 상담과 SAT · AP 튜터링이에요. 어느 나라에 있든 온라인으로 이용할 수 있어요.</p>
+        <p class="tagline">미국 대학을 준비하는 학생을 위한 입학사정관 상담과 교과 튜터링(AP · IB · A-Level · IGCSE · SAT · TOEFL)이에요. 어느 나라에 있든 온라인으로 이용할 수 있어요.</p>
       </div>
       <ul class="footer-links">
         <li><a href="../../ko/request/">시작하기</a></li>

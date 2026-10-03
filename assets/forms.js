@@ -1,6 +1,7 @@
 // PrepModule — the request form (/request/, /ko/request/) and the four S01 states:
 // input error · sending · received · failed. Success is shown only after the request was actually accepted.
-// One form, three services (admissions / sat / ap). The service decides which fields show and which experts are offered.
+// One form, two services (admissions / tutoring). Tutoring adds a program (AP, IB, A-Level, IGCSE, SAT, TOEFL) and a subject;
+// the service and program decide which fields show and which experts are offered.
 // Text produced here comes from PM.i18n[lang] (data.js); everything static is in the page itself.
 (function () {
   var form = document.getElementById('form'); if (!form || !window.PM) return;
@@ -10,7 +11,7 @@
   var $ = function (id) { return document.getElementById(id); };
   var notice = $('paramNotice'), notes = [];
   var demo = q.get('demo');
-  var SERVICES = ['admissions', 'sat', 'ap'];
+  var SERVICES = ['admissions', 'tutoring'];
   var lroot = form.getAttribute('data-lroot') || '../';
   function fmt(s, o) { return String(s).replace(/\{(\w+)\}/g, function (_, k) { return o[k] == null ? '' : o[k]; }); }
   function L(item, f) { f = f || 'label'; return (lang === 'ko' && item[f + '_ko']) ? item[f + '_ko'] : (item[f] || item.name || ''); }
@@ -38,52 +39,64 @@
   fill(tz, zones.map(function (z) { return { id: z, label: z.replace(/_/g, ' ') }; }), T.chooseTz);
   if (zones.indexOf(mine) > -1) tz.value = mine;
 
-  // ---- service, area / subject, expert ----
-  var radios = form.querySelectorAll('input[name="service"]'), area = $('area'), ap = $('apSubject'), ex = $('expertId');
-  fill(area, D.satAreas, T.chooseArea);
-  fill(ap, D.apSubjects, T.chooseAp);
+  // ---- service, program / subject, expert ----
+  var radios = form.querySelectorAll('input[name="service"]'), prog = $('program'), subj = $('subject'), ex = $('expertId');
+  fill(prog, D.programs, T.chooseProgram);
   function service() { var r = form.querySelector('input[name="service"]:checked'); return r ? r.value : ''; }
-  function detail() { var s = service(); return s === 'sat' ? area.value : s === 'ap' ? ap.value : ''; }
+  function program() { return service() === 'tutoring' ? prog.value : ''; }
+  function progItem(id) { return D.programs.filter(function (i) { return i.id === id; })[0]; }
 
-  // Prefill from the landing's URL — ids only (spec p.12). ?service=admissions or ?subject=sat|ap, plus area / apSubject / expertId.
-  var s = q.get('service') || q.get('subject');
+  // Prefill from the landing's URL — ids only (spec p.12): ?service=admissions|tutoring, &program=ib, &expertId=tu-1.
+  // Links from the retired SAT / AP pages still work: ?subject=sat|ap (or ?service=sat|ap) means tutoring with that program,
+  // and their old area / apSubject values become the subject text.
+  var s = q.get('service'), pq = q.get('program'), legacy = q.get('subject');
+  if (s === 'sat' || s === 'ap') { pq = pq || s; s = 'tutoring'; }
+  if (!s && (legacy === 'sat' || legacy === 'ap')) { s = 'tutoring'; pq = pq || legacy; }
+  if (!s && pq) s = 'tutoring';
   if (s && SERVICES.indexOf(s) === -1) { notes.push(fmt(T.noticeService, { v: s })); s = null; }
   if (s) form.querySelector('input[name="service"][value="' + s + '"]').checked = true;
-  var a = q.get('area');
-  if (a) { if (has(D.satAreas, a)) area.value = a; else notes.push(fmt(T.noticeArea, { v: a })); }
-  var p = q.get('apSubject');
-  if (p) { if (has(D.apSubjects, p)) ap.value = p; else notes.push(fmt(T.noticeAp, { v: p })); }
+  if (pq) { if (progItem(pq)) prog.value = pq; else notes.push(fmt(T.noticeProgram, { v: pq })); }
+  var oldArea = { rw: 'Reading & Writing', math: 'Math', both: 'Reading & Writing, Math' }[q.get('area')];
+  var oldAp = q.get('apSubject');
+  if (oldArea) subj.value = oldArea;
+  else if (oldAp && oldAp !== 'other') subj.value = oldAp.split('-').map(function (w) { return w.length <= 2 ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1); }).join(' ');
 
   var sel = $('selection');
+  function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
   function row(k, v, href) { return '<div class="item"><span class="k">' + k + '</span><span class="v">' + v + (href ? ' <a href="' + href + '">' + T.change + '</a>' : '') + '</span></div>'; }
   function expertLabelFor(s) { return s === 'admissions' ? T.labelExpertAdm : T.labelExpertTut; }
-  function backFor(s, d) {
+  function backFor(s, pr) {
     return s === 'admissions' ? lroot + 'admissions/#experts'
-      : s === 'sat' ? lroot + 'tutoring/sat/' + (d ? '?area=' + d : '')
-      : s === 'ap' ? lroot + 'tutoring/ap/' + (d ? '?apSubject=' + d : '')
+      : s === 'tutoring' ? lroot + 'tutoring/' + (pr && pr !== 'other' ? '?program=' + pr : '') + '#programs'
       : lroot + '#support';
   }
   function renderSel() {
-    var s = service(), d = detail();
+    var s = service(), pr = program(), sj = subj.value.trim();
     var who = ex.value ? (s === 'admissions' ? label(D.officers, ex.value) : label(D.tutors, ex.value) + ' (' + meta(D.tutors, ex.value) + ')') : (s === 'admissions' ? T.notSure : T.noneYet);
-    sel.innerHTML = row(T.rowService, s ? T.names[s] : T.notChosen, backFor(s, d)) +
-      (s === 'sat' ? row(T.rowArea, d ? label(D.satAreas, d) : T.notChosen) : '') +
-      (s === 'ap' ? row(T.rowAp, d ? label(D.apSubjects, d) : T.notChosen) : '') +
+    sel.innerHTML = row(T.rowService, s ? T.names[s] : T.notChosen, backFor(s, pr)) +
+      (s === 'tutoring' ? row(T.rowProgram, pr ? label(D.programs, pr) : T.notChosen) + row(T.rowSubject, sj ? esc(sj) : T.notChosen) : '') +
       (s ? row(expertLabelFor(s), who) : '');
-    var back = $('doneBack'); if (back) back.setAttribute('href', s === 'admissions' ? lroot + 'admissions/' : s === 'sat' ? lroot + 'tutoring/sat/' : s === 'ap' ? lroot + 'tutoring/ap/' : lroot);
+    var back = $('doneBack'); if (back) back.setAttribute('href', s === 'admissions' ? lroot + 'admissions/' : s === 'tutoring' ? lroot + 'tutoring/' : lroot);
   }
 
-  // Spec p.12: when the service / area / subject change, values that no longer fit are cleared — including the chosen expert.
+  // The subject is required for school curricula and optional for SAT / TOEFL; the placeholder shows an example for the program.
+  function subjectRules() {
+    var it = progItem(program()), need = !!(it && it.required), f = $('subjectField');
+    if (need) f.setAttribute('data-required', ''); else { f.removeAttribute('data-required'); f.classList.remove('invalid'); }
+    $('subjectReq').hidden = !need; $('subjectOpt').hidden = need;
+    subj.placeholder = it ? (lang === 'ko' ? '예: ' : 'e.g. ') + L(it, 'ex') : '';
+    f.setAttribute('data-msg', it ? fmt(T.subjectRequired, { ex: L(it, 'ex') }) : T.required);
+  }
+
+  // Spec p.12: when the service / program change, values that no longer fit are cleared — including the chosen expert.
   function sync() {
-    var s = service(), d = detail();
-    $('areaField').hidden = s !== 'sat'; $('apField').hidden = s !== 'ap'; $('expertField').hidden = !s;
-    if (s !== 'sat') area.value = ''; if (s !== 'ap') ap.value = '';
+    var s = service(), pr = program();
+    $('tutoringFields').hidden = s !== 'tutoring'; $('subjectHelp').hidden = s !== 'tutoring'; $('expertField').hidden = !s;
     var list, placeholder;
     if (s === 'admissions') {
       list = D.officers.map(function (o) { return { id: o.id, label: L(o, 'name') + ' — ' + L(o, 'meta') }; }); placeholder = T.expertAdm;
     } else if (s) {
-      var open = !d || d === 'both' || d === 'unsure' || d === 'other';
-      list = D.tutors.filter(function (t) { return t.subject === s && (open || t.match.indexOf(d) > -1); })
+      list = D.tutors.filter(function (t) { return !pr || pr === 'other' || t.programs.indexOf(pr) > -1; })
         .map(function (t) { return { id: t.id, label: L(t, 'name') + ' — ' + L(t, 'meta') }; });
       placeholder = T.expertTut;
     } else { list = []; placeholder = T.expertNone; }
@@ -92,27 +105,28 @@
     $('expertLabel').textContent = expertLabelFor(s);
     $('expertHelp').textContent = s === 'admissions' ? T.helpExpertAdm : T.helpExpertTut;
     $('messageHelp').textContent = s === 'admissions' ? T.helpMsgAdm : s ? T.helpMsgTut : T.helpMsgNone;
+    subjectRules();
     Array.prototype.forEach.call(document.querySelectorAll('.nav-links a[data-service]'), function (l) {
       if (l.getAttribute('data-service') === s) l.setAttribute('aria-current', 'page'); else l.removeAttribute('aria-current');
     });
     renderSel();
   }
   Array.prototype.forEach.call(radios, function (r) { r.addEventListener('change', sync); });
-  area.addEventListener('change', sync); ap.addEventListener('change', sync); ex.addEventListener('change', renderSel);
+  prog.addEventListener('change', sync); subj.addEventListener('input', renderSel); ex.addEventListener('change', renderSel);
   sync();
   var e = q.get('expertId');
   if (e) {
     if (Array.prototype.some.call(ex.options, function (o) { return o.value === e; })) { ex.value = e; renderSel(); }
     else notes.push(fmt(T.noticeExpert, { v: e }));
   }
-  if (notes.length && notice) { notice.querySelector('[data-text]').innerHTML = notes.map(function (n) { return '<p>' + n + '</p>'; }).join(''); notice.hidden = false; }
+  if (notes.length && notice) { notice.querySelector('[data-text]').innerHTML = notes.map(function (n) { return '<p>' + esc(n) + '</p>'; }).join(''); notice.hidden = false; }
 
   // ---- S01-01 input errors: message next to the field, values kept ----
   var attempted = false;
   function validate(focusFirst) {
     var ok = true, first = null;
     Array.prototype.forEach.call(form.querySelectorAll('[data-required]'), function (f) {
-      if (f.hidden) { f.classList.remove('invalid'); return; }
+      if (f.closest('[hidden]')) { f.classList.remove('invalid'); return; }
       var input = f.querySelector('input, select, textarea'), bad, msg = f.getAttribute('data-msg') || T.required;
       if (input.type === 'checkbox') bad = !input.checked;
       else if (input.type === 'radio') bad = !form.querySelector('input[name="' + input.name + '"]:checked');
@@ -137,8 +151,8 @@
   function build() {
     var f = new FormData(form), o = { sentAt: new Date().toISOString(), lang: lang };
     f.forEach(function (v, k) { if (k !== 'website') o[k] = typeof v === 'string' ? v.trim() : v; });
-    o.form = o.service === 'admissions' ? 'admissions' : 'tutoring';
-    if (o.service === 'sat' || o.service === 'ap') o.subject = o.service;
+    o.form = o.service;
+    if (o.service !== 'tutoring') { delete o.program; delete o.subject; }
     o.consent = !!form.consent.checked;
     // Campaign / product identifiers only — never the message or contact details (spec p.10)
     var utm = {}; q.forEach(function (v, k) { if (/^utm_/i.test(k)) utm[k] = v; });
@@ -161,8 +175,7 @@
     done.querySelector('[data-email]').textContent = payload.email;
     var facts = done.querySelector('[data-facts]'); facts.innerHTML = '';
     var s = payload.service, items = [[T.rowService, T.names[s]]];
-    if (s === 'sat') items.push([T.rowArea, label(D.satAreas, payload.area)]);
-    if (s === 'ap') items.push([T.rowAp, label(D.apSubjects, payload.apSubject)]);
+    if (s === 'tutoring') { items.push([T.rowProgram, label(D.programs, payload.program)]); if (payload.subject) items.push([T.rowSubject, esc(payload.subject)]); }
     items.push([expertLabelFor(s), payload.expertId ? (s === 'admissions' ? label(D.officers, payload.expertId) : label(D.tutors, payload.expertId)) : (s === 'admissions' ? T.doneExpertAdm : T.doneExpertTut)]);
     items.forEach(function (i) { var li = document.createElement('li'); li.innerHTML = '<span class="k">' + i[0] + '</span><span>' + i[1] + '</span>'; facts.appendChild(li); });
     form.hidden = true; if (notice) notice.hidden = true;
@@ -184,9 +197,9 @@
     var d = $('demoTag'); if (d) d.hidden = false;
     if (q.get('auto') === '1') {
       var demoFill = function (id, v) { var el = $(id); if (el && !el.value) el.value = v; };
-      if (!service()) { form.querySelector('input[name="service"][value="sat"]').checked = true; sync(); }
-      if (service() === 'sat' && !area.value) { area.value = 'rw'; sync(); }
-      if (service() === 'ap' && !ap.value) { ap.value = 'calculus-ab'; sync(); }
+      if (!service()) { form.querySelector('input[name="service"][value="tutoring"]').checked = true; sync(); }
+      if (service() === 'tutoring' && !prog.value) { prog.value = 'ib'; sync(); }
+      if (service() === 'tutoring' && !subj.value) { subj.value = 'Math AA HL'; renderSel(); }
       demoFill('name', 'Demo Student'); demoFill('email', 'demo@example.com'); demoFill('grade', 'g11');
       demoFill('message', 'Demo request — this text is sample content and nothing is sent.');
       form.consent.checked = true;

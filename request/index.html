@@ -4,21 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Request — PrepModule</title>
-<meta name="description" content="Request an admissions conversation with a former admissions officer, or ask for a SAT / AP tutor shortlist. A request is not a booking — our team contacts you first.">
+<meta name="description" content="Request an admissions conversation with a former admissions officer, or a tutor shortlist for AP, IB, A-Level, IGCSE, SAT or TOEFL. A request is not a booking — our team contacts you first.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://wooyoungcode.github.io/prepmodule-site/request/">
 <link rel="alternate" hreflang="en" href="https://wooyoungcode.github.io/prepmodule-site/request/">
 <link rel="alternate" hreflang="ko" href="https://wooyoungcode.github.io/prepmodule-site/ko/request/">
 <link rel="alternate" hreflang="x-default" href="https://wooyoungcode.github.io/prepmodule-site/request/">
-<script>(function () { var d = document.documentElement, q = new URLSearchParams(location.search), t = q.get('theme'); try { if (t === 'a' || t === 'b') localStorage.setItem('pm-theme', t); else t = localStorage.getItem('pm-theme'); } catch (e) {} d.dataset.theme = t === 'b' ? 'b' : 'a'; if (q.get('display') === 'serif') d.dataset.display = 'serif'; })();</script>
+<script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/site.css?v=172b9433">
-<link rel="stylesheet" href="../assets/theme-b.css?v=e0b2ccf2">
-<script src="../assets/data.js?v=d53ce05c"></script>
-<script src="../assets/site.js?v=99697948" defer></script>
-<script src="../assets/forms.js?v=cbb57828" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=280b2482">
+<script src="../assets/data.js?v=bccaf036"></script>
+<script src="../assets/site.js?v=91e9abf4" defer></script>
+<script src="../assets/forms.js?v=25ea53a0" defer></script>
 </head>
 <body>
 
@@ -33,8 +32,7 @@
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
         <li><a href="./?service=admissions" data-service="admissions">Admissions</a></li>
-        <li><a href="./?subject=sat" data-service="sat">SAT</a></li>
-        <li><a href="./?subject=ap" data-service="ap">AP</a></li>
+        <li><a href="./?service=tutoring" data-service="tutoring">Tutoring</a></li>
         <li><a href="../#experts">Our experts</a></li>
       </ul>
     </nav>
@@ -64,26 +62,26 @@
 
       <div class="field" id="serviceField" data-required data-msg="Choose a service to start.">
         <span class="lbl">What would you like? <span class="req">*</span></span>
-        <div class="radios radios-3" role="radiogroup" aria-label="Service">
+        <div class="radios" role="radiogroup" aria-label="Service">
           <label class="radio"><input type="radio" name="service" value="admissions"><span><strong>Admissions conversation</strong><small>Talk with a former admissions officer</small></span></label>
-          <label class="radio"><input type="radio" name="service" value="sat"><span><strong>SAT tutoring</strong><small>Reading &amp; Writing · Math</small></span></label>
-          <label class="radio"><input type="radio" name="service" value="ap"><span><strong>AP tutoring</strong><small>One course to start</small></span></label>
+          <label class="radio"><input type="radio" name="service" value="tutoring"><span><strong>Subject tutoring</strong><small>AP · IB · A-Level · IGCSE · SAT · TOEFL</small></span></label>
         </div>
         <span class="err" aria-live="polite"></span>
       </div>
 
-      <div class="field" id="areaField" data-required data-msg="Choose the SAT area, or “Not sure yet”." hidden>
-        <label for="area">SAT area <span class="req">*</span></label>
-        <select class="input" id="area" name="area"></select>
-        <span class="err" aria-live="polite"></span>
+      <div class="row" id="tutoringFields" hidden>
+        <div class="field" id="programField" data-required data-msg="Choose a program, or “Other or not sure”.">
+          <label for="program">Program <span class="req">*</span></label>
+          <select class="input" id="program" name="program"></select>
+          <span class="err" aria-live="polite"></span>
+        </div>
+        <div class="field" id="subjectField" data-msg="Tell us the subject.">
+          <label for="subject">Subject <span class="req" id="subjectReq" hidden>*</span><span class="opt" id="subjectOpt">Optional</span></label>
+          <input class="input" id="subject" name="subject" type="text" autocomplete="off">
+          <span class="err" aria-live="polite"></span>
+        </div>
       </div>
-
-      <div class="field" id="apField" data-required data-msg="Choose your AP subject, or “Not listed” and describe the course below." hidden>
-        <label for="apSubject">AP subject <span class="req">*</span></label>
-        <select class="input" id="apSubject" name="apSubject"></select>
-        <span class="help">Need more than one subject? Choose one here and mention the others below — our team sorts it out with you.</span>
-        <span class="err" aria-live="polite"></span>
-      </div>
+      <p class="help" id="subjectHelp" hidden>Add the level or exam board if you know it — HL or SL, Cambridge or Edexcel. More than one subject? List them, starting with the one that matters most.</p>
 
       <div class="row">
         <div class="field" data-required data-msg="Enter the name we should use when we reply.">
@@ -184,7 +182,7 @@
     <div class="footer-grid">
       <div>
         <a class="wordmark" href="../"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
-        <p class="tagline">Admissions guidance and SAT / AP tutoring for students preparing for US universities — wherever you are.</p>
+        <p class="tagline">Admissions guidance and subject tutoring — AP, IB, A-Level, IGCSE, SAT, TOEFL — for students preparing for US universities, wherever you are.</p>
       </div>
       <ul class="footer-links">
         <li><a href="./">Get started</a></li>

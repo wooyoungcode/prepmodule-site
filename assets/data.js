@@ -1,4 +1,4 @@
-// PrepModule — the one place that lists public products, subjects, and people.
+// PrepModule — the one place that lists public products, programs, and people.
 // Landing pages hard-code the same ids for now; the request forms validate against this file.
 // Ids are the only thing that travels in URLs (spec p.12): never names, emails, or messages.
 window.PM = {
@@ -11,19 +11,19 @@ window.PM = {
   // Text the form produces at runtime, per language. Static copy lives in the page (src/strings).
   i18n: {
     en: {
-      selectGrade: 'Select grade', chooseTz: 'Choose your time zone', chooseArea: 'Choose an area', chooseAp: 'Choose your AP subject',
+      selectGrade: 'Select grade', chooseTz: 'Choose your time zone', chooseProgram: 'Choose a program',
       expertAdm: 'Not sure yet — suggest one', expertTut: 'None — let our team suggest', expertNone: 'Choose a service first',
       labelExpertAdm: 'Preferred expert', labelExpertTut: 'Interested tutor',
       helpExpertAdm: 'Naming an officer records your preference. Availability is confirmed afterwards — if they can’t take a session soon, we’ll say so and suggest an alternative.',
       helpExpertTut: 'Naming a tutor records your interest. It isn’t an assignment — our team confirms availability and fit, and you choose from the shortlist.',
       helpMsgAdm: 'Where you stand, what you’re weighing, or one specific decision. Rough is fine.',
-      helpMsgTut: 'Current level (a score, a practice test, or none yet), your goal or test date, and how you like to learn. Rough is fine.',
+      helpMsgTut: 'Current level (a grade, a score, or a practice test), your goal or exam date, and how you like to learn. Rough is fine.',
       helpMsgNone: 'Rough is fine — a few sentences is plenty.',
-      names: { admissions: 'Admissions conversation', sat: 'SAT tutoring', ap: 'AP tutoring' },
-      rowService: 'Service', rowArea: 'Area', rowAp: 'AP subject', notChosen: 'Not chosen yet', notSure: 'Not sure yet', noneYet: 'None yet', change: 'Change',
+      names: { admissions: 'Admissions conversation', tutoring: 'Subject tutoring' },
+      rowService: 'Service', rowProgram: 'Program', rowSubject: 'Subject', notChosen: 'Not chosen yet', notSure: 'Not sure yet', noneYet: 'None yet', change: 'Change',
       noticeService: '“{v}” isn’t a service we offer. Choose one to start.',
-      noticeArea: '“{v}” isn’t a SAT area we list — choose one below.',
-      noticeAp: '“{v}” isn’t in our AP subject list — choose one below, or “Not listed” and describe the course.',
+      noticeProgram: '“{v}” isn’t a program we list — choose one below, or “Other or not sure”.',
+      subjectRequired: 'Tell us the subject — for example “{ex}”.',
       noticeExpert: 'The profile “{v}” isn’t available for this selection, so the expert field was left empty. Naming someone is optional.',
       required: 'This field is required.', emailMsg: 'Enter an email address like name@example.com — it’s how we reply.',
       errOne: '1 field needs attention.', errMany: '{n} fields need attention.', sending: 'Sending…',
@@ -32,19 +32,19 @@ window.PM = {
       doneExpertAdm: 'Not sure yet — we’ll suggest', doneExpertTut: 'None — our team will suggest'
     },
     ko: {
-      selectGrade: '학년 선택', chooseTz: '시간대 선택', chooseArea: '영역 선택', chooseAp: 'AP 과목 선택',
+      selectGrade: '학년 선택', chooseTz: '시간대 선택', chooseProgram: '과정 선택',
       expertAdm: '아직 정하지 않았어요 — 운영팀 추천', expertTut: '없음 — 운영팀 추천', expertNone: '서비스를 먼저 골라 주세요',
       labelExpertAdm: '희망 전문가', labelExpertTut: '희망 튜터',
       helpExpertAdm: '사정관을 지정하면 희망 사항으로 기록돼요. 일정은 신청 후에 확인하고, 어려운 경우 다른 분을 제안해 드려요.',
       helpExpertTut: '튜터를 지정하면 희망 사항으로 기록돼요. 배정이 확정되는 건 아니고, 운영팀이 가능 여부와 적합성을 확인한 뒤 후보 가운데 직접 고르시면 돼요.',
       helpMsgAdm: '지금 준비 상황, 고민하는 부분, 또는 결정하지 못한 문제 하나. 간단히 적어도 돼요.',
-      helpMsgTut: '현재 수준(점수나 모의고사 결과, 없으면 없다고), 목표나 시험 날짜, 선호하는 학습 방식. 간단히 적어도 돼요.',
+      helpMsgTut: '현재 수준(학교 성적, 점수, 모의고사 결과 등), 목표나 시험 날짜, 선호하는 학습 방식. 간단히 적어도 돼요.',
       helpMsgNone: '간단히 적어도 돼요. 몇 문장이면 충분해요.',
-      names: { admissions: '입학사정관 상담', sat: 'SAT 튜터링', ap: 'AP 튜터링' },
-      rowService: '서비스', rowArea: '영역', rowAp: 'AP 과목', notChosen: '선택 안 함', notSure: '미정', noneYet: '없음', change: '변경',
+      names: { admissions: '입학사정관 상담', tutoring: '교과 튜터링' },
+      rowService: '서비스', rowProgram: '과정', rowSubject: '과목', notChosen: '선택 안 함', notSure: '미정', noneYet: '없음', change: '변경',
       noticeService: '‘{v}’은(는) 제공하지 않는 서비스예요. 아래에서 하나를 골라 주세요.',
-      noticeArea: '‘{v}’은(는) 목록에 없는 SAT 영역이에요. 아래에서 골라 주세요.',
-      noticeAp: '‘{v}’은(는) 목록에 없는 AP 과목이에요. 아래에서 고르거나 ‘목록에 없음’을 선택하고 과목을 적어 주세요.',
+      noticeProgram: '‘{v}’은(는) 목록에 없는 과정이에요. 아래에서 고르거나 ‘기타 · 잘 모르겠어요’를 선택해 주세요.',
+      subjectRequired: '과목을 적어 주세요. 예: {ex}',
       noticeExpert: '‘{v}’ 프로필은 지금 선택에서 지정할 수 없어 비워 두었어요. 지정하지 않아도 돼요.',
       required: '필수 항목이에요.', emailMsg: 'name@example.com 형식으로 적어 주세요. 답장은 이메일로 드려요.',
       errOne: '확인이 필요한 항목이 1개 있어요.', errMany: '확인이 필요한 항목이 {n}개 있어요.', sending: '보내는 중…',
@@ -59,42 +59,24 @@ window.PM = {
     { id: 'ao-2', name: '[Name]', name_ko: '[이름]', meta: '[University] · [Role in admissions]', meta_ko: '[대학] · [입학처 직무]' }
   ],
 
+  // DEC: placeholder profiles. programs = the program ids each tutor teaches; keep in sync with tutoring/ (data-match).
   tutors: [
-    { id: 'sat-1', subject: 'sat', match: ['rw', 'math'], name: '[Name]', name_ko: '[이름]', meta: 'Reading & Writing · Math' },
-    { id: 'sat-2', subject: 'sat', match: ['rw'],         name: '[Name]', name_ko: '[이름]', meta: 'Reading & Writing' },
-    { id: 'sat-3', subject: 'sat', match: ['math'],       name: '[Name]', name_ko: '[이름]', meta: 'Math' },
-    { id: 'ap-1',  subject: 'ap',  match: ['calculus-ab', 'calculus-bc', 'statistics'],        name: '[Name]', name_ko: '[이름]', meta: 'Calculus · Statistics' },
-    { id: 'ap-2',  subject: 'ap',  match: ['physics-1', 'physics-c-mechanics', 'chemistry'],   name: '[Name]', name_ko: '[이름]', meta: 'Physics · Chemistry' },
-    { id: 'ap-3',  subject: 'ap',  match: ['english-language', 'english-literature', 'us-history'], name: '[Name]', name_ko: '[이름]', meta: 'English · US History' }
+    { id: 'tu-1', programs: ['ib', 'alevel', 'igcse'],        name: '[Name]', name_ko: '[이름]', meta: 'Math · Physics',               meta_ko: '수학 · 물리' },
+    { id: 'tu-2', programs: ['ap', 'sat'],                    name: '[Name]', name_ko: '[이름]', meta: 'Calculus · SAT Math',          meta_ko: '미적분 · SAT Math' },
+    { id: 'tu-3', programs: ['sat', 'toefl', 'ap'],           name: '[Name]', name_ko: '[이름]', meta: 'English · Reading & Writing', meta_ko: '영어 · Reading & Writing' },
+    { id: 'tu-4', programs: ['ib', 'alevel', 'igcse', 'ap'],  name: '[Name]', name_ko: '[이름]', meta: 'Chemistry · Biology',          meta_ko: '화학 · 생물' }
   ],
 
-  satAreas: [
-    { id: 'rw',     label: 'Reading & Writing' },
-    { id: 'math',   label: 'Math' },
-    { id: 'both',   label: 'Both sections', label_ko: '두 영역 모두' },
-    { id: 'unsure', label: "Not sure yet — help me decide", label_ko: '아직 모르겠어요' }
-  ],
-
-  // DEC (spec p.11): replace with the subjects you can actually staff before launch. Keep ids in sync with tutoring/ap/.
-  apSubjects: [
-    { id: 'calculus-ab',        label: 'Calculus AB',                       group: 'Math & computer science', group_ko: '수학 · 컴퓨터과학' },
-    { id: 'calculus-bc',        label: 'Calculus BC',                       group: 'Math & computer science', group_ko: '수학 · 컴퓨터과학' },
-    { id: 'statistics',         label: 'Statistics',                        group: 'Math & computer science', group_ko: '수학 · 컴퓨터과학' },
-    { id: 'computer-science-a', label: 'Computer Science A',                group: 'Math & computer science', group_ko: '수학 · 컴퓨터과학' },
-    { id: 'physics-1',          label: 'Physics 1',                         group: 'Sciences', group_ko: '과학' },
-    { id: 'physics-c-mechanics',label: 'Physics C: Mechanics',              group: 'Sciences', group_ko: '과학' },
-    { id: 'chemistry',          label: 'Chemistry',                         group: 'Sciences', group_ko: '과학' },
-    { id: 'biology',            label: 'Biology',                           group: 'Sciences', group_ko: '과학' },
-    { id: 'english-language',   label: 'English Language & Composition',    group: 'English & history', group_ko: '영어 · 역사' },
-    { id: 'english-literature', label: 'English Literature & Composition',  group: 'English & history', group_ko: '영어 · 역사' },
-    { id: 'us-history',         label: 'US History',                        group: 'English & history', group_ko: '영어 · 역사' },
-    { id: 'world-history',      label: 'World History: Modern',             group: 'English & history', group_ko: '영어 · 역사' },
-    { id: 'european-history',   label: 'European History',                  group: 'English & history', group_ko: '영어 · 역사' },
-    { id: 'microeconomics',     label: 'Microeconomics',                    group: 'Social sciences', group_ko: '사회과학' },
-    { id: 'macroeconomics',     label: 'Macroeconomics',                    group: 'Social sciences', group_ko: '사회과학' },
-    { id: 'psychology',         label: 'Psychology',                        group: 'Social sciences', group_ko: '사회과학' },
-    { id: 'us-government',      label: 'US Government & Politics',          group: 'Social sciences', group_ko: '사회과학' },
-    { id: 'other',              label: 'Not listed — I\'ll describe it below', label_ko: '목록에 없어요 — 아래에 적을게요', group: 'Other', group_ko: '기타' }
+  // Programs on the tutoring page and the request form. subject: required = the form asks for the subject before sending.
+  // DEC: confirm the programs, boards and subjects you can staff before launch.
+  programs: [
+    { id: 'ap',     label: 'AP',      group: 'School curricula', group_ko: '학교 교과 과정', required: true,  ex: 'Calculus BC, Chemistry' },
+    { id: 'ib',     label: 'IB',      group: 'School curricula', group_ko: '학교 교과 과정', required: true,  ex: 'Math AA HL, Physics SL' },
+    { id: 'alevel', label: 'A-Level', group: 'School curricula', group_ko: '학교 교과 과정', required: true,  ex: 'Maths, Physics (Cambridge)' },
+    { id: 'igcse',  label: 'IGCSE',   group: 'School curricula', group_ko: '학교 교과 과정', required: true,  ex: 'Chemistry (Edexcel), Additional Maths' },
+    { id: 'sat',    label: 'SAT',     group: 'Tests', group_ko: '시험', required: false, ex: 'Math, Reading & Writing, or both', ex_ko: 'Math, Reading & Writing, 또는 둘 다' },
+    { id: 'toefl',  label: 'TOEFL',   group: 'Tests', group_ko: '시험', required: false, ex: 'Speaking and Writing, or the whole test', ex_ko: 'Speaking과 Writing, 또는 전체' },
+    { id: 'other',  label: 'Other or not sure', label_ko: '기타 · 잘 모르겠어요', group: 'Other', group_ko: '기타', required: true, ex: 'the course or test name', ex_ko: '과목이나 시험 이름' }
   ],
 
   grades: [

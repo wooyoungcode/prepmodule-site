@@ -4,22 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>신청 — PrepModule</title>
-<meta name="description" content="전직 입학사정관 상담이나 SAT · AP 튜터 추천을 신청해요. 신청은 예약이 아니고, 운영팀이 먼저 연락드려요.">
+<meta name="description" content="전직 입학사정관 상담이나 AP · IB · A-Level · IGCSE · SAT · TOEFL 튜터 추천을 신청해요. 신청은 예약이 아니고, 운영팀이 먼저 연락드려요.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://wooyoungcode.github.io/prepmodule-site/ko/request/">
 <link rel="alternate" hreflang="en" href="https://wooyoungcode.github.io/prepmodule-site/request/">
 <link rel="alternate" hreflang="ko" href="https://wooyoungcode.github.io/prepmodule-site/ko/request/">
 <link rel="alternate" hreflang="x-default" href="https://wooyoungcode.github.io/prepmodule-site/request/">
-<script>(function () { var d = document.documentElement, q = new URLSearchParams(location.search), t = q.get('theme'); try { if (t === 'a' || t === 'b') localStorage.setItem('pm-theme', t); else t = localStorage.getItem('pm-theme'); } catch (e) {} d.dataset.theme = t === 'b' ? 'b' : 'a'; if (q.get('display') === 'serif') d.dataset.display = 'serif'; })();</script>
+<script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="../../assets/site.css?v=172b9433">
-<link rel="stylesheet" href="../../assets/theme-b.css?v=e0b2ccf2">
-<script src="../../assets/data.js?v=d53ce05c"></script>
-<script src="../../assets/site.js?v=99697948" defer></script>
-<script src="../../assets/forms.js?v=cbb57828" defer></script>
+<link rel="stylesheet" href="../../assets/site.css?v=280b2482">
+<script src="../../assets/data.js?v=bccaf036"></script>
+<script src="../../assets/site.js?v=91e9abf4" defer></script>
+<script src="../../assets/forms.js?v=25ea53a0" defer></script>
 </head>
 <body>
 
@@ -34,8 +33,7 @@
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
         <li><a href="./?service=admissions" data-service="admissions">입학 상담</a></li>
-        <li><a href="./?subject=sat" data-service="sat">SAT</a></li>
-        <li><a href="./?subject=ap" data-service="ap">AP</a></li>
+        <li><a href="./?service=tutoring" data-service="tutoring">튜터링</a></li>
         <li><a href="../../ko/#experts">전문가</a></li>
       </ul>
     </nav>
@@ -62,26 +60,26 @@
 
       <div class="field" id="serviceField" data-required data-msg="서비스를 먼저 골라 주세요.">
         <span class="lbl">어떤 서비스가 필요하세요? <span class="req">*</span></span>
-        <div class="radios radios-3" role="radiogroup" aria-label="서비스">
+        <div class="radios" role="radiogroup" aria-label="서비스">
           <label class="radio"><input type="radio" name="service" value="admissions"><span><strong>입학사정관 상담</strong><small>전직 입학사정관과 이야기하기</small></span></label>
-          <label class="radio"><input type="radio" name="service" value="sat"><span><strong>SAT 튜터링</strong><small>Reading &amp; Writing · Math</small></span></label>
-          <label class="radio"><input type="radio" name="service" value="ap"><span><strong>AP 튜터링</strong><small>우선 한 과목</small></span></label>
+          <label class="radio"><input type="radio" name="service" value="tutoring"><span><strong>교과 튜터링</strong><small>AP · IB · A-Level · IGCSE · SAT · TOEFL</small></span></label>
         </div>
         <span class="err" aria-live="polite"></span>
       </div>
 
-      <div class="field" id="areaField" data-required data-msg="SAT 영역을 고르거나 '아직 모르겠어요'를 선택해 주세요." hidden>
-        <label for="area">SAT 영역 <span class="req">*</span></label>
-        <select class="input" id="area" name="area"></select>
-        <span class="err" aria-live="polite"></span>
+      <div class="row" id="tutoringFields" hidden>
+        <div class="field" id="programField" data-required data-msg="과정을 고르거나 ‘기타 · 잘 모르겠어요’를 선택해 주세요.">
+          <label for="program">과정 <span class="req">*</span></label>
+          <select class="input" id="program" name="program"></select>
+          <span class="err" aria-live="polite"></span>
+        </div>
+        <div class="field" id="subjectField" data-msg="과목을 적어 주세요.">
+          <label for="subject">과목 <span class="req" id="subjectReq" hidden>*</span><span class="opt" id="subjectOpt">선택</span></label>
+          <input class="input" id="subject" name="subject" type="text" autocomplete="off">
+          <span class="err" aria-live="polite"></span>
+        </div>
       </div>
-
-      <div class="field" id="apField" data-required data-msg="AP 과목을 고르거나 '목록에 없음'을 선택하고 아래에 적어 주세요." hidden>
-        <label for="apSubject">AP 과목 <span class="req">*</span></label>
-        <select class="input" id="apSubject" name="apSubject"></select>
-        <span class="help">여러 과목이 필요하면 여기서는 하나만 고르고 나머지는 아래에 적어 주세요. 운영팀이 함께 정리해 드려요.</span>
-        <span class="err" aria-live="polite"></span>
-      </div>
+      <p class="help" id="subjectHelp" hidden>알고 있다면 레벨이나 시험 기관도 적어 주세요(HL · SL, Cambridge · Edexcel 등). 과목이 여러 개라면 가장 급한 것부터 적으면 돼요.</p>
 
       <div class="row">
         <div class="field" data-required data-msg="연락드릴 때 부를 이름을 적어 주세요.">
@@ -182,7 +180,7 @@
     <div class="footer-grid">
       <div>
         <a class="wordmark" href="../../ko/"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
-        <p class="tagline">미국 대학을 준비하는 학생을 위한 입학사정관 상담과 SAT · AP 튜터링이에요. 어느 나라에 있든 온라인으로 이용할 수 있어요.</p>
+        <p class="tagline">미국 대학을 준비하는 학생을 위한 입학사정관 상담과 교과 튜터링(AP · IB · A-Level · IGCSE · SAT · TOEFL)이에요. 어느 나라에 있든 온라인으로 이용할 수 있어요.</p>
       </div>
       <ul class="footer-links">
         <li><a href="./">시작하기</a></li>
