@@ -24,7 +24,7 @@
 (function () {
   var nav = document.getElementById('nav'), hero = document.getElementById('hero');
   if (!nav) return;
-  if (!hero || !('IntersectionObserver' in window)) { nav.classList.add('light'); return; }
+  if (!hero || hero.classList.contains('hero--light') || !('IntersectionObserver' in window)) { nav.classList.add('light'); return; }
   new IntersectionObserver(function (entries) {
     nav.classList.toggle('light', !entries[0].isIntersecting);
   }, { rootMargin: '-' + (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 64) + 'px 0px 0px 0px', threshold: 0 }).observe(hero);
