@@ -661,3 +661,22 @@ html[lang="ko"] .report-rows dt, html[lang="ko"] .report-head .tag, html[lang="k
 html[lang="ko"] .cyc .cyc-name { font-size: 20px; }
 @media (max-width: 960px) { .cyc-panel { grid-template-columns: 1fr; } .cyc-art { max-width: 560px; margin: 0 auto; width: 100%; } }
 @media (max-width: 720px) { .cyc-panel { padding: 28px 16px 24px; border-radius: 14px; background-size: 160% auto; background-position: center 100%; } .cyc text { font-size: 19px; } .cyc .cyc-name { font-size: 23px; } }
+
+/* ---------- photo heroes (Unsplash, hotlinked) — dark crimson overlay keeps the text readable ---------- */
+.hero--photo { background-color: var(--dark);
+  background-image: linear-gradient(90deg, rgba(21,13,16,0.92) 0%, rgba(21,13,16,0.74) 36%, rgba(21,13,16,calc(0.34 * var(--shade, 1))) 68%, rgba(21,13,16,calc(0.22 * var(--shade, 1))) 100%),
+                    linear-gradient(0deg, rgba(21,13,16,0.88) 0%, rgba(21,13,16,0) 38%),
+                    linear-gradient(180deg, rgba(21,13,16,0.6) 0%, rgba(21,13,16,0) 26%),
+                    var(--photo);
+  background-size: cover, cover, cover, cover; background-position: center, center, center, var(--photo-pos, center); background-repeat: no-repeat;
+  padding-bottom: clamp(72px, 9vw, 120px); }
+.hero--photo.hero--landing { padding-bottom: clamp(64px, 8vw, 104px); }
+.hero--photo::before { background: radial-gradient(closest-side, rgba(165,28,48,0.32), transparent 72%); }
+.hero--photo { filter: none; }
+.hero--photo { --shade: 1; }
+.hero--photo .banner, .hero--photo .feature, .hero--photo .picker { background: rgba(21,13,16,0.55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+@media (max-width: 720px) {
+  .hero--photo { background-image: linear-gradient(180deg, rgba(21,13,16,0.82) 0%, rgba(21,13,16,0.9) 55%, rgba(21,13,16,0.97) 100%), var(--photo-sm);
+    background-size: cover, cover; background-position: center, var(--photo-pos, center); padding-bottom: 64px; }
+  .hero--photo.hero--landing { padding-bottom: 56px; }
+}
