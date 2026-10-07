@@ -13,8 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/site.css?v=9a15ea30">
-<script src="../assets/site.js?v=101b590d" defer></script>
+<link rel="stylesheet" href="../assets/site.css?v=a97abcf7">
+<script src="../assets/site.js?v=4428ca55" defer></script>
 </head>
 <body>
 
@@ -199,10 +199,77 @@
   </section>
 
   <!-- A4 — request and confirmed booking are different things; the form never charges -->
+  <section class="section" id="timeline" aria-labelledby="timeline-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="eyebrow">03 · Your timeline</span><h2 id="timeline-title">From now to decision day.</h2></div>
+        <p class="sub">Choose the student’s current grade. The timeline starts where they are now and runs to the application deadlines — with the moments a conversation with an officer helps most.</p>
+      </div>
+      <div class="adm-tl reveal" id="admTimeline" data-g="Grade {g}" data-class="Class of {c}" data-year="{a}–{b} school year" data-fall="Fall {y}" data-spring="Spring {y}" data-summer="Summer {y}">
+        <div class="tl-pick" role="group" aria-label="Current grade"><span class="lbl">Current grade</span><button type="button" class="tl-g" data-grade="9" aria-pressed="false"><b></b><small></small></button><button type="button" class="tl-g" data-grade="10" aria-pressed="false"><b></b><small></small></button><button type="button" class="tl-g" data-grade="11" aria-pressed="true"><b></b><small></small></button><button type="button" class="tl-g" data-grade="12" aria-pressed="false"><b></b><small></small></button></div>
+        <ol class="tl">
+          <li class="tl-item" data-p="0" data-fmt="year">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">Grade 9</span><span class="g">Grade 9</span><span class="now">Now</span></p>
+            <h4>Explore and build habits</h4>
+            <ul><li>Take the most challenging courses you can do well in</li><li>Try activities, and notice what you keep coming back to</li><li>Start a simple record of activities and awards</li></ul>
+          </li>
+          <li class="tl-item" data-p="1" data-fmt="year">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">Grade 10</span><span class="g">Grade 10</span><span class="now">Now</span></p>
+            <h4>Go deeper</h4>
+            <ul><li>Narrow to one or two interests and take on responsibility</li><li>Plan junior-year courses — rigor matters most next year</li><li>Try practice tests to choose between the SAT and ACT</li></ul>
+            <p class="tl-badge"><b>Good time for a session</b>Course and activity check</p>
+          </li>
+          <li class="tl-item" data-p="2" data-fmt="summer">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">Before grade 11</span><span class="g">Before grade 11</span><span class="now">Now</span></p>
+            <h4>A summer with substance</h4>
+            <ul><li>A program, research project, job or community work</li><li>Something you can explain in one sentence</li><li>Light, steady test prep</li></ul>
+          </li>
+          <li class="tl-item" data-p="3" data-fmt="fall">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">Grade 11</span><span class="g">Grade 11</span><span class="now">Now</span></p>
+            <h4>The year that counts most</h4>
+            <ul><li>The strongest grades of high school</li><li>Leadership in the activities you chose</li><li>Take the PSAT/NMSQT in October</li></ul><div class="tl-chips"><span class="tl-chip">PSAT · Oct</span></div>
+          </li>
+          <li class="tl-item" data-p="4" data-fmt="spring">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">Grade 11</span><span class="g">Grade 11</span><span class="now">Now</span></p>
+            <h4>Testing and a first list</h4>
+            <ul><li>SAT or ACT, leaving time for a retake</li><li>AP exams in May</li><li>A first school list; ask two teachers for recommendations</li></ul><div class="tl-chips"><span class="tl-chip">AP · May</span></div>
+            <p class="tl-badge"><b>Good time for a session</b>School list and testing plan</p>
+          </li>
+          <li class="tl-item" data-p="5" data-fmt="summer">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">Before grade 12</span><span class="g">Before grade 12</span><span class="now">Now</span></p>
+            <h4>Essays and the application</h4>
+            <ul><li>Draft the personal statement</li><li>Finalize the list: reach, target and likely schools</li><li>The Common App opens on August 1</li></ul><div class="tl-chips"><span class="tl-chip">Common App · Aug 1</span></div>
+            <p class="tl-badge"><b>Good time for a session</b>Essay direction</p>
+          </li>
+          <li class="tl-item" data-p="6" data-fmt="fall">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">Grade 12</span><span class="g">Grade 12</span><span class="now">Now</span></p>
+            <h4>Applications go out</h4>
+            <ul><li>Early Action and Early Decision — often November 1 or 15</li><li>Regular Decision — usually January 1–15</li><li>Keep grades strong: colleges see senior-year grades</li></ul><div class="tl-chips"><span class="tl-chip">Early · Nov 1–15</span><span class="tl-chip">Regular · Jan 1–15</span></div>
+            <p class="tl-badge"><b>Good time for a session</b>A reader’s view before you submit</p>
+          </li>
+          <li class="tl-item" data-p="7" data-fmt="spring">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">Grade 12</span><span class="g">Grade 12</span><span class="now">Now</span></p>
+            <h4>Decisions</h4>
+            <ul><li>Most decisions arrive in March and April</li><li>Compare offers and financial aid</li><li>Commit by May 1</li></ul><div class="tl-chips"><span class="tl-chip">Decision day · May 1</span></div>
+          </li>
+        </ol>
+      </div>
+      <p class="note">Typical dates for US colleges. Every college sets its own deadlines — always check each school’s admissions site.</p>
+    </div>
+  </section>
+
   <section class="section" id="grades" aria-labelledby="grades-title">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><span class="eyebrow">03 · By grade</span><h2 id="grades-title">What families ask, grade by grade.</h2></div>
+        <div><span class="eyebrow">04 · By grade</span><h2 id="grades-title">What families ask, grade by grade.</h2></div>
         <p class="sub">There’s no wrong time to talk to an officer — but the useful questions change as the deadline gets closer.</p>
       </div>
         <div class="tbl-wrap reveal"><table class="cmp">
@@ -221,7 +288,7 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">04 · How it works</span>
+          <span class="eyebrow">05 · How it works</span>
           <h2 id="how-title">From request to conversation.</h2>
         </div>
         <p class="sub">Four steps. Nothing is scheduled or charged until our team has confirmed the details with you.</p>
@@ -242,7 +309,7 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">05 · Before you request</span>
+          <span class="eyebrow">06 · Before you request</span>
           <h2 id="faq-title">Questions people ask first.</h2>
         </div>
         <p class="sub">The short version of the terms. Anything else, ask in the form — we answer before scheduling.</p>

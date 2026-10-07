@@ -196,3 +196,38 @@
   box.appendChild(btn('whatsapp', waHref, t.wa, icons.wa));
   document.body.appendChild(box);
 })();
+
+// Admissions timeline: pick the current grade; graduation year and term labels are computed from today's date.
+// School year runs Aug–Jul. The first visible card is "now" for that grade.
+(function () {
+  var root = document.getElementById('admTimeline'); if (!root) return;
+  var d = new Date(), y = d.getFullYear(), fall = d.getMonth() >= 7;
+  var A = function (k) { return root.getAttribute('data-' + k) || ''; };
+  var fmt = function (s, o) { return s.replace(/\{(\w)\}/g, function (_, k) { return o[k]; }); };
+  var btns = Array.prototype.slice.call(root.querySelectorAll('.tl-g')), items = Array.prototype.slice.call(root.querySelectorAll('.tl-item'));
+  function classOf(g) { return y + (12 - g) + (fall ? 1 : 0); }
+  var startFor = { 9: 0, 10: 1, 11: fall ? 3 : 4, 12: fall ? 6 : 7 };
+  btns.forEach(function (b) {
+    var g = +b.getAttribute('data-grade');
+    b.querySelector('b').textContent = fmt(A('g'), { g: g });
+    b.querySelector('small').textContent = fmt(A('class'), { c: classOf(g) });
+  });
+  function show(g) {
+    var C = classOf(g), start = startFor[g];
+    var when = [fmt(A('year'), { a: C - 4, b: C - 3 }), fmt(A('year'), { a: C - 3, b: C - 2 }), fmt(A('summer'), { y: C - 2 }), fmt(A('fall'), { y: C - 2 }),
+                fmt(A('spring'), { y: C - 1 }), fmt(A('summer'), { y: C - 1 }), fmt(A('fall'), { y: C - 1 }), fmt(A('spring'), { y: C })];
+    items.forEach(function (it, i) {
+      it.hidden = i < start;
+      it.classList.toggle('is-now', i === start);
+      it.querySelector('.w').textContent = when[i];
+    });
+    btns.forEach(function (b) { b.setAttribute('aria-pressed', String(+b.getAttribute('data-grade') === g)); });
+    var track = root.querySelector('.tl'); if (track) track.scrollLeft = 0;
+  }
+  btns.forEach(function (b) { b.addEventListener('click', function () {
+    var g = +b.getAttribute('data-grade'); show(g);
+    var u = new URL(location.href); u.searchParams.set('grade', g); history.replaceState(null, '', u.pathname + u.search + u.hash);
+  }); });
+  var q = +new URLSearchParams(location.search).get('grade');
+  show(startFor.hasOwnProperty(q) ? q : 11);
+})();

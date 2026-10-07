@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="../../assets/site.css?v=9a15ea30">
-<script src="../../assets/site.js?v=101b590d" defer></script>
+<link rel="stylesheet" href="../../assets/site.css?v=a97abcf7">
+<script src="../../assets/site.js?v=4428ca55" defer></script>
 </head>
 <body>
 
@@ -197,10 +197,77 @@
   </section>
 
   <!-- A4 — request and confirmed booking are different things; the form never charges -->
+  <section class="section" id="timeline" aria-labelledby="timeline-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="eyebrow">03 · 나의 타임라인</span><h2 id="timeline-title">지금부터 합격 발표까지.</h2></div>
+        <p class="sub">학생의 현재 학년을 고르세요. 지금 위치에서 원서 마감까지 이어지고, 입학사정관과의 대화가 특히 도움 되는 시점도 표시돼요.</p>
+      </div>
+      <div class="adm-tl reveal" id="admTimeline" data-g="{g}학년" data-class="{c}년 졸업" data-year="{a}–{b}학년도" data-fall="{y}년 가을" data-spring="{y}년 봄" data-summer="{y}년 여름">
+        <div class="tl-pick" role="group" aria-label="현재 학년"><span class="lbl">현재 학년</span><button type="button" class="tl-g" data-grade="9" aria-pressed="false"><b></b><small></small></button><button type="button" class="tl-g" data-grade="10" aria-pressed="false"><b></b><small></small></button><button type="button" class="tl-g" data-grade="11" aria-pressed="true"><b></b><small></small></button><button type="button" class="tl-g" data-grade="12" aria-pressed="false"><b></b><small></small></button></div>
+        <ol class="tl">
+          <li class="tl-item" data-p="0" data-fmt="year">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">9학년</span><span class="g">9학년</span><span class="now">지금</span></p>
+            <h4>탐색하고 습관 만들기</h4>
+            <ul><li>잘 해낼 수 있는 범위에서 가장 도전적인 과목 듣기</li><li>여러 활동을 해 보고, 계속 끌리는 것을 알아차리기</li><li>활동과 수상 기록을 간단히 남기기 시작하기</li></ul>
+          </li>
+          <li class="tl-item" data-p="1" data-fmt="year">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">10학년</span><span class="g">10학년</span><span class="now">지금</span></p>
+            <h4>깊이 들어가기</h4>
+            <ul><li>관심사를 한두 개로 좁히고 책임 있는 역할 맡기</li><li>11학년 과목 계획 — 다음 해 과목 난이도가 가장 중요해요</li><li>모의 시험으로 SAT와 ACT 중 맞는 쪽 고르기</li></ul>
+            <p class="tl-badge"><b>상담하기 좋은 시점</b>과목 · 활동 점검</p>
+          </li>
+          <li class="tl-item" data-p="2" data-fmt="summer">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">11학년 전</span><span class="g">11학년 전</span><span class="now">지금</span></p>
+            <h4>내용 있는 여름</h4>
+            <ul><li>프로그램, 리서치 프로젝트, 아르바이트, 봉사 중 하나</li><li>한 문장으로 설명할 수 있는 경험</li><li>가볍고 꾸준한 시험 준비</li></ul>
+          </li>
+          <li class="tl-item" data-p="3" data-fmt="fall">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">11학년</span><span class="g">11학년</span><span class="now">지금</span></p>
+            <h4>가장 중요한 한 해</h4>
+            <ul><li>고등학교에서 가장 좋은 성적</li><li>고른 활동에서 리더십 보여주기</li><li>10월에 PSAT/NMSQT 응시</li></ul><div class="tl-chips"><span class="tl-chip">PSAT · 10월</span></div>
+          </li>
+          <li class="tl-item" data-p="4" data-fmt="spring">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">11학년</span><span class="g">11학년</span><span class="now">지금</span></p>
+            <h4>시험과 첫 지원 리스트</h4>
+            <ul><li>SAT 또는 ACT 응시, 재응시할 시간 남기기</li><li>5월 AP 시험</li><li>첫 지원 리스트 만들기, 선생님 두 분께 추천서 부탁하기</li></ul><div class="tl-chips"><span class="tl-chip">AP · 5월</span></div>
+            <p class="tl-badge"><b>상담하기 좋은 시점</b>지원 리스트 · 시험 계획</p>
+          </li>
+          <li class="tl-item" data-p="5" data-fmt="summer">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">12학년 전</span><span class="g">12학년 전</span><span class="now">지금</span></p>
+            <h4>에세이와 지원서</h4>
+            <ul><li>자기소개 에세이 초안 쓰기</li><li>도전 · 적정 · 안정 대학으로 리스트 확정</li><li>8월 1일 Common App 오픈</li></ul><div class="tl-chips"><span class="tl-chip">Common App · 8월 1일</span></div>
+            <p class="tl-badge"><b>상담하기 좋은 시점</b>에세이 방향</p>
+          </li>
+          <li class="tl-item" data-p="6" data-fmt="fall">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">12학년</span><span class="g">12학년</span><span class="now">지금</span></p>
+            <h4>원서 제출</h4>
+            <ul><li>얼리 액션 · 얼리 디시전 — 보통 11월 1일 또는 15일</li><li>레귤러 디시전 — 보통 1월 1–15일</li><li>12학년 성적도 대학이 봐요, 성적 유지하기</li></ul><div class="tl-chips"><span class="tl-chip">얼리 · 11월 1–15일</span><span class="tl-chip">레귤러 · 1월 1–15일</span></div>
+            <p class="tl-badge"><b>상담하기 좋은 시점</b>제출 전 사정관의 시선</p>
+          </li>
+          <li class="tl-item" data-p="7" data-fmt="spring">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when"><span class="w">12학년</span><span class="g">12학년</span><span class="now">지금</span></p>
+            <h4>합격 발표</h4>
+            <ul><li>대부분 3–4월에 결과 발표</li><li>합격한 대학과 재정 지원 비교하기</li><li>5월 1일까지 등록 결정</li></ul><div class="tl-chips"><span class="tl-chip">등록 마감 · 5월 1일</span></div>
+          </li>
+        </ol>
+      </div>
+      <p class="note">미국 대학의 일반적인 일정이에요. 마감일은 대학마다 달라서, 각 대학 입학처 사이트에서 꼭 확인하세요.</p>
+    </div>
+  </section>
+
   <section class="section" id="grades" aria-labelledby="grades-title">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><span class="eyebrow">03 · 학년별</span><h2 id="grades-title">학년마다 묻는 것이 달라요.</h2></div>
+        <div><span class="eyebrow">04 · 학년별</span><h2 id="grades-title">학년마다 묻는 것이 달라요.</h2></div>
         <p class="sub">입학사정관과 이야기하기에 늦은 때는 없어요. 다만 마감이 가까워질수록 쓸모 있는 질문이 달라져요.</p>
       </div>
         <div class="tbl-wrap reveal"><table class="cmp">
@@ -219,7 +286,7 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">04 · 진행 방식</span>
+          <span class="eyebrow">05 · 진행 방식</span>
           <h2 id="how-title">신청에서 상담까지</h2>
         </div>
         <p class="sub">네 단계로 진행돼요. 운영팀이 세부 사항을 확인하기 전에는 일정도 결제도 정해지지 않아요.</p>
@@ -240,7 +307,7 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">05 · 신청 전 확인</span>
+          <span class="eyebrow">06 · 신청 전 확인</span>
           <h2 id="faq-title">자주 묻는 질문</h2>
         </div>
         <p class="sub">이용 조건을 간단히 정리했어요. 그 밖의 질문은 신청서에 적어 주시면 일정을 잡기 전에 답해 드려요.</p>
