@@ -67,6 +67,7 @@
   function expertLabelFor(s) { return s === 'admissions' ? T.labelExpertAdm : T.labelExpertTut; }
   function backFor(s, pr) {
     return s === 'admissions' ? lroot + 'admissions/#experts'
+      : s === 'tutoring' && pr === 'competition' ? lroot + 'competitions/'
       : s === 'tutoring' ? lroot + 'tutoring/' + (pr && !(progItem(pr) || {}).open ? '?program=' + pr + '#programs' : (pr === 'project' || pr === 'mentoring' ? '#beyond' : '#programs'))
       : lroot + '#support';
   }

@@ -77,6 +77,7 @@ window.PM = {
     { id: 'igcse',  label: 'IGCSE',   group: 'School curricula', group_ko: '학교 교과 과정', required: true,  ex: 'Chemistry (Edexcel), Additional Maths' },
     { id: 'sat',    label: 'SAT',     group: 'Tests', group_ko: '시험', required: false, ex: 'Math, Reading & Writing, or both', ex_ko: 'Math, Reading & Writing, 또는 둘 다' },
     { id: 'toefl',  label: 'TOEFL',   group: 'Tests', group_ko: '시험', required: false, ex: 'Speaking and Writing, or the whole test', ex_ko: 'Speaking과 Writing, 또는 전체' },
+    { id: 'competition', label: 'Competition prep', label_ko: '경시대회 준비', group: 'Beyond the classroom', group_ko: '교과 밖', required: false, open: true, ex: 'AMC 10, John Locke (Politics), HIR Senior', ex_ko: 'AMC 10, John Locke(정치), HIR 시니어' },
     { id: 'project',   label: 'Project building', label_ko: '프로젝트', group: 'Beyond the classroom', group_ko: '교과 밖', required: false, open: true, ex: 'a biology research project, an app, a portfolio piece', ex_ko: '생물 리서치 프로젝트, 앱 만들기, 포트폴리오 작업' },
     { id: 'mentoring', label: 'Mentoring',        label_ko: '멘토링',   group: 'Beyond the classroom', group_ko: '교과 밖', required: false, open: true, ex: 'study planning and habits for this term', ex_ko: '이번 학기 공부 계획과 습관 관리' },
     { id: 'other',  label: 'Other or not sure', label_ko: '기타 · 잘 모르겠어요', group: 'Other', group_ko: '기타', required: true, open: true, ex: 'the course or test name', ex_ko: '과목이나 시험 이름' }
