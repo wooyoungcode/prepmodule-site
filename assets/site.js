@@ -124,6 +124,7 @@
       pr.classList.toggle('dim', !ok);
       if (ok && v) matches.push(pr.getAttribute('data-name') || '');
     });
+    if (v && !matches.length) profiles.forEach(function (pr) { pr.classList.remove('dim'); });
     if (status) {
       var tpl = v ? status.getAttribute(matches.length ? 'data-for' : 'data-none') : status.getAttribute('data-all');
       status.firstChild.textContent = (tpl || '').replace('{label}', labels[v] || '');
