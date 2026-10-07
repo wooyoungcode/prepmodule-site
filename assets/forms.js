@@ -46,7 +46,7 @@
   function program() { return service() === 'tutoring' ? prog.value : ''; }
   function progItem(id) { return D.programs.filter(function (i) { return i.id === id; })[0]; }
 
-  // Prefill from the landing's URL — ids only (spec p.12): ?service=admissions|tutoring, &program=ib, &expertId=tu-1.
+  // Prefill from the landing's URL — ids only (spec p.12): ?service=admissions|tutoring, &program=ib, &expertId=nw.
   // Links from the retired SAT / AP pages still work: ?subject=sat|ap (or ?service=sat|ap) means tutoring with that program,
   // and their old area / apSubject values become the subject text.
   var s = q.get('service'), pq = q.get('program'), legacy = q.get('subject');

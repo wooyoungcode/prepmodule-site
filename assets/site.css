@@ -682,3 +682,18 @@ html[lang="ko"] .cyc .cyc-name { font-size: 20px; }
 }
 
 .hero--photo h1, .hero--photo .lead, .hero--photo .eyebrow { text-shadow: 0 1px 18px rgba(21,13,16,0.55); }
+
+/* ---------- real profile photos + facts ---------- */
+.photo.has-img { padding: 0; background: var(--soft); }
+.photo.has-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.feature .photo.has-img { padding: 0; }
+.card .photo.has-img img { transition: transform .5s ease; }
+.card:hover .photo.has-img img { transform: scale(1.03); }
+.profile .meta .proof { display: inline-block; margin-top: 4px; font-size: 13.5px; color: var(--muted); }
+.profile .plabel { margin-top: 18px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+.profile .plabel + .helps { margin-top: 10px; }
+.pfacts { margin: 20px 0 0; display: grid; gap: 14px; max-width: 66ch; }
+.pfacts > div { padding-top: 12px; border-top: 1px solid var(--line); }
+.pfacts dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+.pfacts dd { margin: 6px 0 0; font-size: 14.5px; line-height: 1.6; color: var(--ink); }
+html[lang="ko"] .profile .plabel, html[lang="ko"] .pfacts dt { letter-spacing: 0.06em; }

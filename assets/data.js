@@ -54,17 +54,17 @@ window.PM = {
     }
   },
 
+  // Public profiles use initials only. Keep ids in sync with the #expert-{id} anchors on admissions/ and tutoring/.
   officers: [
-    { id: 'ao-1', name: '[Name]', name_ko: '[이름]', meta: '[University] · [Role in admissions]', meta_ko: '[대학] · [입학처 직무]' },
-    { id: 'ao-2', name: '[Name]', name_ko: '[이름]', meta: '[University] · [Role in admissions]', meta_ko: '[대학] · [입학처 직무]' }
+    { id: 'ng', name: 'N. G.', meta: 'Harvard College · Former Admissions Officer', meta_ko: 'Harvard College · 전직 입학사정관' },
+    { id: 'sh', name: 'S. H.', meta: 'Johns Hopkins University · Former Senior Assistant Director', meta_ko: 'Johns Hopkins University · 전 Senior Assistant Director' },
+    { id: 'ds', name: 'D. S.', meta: 'UC San Diego · Admissions Reader', meta_ko: 'UC San Diego · Admissions Reader' }
   ],
 
-  // DEC: placeholder profiles. programs = the program ids each tutor teaches; keep in sync with tutoring/ (data-match).
+  // programs = the program ids each tutor teaches; keep in sync with data-match on tutoring/.
   tutors: [
-    { id: 'tu-1', programs: ['ib', 'alevel', 'igcse'],        name: '[Name]', name_ko: '[이름]', meta: 'Math · Physics',               meta_ko: '수학 · 물리' },
-    { id: 'tu-2', programs: ['ap', 'sat'],                    name: '[Name]', name_ko: '[이름]', meta: 'Calculus · SAT Math',          meta_ko: '미적분 · SAT Math' },
-    { id: 'tu-3', programs: ['sat', 'toefl', 'ap'],           name: '[Name]', name_ko: '[이름]', meta: 'English · Reading & Writing', meta_ko: '영어 · Reading & Writing' },
-    { id: 'tu-4', programs: ['ib', 'alevel', 'igcse', 'ap'],  name: '[Name]', name_ko: '[이름]', meta: 'Chemistry · Biology',          meta_ko: '화학 · 생물' }
+    { id: 'nw', programs: ['ap', 'project'],                       name: 'N. W.', meta: 'MIT · Computer science, math, physics', meta_ko: 'MIT · 컴퓨터과학 · 수학 · 물리' },
+    { id: 'gi', programs: ['ib', 'alevel', 'ap', 'project'],       name: 'G. I.', meta: 'LSE · Politics, research, academic writing', meta_ko: 'LSE · 정치학 · 리서치 · 학술 글쓰기' }
   ],
 
   // Programs on the tutoring page and the request form. required = the form asks for the subject before sending.

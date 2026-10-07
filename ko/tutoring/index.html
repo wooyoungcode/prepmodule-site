@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="../../assets/site.css?v=ca1edfe2">
+<link rel="stylesheet" href="../../assets/site.css?v=10c62e99">
 <script src="../../assets/site.js?v=101b590d" defer></script>
 </head>
 <body>
@@ -270,101 +270,61 @@
       <p class="pick-status" id="pickStatus" aria-live="polite" data-all="전체 튜터" data-for="{label} 튜터" data-none="{label} 공개 프로필이 아직 없어요"><span>전체 튜터</span> <button type="button" class="clear" data-pick-clear>전체 보기</button></p>
 
       <div class="profiles">
-        <article class="profile reveal" id="expert-tu-1" data-match="ib alevel igcse" data-name="[이름]">
-          <div class="photo ap"><span class="idx">TU · 01</span><span class="big" aria-hidden="true">IB</span><small>사진 · 4:5</small></div>
+        <article class="profile reveal" id="expert-nw" data-match="ap" data-name="N. W.">
+          <div class="photo has-img"><img src="../../assets/img/people/nw.jpg" alt="N. W. 프로필 사진" width="640" height="800" loading="lazy"></div>
           <div>
-            <div class="role">과목 튜터 · Math · Physics</div>
-            <h3>[이름]</h3>
-            <p class="meta">[출신 학교] · [학위] · [담당 과정 · 과목]</p>
+            <div class="role">과목 튜터 · 컴퓨터과학 · 수학 · 물리</div>
+            <h3>N. W.</h3>
+            <p class="meta">MIT — 컴퓨터과학 학사(S.B.)</p>
             <div class="areas" aria-label="과정과 과목">
-              <span class="chip">IB Math AA HL</span><span class="chip">A-Level Maths</span><span class="chip">IGCSE Physics</span>
+              <span class="chip">AP Computer Science A</span><span class="chip">AP Physics C</span><span class="chip">AP Calculus BC</span><span class="chip">AP Statistics</span><span class="chip">코딩 프로젝트</span>
             </div>
             <details>
               <summary>경력 · 수업 방식 <span class="plus" aria-hidden="true">+</span></summary>
-              <p class="bio">[두세 문장, 본인의 말로: 무엇을 공부했는지, 어떤 과정을 얼마나 가르쳤는지, 주로 어떤 학생을 만났는지.]</p>
-              <p class="bio">[설명 방식 — 예: 채점 기준에서 출발해 개념으로 거슬러 올라가요.]</p>
+              <p class="bio">MIT에서 컴퓨터과학 학사(S.B.)를 받았어요. 재학 중 CSAIL과 뇌인지과학과에서 자연어처리 연구에 참여했고, 동료 심사 논문도 발표했어요.</p>
+              <p class="bio">중요한 시험을 앞둔 학생에게 STEM 과목을 가르쳐 왔어요. 약한 기초부터 다시 세우고, 시간 제한 안에서 푸는 연습까지 이어지는 계획을 짜요.</p>
               <ul class="helps" aria-label="도움을 줄 수 있는 것">
-                <li>IB Math AA · AI (SL · HL), IA 계획 포함</li>
-                <li>시험 기관 출제 범위에 맞춘 A-Level Maths · Physics</li>
-                <li>IGCSE Physics · Mathematics (Core · Extended)</li>
+                <li>AP Computer Science, Physics C(역학 · 전자기), Calculus BC, Statistics</li>
+                <li>아이디어에서 작동하는 코드까지, 코딩 · 머신러닝 프로젝트</li>
+                <li>흔들리는 기초를 안정적인 점수로 바꾸는 시험 준비</li>
               </ul>
+              <dl class="pfacts">
+                <div><dt>시험 점수</dt><dd>AP Computer Science 5 · AP Physics C Mechanics 5 · AP Physics C E&amp;M 5 · AP Statistics 5 · AP Calculus BC 5 · ACT 36</dd></div>
+                <div><dt>지도 경력</dt><dd>Grade Potential — 튜터, 2026–현재<br>ENGin — 영어(ESL) 봉사 튜터, 2023</dd></div>
+                <div><dt>학력</dt><dd>MIT — 컴퓨터과학 학사(S.B.), GPA 3.9/4.0</dd></div>
+              </dl>
               <div class="actions">
-                <a class="btn btn-dark" href="../../ko/request/?service=tutoring&amp;expertId=tu-1" data-carry>튜터 찾기 — [이름] 희망 <span class="arr" aria-hidden="true">→</span></a>
+                <a class="btn btn-dark" href="../../ko/request/?service=tutoring&amp;expertId=nw" data-carry>튜터 찾기 — N. W. 희망 <span class="arr" aria-hidden="true">→</span></a>
               </div>
             </details>
           </div>
         </article>
 
-        <article class="profile reveal" id="expert-tu-2" data-match="ap sat" data-name="[이름]">
-          <div class="photo sat"><span class="idx">TU · 02</span><span class="big" aria-hidden="true">AP</span><small>사진 · 4:5</small></div>
+        <article class="profile reveal" id="expert-gi" data-match="ib alevel ap" data-name="G. I.">
+          <div class="photo has-img"><img src="../../assets/img/people/gi.jpg" alt="G. I. 프로필 사진" width="640" height="800" loading="lazy"></div>
           <div>
-            <div class="role">과목 튜터 · Calculus · SAT Math</div>
-            <h3>[이름]</h3>
-            <p class="meta">[출신 학교] · [학위] · [담당 과정 · 과목]</p>
+            <div class="role">과목 튜터 · 정치학 · 리서치 · 학술 글쓰기</div>
+            <h3>G. I.</h3>
+            <p class="meta">LSE — 정치학 박사과정</p>
             <div class="areas" aria-label="과정과 과목">
-              <span class="chip">AP Calculus BC</span><span class="chip">AP Statistics</span><span class="chip">SAT Math</span>
+              <span class="chip">정치 · 정부</span><span class="chip">IB Global Politics</span><span class="chip">A-Level Politics</span><span class="chip">리서치 프로젝트</span><span class="chip">학술 글쓰기</span>
             </div>
             <details>
               <summary>경력 · 수업 방식 <span class="plus" aria-hidden="true">+</span></summary>
-              <p class="bio">[두세 문장, 본인의 말로.]</p>
-              <p class="bio">[설명 방식 — 예: 한 문제를 천천히 푼 다음, 같은 개념을 시간 안에 다시 풀어요.]</p>
+              <p class="bio">런던정경대(LSE) 정치학 박사과정이자 옥스퍼드대 너필드 칼리지의 연구원이에요. 정치 행태와 정치경제를 연구하고, 인공지능이 사람들의 정치적 견해에 미치는 영향도 다뤄요.</p>
+              <p class="bio">LSE에서는 대학원 조교로 유럽 정치와 유럽연합(EU) 학부 수업을 가르치고 있어요.</p>
               <ul class="helps" aria-label="도움을 줄 수 있는 것">
-                <li>학기 중 AP Calculus AB · BC, Statistics</li>
-                <li>5월 시험 전 서술형 문항 연습</li>
-                <li>어려운 두 번째 모듈까지 포함한 SAT Math</li>
+                <li>정치 · 정부 과목 — 비교정치, 유럽 정치, EU 정치</li>
+                <li>리서치 프로젝트: 좋은 질문 세우기, 연구 설계, 데이터 다루기</li>
+                <li>학술 글쓰기: 논증을 세우고 근거를 쓰는 법</li>
               </ul>
+              <dl class="pfacts">
+                <div><dt>지도 경력</dt><dd>LSE 정부학과 — 대학원 조교, 2024–현재<br>Politics and Institutions in Europe · Government, Politics and Public Policy in the EU</dd></div>
+                <div><dt>연구</dt><dd>옥스퍼드대 너필드 칼리지 — 연구원, 2023–현재</dd></div>
+                <div><dt>학력</dt><dd>LSE — 박사과정(2023–) · 정치학 MRes(Distinction) · 비교정치 MSc(Distinction)<br>Sant’Anna School of Advanced Studies · 피렌체대 — 석사 · 피사대 — 학사</dd></div>
+              </dl>
               <div class="actions">
-                <a class="btn btn-dark" href="../../ko/request/?service=tutoring&amp;expertId=tu-2" data-carry>튜터 찾기 — [이름] 희망 <span class="arr" aria-hidden="true">→</span></a>
-              </div>
-            </details>
-          </div>
-        </article>
-
-        <article class="profile reveal" id="expert-tu-3" data-match="sat toefl ap" data-name="[이름]">
-          <div class="photo ap"><span class="idx">TU · 03</span><span class="big" aria-hidden="true">SAT</span><small>사진 · 4:5</small></div>
-          <div>
-            <div class="role">과목 튜터 · English · Reading &amp; Writing</div>
-            <h3>[이름]</h3>
-            <p class="meta">[출신 학교] · [학위] · [담당 과정 · 과목]</p>
-            <div class="areas" aria-label="과정과 과목">
-              <span class="chip">SAT Reading &amp; Writing</span><span class="chip">TOEFL</span><span class="chip">AP English Language</span>
-            </div>
-            <details>
-              <summary>경력 · 수업 방식 <span class="plus" aria-hidden="true">+</span></summary>
-              <p class="bio">[두세 문장, 본인의 말로.]</p>
-              <p class="bio">[설명 방식 — 예: 출제자가 읽은 방식대로 지문을 읽어요.]</p>
-              <ul class="helps" aria-label="도움을 줄 수 있는 것">
-                <li>문제 유형별 SAT Reading &amp; Writing</li>
-                <li>시간 제한 연습과 피드백으로 준비하는 TOEFL Speaking · Writing</li>
-                <li>AP English Language 에세이</li>
-              </ul>
-              <div class="actions">
-                <a class="btn btn-dark" href="../../ko/request/?service=tutoring&amp;expertId=tu-3" data-carry>튜터 찾기 — [이름] 희망 <span class="arr" aria-hidden="true">→</span></a>
-              </div>
-            </details>
-          </div>
-        </article>
-
-        <article class="profile reveal" id="expert-tu-4" data-match="ib alevel igcse ap" data-name="[이름]">
-          <div class="photo sat"><span class="idx">TU · 04</span><span class="big" aria-hidden="true">A</span><small>사진 · 4:5</small></div>
-          <div>
-            <div class="role">과목 튜터 · Chemistry · Biology</div>
-            <h3>[이름]</h3>
-            <p class="meta">[출신 학교] · [학위] · [담당 과정 · 과목]</p>
-            <div class="areas" aria-label="과정과 과목">
-              <span class="chip">IB Chemistry</span><span class="chip">A-Level Biology</span><span class="chip">AP Chemistry</span>
-            </div>
-            <details>
-              <summary>경력 · 수업 방식 <span class="plus" aria-hidden="true">+</span></summary>
-              <p class="bio">[두세 문장, 본인의 말로.]</p>
-              <p class="bio">[설명 방식 — 예: 원리를 시험 문제와 연결해서 설명해요.]</p>
-              <ul class="helps" aria-label="도움을 줄 수 있는 것">
-                <li>IB Chemistry · Biology (SL · HL)</li>
-                <li>A-Level Chemistry · Biology 실험과 시험지</li>
-                <li>AP Chemistry, IGCSE 과학</li>
-              </ul>
-              <div class="actions">
-                <a class="btn btn-dark" href="../../ko/request/?service=tutoring&amp;expertId=tu-4" data-carry>튜터 찾기 — [이름] 희망 <span class="arr" aria-hidden="true">→</span></a>
+                <a class="btn btn-dark" href="../../ko/request/?service=tutoring&amp;expertId=gi" data-carry>튜터 찾기 — G. I. 희망 <span class="arr" aria-hidden="true">→</span></a>
               </div>
             </details>
           </div>
