@@ -13,12 +13,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/site.css?v=e6309174">
-<script src="./assets/site.js?v=c9b56187" defer></script>
+<link rel="stylesheet" href="./assets/site.css?v=7466a5d3">
+<script src="./assets/site.js?v=82dfd32b" defer></script>
 </head>
 <body>
 
-<header class="nav" id="nav">
+<header class="nav light" id="nav">
   <div class="wrap">
     <a class="wordmark" href="./" aria-label="PrepModule — home"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">TUTORING · ADMISSIONS</span></a>
     <div class="nav-right">
@@ -42,105 +42,92 @@
 </header>
 <main>
 
-  <!-- H01 — what this is, in a parent's words: course chips + sample report + competitions/admissions rows. Tutoring leads; admissions stays its own line, button and row. -->
-  <section class="hero hero--photo hero--home dark" id="hero" style="--photo: url('https://images.unsplash.com/photo-1741524601748-e234bdf4806e?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.38&q=65&w=2000&h=1150'); --photo-sm: url('https://images.unsplash.com/photo-1741524601748-e234bdf4806e?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.38&q=65&w=900&h=1400'); --photo-pos: center; --shade: 1;" aria-labelledby="hero-title">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow">For <span style="white-space:nowrap">international-school</span> students, anywhere</span>
-        <h1 id="hero-title">AP, IB &amp; SAT<br><em>1:1 tutoring</em><span class="h1-sub"><span class="plus" aria-hidden="true">+</span> advice from former US admissions officers</span></h1>
-        <p class="lead">1:1 online lessons with a tutor matched to you, plus regular lesson reports for parents. Admissions sessions are booked separately — sign up for one, or both.</p>
-        <ul class="hero-courses" aria-label="Tutoring by course">
-          <li><a class="course" href="./tutoring/?program=ap" aria-label="AP tutoring">AP<span class="arr" aria-hidden="true">→</span></a></li>
-          <li><a class="course" href="./tutoring/?program=ib" aria-label="IB tutoring">IB<span class="arr" aria-hidden="true">→</span></a></li>
-          <li><a class="course" href="./tutoring/?program=alevel" aria-label="A-Level tutoring">A-Level<span class="arr" aria-hidden="true">→</span></a></li>
-          <li><a class="course" href="./tutoring/?program=igcse" aria-label="IGCSE tutoring">IGCSE<span class="arr" aria-hidden="true">→</span></a></li>
-          <li><a class="course" href="./tutoring/?program=sat" aria-label="SAT tutoring">SAT<span class="arr" aria-hidden="true">→</span></a></li>
-          <li><a class="course" href="./tutoring/?program=toefl" aria-label="TOEFL tutoring">TOEFL<span class="arr" aria-hidden="true">→</span></a></li>
-        </ul>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="./request/?service=tutoring">Find the right tutor <span class="arr" aria-hidden="true">→</span></a>
-          <a class="btn btn-outline" href="./request/?service=admissions">Book an admissions session</a>
-        </div>
-      </div>
+  <!-- H01 — one message, one action: who you learn from. Light hero, centred, no side column, no photo. -->
+  <section class="hero hero--light hero--center" id="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-center">
+      <span class="eyebrow">For <span style="white-space:nowrap">international-school</span> students, anywhere</span>
+      <h1 id="hero-title">Learn from<br><em>top university tutors</em>.<br>Get guidance from<br><em>former admissions officers</em>.</h1>
+      <p class="hero-sub">AP · IB · SAT tutoring <span class="sep" aria-hidden="true">|</span> U.S. college admissions consulting</p>
+      <a class="btn btn-primary hero-btn" href="#experts">Meet our experts <span class="arr" aria-hidden="true">↓</span></a>
+    </div>
+  </section>
 
-      <div class="hero-side">
-        <a class="hero-report" href="./tutoring/#reports" aria-label="Sample tutoring report — more about lesson reports">
-          <figure class="report report--mini" aria-hidden="true">
-            <div class="report-head"><span class="title">Tutoring report</span><span class="rh-r"><span class="to">For parents</span><span class="tag">Sample</span></span></div>
-            <div class="report-who"><strong>Grade 10 · IB Math AA HL</strong><span>Lesson 6 · 60 min</span></div>
-            <dl class="report-rows">
-              <div><dt>Covered</dt><dd>Integration by substitution · two Paper 2 questions</dd></div>
-              <div><dt>Next lesson</dt><dd>Integration by parts · timed practice</dd></div>
-            </dl>
-          </figure>
-        </a>
-        <a class="banner" href="./competitions/">
-          <div><h2>Competition prep</h2><p>AMC 10/12, the John Locke essay prize and more</p></div>
-          <span class="arr" aria-hidden="true">→</span>
-        </a>
-        <a class="banner" href="./admissions/">
-          <div><h2>Admissions sessions</h2><p>1:1 on Zoom with former US admissions officers · in English</p></div>
-          <span class="arr" aria-hidden="true">→</span>
-        </a>
+  <!-- H01b — where the experts studied and worked, two groups. Text wordmarks only (no logos); lists live in the strings files. -->
+  <section class="uniband" aria-label="Where our experts studied and worked">
+    <div class="uniband-grid">
+      <div class="uni-group">
+        <p class="uni-label">Where our tutors studied and work</p>
+        <ul class="uni-list"><li>MIT</li><li>LSE</li><li>University of Oxford</li></ul>
+      </div>
+      <div class="uni-group">
+        <p class="uni-label">Where our admissions officers worked</p>
+        <ul class="uni-list"><li>Harvard College</li><li>Johns Hopkins</li><li>Northeastern</li><li>UC San Diego</li></ul>
       </div>
     </div>
   </section>
 
-  <!-- proof bar: real credentials from the profiles only, attributed by initials -->
-  <section class="proofbar dark" aria-label="Who teaches and advises">
+  <!-- H02 — experts carousel. Role is always labelled; each card links to the matching landing #expert-{id}. -->
+  <section class="section xsec" id="experts" aria-labelledby="experts-title">
     <div class="wrap">
-      <p class="proofbar-label">Who teaches and advises</p>
-      <div class="proofbar-grid">
-        <div class="pstat"><b>MIT</b><span>S.B. in Computer Science · five AP 5s · ACT&nbsp;36&nbsp;— <b>tutor N.&nbsp;W.</b></span></div>
-        <div class="pstat"><b>5,500<i>+</i></b><span>applications read at Harvard College&nbsp;— <b>former admissions officer N.&nbsp;G.</b></span></div>
-        <div class="pinst"><span class="pinst-label">Where our tutors and admissions officers studied and worked</span><p class="pinst-names"><span>MIT</span> <span>LSE</span> <span>Oxford</span> <span>Harvard College</span> <span>Johns Hopkins</span> <span>UC San Diego</span> <span>Northwestern</span></p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- H02 — experts. Role is always labelled; card links to the matching landing #expert-{id}. -->
-  <section class="section" id="experts" aria-labelledby="experts-title">
-    <div class="wrap">
-      <div class="sec-head reveal">
+      <div class="xhead reveal">
         <div>
-          <span class="eyebrow">Tutors · Admissions officers</span>
-          <h2 id="experts-title">The people who <em>teach and advise</em>.</h2>
+          <span class="eyebrow">Meet our experts</span>
+          <h2 id="experts-title">Tutors and admissions officers <br class="xbr">you can learn from</h2>
+        </div>
+        <div class="xnav">
+          <button type="button" class="xbtn" data-carousel-prev aria-controls="expertsTrack" aria-label="Previous expert"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
+          <button type="button" class="xbtn" data-carousel-next aria-controls="expertsTrack" aria-label="Next expert"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button>
         </div>
       </div>
-      <div class="experts">
-        <article class="card reveal">
-          <div class="photo has-img"><img src="./assets/img/people/nw.jpg" alt="Portrait of N. W." width="640" height="800" loading="lazy"></div>
-          <div>
-            <div class="role">Subject tutor</div>
-            <h3>N. W.</h3>
-          </div>
-          <p class="meta">MIT — S.B. in Computer Science</p>
-          <p class="desc">Computer science, calculus, physics and statistics — taught by an MIT computer science graduate.</p>
-          <a class="mlink" href="./tutoring/#expert-nw">View expertise <span class="arr" aria-hidden="true">→</span></a>
-        </article>
-
-        <article class="card reveal">
-          <div class="photo has-img"><img src="./assets/img/people/gi.jpg" alt="Portrait of G. I." width="640" height="800" loading="lazy"></div>
-          <div>
-            <div class="role">Subject tutor</div>
-            <h3>G. I.</h3>
-          </div>
-          <p class="meta">LSE — PhD candidate in Political Science</p>
-          <p class="desc">Politics, research projects and academic writing — with an LSE political science PhD candidate.</p>
-          <a class="mlink" href="./tutoring/#expert-gi">View expertise <span class="arr" aria-hidden="true">→</span></a>
-        </article>
-
-        <article class="card reveal">
-          <div class="photo has-img"><img src="./assets/img/people/ng.jpg" alt="Portrait of N. G." width="640" height="800" loading="lazy"></div>
-          <div>
-            <div class="role">Former admissions officer</div>
-            <h3>N. G.</h3>
-          </div>
-          <p class="meta">Harvard College · Former Admissions Officer</p>
-          <p class="desc">What would an admissions reader notice in your application? Explore your strengths, your story, and what to focus on next.</p>
-          <a class="mlink" href="./admissions/#expert-ng">View expertise <span class="arr" aria-hidden="true">→</span></a>
-        </article>
-      </div>
+    </div>
+    <div class="xtrack reveal" id="expertsTrack" data-carousel role="region" tabindex="0" aria-label="Our experts — scroll sideways for more">
+     <ul class="xlist">
+      <li class="card xcard">
+        <div class="photo has-img"><img src="./assets/img/people/nw.jpg" alt="Portrait of N. W." width="640" height="800" loading="lazy"></div>
+        <div class="role">Subject tutor</div>
+        <h3>N. W.</h3>
+        <p class="meta">MIT — S.B. in Computer Science</p>
+        <p class="proof">Five AP 5s · ACT 36</p>
+        <p class="desc">Computer science, calculus, physics and statistics — taught by an MIT computer science graduate.</p>
+        <a class="mlink" href="./tutoring/#expert-nw">View expertise <span class="arr" aria-hidden="true">→</span></a>
+      </li>
+      <li class="card xcard">
+        <div class="photo has-img"><img src="./assets/img/people/gi.jpg" alt="Portrait of G. I." width="640" height="800" loading="lazy"></div>
+        <div class="role">Subject tutor</div>
+        <h3>G. I.</h3>
+        <p class="meta">LSE — PhD candidate in Political Science</p>
+        <p class="proof">Research Officer, Nuffield College, Oxford</p>
+        <p class="desc">Politics, research projects and academic writing — with an LSE political science PhD candidate.</p>
+        <a class="mlink" href="./tutoring/#expert-gi">View expertise <span class="arr" aria-hidden="true">→</span></a>
+      </li>
+      <li class="card xcard is-ao">
+        <div class="photo has-img"><img src="./assets/img/people/ng.jpg" alt="Portrait of N. G." width="640" height="800" loading="lazy"></div>
+        <div class="role">Former admissions officer</div>
+        <h3>N. G.</h3>
+        <p class="meta">Harvard College · Former Admissions Officer</p>
+        <p class="proof">5,500+ applications read at Harvard College</p>
+        <p class="desc">What would an admissions reader notice in your application? Explore your strengths, your story, and what to focus on next.</p>
+        <a class="mlink" href="./admissions/#expert-ng">View expertise <span class="arr" aria-hidden="true">→</span></a>
+      </li>
+      <li class="card xcard is-ao">
+        <div class="photo has-img"><img src="./assets/img/people/sh.jpg" alt="Portrait of S. H." width="640" height="800" loading="lazy"></div>
+        <div class="role">Former admissions officer</div>
+        <h3>S. H.</h3>
+        <p class="meta">Johns Hopkins University · Former Senior Assistant Director</p>
+        <p class="proof">20+ years in college admissions and counseling</p>
+        <p class="desc">How do your courses and activities read to an admissions office? Review your application together and keep your own voice in it.</p>
+        <a class="mlink" href="./admissions/#expert-sh">View expertise <span class="arr" aria-hidden="true">→</span></a>
+      </li>
+      <li class="card xcard is-ao">
+        <div class="photo has-img"><img src="./assets/img/people/ds.jpg" alt="Portrait of D. S." width="640" height="800" loading="lazy"></div>
+        <div class="role">Admissions reader</div>
+        <h3>D. S.</h3>
+        <p class="meta">UC San Diego · Admissions Reader</p>
+        <p class="proof">Application reader at UC San Diego · Northwestern alumni interviewer</p>
+        <p class="desc">Connect your interests into one application story — across essays, activities, your college list and interview preparation.</p>
+        <a class="mlink" href="./admissions/#expert-ds">View expertise <span class="arr" aria-hidden="true">→</span></a>
+      </li>
+     </ul>
     </div>
   </section>
 
@@ -249,7 +236,7 @@
             <li><i class="sw dot"></i>What comes back — questions, notes, goals</li>
           </ul>
         </div>
-        <div class="cyc-art"><svg class="cyc" viewBox="0 0 640 580" role="img" aria-labelledby="cyc-title"><title id="cyc-title">How the tutor, the student and parents, and our team work together</title><defs><marker id="cyc-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="rgba(255,255,255,0.9)"/></marker><marker id="cyc-arrow-dot" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8546b"/></marker></defs><path class="cyc-solid" d="M283,192 Q249,300 171,381" marker-end="url(#cyc-arrow)"/><text x="255" y="303" transform="rotate(300.7 255 303)" text-anchor="middle" dominant-baseline="middle">1:1 lessons</text><path class="cyc-dot" d="M155,372 Q182,260 267,183" marker-end="url(#cyc-arrow-dot)"/><text x="178" y="257" transform="rotate(-59.3 178 257)" text-anchor="middle" dominant-baseline="middle">Questions &amp; feedback</text><path class="cyc-dot" d="M373,183 Q458,260 485,372" marker-end="url(#cyc-arrow-dot)"/><text x="462" y="257" transform="rotate(59.3 462 257)" text-anchor="middle" dominant-baseline="middle">Lesson notes</text><path class="cyc-solid" d="M469,381 Q391,300 357,192" marker-end="url(#cyc-arrow)"/><text x="385" y="303" transform="rotate(59.3 385 303)" text-anchor="middle" dominant-baseline="middle">Matching &amp; plan</text><path class="cyc-solid" d="M434,443 Q320,417 206,443" marker-end="url(#cyc-arrow)"/><text x="320" y="410" transform="rotate(360.0 320 410)" text-anchor="middle" dominant-baseline="middle">Tutoring reports</text><path class="cyc-dot" d="M206,461 Q320,495 434,461" marker-end="url(#cyc-arrow-dot)"/><text x="320" y="500" transform="rotate(0.0 320 500)" text-anchor="middle" dominant-baseline="middle">Goals &amp; check-ins</text><circle class="cyc-halo" cx="320" cy="112" r="78"/><circle class="cyc-node" cx="320" cy="112" r="68"/><text class="cyc-name" x="320" y="112" text-anchor="middle"><tspan x="320" dy="-0.15em">Personal</tspan><tspan x="320" dy="1.2em">tutor</tspan></text><circle class="cyc-halo" cx="118" cy="452" r="78"/><circle class="cyc-node" cx="118" cy="452" r="68"/><text class="cyc-name" x="118" y="452" text-anchor="middle"><tspan x="118" dy="-0.15em">Student</tspan><tspan x="118" dy="1.2em">&amp; parents</tspan></text><circle class="cyc-halo" cx="522" cy="452" r="78"/><circle class="cyc-node" cx="522" cy="452" r="68"/><text class="cyc-name" x="522" y="452" text-anchor="middle"><tspan x="522" dy="-0.15em">PrepModule</tspan><tspan x="522" dy="1.2em">team</tspan></text></svg></div>
+        <div class="cyc-art"><svg class="cyc" viewBox="0 0 640 580" role="img" aria-labelledby="cyc-title"><title id="cyc-title">How the tutor, the student and parents, and our team work together</title><defs><marker id="cyc-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="rgba(255,255,255,0.9)"/></marker><marker id="cyc-arrow-dot" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f06a80"/></marker></defs><path class="cyc-solid" d="M283,192 Q249,300 171,381" marker-end="url(#cyc-arrow)"/><text x="255" y="303" transform="rotate(300.7 255 303)" text-anchor="middle" dominant-baseline="middle">1:1 lessons</text><path class="cyc-dot" d="M155,372 Q182,260 267,183" marker-end="url(#cyc-arrow-dot)"/><text x="178" y="257" transform="rotate(-59.3 178 257)" text-anchor="middle" dominant-baseline="middle">Questions &amp; feedback</text><path class="cyc-dot" d="M373,183 Q458,260 485,372" marker-end="url(#cyc-arrow-dot)"/><text x="462" y="257" transform="rotate(59.3 462 257)" text-anchor="middle" dominant-baseline="middle">Lesson notes</text><path class="cyc-solid" d="M469,381 Q391,300 357,192" marker-end="url(#cyc-arrow)"/><text x="385" y="303" transform="rotate(59.3 385 303)" text-anchor="middle" dominant-baseline="middle">Matching &amp; plan</text><path class="cyc-solid" d="M434,443 Q320,417 206,443" marker-end="url(#cyc-arrow)"/><text x="320" y="410" transform="rotate(360.0 320 410)" text-anchor="middle" dominant-baseline="middle">Tutoring reports</text><path class="cyc-dot" d="M206,461 Q320,495 434,461" marker-end="url(#cyc-arrow-dot)"/><text x="320" y="500" transform="rotate(0.0 320 500)" text-anchor="middle" dominant-baseline="middle">Goals &amp; check-ins</text><circle class="cyc-halo" cx="320" cy="112" r="78"/><circle class="cyc-node" cx="320" cy="112" r="68"/><text class="cyc-name" x="320" y="112" text-anchor="middle"><tspan x="320" dy="-0.15em">Personal</tspan><tspan x="320" dy="1.2em">tutor</tspan></text><circle class="cyc-halo" cx="118" cy="452" r="78"/><circle class="cyc-node" cx="118" cy="452" r="68"/><text class="cyc-name" x="118" y="452" text-anchor="middle"><tspan x="118" dy="-0.15em">Student</tspan><tspan x="118" dy="1.2em">&amp; parents</tspan></text><circle class="cyc-halo" cx="522" cy="452" r="78"/><circle class="cyc-node" cx="522" cy="452" r="68"/><text class="cyc-name" x="522" y="452" text-anchor="middle"><tspan x="522" dy="-0.15em">PrepModule</tspan><tspan x="522" dy="1.2em">team</tspan></text></svg></div>
       </div>
     </div>
   </section>

@@ -20,11 +20,11 @@
   if (x) x.addEventListener('click', function () { banner.hidden = true; document.documentElement.style.removeProperty('--nav-h'); try { localStorage.setItem('pm-lang', 'en'); } catch (e) {} });
 })();
 
-// Nav: dark while the hero is under it, light afterwards
+// Nav: dark while the hero is under it, light afterwards (a light hero keeps it light throughout)
 (function () {
   var nav = document.getElementById('nav'), hero = document.getElementById('hero');
   if (!nav) return;
-  if (!hero || !('IntersectionObserver' in window)) { nav.classList.add('light'); return; }
+  if (!hero || hero.classList.contains('hero--light') || !('IntersectionObserver' in window)) { nav.classList.add('light'); return; }
   new IntersectionObserver(function (entries) {
     nav.classList.toggle('light', !entries[0].isIntersecting);
   }, { rootMargin: '-' + (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 64) + 'px 0px 0px 0px', threshold: 0 }).observe(hero);
@@ -167,6 +167,45 @@
   if (document.readyState === 'complete') openFromHash(); else window.addEventListener('load', openFromHash);
 })();
 
+
+// Experts carousel (home): prev/next scroll by one card; an arrow is marked disabled at either end.
+// aria-disabled (not disabled) so a focused arrow keeps focus when it reaches the end.
+(function () {
+  var track = document.querySelector('[data-carousel]'); if (!track) return;
+  var prev = document.querySelector('[data-carousel-prev]'), next = document.querySelector('[data-carousel-next]');
+  var reduce = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+  // snap positions: each card's start, measured from the first card (the first card sits at scrollLeft 0)
+  function stops() {
+    var cards = track.querySelectorAll('li'); if (!cards.length) return [0];
+    var x0 = cards[0].getBoundingClientRect().left + track.scrollLeft;
+    return Array.prototype.map.call(cards, function (c) { return Math.round(c.getBoundingClientRect().left + track.scrollLeft - x0); });
+  }
+  var pending = null;   // where an arrow click is already scrolling to, so a quick second click goes one card further
+  function sync(e) {
+    if (e && e.type === 'scrollend') pending = null;
+    var max = track.scrollWidth - track.clientWidth - 2;
+    if (prev) prev.setAttribute('aria-disabled', String(track.scrollLeft <= 2));
+    if (next) next.setAttribute('aria-disabled', String(track.scrollLeft >= max));
+  }
+  function go(dir, btn) {
+    if (btn.getAttribute('aria-disabled') === 'true') return;
+    var max = track.scrollWidth - track.clientWidth;
+    var x = pending !== null ? Math.min(pending, max) : track.scrollLeft, list = stops(), target = dir > 0 ? null : 0;
+    list.forEach(function (s) { if (dir > 0 && target === null && s > x + 2) target = s; if (dir < 0 && s < x - 2) target = s; });
+    if (target === null) target = max;
+    target = Math.max(0, Math.min(target, max));
+    if (dir > 0 && target <= x + 2) return;   // already heading for the end
+    pending = target;
+    track.scrollTo({ left: target, behavior: reduce.matches ? 'auto' : 'smooth' });
+    setTimeout(function () { if (pending === target) pending = null; sync(); }, 900);   // in case no scrollend arrives (older browsers, a backgrounded tab)
+  }
+  if (prev) prev.addEventListener('click', function () { go(-1, prev); });
+  if (next) next.addEventListener('click', function () { go(1, next); });
+  track.addEventListener('scroll', sync, { passive: true });
+  track.addEventListener('scrollend', sync);
+  window.addEventListener('resize', sync);
+  sync();
+})();
 
 // Floating chat buttons — KakaoTalk and WhatsApp, bottom right on every page.
 // Fill in the two values below; until then the buttons show and say the link is coming soon.
