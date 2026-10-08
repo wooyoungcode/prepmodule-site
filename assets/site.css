@@ -1277,6 +1277,20 @@ html[lang=en] #hero.hero--home .h1-sub { font-size: max(0.33em, 18px); }
 /* tutoring picker: a pick with no public profile already shows everyone, so no 'Show all' beside it */
 .pick-status.no-match .clear { display: none; }
 
+/* mini report header: keep the title on one line on narrow phones */
+.report--mini .report-head .title { white-space: nowrap; }
+@media (max-width: 400px) {
+  .report--mini .report-head { gap: 8px; padding-right: 0; }
+  .report--mini .rh-r { gap: 6px; }
+  .report--mini .to { font-size: 11.5px; }
+  .report--mini .report-head .tag { padding: 3px 7px; }
+}
+
+/* phones: keep the arrow on the course buttons so they read as links */
+@media (max-width: 720px) {
+  .hero-courses .course .arr, #hero.hero--home .hero-courses .course .arr { display: inline; margin-left: 6px; font-size: 12px; opacity: .7; }
+}
+
 /* KEEP LAST: phone guard (media queries add no specificity, so this must stay the final block in the file) */
 @media (max-width: 720px) {
   .hero h1 { font-size: clamp(38px, 10.5vw, 48px); }
