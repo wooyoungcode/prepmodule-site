@@ -1201,6 +1201,82 @@ html[lang=ko] :is(.reports h2, .cyc-copy h2, .team-intro h2) { font-weight: 800;
 /* tutoring: 'Show all' only once a program is picked */
 body:not(:has([data-option][aria-pressed="true"])) .pick-status .clear { display: none; }
 
+/* ===== Home hero clarity pass: say what this is (courses · 1:1 tutoring · + admissions), show a sample report ===== */
+#hero.hero--home { padding-top: calc(var(--nav-h) + clamp(32px, 3.6vw, 48px)); padding-bottom: clamp(40px, 4vw, 52px); }
+@media (min-width: 961px) { #hero.hero--home .hero-grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 48px; align-items: center; } }
+#hero.hero--home .h1-sub { display: block; margin-top: 12px; font-size: max(0.4em, 19px); font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; color: rgba(255,255,255,0.92); }
+html[lang=en] #hero.hero--home .h1-sub { font-size: max(0.33em, 18px); }
+#hero.hero--home .h1-sub .plus { color: var(--accent-lt); margin-right: 0.25em; font-weight: 700; }
+.hero-courses { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.hero-courses li { min-width: 0; }
+.hero-courses .course { display: inline-flex; align-items: center; height: 44px; padding: 0 14px; border-radius: var(--r); border: 1px solid rgba(255,255,255,0.34); background: rgba(21,13,16,0.55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: #fff; font-family: var(--sans); font-size: 16px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; text-shadow: none; transition: background .15s, color .15s, border-color .15s; }
+.hero-courses .course .arr { margin-left: 8px; font-size: 13px; opacity: .6; transition: opacity .15s; }
+.hero-courses .course:hover, .hero-courses .course:focus-visible { background: #fff; border-color: #fff; color: var(--accent); }
+.hero-courses .course:hover .arr, .hero-courses .course:focus-visible .arr { opacity: 1; }
+#hero.hero--home .hero-actions { margin-top: 22px; }
+#hero.hero--home .lead { margin-top: 18px; }
+/* EN runs a little taller than KO; keep the proof figures above an 800px fold */
+@media (min-width: 721px) {
+  html[lang=en] #hero.hero--home h1 { font-size: clamp(44px, 5.4vw, 70px); }
+  html[lang=en] #hero.hero--home .lead { font-size: 17px; line-height: 1.55; }
+  html[lang=en] #hero.hero--home .hero-courses, html[lang=en] #hero.hero--home .hero-actions { margin-top: 18px; }
+}
+#hero.hero--home .hero-side .banner p { max-width: none; }
+#hero.hero--home .hero-side { grid-auto-rows: auto; align-self: center; gap: 10px; }
+.hero-report { display: block; min-width: 0; color: inherit; border-radius: 10px; transition: transform .15s; }
+.hero-report:hover { transform: translateY(-2px); }
+.report--mini { padding: 18px 20px 8px; }
+.report--mini .report-head { gap: 12px; padding-bottom: 10px; }
+.report--mini .report-head .title { font-size: 17px; }
+.report--mini .rh-r { display: flex; align-items: center; gap: 8px; }
+.report--mini .to { font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+.report--mini .report-who { padding: 10px 0; }
+.report--mini .report-who strong { font-size: 14px; }
+.report--mini .report-rows > div { grid-template-columns: 88px 1fr; padding: 10px 0; }
+#hero.hero--home + .proofbar .proofbar-label { padding-top: 22px; }
+/* the longer wordmark tag stays on one line, and gives way before it squeezes the nav */
+.wordmark .tag { white-space: nowrap; }
+@media (max-width: 1100px) { .wordmark .tag { display: none; } }
+/* tablet: hero is one column; report on the left, the two rows stacked beside it */
+@media (min-width: 721px) and (max-width: 960px) {
+  #hero.hero--home .hero-side { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+  #hero.hero--home .hero-report { grid-row: span 2; }
+  .report--mini { max-width: none; }
+}
+/* phone: chips in a 3×2 grid, buttons stacked full width, room on the right for the chat buttons */
+@media (max-width: 720px) {
+  #hero.hero--home { padding-top: calc(var(--nav-h) + 28px); padding-bottom: 64px; }
+  #hero.hero--home .hero-grid { gap: 28px; }
+  #hero.hero--home .h1-sub { font-size: 16px; margin-top: 10px; }
+  html[lang=en] #hero.hero--home .h1-sub { font-size: 15px; }
+  #hero.hero--home .lead, html[lang=ko] #hero.hero--home .lead { font-size: 15.5px; margin-top: 18px; }
+  .hero-courses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 18px; }
+  .hero-courses .course { display: flex; width: 100%; justify-content: center; padding: 0 8px; }
+  .hero-courses .course .arr { display: none; }
+  #hero.hero--home .hero-actions { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; margin-top: 18px; }
+  #hero.hero--home .hero-actions .btn { justify-content: center; white-space: normal; text-align: center; }
+  .report--mini { max-width: none; padding: 16px 16px 6px; }
+  .report--mini .report-rows > div { grid-template-columns: 76px 1fr; gap: 10px; }
+  .report--mini .report-rows dd { padding-right: 44px; }
+  .report--mini .report-head, .report--mini .report-who { padding-right: 44px; }
+  #hero.hero--home .hero-side .banner { padding-right: 64px; }
+  #hero.hero--home + .proofbar .pstat span b { white-space: normal; }
+}
+
+/* home hero follow-ups: equal side rows on desktop, six chips on one row at 961–1100px, proof attributions above a short-laptop fold */
+@media (min-width: 961px) { #hero.hero--home .hero-side { grid-template-rows: auto 1fr 1fr; } }
+@media (min-width: 961px) and (max-width: 1100px) {
+  #hero.hero--home .hero-courses { gap: 6px; }
+  #hero.hero--home .hero-courses .course { padding: 0 10px; }
+  #hero.hero--home .hero-courses .course .arr { display: none; }
+}
+@media (min-width: 961px) and (max-height: 820px) {
+  #hero.hero--home { padding-top: calc(var(--nav-h) + 24px); padding-bottom: 28px; }
+  #hero.hero--home + .proofbar .proofbar-label { padding-top: 14px; }
+}
+/* tutoring picker: a pick with no public profile already shows everyone, so no 'Show all' beside it */
+.pick-status.no-match .clear { display: none; }
+
 /* KEEP LAST: phone guard (media queries add no specificity, so this must stay the final block in the file) */
 @media (max-width: 720px) {
   .hero h1 { font-size: clamp(38px, 10.5vw, 48px); }

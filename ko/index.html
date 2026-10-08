@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PrepModule — 입학사정관 상담 · 교과 튜터링</title>
-<meta name="description" content="미국 대학 준비에 필요한 전문가를 만나는 곳이에요. 전직 입학사정관 상담과 AP · IB · A-Level · IGCSE · SAT · TOEFL 튜터링을 각각 신청할 수 있어요.">
+<title>PrepModule — AP·IB·SAT 1:1 온라인 과외 · 입학사정관 상담</title>
+<meta name="description" content="국제학교·해외 거주 학생을 위한 AP · IB · A-Level · IGCSE · SAT · TOEFL 1:1 온라인 과외와 전직 미국 대학 입학사정관 Zoom 상담이에요. 필요한 것만 따로 신청할 수 있어요.">
 <link rel="canonical" href="https://prepmodule.com/ko/">
 <link rel="alternate" hreflang="en" href="https://prepmodule.com/">
 <link rel="alternate" hreflang="ko" href="https://prepmodule.com/ko/">
@@ -14,14 +14,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="../assets/site.css?v=faf311e0">
-<script src="../assets/site.js?v=5a5ea193" defer></script>
+<link rel="stylesheet" href="../assets/site.css?v=37e4b01f">
+<script src="../assets/site.js?v=c9b56187" defer></script>
 </head>
 <body>
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="wordmark" href="../ko/" aria-label="PrepModule — 홈"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
+    <a class="wordmark" href="../ko/" aria-label="PrepModule — 홈"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">TUTORING · ADMISSIONS</span></a>
     <div class="nav-right">
       <a class="nav-cta-sm" href="../ko/request/">시작하기</a>
       <a class="lang-switch" href="../" hreflang="en" lang="en" data-lang-switch="en" aria-label="View in English">EN</a>
@@ -29,9 +29,9 @@
     </div>
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
-        <li><a href="../ko/admissions/">입학 상담</a></li>
         <li><a href="../ko/tutoring/">튜터링</a></li>
         <li><a href="../ko/competitions/">경시대회</a></li>
+        <li><a href="../ko/admissions/">입학 상담</a></li>
         <li class="cta"><a href="../ko/request/">시작하기</a></li>
       </ul>
     </nav>
@@ -40,25 +40,44 @@
 </header>
 <main>
 
-  <!-- H01 — brand area + product banners. Both products visible at once, no carousel. -->
-  <section class="hero hero--photo dark" id="hero" style="--photo: url('https://images.unsplash.com/photo-1741524601748-e234bdf4806e?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.38&q=65&w=2000&h=1150'); --photo-sm: url('https://images.unsplash.com/photo-1741524601748-e234bdf4806e?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.38&q=65&w=900&h=1400'); --photo-pos: center; --shade: 1;" aria-labelledby="hero-title">
+  <!-- H01 — what this is, in a parent's words: course chips + sample report + competitions/admissions rows. Tutoring leads; admissions stays its own line, button and row. -->
+  <section class="hero hero--photo hero--home dark" id="hero" style="--photo: url('https://images.unsplash.com/photo-1741524601748-e234bdf4806e?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.38&q=65&w=2000&h=1150'); --photo-sm: url('https://images.unsplash.com/photo-1741524601748-e234bdf4806e?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.38&q=65&w=900&h=1400'); --photo-pos: center; --shade: 1;" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
-      <div>
-        <span class="eyebrow">입학 상담 · 교과 튜터링</span>
-        <h1 id="hero-title">미국 대학 준비에 필요한<br><em>전문가를 만나는 곳</em></h1>
-        <p class="lead">전직 입학사정관에게 준비 방향을 묻거나, 지금 필요한 과목의 튜터를 찾을 수 있어요. 하나만 신청해도, 둘 다 이용해도 돼요.</p>
+      <div class="hero-copy">
+        <span class="eyebrow">국제학교 · 해외 거주 학생을 위한</span>
+        <h1 id="hero-title">AP · IB · SAT<br><em>1:1 온라인 과외</em><span class="h1-sub"><span class="plus" aria-hidden="true">+</span> 전직 미국 대학 입학사정관 상담</span></h1>
+        <p class="lead">잘 맞는 튜터와 1:1 온라인으로 수업하고, 학부모님께 수업 리포트를 정기적으로 보내&nbsp;드려요. 입학사정관 상담은 필요할 때 따로 신청하면 돼요.</p>
+        <ul class="hero-courses" aria-label="과목별 튜터링 보기">
+          <li><a class="course" href="../ko/tutoring/?program=ap" aria-label="AP 튜터링 보기">AP<span class="arr" aria-hidden="true">→</span></a></li>
+          <li><a class="course" href="../ko/tutoring/?program=ib" aria-label="IB 튜터링 보기">IB<span class="arr" aria-hidden="true">→</span></a></li>
+          <li><a class="course" href="../ko/tutoring/?program=alevel" aria-label="A-Level 튜터링 보기">A-Level<span class="arr" aria-hidden="true">→</span></a></li>
+          <li><a class="course" href="../ko/tutoring/?program=igcse" aria-label="IGCSE 튜터링 보기">IGCSE<span class="arr" aria-hidden="true">→</span></a></li>
+          <li><a class="course" href="../ko/tutoring/?program=sat" aria-label="SAT 튜터링 보기">SAT<span class="arr" aria-hidden="true">→</span></a></li>
+          <li><a class="course" href="../ko/tutoring/?program=toefl" aria-label="TOEFL 튜터링 보기">TOEFL<span class="arr" aria-hidden="true">→</span></a></li>
+        </ul>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="../ko/request/">상담 신청하기 <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-primary" href="../ko/request/?service=tutoring">맞는 튜터 추천받기 <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-outline" href="../ko/request/?service=admissions">입학사정관 상담 신청</a>
         </div>
       </div>
 
       <div class="hero-side">
-        <a class="banner" href="../ko/admissions/">
-          <div><h2>입학사정관 상담</h2><p>전직 입학사정관에게 Zoom으로 직접 물어봐요.</p></div>
+        <a class="hero-report" href="../ko/tutoring/#reports" aria-label="수업 리포트 예시 — 수업 리포트 자세히 보기">
+          <figure class="report report--mini" aria-hidden="true">
+            <div class="report-head"><span class="title">수업 리포트</span><span class="rh-r"><span class="to">학부모님께</span><span class="tag">예시</span></span></div>
+            <div class="report-who"><strong>[학생] · IB Math AA HL</strong><span>[날짜] · 6회차 · 60분</span></div>
+            <dl class="report-rows">
+              <div><dt>배운 내용</dt><dd>치환적분 · Paper 2 기출 2문항</dd></div>
+              <div><dt>다음 수업</dt><dd>부분적분 · 시간 재고 풀기</dd></div>
+            </dl>
+          </figure>
+        </a>
+        <a class="banner" href="../ko/competitions/">
+          <div><h2>경시대회 준비</h2><p>AMC 10·12, John Locke 에세이 대회 등</p></div>
           <span class="arr" aria-hidden="true">→</span>
         </a>
-        <a class="banner" href="../ko/tutoring/">
-          <div><h2>교과 튜터링</h2><p>AP&nbsp;·&nbsp;IB ·&nbsp;A-Level ·&nbsp;IGCSE ·&nbsp;SAT ·&nbsp;TOEFL, 프로젝트와 멘토링까지.</p></div>
+        <a class="banner" href="../ko/admissions/">
+          <div><h2>입학사정관 상담</h2><p>전직 미국 입학사정관과 1:1 Zoom · 영어로 진행해요</p></div>
           <span class="arr" aria-hidden="true">→</span>
         </a>
       </div>
@@ -66,13 +85,13 @@
   </section>
 
   <!-- proof bar: real credentials from the profiles only, attributed by initials -->
-  <section class="proofbar dark" aria-label="직접 만나는 전문가">
+  <section class="proofbar dark" aria-label="직접 가르치고 상담하는 사람들">
     <div class="wrap">
-      <p class="proofbar-label">직접 만나는 전문가</p>
+      <p class="proofbar-label">직접 가르치고 상담하는 사람들</p>
       <div class="proofbar-grid">
-        <div class="pstat"><b>5,500<i>+</i></b><span>Harvard College에서 검토한 지원서&nbsp;—&nbsp;<b>N. G.</b></span></div>
-        <div class="pstat"><b>20<i>년 이상</i></b><span>대학 입학 사정 · 진학 상담 경력, 전&nbsp;Johns&nbsp;Hopkins —&nbsp;<b>S. H.</b></span></div>
-        <div class="pinst"><span class="pinst-label">전문가들이 일하고 공부한 곳</span><p class="pinst-names"><span>Harvard College</span> <span>Johns Hopkins</span> <span>UC San Diego</span> <span>Northwestern</span> <span>MIT</span> <span>LSE</span> <span>Oxford</span></p></div>
+        <div class="pstat"><b>MIT</b><span>컴퓨터과학 학사 · AP 다섯 과목 5점 · ACT&nbsp;36&nbsp;—&nbsp;<b>튜터 N.&nbsp;W.</b></span></div>
+        <div class="pstat"><b>5,500<i>+</i></b><span>Harvard College에서 검토한 지원서&nbsp;—&nbsp;<b>전직 입학사정관 N.&nbsp;G.</b></span></div>
+        <div class="pinst"><span class="pinst-label">튜터와 입학사정관이 공부하고 일한 곳</span><p class="pinst-names"><span>MIT</span> <span>LSE</span> <span>Oxford</span> <span>Harvard College</span> <span>Johns Hopkins</span> <span>UC San Diego</span> <span>Northwestern</span></p></div>
       </div>
     </div>
   </section>
@@ -82,22 +101,11 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">전문가</span>
-          <h2 id="experts-title">실제로 만나게 될 <em>전문가</em>예요.</h2>
+          <span class="eyebrow">튜터 · 입학사정관</span>
+          <h2 id="experts-title">실제로 <em>수업하고 상담하는</em> 분들이에요.</h2>
         </div>
       </div>
       <div class="experts">
-        <article class="card reveal">
-          <div class="photo has-img"><img src="../assets/img/people/ng.jpg" alt="N. G. 프로필 사진" width="640" height="800" loading="lazy"></div>
-          <div>
-            <div class="role">전직 입학사정관</div>
-            <h3>N. G.</h3>
-          </div>
-          <p class="meta">Harvard College · 전직 입학사정관</p>
-          <p class="desc">입학사정관은 내 지원서에서 무엇을 볼까요? 강점과 이야기, 다음에 집중할 것을 함께 짚어 봐요.</p>
-          <a class="mlink" href="../ko/admissions/#expert-ng">경력 보기 <span class="arr" aria-hidden="true">→</span></a>
-        </article>
-
         <article class="card reveal">
           <div class="photo has-img"><img src="../assets/img/people/nw.jpg" alt="N. W. 프로필 사진" width="640" height="800" loading="lazy"></div>
           <div>
@@ -119,6 +127,17 @@
           <p class="desc">LSE 정치학 박사과정 튜터와 함께하는 정치 과목 · 리서치 프로젝트 · 학술 글쓰기.</p>
           <a class="mlink" href="../ko/tutoring/#expert-gi">경력 보기 <span class="arr" aria-hidden="true">→</span></a>
         </article>
+
+        <article class="card reveal">
+          <div class="photo has-img"><img src="../assets/img/people/ng.jpg" alt="N. G. 프로필 사진" width="640" height="800" loading="lazy"></div>
+          <div>
+            <div class="role">전직 입학사정관</div>
+            <h3>N. G.</h3>
+          </div>
+          <p class="meta">Harvard College · 전직 입학사정관</p>
+          <p class="desc">입학사정관은 내 지원서에서 무엇을 볼까요? 강점과 이야기, 다음에 집중할 것을 함께 짚어 봐요.</p>
+          <a class="mlink" href="../ko/admissions/#expert-ng">경력 보기 <span class="arr" aria-hidden="true">→</span></a>
+        </article>
       </div>
     </div>
   </section>
@@ -133,16 +152,16 @@
         </div>
       </div>
       <div class="support-grid">
+        <a class="support-card reveal" href="../ko/tutoring/#programs">
+          <span class="card-ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2-1 5-1.2 9 .5 4-1.7 7-1.5 9-.5V19c-2-1-5-1.2-9 .5-4-1.7-7-1.5-9-.5z"/><path d="M12 6v13.5"/></svg></span>
+          <h3>과목 튜터링</h3>
+          <p>AP · IB · A-Level · IGCSE · SAT · TOEFL. 학생의 수준과 학교 진도, 시험 기관에 맞춰 연결해 드려요.</p>
+          <span class="mlink">자세히 보기 <span class="arr" aria-hidden="true">→</span></span>
+        </a>
         <a class="support-card reveal" href="../ko/admissions/">
           <span class="card-ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></span>
           <h3>전직 입학사정관과 상담하기</h3>
           <p>준비 상황과 우선순위, 앞에 놓인 선택을 두고 평가 경험이 있는 사람의 의견을 들어요.</p>
-          <span class="mlink">자세히 보기 <span class="arr" aria-hidden="true">→</span></span>
-        </a>
-        <a class="support-card reveal" href="../ko/tutoring/#programs">
-          <span class="card-ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2-1 5-1.2 9 .5 4-1.7 7-1.5 9-.5V19c-2-1-5-1.2-9 .5-4-1.7-7-1.5-9-.5z"/><path d="M12 6v13.5"/></svg></span>
-          <h3>교과 튜터링</h3>
-          <p>AP · IB · A-Level · IGCSE · SAT · TOEFL. 학생의 수준과 학교 진도, 시험 기관에 맞춰 연결해 드려요.</p>
           <span class="mlink">자세히 보기 <span class="arr" aria-hidden="true">→</span></span>
         </a>
         <a class="support-card reveal" href="../ko/tutoring/#beyond">
@@ -188,22 +207,12 @@
           <h2 id="steps-title">신청부터 시작까지, <em>이렇게 진행돼요.</em></h2>
         </div>
         <div class="tabs" role="tablist" aria-label="서비스 선택">
-          <button class="tab" role="tab" id="tab-adm" aria-selected="true" aria-controls="panel-adm">입학 상담</button>
-          <button class="tab" role="tab" id="tab-tut" aria-selected="false" aria-controls="panel-tut" tabindex="-1">튜터링</button>
+          <button class="tab" role="tab" id="tab-tut" aria-selected="true" aria-controls="panel-tut">튜터링</button>
+          <button class="tab" role="tab" id="tab-adm" aria-selected="false" aria-controls="panel-adm" tabindex="-1">입학 상담</button>
         </div>
       </div>
 
-      <div class="panel reveal" role="tabpanel" id="panel-adm" aria-labelledby="tab-adm">
-        <ol class="journey journey--top">
-          <li class="jstep" style="--p: 25"><span class="ring"><span class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.5 4-6.6 8-6.6s7 2.1 8 6.6"/></svg></span><span class="jn">01</span></span><h4>전문가 선택</h4><p>원하는 입학사정관을 고르거나, 질문에 맞는 분을 운영팀이 추천해 드려요.</p></li>
-          <li class="jstep" style="--p: 50"><span class="ring"><span class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 10 14"/><path d="m21 3-7 18-4-7-7-4z"/></svg></span><span class="jn">02</span></span><h4>질문 전달</h4><p>짧은 신청서에 지금 상황과 이야기하고 싶은 내용을 적어요.</p></li>
-          <li class="jstep" style="--p: 75"><span class="ring"><span class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><span class="jn">03</span></span><h4>일정 조율</h4><p>운영팀이 가능한 일정과 이용 조건을 안내해 드려요.</p></li>
-          <li class="jstep" style="--p: 100"><span class="ring"><span class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="1.5"/><path d="m16 10 5-3v10l-5-3"/></svg></span><span class="jn">04</span></span><h4>Zoom 상담</h4><p>회사가 마련한 Zoom 링크에서 일대일로 이야기해요.</p></li>
-        </ol>
-        <p class="note">신청은 예약 확정이 아니에요. 일정, 가격, 결제는 신청 뒤에 운영팀이 따로 안내해 드려요.</p>
-      </div>
-
-      <div class="panel" role="tabpanel" id="panel-tut" aria-labelledby="tab-tut" hidden>
+      <div class="panel reveal" role="tabpanel" id="panel-tut" aria-labelledby="tab-tut">
         <ol class="journey journey--top">
           <li class="jstep" style="--p: 25"><span class="ring"><span class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span><span class="jn">01</span></span><h4>상담</h4><p>목표, 현재 수준, 학교와 시험 기관, 공부 방식을 먼저 들어요.</p></li>
           <li class="jstep" style="--p: 50"><span class="ring"><span class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="9" r="3"/><circle cx="16.5" cy="9" r="3"/><path d="M2.5 19c.7-3 2.8-4.6 5.5-4.6s4.8 1.6 5.5 4.6M11.5 19c.6-2.6 2.5-4.6 5-4.6 2.6 0 4.5 1.6 5.2 4.6"/></svg></span><span class="jn">02</span></span><h4>매칭</h4><p>가장 잘 맞는 튜터들을 추천 이유와 함께 안내해요. 선택은 직접 해요.</p></li>
@@ -211,6 +220,16 @@
           <li class="jstep" style="--p: 100"><span class="ring"><span class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9.5 17v-3M12.5 17v-6M15.5 17v-4"/></svg></span><span class="jn">04</span></span><h4>수업 리포트</h4><p>리포트를 꾸준히 보내 드려서 학부모님도 진행 상황을 알 수 있어요.</p></li>
         </ol>
         <p class="note">튜터링은 입학 상담 없이 바로 신청할 수 있어요.</p>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-adm" aria-labelledby="tab-adm" hidden>
+        <ol class="journey journey--top">
+          <li class="jstep" style="--p: 25"><span class="ring"><span class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.5 4-6.6 8-6.6s7 2.1 8 6.6"/></svg></span><span class="jn">01</span></span><h4>전문가 선택</h4><p>원하는 입학사정관을 고르거나, 질문에 맞는 분을 운영팀이 추천해 드려요.</p></li>
+          <li class="jstep" style="--p: 50"><span class="ring"><span class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 10 14"/><path d="m21 3-7 18-4-7-7-4z"/></svg></span><span class="jn">02</span></span><h4>질문 전달</h4><p>짧은 신청서에 지금 상황과 이야기하고 싶은 내용을 적어요.</p></li>
+          <li class="jstep" style="--p: 75"><span class="ring"><span class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><span class="jn">03</span></span><h4>일정 조율</h4><p>운영팀이 가능한 일정과 이용 조건을 안내해 드려요.</p></li>
+          <li class="jstep" style="--p: 100"><span class="ring"><span class="ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="1.5"/><path d="m16 10 5-3v10l-5-3"/></svg></span><span class="jn">04</span></span><h4>Zoom 상담</h4><p>회사가 마련한 Zoom 링크에서 일대일로 이야기해요.</p></li>
+        </ol>
+        <p class="note">신청은 예약 확정이 아니에요. 일정, 가격, 결제는 신청 뒤에 운영팀이 따로 안내해 드려요.</p>
       </div>
     </div>
   </section>
@@ -288,7 +307,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <a class="wordmark" href="../ko/"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
+        <a class="wordmark" href="../ko/"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">TUTORING · ADMISSIONS</span></a>
         <p class="tagline">미국 대학을 준비하는 학생을 위한 입학사정관 상담과 교과 튜터링(AP · IB · A-Level · IGCSE · SAT · TOEFL)이에요. 어느 나라에 있든 온라인으로 이용할 수 있어요.</p>
       </div>
       <ul class="footer-links">

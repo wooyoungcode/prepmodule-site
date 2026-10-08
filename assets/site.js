@@ -128,6 +128,7 @@
     if (status) {
       var tpl = v ? status.getAttribute(matches.length ? 'data-for' : 'data-none') : status.getAttribute('data-all');
       status.firstChild.textContent = (tpl || '').replace('{label}', labels[v] || '');
+      status.classList.toggle('no-match', !!(v && !matches.length));
     }
     if (empty) empty.hidden = !(v && matches.length === 0);
     if (notice && v) notice.hidden = true;
