@@ -12,9 +12,9 @@
 <script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/site.css?v=32964b27">
-<script src="../assets/site.js?v=76aefd3a" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=faf311e0">
+<script src="../assets/site.js?v=5a5ea193" defer></script>
 </head>
 <body>
 
@@ -22,6 +22,7 @@
   <div class="wrap">
     <a class="wordmark" href="../" aria-label="PrepModule — home"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
     <div class="nav-right">
+      <a class="nav-cta-sm" href="../request/?service=admissions">Get started</a>
       <a class="lang-switch" href="../ko/admissions/" hreflang="ko" lang="ko" data-lang-switch="ko" aria-label="한국어로 보기">KO</a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
     </div>
@@ -45,7 +46,7 @@
   <section class="hero hero--photo hero--landing dark" id="hero" style="--photo: url('https://images.unsplash.com/photo-1762395336633-64d58f2a079a?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.58&q=65&w=2000&h=1150'); --photo-sm: url('https://images.unsplash.com/photo-1762395336633-64d58f2a079a?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.58&q=65&w=900&h=1400'); --photo-pos: center;" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">Admissions guidance · Former admissions officers</span>
+        <span class="eyebrow">Admissions&nbsp;guidance · Former&nbsp;admissions&nbsp;officers</span>
         <h1 id="hero-title">Your questions deserve a <em>thoughtful conversation.</em></h1>
         <p class="lead">A former admissions officer's perspective on your preparation. Bring what's on your mind — where you stand, what to prioritize, and the choices ahead.</p>
         <div class="hero-actions">
@@ -71,13 +72,25 @@
     </div>
   </section>
 
+  <!-- proof bar: real credentials from the profiles only, attributed by initials -->
+  <section class="proofbar proofbar--compact dark" aria-label="Who you’ll talk to">
+    <div class="wrap">
+      <p class="proofbar-label">Who you’ll talk to</p>
+      <div class="proofbar-grid">
+        <div class="pstat"><b>5,500<i>+</i></b><span>applications read at Harvard College&nbsp;— <b>N. G.</b></span></div>
+        <div class="pstat"><b>20<i>+ yrs</i></b><span>in college admissions and counseling, formerly at Johns&nbsp;Hopkins&nbsp;— <b>S. H.</b></span></div>
+        <div class="pinst"><span class="pinst-label">Where our officers have read and interviewed applicants</span><p class="pinst-names"><span>Harvard College</span> <span>Johns Hopkins</span> <span>UC San Diego</span> <span>Northwestern</span></p></div>
+      </div>
+    </div>
+  </section>
+
   <!-- A2 — officer profiles (E01 card + E02 detail inline). #expert-{id} opens the detail and clears the header. -->
   <section class="section" id="experts" aria-labelledby="experts-title">
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">01 · The officers</span>
-          <h2 id="experts-title">Meet the former admissions officers.</h2>
+          <span class="eyebrow">The officers</span>
+          <h2 id="experts-title">Meet the former <em>admissions officers</em>.</h2>
         </div>
       </div>
 
@@ -176,12 +189,12 @@
   </section>
 
   <!-- A3 — topics an officer can actually speak to, kept within the service's scope -->
-  <section class="section" id="discuss" aria-labelledby="discuss-title">
+  <section class="section section--soft" id="discuss" aria-labelledby="discuss-title">
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">02 · Topics</span>
-          <h2 id="discuss-title">What would you like to discuss?</h2>
+          <span class="eyebrow">Topics</span>
+          <h2 id="discuss-title">What would you like <em>to discuss</em>?</h2>
         </div>
         <p class="sub">Topics an officer can actually speak to. Bring one, or several — the request form asks what's on your mind.</p>
       </div>
@@ -200,7 +213,7 @@
   <section class="section" id="timeline" aria-labelledby="timeline-title">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><span class="eyebrow">03 · Your timeline</span><h2 id="timeline-title">From now to decision day.</h2></div>
+        <div><span class="eyebrow">Your timeline</span><h2 id="timeline-title">From now to <em>decision day</em>.</h2></div>
       </div>
       <div class="adm-tl reveal" id="admTimeline" data-g="Grade {g}" data-class="Class of {c}" data-year="{a}–{b} school year" data-fall="Fall {y}" data-spring="Spring {y}" data-summer="Summer {y}">
         <div class="tl-pick" role="group" aria-label="Current grade"><span class="lbl">Current grade</span><button type="button" class="tl-g" data-grade="9" aria-pressed="false"><b></b><small></small></button><button type="button" class="tl-g" data-grade="10" aria-pressed="false"><b></b><small></small></button><button type="button" class="tl-g" data-grade="11" aria-pressed="true"><b></b><small></small></button><button type="button" class="tl-g" data-grade="12" aria-pressed="false"><b></b><small></small></button></div>
@@ -259,10 +272,10 @@
     </div>
   </section>
 
-  <section class="section" id="grades" aria-labelledby="grades-title">
+  <section class="section section--soft" id="grades" aria-labelledby="grades-title">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><span class="eyebrow">04 · By grade</span><h2 id="grades-title">What families ask, grade by grade.</h2></div>
+        <div><span class="eyebrow">By grade</span><h2 id="grades-title">What families ask, <em>grade by grade</em>.</h2></div>
       </div>
         <div class="tbl-wrap reveal"><table class="cmp">
           <thead><tr><th scope="col" class="corner"></th><th scope="col">Grades 9–10</th><th scope="col">Grade 11</th><th scope="col">Grade 12</th></tr></thead>
@@ -279,8 +292,8 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">05 · How it works</span>
-          <h2 id="how-title">From request to conversation.</h2>
+          <span class="eyebrow">How it works</span>
+          <h2 id="how-title">From request <em>to conversation</em>.</h2>
         </div>
       </div>
       <ol class="journey reveal">
@@ -294,17 +307,17 @@
   </section>
 
   <!-- A5 — FAQs, then the same request button again -->
-  <section class="section" id="faq" aria-labelledby="faq-title">
+  <section class="section section--soft" id="faq" aria-labelledby="faq-title">
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">06 · Before you request</span>
+          <span class="eyebrow">Before you request</span>
           <h2 id="faq-title">Questions people ask first.</h2>
         </div>
         <p class="sub">The short version of the terms. Anything else, ask in the form — we answer before scheduling.</p>
       </div>
       <div class="faq faq--wide reveal">
-        <details>
+        <details open>
           <summary><span class="n">01</span><span class="q">Is this a separate service from tutoring?</span><span class="plus" aria-hidden="true">+</span></summary>
           <div class="a">Yes. An admissions conversation is its own paid service. You don't need tutoring to request one, and a session never commits you to anything else.</div>
         </details>
@@ -331,14 +344,13 @@
   <section class="cta-band dark" aria-labelledby="cta-title">
     <div class="wrap inner">
       <div>
-        <span class="eyebrow">Request a session</span>
-        <h2 id="cta-title" style="margin-top: 14px;">Ready to ask?</h2>
+        <h2 id="cta-title">Ready to ask?</h2>
         <p class="sub">Tell us what's on your mind and, if you like, which officer you'd prefer. We reply about availability and the terms before anything is scheduled.</p>
-        <p class="path">Request → We contact you → Confirm a time → Zoom</p>
       </div>
       <div class="actions">
         <a class="btn btn-primary" href="../request/?service=admissions">Request a session <span class="arr" aria-hidden="true">→</span></a>
       </div>
+      <p class="path">Request → We contact you → Confirm a time → Zoom</p>
     </div>
   </section>
 
@@ -349,7 +361,7 @@
     <div class="footer-grid">
       <div>
         <a class="wordmark" href="../"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
-        <p class="tagline">Admissions guidance and subject tutoring — AP, IB, A-Level, IGCSE, SAT, TOEFL — for students preparing for US universities, wherever you are.</p>
+        <p class="tagline">Admissions guidance and subject tutoring — AP, IB, A&#8209;Level, IGCSE, SAT, TOEFL — for students preparing for US universities, wherever you are.</p>
       </div>
       <ul class="footer-links">
         <li><a href="../request/">Get started</a></li>

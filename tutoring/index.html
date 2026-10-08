@@ -12,9 +12,9 @@
 <script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/site.css?v=32964b27">
-<script src="../assets/site.js?v=76aefd3a" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=faf311e0">
+<script src="../assets/site.js?v=5a5ea193" defer></script>
 </head>
 <body>
 
@@ -22,6 +22,7 @@
   <div class="wrap">
     <a class="wordmark" href="../" aria-label="PrepModule — home"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
     <div class="nav-right">
+      <a class="nav-cta-sm" href="../request/?service=tutoring" data-carry>Get started</a>
       <a class="lang-switch" href="../ko/tutoring/" hreflang="ko" lang="ko" data-lang-switch="ko" aria-label="한국어로 보기">KO</a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
     </div>
@@ -46,9 +47,9 @@
   <section class="hero hero--photo hero--landing dark" id="hero" style="--photo: url('https://images.unsplash.com/photo-1770910328301-f8ef39aee441?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.45&q=65&w=2000&h=1150'); --photo-sm: url('https://images.unsplash.com/photo-1770910328301-f8ef39aee441?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.45&q=65&w=900&h=1400'); --photo-pos: center;" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">Subject tutoring · AP · IB · A-Level · IGCSE · SAT · TOEFL</span>
+        <span class="eyebrow">Subject&nbsp;tutoring · AP · IB · A&#8209;Level · IGCSE · SAT · TOEFL</span>
         <h1 id="hero-title">Tutoring built around<br><em>one student at a time.</em></h1>
-        <p class="lead">We start with a consultation, match the student with the tutors who fit best, and build lessons around what they actually need — AP, IB, A-Level, IGCSE, SAT and TOEFL, plus project building and mentoring. Parents get regular tutoring reports, so everyone knows where things stand.</p>
+        <p class="lead">We start with a consultation, match the tutors who fit best, and send parents regular reports — AP, IB, A-Level, IGCSE, SAT and TOEFL, plus projects and mentoring.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="../request/?service=tutoring" data-carry>Find my tutor <span class="arr" aria-hidden="true">→</span></a>
           <a class="btn btn-outline" href="#programs">See the programs <span class="arr" aria-hidden="true">↓</span></a>
@@ -61,12 +62,12 @@
       <div class="picker" data-picker="program" role="group" aria-labelledby="pick-lbl">
         <span class="lbl" id="pick-lbl">Which program? <button type="button" class="clear" data-pick-clear>Clear</button></span>
         <div class="pick-grid">
-          <button type="button" class="pick-opt pick-sm" data-option="ap" data-label="AP" aria-pressed="false"><span class="k">Curriculum</span><strong>AP</strong></button>
-          <button type="button" class="pick-opt pick-sm" data-option="ib" data-label="IB" aria-pressed="false"><span class="k">Curriculum</span><strong>IB</strong></button>
-          <button type="button" class="pick-opt pick-sm" data-option="alevel" data-label="A-Level" aria-pressed="false"><span class="k">Curriculum</span><strong>A-Level</strong></button>
-          <button type="button" class="pick-opt pick-sm" data-option="igcse" data-label="IGCSE" aria-pressed="false"><span class="k">Curriculum</span><strong>IGCSE</strong></button>
-          <button type="button" class="pick-opt pick-sm" data-option="sat" data-label="SAT" aria-pressed="false"><span class="k">Test</span><strong>SAT</strong></button>
-          <button type="button" class="pick-opt pick-sm" data-option="toefl" data-label="TOEFL" aria-pressed="false"><span class="k">Test</span><strong>TOEFL</strong></button>
+          <button type="button" class="pick-opt pick-sm" data-option="ap" data-label="AP" aria-pressed="false"><strong>AP</strong></button>
+          <button type="button" class="pick-opt pick-sm" data-option="ib" data-label="IB" aria-pressed="false"><strong>IB</strong></button>
+          <button type="button" class="pick-opt pick-sm" data-option="alevel" data-label="A-Level" aria-pressed="false"><strong>A-Level</strong></button>
+          <button type="button" class="pick-opt pick-sm" data-option="igcse" data-label="IGCSE" aria-pressed="false"><strong>IGCSE</strong></button>
+          <button type="button" class="pick-opt pick-sm" data-option="sat" data-label="SAT" aria-pressed="false"><strong>SAT</strong></button>
+          <button type="button" class="pick-opt pick-sm" data-option="toefl" data-label="TOEFL" aria-pressed="false"><strong>TOEFL</strong></button>
         </div>
         <span class="hint">Optional. Your choice filters the tutors below and carries over to the request form.</span>
       </div>
@@ -78,8 +79,8 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">01 · How we work</span>
-          <h2 id="how-title">Consult. Match.<br>Teach. Report.</h2>
+          <span class="eyebrow">How we work</span>
+          <h2 id="how-title">Consult. Match.<br><em>Teach. Report.</em></h2>
         </div>
         <p class="sub">Every student goes through the same four steps — so nothing is assigned without a conversation, and parents are never left guessing.</p>
       </div>
@@ -93,7 +94,7 @@
   </section>
 
   <!-- 02 — the six programs. Each card is the same choice as the hero picker. -->
-  <section class="section" id="programs" aria-labelledby="programs-title">
+  <section class="section section--soft" id="programs" aria-labelledby="programs-title">
     <div class="wrap">
       <div class="notice" id="pickNotice" hidden>
         <span class="k">Not found</span>
@@ -101,8 +102,8 @@
       </div>
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">02 · Programs</span>
-          <h2 id="programs-title">Six programs,<br>one request.</h2>
+          <span class="eyebrow">Programs</span>
+          <h2 id="programs-title"><em>Six programs,</em><br>one request.</h2>
         </div>
       </div>
 
@@ -174,8 +175,8 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">03 · Beyond the classroom</span>
-          <h2 id="beyond-title">Projects and<br>mentoring, too.</h2>
+          <span class="eyebrow">Beyond the classroom</span>
+          <h2 id="beyond-title">Projects and<br><em>mentoring, too.</em></h2>
         </div>
       </div>
       <div class="beyond">
@@ -211,8 +212,8 @@
   <section class="support reports dark" id="reports" aria-labelledby="reports-title">
     <div class="wrap reports-grid">
       <div class="reveal">
-        <span class="eyebrow">04 · Tutoring reports</span>
-        <h2 id="reports-title">Parents always know<br>where things stand.</h2>
+        <span class="eyebrow">Tutoring reports</span>
+        <h2 id="reports-title">Parents always know<br><em>where things stand</em>.</h2>
         <p class="lead">Every student gets tutoring reports. Each one is short enough to read in a minute and answers the questions parents actually ask.</p>
         <ol class="rep-list">
           <li><strong>What was covered</strong><span>Topics, problems and materials from the lesson.</span></li>
@@ -246,8 +247,8 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">05 · Tutors</span>
-          <h2 id="experts-title">Meet the tutors.</h2>
+          <span class="eyebrow">Tutors</span>
+          <h2 id="experts-title">Meet the <em>tutors</em>.</h2>
         </div>
         <p class="sub">Each profile lists the programs and subjects the tutor teaches. Choose a program above to narrow the list.</p>
       </div>
@@ -260,7 +261,7 @@
           <div>
             <div class="role">Subject tutor · Computer science · Math · Physics</div>
             <h3>N. W.</h3>
-            <p class="meta">MIT — S.B. in Computer Science</p>
+            <p class="meta">MIT — S.B. in Computer Science<br><span class="proof">Five AP 5s · ACT 36</span></p>
             <div class="areas" aria-label="Programs and subjects">
               <span class="chip">AP Computer Science A</span><span class="chip">AP Physics C</span><span class="chip">AP Calculus BC</span><span class="chip">AP Statistics</span><span class="chip">Coding projects</span>
             </div>
@@ -290,7 +291,7 @@
           <div>
             <div class="role">Subject tutor · Politics · Research · Academic writing</div>
             <h3>G. I.</h3>
-            <p class="meta">LSE — PhD candidate in Political Science</p>
+            <p class="meta">LSE — PhD candidate in Political Science<br><span class="proof">Research Officer, Nuffield College, Oxford</span></p>
             <div class="areas" aria-label="Programs and subjects">
               <span class="chip">Politics &amp; government</span><span class="chip">IB Global Politics</span><span class="chip">A-Level Politics</span><span class="chip">Research projects</span><span class="chip">Academic writing</span>
             </div>
@@ -320,17 +321,17 @@
     </div>
   </section>
 
-  <section class="section" id="faq" aria-labelledby="faq-title">
+  <section class="section section--soft" id="faq" aria-labelledby="faq-title">
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">06 · Before you request</span>
+          <span class="eyebrow">Before you request</span>
           <h2 id="faq-title">Questions people ask first.</h2>
         </div>
         <p class="sub">The short version of the terms. Anything else, ask in the form — we answer before scheduling.</p>
       </div>
       <div class="faq faq--wide reveal">
-        <details>
+        <details open>
           <summary><span class="n">01</span><span class="q">Can I get help with more than one program or subject?</span><span class="plus" aria-hidden="true">+</span></summary>
           <div class="a">Yes. Put the one that matters most on the form and mention the others in your message. Our team may suggest one tutor for both, or a different tutor for each.</div>
         </details>
@@ -361,14 +362,13 @@
   <section class="cta-band dark" aria-labelledby="cta-title">
     <div class="wrap inner">
       <div>
-        <span class="eyebrow">Find my tutor</span>
-        <h2 id="cta-title" style="margin-top: 14px;">Ready to find your tutor?</h2>
+        <h2 id="cta-title">Ready to find your tutor?</h2>
         <p class="sub">Tell us about the student and what they need. We start with a consultation and come back with the tutors who fit best and why.</p>
-        <p class="path">Request → We talk → Your shortlist → You choose</p>
       </div>
       <div class="actions">
         <a class="btn btn-primary" href="../request/?service=tutoring" data-carry>Find my tutor <span class="arr" aria-hidden="true">→</span></a>
       </div>
+      <p class="path">Request → We talk → Your shortlist → You choose</p>
     </div>
   </section>
 
@@ -379,7 +379,7 @@
     <div class="footer-grid">
       <div>
         <a class="wordmark" href="../"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
-        <p class="tagline">Admissions guidance and subject tutoring — AP, IB, A-Level, IGCSE, SAT, TOEFL — for students preparing for US universities, wherever you are.</p>
+        <p class="tagline">Admissions guidance and subject tutoring — AP, IB, A&#8209;Level, IGCSE, SAT, TOEFL — for students preparing for US universities, wherever you are.</p>
       </div>
       <ul class="footer-links">
         <li><a href="../request/">Get started</a></li>

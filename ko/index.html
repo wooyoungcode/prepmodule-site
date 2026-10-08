@@ -12,10 +12,10 @@
 <script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="../assets/site.css?v=32964b27">
-<script src="../assets/site.js?v=76aefd3a" defer></script>
+<link rel="stylesheet" href="../assets/site.css?v=faf311e0">
+<script src="../assets/site.js?v=5a5ea193" defer></script>
 </head>
 <body>
 
@@ -23,6 +23,7 @@
   <div class="wrap">
     <a class="wordmark" href="../ko/" aria-label="PrepModule — 홈"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
     <div class="nav-right">
+      <a class="nav-cta-sm" href="../ko/request/">시작하기</a>
       <a class="lang-switch" href="../" hreflang="en" lang="en" data-lang-switch="en" aria-label="View in English">EN</a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">메뉴</button>
     </div>
@@ -40,55 +41,49 @@
 <main>
 
   <!-- H01 — brand area + product banners. Both products visible at once, no carousel. -->
-  <section class="hero hero--photo dark" id="hero" style="--photo: url('https://images.unsplash.com/photo-1741524601748-e234bdf4806e?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.38&q=65&w=2000&h=1150'); --photo-sm: url('https://images.unsplash.com/photo-1741524601748-e234bdf4806e?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.38&q=65&w=900&h=1400'); --photo-pos: center; --shade: 0.85;" aria-labelledby="hero-title">
+  <section class="hero hero--photo dark" id="hero" style="--photo: url('https://images.unsplash.com/photo-1741524601748-e234bdf4806e?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.38&q=65&w=2000&h=1150'); --photo-sm: url('https://images.unsplash.com/photo-1741524601748-e234bdf4806e?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.38&q=65&w=900&h=1400'); --photo-pos: center; --shade: 1;" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow">입학 상담 · 교과 튜터링</span>
         <h1 id="hero-title">미국 대학 준비에 필요한<br><em>전문가를 만나는 곳</em></h1>
-        <p class="lead">전직 입학사정관에게 준비 방향을 묻거나, AP · IB · A-Level · IGCSE · SAT · TOEFL 중 지금 필요한 과목의 튜터를 찾을 수 있어요. 두 서비스는 따로 운영되니 필요한 쪽만 신청해도 되고, 둘 다 이용해도 돼요.</p>
-        <div class="hero-meta">
-          <div class="avatars" aria-label="만날 수 있는 전문가">
-            <span class="avatar ao">AO</span><span class="avatar sat">IB</span><span class="avatar ap">SAT</span>
-          </div>
-          <span class="t">전직 입학사정관 · 과목 튜터</span>
+        <p class="lead">전직 입학사정관에게 준비 방향을 묻거나, 지금 필요한 과목의 튜터를 찾을 수 있어요. 하나만 신청해도, 둘 다 이용해도 돼요.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="../ko/request/">상담 신청하기 <span class="arr" aria-hidden="true">→</span></a>
         </div>
       </div>
 
       <div class="hero-side">
         <a class="banner" href="../ko/admissions/">
-          <div>
-            <span class="idx">01 — 입학 상담</span>
-            <h2>입학사정관 상담</h2>
-            <p>회사가 마련한 Zoom에서 전직 입학사정관에게 자신의 상황과 질문을 직접 이야기해요.</p>
-          </div>
-          <span class="btn btn-primary">상담 알아보기 <span class="arr" aria-hidden="true">→</span></span>
+          <div><h2>입학사정관 상담</h2><p>전직 입학사정관에게 Zoom으로 직접 물어봐요.</p></div>
+          <span class="arr" aria-hidden="true">→</span>
         </a>
         <a class="banner" href="../ko/tutoring/">
-          <div>
-            <span class="idx">02 — 튜터링</span>
-            <h2>교과 튜터링</h2>
-            <p>AP · IB · A-Level · IGCSE · SAT · TOEFL에 프로젝트와 멘토링까지. 상담 후 잘 맞는 튜터를 연결하고, 수업 리포트를 꾸준히 보내 드려요.</p>
-          </div>
-          <span class="btn btn-outline">튜터 찾기 <span class="arr" aria-hidden="true">→</span></span>
+          <div><h2>교과 튜터링</h2><p>AP&nbsp;·&nbsp;IB ·&nbsp;A-Level ·&nbsp;IGCSE ·&nbsp;SAT ·&nbsp;TOEFL, 프로젝트와 멘토링까지.</p></div>
+          <span class="arr" aria-hidden="true">→</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- promises ribbon -->
-  <div class="ribbon" role="note" aria-label="모든 학생이 받는 것">
-    <div class="wrap ribbon-inner">
-      <span>1:1 온라인 수업</span><span>상담 먼저</span><span>맞춤 튜터 중 선택</span><span>정기 수업 리포트</span>
+  <!-- proof bar: real credentials from the profiles only, attributed by initials -->
+  <section class="proofbar dark" aria-label="직접 만나는 전문가">
+    <div class="wrap">
+      <p class="proofbar-label">직접 만나는 전문가</p>
+      <div class="proofbar-grid">
+        <div class="pstat"><b>5,500<i>+</i></b><span>Harvard College에서 검토한 지원서&nbsp;—&nbsp;<b>N. G.</b></span></div>
+        <div class="pstat"><b>20<i>년 이상</i></b><span>대학 입학 사정 · 진학 상담 경력, 전&nbsp;Johns&nbsp;Hopkins —&nbsp;<b>S. H.</b></span></div>
+        <div class="pinst"><span class="pinst-label">전문가들이 일하고 공부한 곳</span><p class="pinst-names"><span>Harvard College</span> <span>Johns Hopkins</span> <span>UC San Diego</span> <span>Northwestern</span> <span>MIT</span> <span>LSE</span> <span>Oxford</span></p></div>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- H02 — experts. Role is always labelled; card links to the matching landing #expert-{id}. -->
   <section class="section" id="experts" aria-labelledby="experts-title">
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">01 · 전문가</span>
-          <h2 id="experts-title">실제로 만나게 될 전문가예요.</h2>
+          <span class="eyebrow">전문가</span>
+          <h2 id="experts-title">실제로 만나게 될 <em>전문가</em>예요.</h2>
         </div>
       </div>
       <div class="experts">
@@ -133,36 +128,32 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">02 · 서비스 선택</span>
-          <h2 id="support-title">어떤 도움이 필요하세요?</h2>
+          <span class="eyebrow">서비스 선택</span>
+          <h2 id="support-title">어떤 <em>도움</em>이 필요하세요?</h2>
         </div>
       </div>
       <div class="support-grid">
         <a class="support-card reveal" href="../ko/admissions/">
           <span class="card-ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></span>
-          <span class="k">입학 상담</span>
           <h3>전직 입학사정관과 상담하기</h3>
           <p>준비 상황과 우선순위, 앞에 놓인 선택을 두고 평가 경험이 있는 사람의 의견을 들어요.</p>
           <span class="mlink">자세히 보기 <span class="arr" aria-hidden="true">→</span></span>
         </a>
         <a class="support-card reveal" href="../ko/tutoring/#programs">
           <span class="card-ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2-1 5-1.2 9 .5 4-1.7 7-1.5 9-.5V19c-2-1-5-1.2-9 .5-4-1.7-7-1.5-9-.5z"/><path d="M12 6v13.5"/></svg></span>
-          <span class="k">튜터링</span>
           <h3>교과 튜터링</h3>
           <p>AP · IB · A-Level · IGCSE · SAT · TOEFL. 학생의 수준과 학교 진도, 시험 기관에 맞춰 연결해 드려요.</p>
           <span class="mlink">자세히 보기 <span class="arr" aria-hidden="true">→</span></span>
         </a>
         <a class="support-card reveal" href="../ko/tutoring/#beyond">
           <span class="card-ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span>
-          <span class="k">교과 밖까지</span>
           <h3>프로젝트 · 멘토링</h3>
           <p>아이디어에서 완성까지 함께하는 프로젝트, 공부 습관과 계획, 선택을 꾸준히 봐 주는 멘토링이에요.</p>
           <span class="mlink">자세히 보기 <span class="arr" aria-hidden="true">→</span></span>
         </a>
         <a class="support-card reveal" href="../ko/competitions/">
           <span class="card-ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg></span>
-          <span class="k">경시대회</span>
-          <h3>AMC · John Locke · HIR</h3>
+          <h3>AMC · John&nbsp;Locke&nbsp;· HIR</h3>
           <p>수학, 에세이, 국제 관계까지 — 대회별 심사 방식에 맞춰 준비해요.</p>
           <span class="mlink">자세히 보기 <span class="arr" aria-hidden="true">→</span></span>
         </a>
@@ -171,19 +162,19 @@
   </section>
 
   <!-- H03b — what every student gets: roadmap · progress monitoring · tailored strategy (illustrations, no photos yet) -->
-  <section class="section" id="gets" aria-labelledby="gets-title">
+  <section class="section section--soft" id="gets" aria-labelledby="gets-title">
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">03 · 모든 학생에게</span>
-          <h2 id="gets-title">계획하고, 확인하고,<br>맞춰 가요.</h2>
+          <span class="eyebrow">모든 학생에게</span>
+          <h2 id="gets-title">계획하고, 확인하고,<br><em>맞춰 가요.</em></h2>
         </div>
         <p class="sub">모든 수업 뒤에는 학생 한 명을 위한 계획과, 꾸준히 확인하는 진도, 학생에 맞춰 바뀌는 전략이 있어요.</p>
       </div>
       <div class="gets">
-        <article class="get reveal"><div class="get-art"><img src="../assets/img/roadmap.svg" alt="" width="480" height="320" loading="lazy"><span class="get-n">01</span></div><h3>학습 로드맵</h3><p>첫 상담에서 만들어요. 지금 어디에 있고 어디로 가는지, 그 사이의 단계까지 정리해요.</p></article>
-        <article class="get reveal"><div class="get-art"><img src="../assets/img/progress.svg" alt="" width="480" height="320" loading="lazy"><span class="get-n">02</span></div><h3>진도 관리</h3><p>수업 리포트와 정기 점검으로 무엇이 나아졌고 무엇이 남았는지 학부모님도 알 수 있어요.</p></article>
-        <article class="get reveal"><div class="get-art"><img src="../assets/img/strategy.svg" alt="" width="480" height="320" loading="lazy"><span class="get-n">03</span></div><h3>맞춤 전략</h3><p>정해진 커리큘럼이 아니라, 학생이 공부하는 방식에 맞춰 수업과 과제, 속도를 조정해요.</p></article>
+        <article class="get reveal"><div class="get-art"><img src="../assets/img/roadmap.svg" alt="" width="480" height="320" loading="lazy"></div><h3>학습 로드맵</h3><p>첫 상담에서 만들어요. 지금 어디에 있고 어디로 가는지, 그 사이의 단계까지 정리해요.</p></article>
+        <article class="get reveal"><div class="get-art"><img src="../assets/img/progress.svg" alt="" width="480" height="320" loading="lazy"></div><h3>진도 관리</h3><p>수업 리포트와 정기 점검으로 무엇이 나아졌고 무엇이 남았는지 학부모님도 알 수 있어요.</p></article>
+        <article class="get reveal"><div class="get-art"><img src="../assets/img/strategy.svg" alt="" width="480" height="320" loading="lazy"></div><h3>맞춤 전략</h3><p>정해진 커리큘럼이 아니라, 학생이 공부하는 방식에 맞춰 수업과 과제, 속도를 조정해요.</p></article>
       </div>
     </div>
   </section>
@@ -193,10 +184,10 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">04 · 진행 방식</span>
-          <h2 id="steps-title">신청부터 시작까지, 이렇게 진행돼요.</h2>
+          <span class="eyebrow">진행 방식</span>
+          <h2 id="steps-title">신청부터 시작까지, <em>이렇게 진행돼요.</em></h2>
         </div>
-        <div class="tabs" role="tablist" aria-label="서비스 선택" style="justify-self: end;">
+        <div class="tabs" role="tablist" aria-label="서비스 선택">
           <button class="tab" role="tab" id="tab-adm" aria-selected="true" aria-controls="panel-adm">입학 상담</button>
           <button class="tab" role="tab" id="tab-tut" aria-selected="false" aria-controls="panel-tut" tabindex="-1">튜터링</button>
         </div>
@@ -229,8 +220,8 @@
     <div class="wrap">
       <div class="cyc-panel dark reveal">
         <div class="cyc-copy">
-          <span class="eyebrow">05 · 학생 한 명을 위한 팀</span>
-          <h2 id="cyc-h">모두가 같은 진행 상황을 알아요.</h2>
+          <span class="eyebrow">학생 한 명을 위한 팀</span>
+          <h2 id="cyc-h">모두가 같은 진행&nbsp;상황을 알아요.</h2>
           <p>튜터는 가르치고, 운영팀은 매칭과 계획을 챙기고, 학부모님은 진행 상황을 전달받아요. 모든 흐름이 학생 한 명을 중심으로 움직여요.</p>
           <ul class="cyc-legend">
             <li><i class="sw solid"></i>보내 드리는 것 — 수업, 계획, 리포트</li>
@@ -243,10 +234,10 @@
   </section>
 
   <!-- H06 — who runs this, and the questions people ask before requesting. -->
-  <section class="section" id="about" aria-labelledby="team-title">
+  <section class="section section--soft" id="about" aria-labelledby="team-title">
     <div class="wrap team">
       <div class="team-intro reveal">
-        <span class="eyebrow">06 · 운영팀</span>
+        <span class="eyebrow">운영팀</span>
         <h2 id="team-title">추천보다 상담이 먼저예요.</h2>
         <p class="lead">미국 대학을 준비하는 학생과 학부모를 오랫동안 만나 왔고, 그 경험에서 이 서비스를 시작했어요. 전직 입학사정관과 과목 튜터는 실제 경력 그대로 소개하고, 상담 없이 누군가를 배정하는 일은 없어요.</p>
         <ul class="facts">
@@ -257,7 +248,7 @@
       </div>
 
       <div class="faq reveal" id="faq">
-        <details>
+        <details open>
           <summary><span class="n">01</span><span class="q">한 가지 서비스만 이용해도 되나요?</span><span class="plus" aria-hidden="true">+</span></summary>
           <div class="a">네. 입학 상담과 튜터링은 별개의 서비스이고 신청도 따로 받아요. 어느 쪽이든 하나만 이용할 수 있어요.</div>
         </details>
@@ -277,10 +268,23 @@
     </div>
   </section>
 
+  <!-- closing action: the one crimson band on the page, right after the answers -->
+  <section class="cta-band dark" aria-labelledby="cta-title">
+    <div class="wrap inner">
+      <div>
+        <h2 id="cta-title">어디서부터 시작할지 고민되세요?</h2>
+        <p class="sub">학생에 대해, 그리고 궁금한 것을 알려 주세요. 먼저 상담하고, 입학 상담이든 튜터링이든 잘 맞는 전문가를 안내해 드려요.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="../ko/request/">상담 신청하기 <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <!-- H07 — keep an entry point at the bottom; policy links must point at real documents before launch. -->
-<footer class="footer dark" id="contact">
+<footer class="footer footer--flush dark" id="contact">
   <div class="wrap">
     <div class="footer-grid">
       <div>

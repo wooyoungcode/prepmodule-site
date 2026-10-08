@@ -147,7 +147,7 @@
 
   var initial = new URLSearchParams(location.search).get(param);
   if (initial && !labels.hasOwnProperty(initial)) {
-    if (notice) { notice.hidden = false; notice.querySelector('[data-bad]').textContent = initial; }
+    if (notice) { notice.hidden = false; var bad = notice.querySelector('[data-bad]'); if (bad) bad.textContent = initial; }
     initial = null;
   }
   apply(initial);

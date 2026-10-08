@@ -12,9 +12,9 @@
 <script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/site.css?v=32964b27">
-<script src="./assets/site.js?v=76aefd3a" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/site.css?v=faf311e0">
+<script src="./assets/site.js?v=5a5ea193" defer></script>
 </head>
 <body>
 
@@ -22,6 +22,7 @@
   <div class="wrap">
     <a class="wordmark" href="./" aria-label="PrepModule — home"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
     <div class="nav-right">
+      <a class="nav-cta-sm" href="./request/">Get started</a>
       <a class="lang-switch" href="./ko/" hreflang="ko" lang="ko" data-lang-switch="ko" aria-label="한국어로 보기">KO</a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
     </div>
@@ -42,55 +43,49 @@
 <main>
 
   <!-- H01 — brand area + product banners. Both products visible at once, no carousel. -->
-  <section class="hero hero--photo dark" id="hero" style="--photo: url('https://images.unsplash.com/photo-1741524601748-e234bdf4806e?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.38&q=65&w=2000&h=1150'); --photo-sm: url('https://images.unsplash.com/photo-1741524601748-e234bdf4806e?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.38&q=65&w=900&h=1400'); --photo-pos: center; --shade: 0.85;" aria-labelledby="hero-title">
+  <section class="hero hero--photo dark" id="hero" style="--photo: url('https://images.unsplash.com/photo-1741524601748-e234bdf4806e?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.38&q=65&w=2000&h=1150'); --photo-sm: url('https://images.unsplash.com/photo-1741524601748-e234bdf4806e?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.38&q=65&w=900&h=1400'); --photo-pos: center; --shade: 1;" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">Admissions guidance · Subject tutoring</span>
+        <span class="eyebrow">Admissions&nbsp;guidance · Subject&nbsp;tutoring</span>
         <h1 id="hero-title">Big questions.<br><em>The right people.</em></h1>
-        <p class="lead">Get an experienced perspective on your US college preparation, or a tutor for the course in front of you — AP, IB, A-Level, IGCSE, SAT or TOEFL. Choose one, or both — each is its own service.</p>
-        <div class="hero-meta">
-          <div class="avatars" aria-label="Who you can meet">
-            <span class="avatar ao">AO</span><span class="avatar sat">IB</span><span class="avatar ap">SAT</span>
-          </div>
-          <span class="t">Former admissions officers · Subject tutors</span>
+        <p class="lead">Get an experienced perspective on your US college preparation, or a tutor for the course in front of you — one service, or both.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="./request/">Request a consultation <span class="arr" aria-hidden="true">→</span></a>
         </div>
       </div>
 
       <div class="hero-side">
         <a class="banner" href="./admissions/">
-          <div>
-            <span class="idx">01 — Admissions</span>
-            <h2>Admissions conversations</h2>
-            <p>Talk through your questions with a former admissions officer over Zoom.</p>
-          </div>
-          <span class="btn btn-primary">Explore admissions <span class="arr" aria-hidden="true">→</span></span>
+          <div><h2>Admissions conversations</h2><p>Ask a former admissions officer your questions, 1:1 on Zoom.</p></div>
+          <span class="arr" aria-hidden="true">→</span>
         </a>
         <a class="banner" href="./tutoring/">
-          <div>
-            <span class="idx">02 — Tutoring</span>
-            <h2>Subject tutoring</h2>
-            <p>AP, IB, A-Level, IGCSE, SAT and TOEFL, plus projects and mentoring. We consult, match the best-fit tutor, and send regular reports.</p>
-          </div>
-          <span class="btn btn-outline">Find a tutor <span class="arr" aria-hidden="true">→</span></span>
+          <div><h2>Subject tutoring</h2><p>AP, IB, A-Level, IGCSE, SAT and TOEFL — plus projects and mentoring.</p></div>
+          <span class="arr" aria-hidden="true">→</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- promises ribbon -->
-  <div class="ribbon" role="note" aria-label="What every student gets">
-    <div class="wrap ribbon-inner">
-      <span>1:1 online lessons</span><span>Consultation first</span><span>Best-fit tutors to choose from</span><span>Regular tutoring reports</span>
+  <!-- proof bar: real credentials from the profiles only, attributed by initials -->
+  <section class="proofbar dark" aria-label="Who you’ll talk to">
+    <div class="wrap">
+      <p class="proofbar-label">Who you’ll talk to</p>
+      <div class="proofbar-grid">
+        <div class="pstat"><b>5,500<i>+</i></b><span>applications read at Harvard College&nbsp;— <b>N. G.</b></span></div>
+        <div class="pstat"><b>20<i>+ yrs</i></b><span>in college admissions and counseling, formerly at Johns&nbsp;Hopkins&nbsp;— <b>S. H.</b></span></div>
+        <div class="pinst"><span class="pinst-label">Where our experts have worked and studied</span><p class="pinst-names"><span>Harvard College</span> <span>Johns Hopkins</span> <span>UC San Diego</span> <span>Northwestern</span> <span>MIT</span> <span>LSE</span> <span>Oxford</span></p></div>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- H02 — experts. Role is always labelled; card links to the matching landing #expert-{id}. -->
   <section class="section" id="experts" aria-labelledby="experts-title">
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">01 · Our experts</span>
-          <h2 id="experts-title">Meet your experts.</h2>
+          <span class="eyebrow">Our experts</span>
+          <h2 id="experts-title">Meet your <em>experts</em>.</h2>
         </div>
       </div>
       <div class="experts">
@@ -135,35 +130,31 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">02 · Choose your path</span>
-          <h2 id="support-title">What would help you most?</h2>
+          <span class="eyebrow">Choose your path</span>
+          <h2 id="support-title">What would <em>help you most</em>?</h2>
         </div>
       </div>
       <div class="support-grid">
         <a class="support-card reveal" href="./admissions/">
           <span class="card-ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></span>
-          <span class="k">Admissions</span>
           <h3>Talk with a former admissions officer</h3>
           <p>A conversation about your preparation, priorities, and the choices ahead.</p>
           <span class="mlink">Explore <span class="arr" aria-hidden="true">→</span></span>
         </a>
         <a class="support-card reveal" href="./tutoring/#programs">
           <span class="card-ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2-1 5-1.2 9 .5 4-1.7 7-1.5 9-.5V19c-2-1-5-1.2-9 .5-4-1.7-7-1.5-9-.5z"/><path d="M12 6v13.5"/></svg></span>
-          <span class="k">Tutoring</span>
           <h3>Subject tutoring</h3>
           <p>AP, IB, A-Level, IGCSE, SAT and TOEFL — matched to the student’s level, school pace and exam board.</p>
           <span class="mlink">Explore <span class="arr" aria-hidden="true">→</span></span>
         </a>
         <a class="support-card reveal" href="./tutoring/#beyond">
           <span class="card-ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span>
-          <span class="k">Beyond the classroom</span>
           <h3>Projects &amp; mentoring</h3>
           <p>Project building from idea to finish, and ongoing mentoring for habits, planning and choices.</p>
           <span class="mlink">Explore <span class="arr" aria-hidden="true">→</span></span>
         </a>
         <a class="support-card reveal" href="./competitions/">
           <span class="card-ico"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg></span>
-          <span class="k">Competitions</span>
           <h3>AMC, John Locke, HIR</h3>
           <p>Preparation planned around how each competition is judged — math, essays and international affairs.</p>
           <span class="mlink">Explore <span class="arr" aria-hidden="true">→</span></span>
@@ -173,19 +164,19 @@
   </section>
 
   <!-- H03b — what every student gets: roadmap · progress monitoring · tailored strategy (illustrations, no photos yet) -->
-  <section class="section" id="gets" aria-labelledby="gets-title">
+  <section class="section section--soft" id="gets" aria-labelledby="gets-title">
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">03 · What every student gets</span>
-          <h2 id="gets-title">A plan, a check-in,<br>a strategy.</h2>
+          <span class="eyebrow">What every student gets</span>
+          <h2 id="gets-title">A plan, a check-in,<br><em>a strategy.</em></h2>
         </div>
         <p class="sub">Behind every lesson there’s a plan made for one student, progress someone is tracking, and a strategy that changes when the student does.</p>
       </div>
       <div class="gets">
-        <article class="get reveal"><div class="get-art"><img src="./assets/img/roadmap.svg" alt="" width="480" height="320" loading="lazy"><span class="get-n">01</span></div><h3>Learning roadmap</h3><p>Built at the first consultation: where the student is now, where they’re headed, and the milestones in between.</p></article>
-        <article class="get reveal"><div class="get-art"><img src="./assets/img/progress.svg" alt="" width="480" height="320" loading="lazy"><span class="get-n">02</span></div><h3>Progress monitoring</h3><p>Tutoring reports and regular check-ins show parents what’s improving and what still needs work.</p></article>
-        <article class="get reveal"><div class="get-art"><img src="./assets/img/strategy.svg" alt="" width="480" height="320" loading="lazy"><span class="get-n">03</span></div><h3>Tailored strategy</h3><p>Lessons, homework and pacing adjust to how the student learns — not to a fixed curriculum.</p></article>
+        <article class="get reveal"><div class="get-art"><img src="./assets/img/roadmap.svg" alt="" width="480" height="320" loading="lazy"></div><h3>Learning roadmap</h3><p>Built at the first consultation: where the student is now, where they’re headed, and the milestones in between.</p></article>
+        <article class="get reveal"><div class="get-art"><img src="./assets/img/progress.svg" alt="" width="480" height="320" loading="lazy"></div><h3>Progress monitoring</h3><p>Tutoring reports and regular check-ins show parents what’s improving and what still needs work.</p></article>
+        <article class="get reveal"><div class="get-art"><img src="./assets/img/strategy.svg" alt="" width="480" height="320" loading="lazy"></div><h3>Tailored strategy</h3><p>Lessons, homework and pacing adjust to how the student learns — not to a fixed curriculum.</p></article>
       </div>
     </div>
   </section>
@@ -195,10 +186,10 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">04 · How it works</span>
-          <h2 id="steps-title">Your next step, made simple.</h2>
+          <span class="eyebrow">How it works</span>
+          <h2 id="steps-title">Your next step, <em>made simple.</em></h2>
         </div>
-        <div class="tabs" role="tablist" aria-label="Choose a path" style="justify-self: end;">
+        <div class="tabs" role="tablist" aria-label="Choose a path">
           <button class="tab" role="tab" id="tab-adm" aria-selected="true" aria-controls="panel-adm">Admissions</button>
           <button class="tab" role="tab" id="tab-tut" aria-selected="false" aria-controls="panel-tut" tabindex="-1">Tutoring</button>
         </div>
@@ -231,7 +222,7 @@
     <div class="wrap">
       <div class="cyc-panel dark reveal">
         <div class="cyc-copy">
-          <span class="eyebrow">05 · One team, one student</span>
+          <span class="eyebrow">One team, one student</span>
           <h2 id="cyc-h">Everyone on the same page.</h2>
           <p>The tutor teaches. Our team keeps the matching and the plan on track. Parents hear what’s happening. All of it revolves around one student.</p>
           <ul class="cyc-legend">
@@ -245,10 +236,10 @@
   </section>
 
   <!-- H06 — who runs this, and the questions people ask before requesting. -->
-  <section class="section" id="about" aria-labelledby="team-title">
+  <section class="section section--soft" id="about" aria-labelledby="team-title">
     <div class="wrap team">
       <div class="team-intro reveal">
-        <span class="eyebrow">06 · The team</span>
+        <span class="eyebrow">The team</span>
         <h2 id="team-title">A team that listens before it recommends.</h2>
         <p class="lead">We run this service out of our work with students and families preparing for US universities. The people you'll meet — former admissions officers and subject tutors — are introduced with their real background, and nothing is assigned to you without a conversation first.</p>
         <ul class="facts">
@@ -259,7 +250,7 @@
       </div>
 
       <div class="faq reveal" id="faq">
-        <details>
+        <details open>
           <summary><span class="n">01</span><span class="q">Can I buy just one service?</span><span class="plus" aria-hidden="true">+</span></summary>
           <div class="a">Yes. Admissions conversations and tutoring are separate services with separate requests. You can use either one on its own.</div>
         </details>
@@ -279,15 +270,28 @@
     </div>
   </section>
 
+  <!-- closing action: the one crimson band on the page, right after the answers -->
+  <section class="cta-band dark" aria-labelledby="cta-title">
+    <div class="wrap inner">
+      <div>
+        <h2 id="cta-title">Not sure where to start?</h2>
+        <p class="sub">Tell us about the student and what’s on your mind. We talk first, then point you to the right expert — admissions, tutoring, or both.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="./request/">Request a consultation <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <!-- H07 — keep an entry point at the bottom; policy links must point at real documents before launch. -->
-<footer class="footer dark" id="contact">
+<footer class="footer footer--flush dark" id="contact">
   <div class="wrap">
     <div class="footer-grid">
       <div>
         <a class="wordmark" href="./"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
-        <p class="tagline">Admissions guidance and subject tutoring — AP, IB, A-Level, IGCSE, SAT, TOEFL — for students preparing for US universities, wherever you are.</p>
+        <p class="tagline">Admissions guidance and subject tutoring — AP, IB, A&#8209;Level, IGCSE, SAT, TOEFL — for students preparing for US universities, wherever you are.</p>
       </div>
       <ul class="footer-links">
         <li><a href="./request/">Get started</a></li>

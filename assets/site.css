@@ -897,3 +897,335 @@ html[lang="ko"] .fv-head .tag { letter-spacing: 0.04em; }
 .oc-cta p { font-size: 14.5px; color: var(--body); margin-top: 4px; }
 @media (max-width: 960px) { .ocs { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 720px) { .ocs { grid-template-columns: 1fr; } }
+
+/* ===== Hierarchy pass (Prestige reference, design A kept). Appended in ID order; critique corrections folded in. ===== */
+/* P0-01 Korean: Pretendard for every glyph, heavy headings (keep-all re-declared so Hangul never splits mid-word) */
+html[lang=ko] {
+  --sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
+  --display: var(--sans); --display-w: 700; --display-ls: -0.03em;
+  --body: #3d3538; --muted: #5e5558;
+}
+html[lang=ko] body { font-family: var(--sans); font-size: 17px; line-height: 1.7; letter-spacing: -0.01em; word-break: keep-all; }
+html[lang=ko] h1, html[lang=ko] h2 { font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; text-wrap: balance; }
+html[lang=ko] .hero h1 { font-weight: 800; }
+html[lang=ko] h3, html[lang=ko] h4 { font-weight: 700; letter-spacing: -0.02em; line-height: 1.35; }
+html[lang=ko] :is(.eyebrow, .mlink, .chip, .card .role, .profile .role, .mini-tutor .role, .support-card .k, .hero-meta .t, .prog .top, .prog .go, .profile summary, .profile .plabel, .pfacts dt, .beyond-card .k, .rail-card .k, .notice .k, .subjects .grp, .tl-pick .lbl, .tl-badge b, .picker .lbl, .pick-opt .k, .phase thead th, .report-rows dt, .report-note .k, .report-head .tag, .comp-head .pill, .fv-head .tag, .cta-band .path, .done .recap .k, .pick-status, .footer-meta, .months span, .err-count, .field .opt, .sel .item a, .banner .k, .demo-tag, .report-who span, .proofbar-label, .pinst-label) { font-family: var(--sans); letter-spacing: 0; text-transform: none; }
+html[lang=ko] :is(.card .role, .profile .role, .prog .top, .prog .go, .profile .plabel, .pfacts dt, .beyond-card .k, .rail-card .k, .notice .k, .tl-pick .lbl, .phase thead th, .report-rows dt, .report-note .k, .report-head .tag, .comp-head .pill, .fv-head .tag, .sel .item a, .banner .k) { font-size: 13px; font-weight: 600; }
+html[lang=ko] .footer-meta { font-size: 12.5px; font-weight: 400; }
+html[lang=ko] .months span { font-size: 12px; color: var(--muted); }
+
+/* P0-02 Type scale: fewer tiers, further apart (section h2 capped so landing h1 stays ~1.3:1 above it) */
+:root { --display-w: 700; --display-ls: -0.04em; --muted-2: #7d7376; }
+h1, h2 { line-height: 1.06; }
+.hero h1 { font-size: clamp(44px, 5.9vw, 76px); line-height: 1.08; }
+.hero--landing h1 { font-size: clamp(40px, 5.3vw, 68px); max-width: 17ch; }
+html[lang=ko] .hero h1 { font-size: clamp(38px, 5vw, 64px); line-height: 1.2; }
+html[lang=ko] .hero--landing h1 { font-size: clamp(36px, 4.8vw, 60px); max-width: none; }
+.hero .lead { font-size: 18px; max-width: 34em; }
+html[lang=ko] .hero .lead { font-size: 18px; line-height: 1.7; max-width: 32em; }
+.sec-head h2 { font-size: clamp(32px, 3.9vw, 50px); }
+html[lang=ko] :is(.sec-head h2, .reports h2, .comp-head h2) { font-size: clamp(28px, 3.6vw, 46px); }
+.sec-head .sub { font-size: 18px; line-height: 1.6; color: var(--body); }
+.dark .sec-head .sub { color: var(--on-dark); }
+:is(.card h3, .get h3, .mini-tutor h3) { font-size: 21px; }
+html[lang=ko] :is(.card h3, .get h3, .mini-tutor h3) { font-size: 22px; }
+:is(.topic h4, .pt h4) { font-size: 19px; }
+:is(.card .desc, .get p, .support-card p, .topic p, .pt p, .beyond-card p, .prog .desc) { font-size: 15.5px; }
+html[lang=ko] :is(.card .desc, .get p, .support-card p, .topic p, .pt p, .beyond-card p, .prog .desc, .facts li, .profile .bio, .profile .helps li, .pfacts dd, .ticks li) { font-size: 16px; line-height: 1.65; }
+:is(.get p, .jstep p, .topic p, .step p) { color: var(--body); }
+.btn { min-height: 50px; padding: 13px 24px; font-size: 15.5px; }
+.hero .btn { min-height: 56px; padding: 15px 28px; font-size: 16.5px; }
+html[lang=ko] .btn { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+html[lang=ko] .hero .btn { font-size: 17px; }
+html[lang=ko] .nav-links a { font-size: 15px; font-weight: 600; }
+
+/* P0-03 Section heads: one centred stack, one accent phrase */
+.sec-head { display: block; text-align: center; border-top: 0; padding-top: 0; margin-bottom: clamp(40px, 4.6vw, 60px); }
+.sec-head h2 { max-width: 22ch; margin: 16px auto 0; text-wrap: balance; }
+html[lang=ko] .sec-head h2 { max-width: 13em; }
+.sec-head h2 em { font-style: normal; color: var(--accent); }
+.dark .sec-head h2 em { color: var(--accent-lt); }
+.sec-head .sub { max-width: 600px; margin: 20px auto 0; justify-self: auto; text-wrap: balance; }
+
+/* P0-04 Eyebrows: readable, no fake numbering; section eyebrows muted so the <em> is the head's only crimson */
+.eyebrow { font-size: 12px; letter-spacing: 0.16em; }
+html[lang=ko] .eyebrow { font-size: 14px; font-weight: 700; }
+.sec-head .eyebrow, .team-intro .eyebrow, .cyc-copy .eyebrow, .reports .eyebrow { color: var(--muted); }
+.dark .sec-head .eyebrow, .cyc-copy .eyebrow, .reports .eyebrow { color: var(--on-dark-2); }
+.hero .eyebrow { display: inline-block; padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(232,84,107,0.6); background: rgba(21,13,16,0.5); color: #fff; text-shadow: none; }
+html[lang=ko] .hero .eyebrow { font-size: 14px; font-weight: 600; }
+
+/* P0-05 One unmistakable primary action */
+.hero .btn-primary, .dark .btn-primary, .done .btn-primary { background: #fff; color: var(--accent); }
+.hero .btn-primary:hover, .dark .btn-primary:hover, .done .btn-primary:hover { background: var(--tint); color: var(--accent-2); }
+.hero .btn-outline { border-color: rgba(255,255,255,0.42); }
+.nav-links .cta a { border-color: rgba(255,255,255,0.6); font-weight: 600; }
+.nav.light .nav-links .cta a { background: var(--accent); border-color: var(--accent); color: #fff; }
+.nav.light .nav-links .cta a:hover { background: var(--accent-hi); border-color: var(--accent-hi); color: #fff; }
+
+/* P0-06 Home hero: one message, one action (overlay + glow changes scoped to the home hero only) */
+.hero:not(.hero--landing) h1 em { display: inline-block; margin-top: 0.06em; padding: 0.02em 0.16em 0.08em; border-radius: var(--r); background: var(--accent-hi); color: #fff; line-height: 1.04; text-shadow: none; }
+.hero--landing h1 em { color: #f47a8c; }
+#hero.hero--photo:not(.hero--landing)::before { display: none; }
+@media (min-width: 721px) {
+  #hero.hero--photo:not(.hero--landing) { background-image:
+    linear-gradient(90deg, rgba(21,13,16,calc(0.9 * var(--shade, 1))) 0%, rgba(21,13,16,calc(0.74 * var(--shade, 1))) 42%, rgba(21,13,16,calc(0.48 * var(--shade, 1))) 72%, rgba(21,13,16,calc(0.38 * var(--shade, 1))) 100%),
+    linear-gradient(0deg, rgba(21,13,16,0.78) 0%, rgba(21,13,16,0) 34%),
+    linear-gradient(180deg, rgba(21,13,16,0.6) 0%, rgba(21,13,16,0) 26%),
+    var(--photo); }
+}
+.hero-actions { margin-top: 36px; }
+.hero-side { gap: 10px; align-self: end; }
+.hero-side .banner { flex-direction: row; align-items: center; justify-content: space-between; gap: 18px; padding: 20px 22px; background: rgba(21,13,16,0.72); }
+.hero-side .banner h2 { margin-top: 0; font-size: 19px; }
+.hero-side .banner p { margin-top: 4px; font-size: 14px; max-width: 36ch; }
+.hero-side .banner .arr { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.32); font-family: var(--mono); color: #fff; transition: background .15s, color .15s; }
+.hero-side .banner:hover .arr { background: #fff; color: var(--accent); }
+
+/* P0-07 Proof bar (replaces the ribbon): two attributed figures + a plain-text institution row (no logos) */
+.proofbar { background: var(--dark); color: #fff; border-top: 1px solid var(--glass-line); }
+.proofbar-label { padding-top: 30px; font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-dark-2); }
+html[lang=ko] .proofbar-label { font-size: 14px; font-weight: 700; }
+.proofbar-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr); }
+.pstat, .pinst { padding: 22px 28px 36px; border-left: 1px solid var(--glass-line); }
+.pstat:first-child { border-left: 0; padding-left: 0; }
+.pstat > b { display: block; font-family: var(--display); font-weight: 700; font-size: clamp(36px, 4vw, 52px); line-height: 1; letter-spacing: -0.035em; color: #fff; font-variant-numeric: tabular-nums; }
+.pstat > b i { font-style: normal; font-size: 0.6em; margin-left: 2px; letter-spacing: -0.01em; color: var(--accent-lt); }
+.pstat > span { display: block; margin-top: 12px; max-width: 30ch; font-size: 14.5px; line-height: 1.5; color: var(--on-dark); }
+.pstat span b { font-weight: 600; color: #fff; white-space: nowrap; }
+html[lang=ko] .pstat > span { font-size: 15px; }
+.pinst-label { display: block; font-size: 14.5px; line-height: 1.5; color: var(--on-dark); }
+html[lang=ko] .pinst-label { font-size: 15px; }
+.pinst-names { margin: 12px 0 0 -1.1em; clip-path: inset(0 0 0 1.1em); display: flex; flex-wrap: wrap; gap: 6px 0; font-size: clamp(18px, 1.7vw, 22px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.35; color: #fff; }
+.pinst-names span { white-space: nowrap; }
+.pinst-names span::before { content: "·"; display: inline-block; width: 1.1em; text-align: center; color: var(--on-dark-2); font-weight: 400; } /* the shift + clip hides the dot that starts each wrapped row */
+.proofbar--compact .proofbar-label { padding-top: 24px; }
+.proofbar--compact :is(.pstat, .pinst) { padding-top: 16px; padding-bottom: 28px; }
+.proofbar--compact .pstat > b { font-size: clamp(32px, 3.4vw, 44px); }
+@media (max-width: 960px) {
+  .proofbar-grid { grid-template-columns: 1fr 1fr; }
+  .pstat, .pinst { padding: 18px 0 24px 20px; }
+  .pstat:first-child { padding-left: 0; }
+  .pinst { grid-column: 1 / -1; border-left: 0; padding-left: 0; border-top: 1px solid var(--glass-line); padding-top: 20px; }
+}
+
+/* P0-08 Expert cards: credential reads as the proof */
+.experts .card .photo { aspect-ratio: 1 / 1; }
+.card h3 { font-weight: 700; }
+.card .meta { font-size: 16.5px; font-weight: 600; color: var(--ink); line-height: 1.45; }
+.card .role { color: var(--muted); }
+
+/* P0-09 Path cards: one featured, three tiers */
+.support-card { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.14); padding: 28px 26px 24px; gap: 14px; }
+.support-card h3 { font-size: 22px; font-weight: 700; }
+.support-card:first-child { background: rgba(232,84,107,0.12); border-color: rgba(232,84,107,0.6); }
+.support-card:first-child .card-ico { background: var(--accent); box-shadow: none; }
+
+/* P0-10 Steps: centred tabs, one highlighted step (ring margin kept inside the desktop query) */
+.sec-head .tabs { margin-top: 28px; }
+.tab { min-height: 48px; padding: 10px 24px; font-size: 16px; font-weight: 600; color: var(--muted); }
+.tab[aria-selected=true] { background: #fff; color: var(--accent); box-shadow: 0 0 0 1px #f0c9cf, 0 6px 16px -10px rgba(165,28,48,0.45); }
+.panel .note { margin-left: auto; margin-right: auto; justify-content: center; text-align: center; }
+.jstep .ring { background: var(--line-2); }
+.jstep .ring::before { inset: 2px; box-shadow: none; }
+.jstep .ring::after { display: none; }
+.jstep .ico { color: var(--ink); }
+.jstep:first-child .ring, .jstep:first-child .ring::before { background: var(--accent); }
+.jstep:first-child .ring { box-shadow: 0 0 0 6px var(--tint); }
+.jstep:first-child .ico, .jstep:first-child .jn { color: #fff; }
+.jstep h4 { font-size: 19px; font-weight: 700; }
+.jstep p { font-size: 15px; }
+@media (min-width: 721px) {
+  .jstep .ring { width: 112px; height: 112px; margin-bottom: 20px; }
+  .jstep .jn { bottom: 15px; }
+  .jstep:not(:last-child)::after { top: 56px; left: calc(50% + 72px); right: calc(-50% + 72px - 24px); }
+  .jstep:not(:last-child)::before { top: 51px; right: calc(-50% + 72px - 24px); }
+}
+
+/* P0-11 Closing CTA band: centred, button in the reading path */
+.cta-band .inner { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 26px; }
+.cta-band h2 { font-size: clamp(32px, 4vw, 52px); max-width: 20ch; margin-left: auto; margin-right: auto; text-wrap: balance; }
+html[lang=ko] .cta-band h2 { font-size: clamp(28px, 3.6vw, 46px); max-width: 16em; }
+.cta-band .sub { margin-left: auto; margin-right: auto; max-width: 560px; font-size: 17.5px; color: rgba(255,255,255,0.86); }
+.cta-band .actions { justify-content: center; }
+.cta-band .btn-primary { min-height: 58px; padding: 16px 34px; font-size: 17px; font-weight: 700; box-shadow: 0 14px 30px -14px rgba(0,0,0,0.5); }
+html[lang=ko] .cta-band .btn-primary { font-size: 17px; }
+.cta-band .path { margin-top: 0; font-family: var(--sans); font-size: 14px; letter-spacing: 0; text-transform: none; color: rgba(255,255,255,0.72); }
+
+/* P0-12 Section bands */
+.section--soft { background: var(--soft); margin-top: clamp(64px, 8vw, 112px); padding-bottom: clamp(64px, 8vw, 112px); }
+.support + .section--soft, .section--soft + .cta-band, .section--soft + .support { margin-top: 0; }
+.section--soft .get-art { background: #fff; box-shadow: inset 0 0 0 1px var(--line), 0 18px 40px -28px rgba(24,13,17,0.3); }
+.get h3 { font-size: 22px; font-weight: 700; }
+
+/* P1-13 Links readable, labels quiet */
+.mlink { font-family: var(--sans); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; text-transform: none; }
+.chip { font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--ink); background: #fff; padding: 5px 12px; }
+:is(.profile .role, .beyond-card .k, .profile .plabel, .pfacts dt, .prog .top .type) { color: var(--muted); }
+:is(.card .role, .profile .role, .beyond-card .k, .profile .plabel, .pfacts dt) { font-size: 11px; }
+.topic::before { color: var(--muted); }
+.profile summary { font-family: var(--sans); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; text-transform: none; color: var(--ink); }
+
+/* P1-14 Landing heroes: quiet side panels, readable proof line */
+.hero-meta { margin-top: 30px; padding-top: 0; border-top: 0; }
+.hero-meta .t { font-family: var(--sans); font-size: 14.5px; font-weight: 500; letter-spacing: 0; text-transform: none; color: rgba(255,255,255,0.8); }
+.file-viz { background: rgba(21,13,16,0.72); }
+.fv-bar i { background: rgba(255,255,255,0.34); }
+.fv-note { color: var(--on-dark-2); }
+.fv-head .tag { color: var(--on-dark); border-color: var(--glass-line); }
+.hero--photo .picker { background: rgba(21,13,16,0.72); }
+.pick-opt.pick-sm { align-items: center; justify-content: center; text-align: center; min-height: 64px; }
+.comp-chip { background: rgba(21,13,16,0.75); }
+.comp-chip:hover { background: rgba(21,13,16,0.85); }
+
+/* P1-15 Profiles: proof is the headline */
+@media (min-width: 721px) { .profile { grid-template-columns: 220px 1fr; gap: 32px; padding: 24px; } }
+.profile h3 { font-weight: 700; }
+.profile .meta { font-size: 17px; font-weight: 600; color: var(--ink); line-height: 1.45; }
+.profile .meta .proof { display: block; margin-top: 6px; font-size: 15px; font-weight: 600; color: var(--accent); }
+.mini-tutor .role { font-family: var(--sans); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; text-transform: none; color: var(--ink); }
+.pick-status { justify-content: center; font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--ink); }
+.pick-status .clear { padding: 6px 14px; border: 1px solid var(--line-2); border-radius: 999px; color: var(--ink); }
+
+/* P1-16 FAQ: card rows, Q marker (muted; crimson only on the open question) */
+.faq { border-top: 0; display: grid; gap: 10px; }
+.faq--wide { max-width: 880px; margin-left: auto; margin-right: auto; }
+.faq details { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 0 24px; }
+.faq details[open] { border-color: var(--line-2); box-shadow: 0 16px 36px -26px rgba(24,13,17,0.35); }
+.faq summary { padding: 22px 0; grid-template-columns: 28px 1fr 28px; font-size: 18px; font-weight: 600; }
+.faq summary .n { font-size: 0; letter-spacing: 0; }
+.faq summary .n::before { content: 'Q'; font-family: var(--sans); font-size: 18px; font-weight: 700; color: var(--muted); }
+.faq details[open] summary .n::before { color: var(--accent); }
+.faq .a { padding: 0 8px 22px 40px; font-size: 16px; }
+
+/* P1-17 needs no CSS beyond P0-12 (templates only) */
+
+/* P2-18 Tables point at one row (phone sticky separator kept) */
+.cmp tr.key > * { background: var(--tint); }
+.cmp tr.key th { color: var(--accent); box-shadow: inset 3px 0 0 var(--accent), 1px 0 0 var(--line); }
+.cmp tr.key td { color: var(--ink); font-size: 15.5px; }
+.sub-h { margin: 64px 0 18px; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+.phase td.fmt { color: var(--body); font-weight: 500; }
+.phase tbody th { font-size: 15px; font-weight: 700; }
+.st-n { width: 24px; height: 24px; border: 0; background: var(--dark); color: #fff; font-size: 12px; }
+
+/* P2-19 Timeline: 'Now' is the only highlight (chips neutral) */
+.tl-chip { background: var(--soft); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-2); font-weight: 600; }
+.tl-when .w { color: var(--ink); }
+.tl-item ul li::before { background: var(--line-2); opacity: 1; }
+.tl-item h4 { font-size: 18px; font-weight: 700; }
+
+/* P2-20 Team-cycle: diagram supports, heading leads */
+.cyc .cyc-node { fill: rgba(255,255,255,0.1); stroke: rgba(255,255,255,0.55); stroke-width: 1.5; }
+.cyc .cyc-name { fill: #fff; }
+.cyc .cyc-halo { fill: rgba(255,255,255,0.04); stroke: rgba(255,255,255,0.12); }
+.cyc text { font-size: 19px; }
+.cyc-copy h2 { font-size: clamp(32px, 3.8vw, 48px); }
+html[lang=ko] .cyc-copy h2 { font-size: clamp(28px, 3.5vw, 44px); }
+.cyc-copy p { font-size: 16.5px; }
+
+/* P2-21 Team intro (facts tick in ink, not crimson) */
+.team-intro h2 { font-size: clamp(30px, 3.2vw, 40px); max-width: 22ch; text-wrap: balance; }
+html[lang=ko] .team-intro h2 { font-size: clamp(28px, 3.2vw, 40px); max-width: 11em; }
+.facts li { font-size: 15.5px; color: var(--ink); }
+.facts li::before { content: '✓'; font-family: var(--sans); font-size: 15px; font-weight: 700; letter-spacing: 0; color: var(--ink); }
+
+/* Addition (a): Korean section, band and banner titles at ExtraBold, like Prestige's section heads */
+html[lang=ko] :is(.sec-head h2, .cta-band h2, .comp-head h2) { font-weight: 800; }
+
+/* Addition (e): phone-only primary action, shown once the nav turns light (the menu list is collapsed on phones) */
+.nav-cta-sm { display: none; }
+@media (max-width: 720px) {
+  .nav.light .nav-cta-sm { display: inline-flex; align-items: center; min-height: 36px; padding: 0 10px; border-radius: 5px; background: var(--accent); color: #fff; font-size: 13.5px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
+  .nav.light .nav-cta-sm:hover { background: var(--accent-hi); }
+  /* room for it at 360px: the collapsed <nav> no longer costs two flex gaps, and the right-hand controls get tighter */
+  .nav > .wrap { gap: 0; }
+  .nav-right { margin-left: 8px; gap: 6px; }
+  .lang-switch { padding: 8px 7px; }
+  .menu-btn { padding: 8px 11px; font-size: 14.5px; }
+  .wordmark { font-size: 17px; gap: 8px; }
+}
+@media (max-width: 359px) { .nav.light .nav-right .lang-switch { display: none; } }
+
+/* ===== Review fixes (hierarchy pass, round 2) ===== */
+/* expert cards: reserve two credential lines on the 3-column layout so dividers and descriptions line up */
+@media (min-width: 961px) { .experts .card .meta { min-height: calc(2 * 1.45em); } }
+/* timeline grade picker: same selected state as the P0-10 tabs, so the 'Now' card stays the focal point */
+.tl-g[aria-pressed="true"] { background: #fff; color: var(--accent); border-color: #f0c9cf; box-shadow: 0 0 0 1px #f0c9cf, 0 6px 16px -10px rgba(165,28,48,0.45); }
+.tl-g[aria-pressed="true"] small { color: var(--muted); }
+html[lang=ko] .tl-when .now { letter-spacing: 0; font-size: 12px; }
+/* comparison tables: light header like the .phase tables; the key row is the strongest row */
+.cmp thead th, .cmp thead th.corner { background: var(--soft); color: var(--ink); font-weight: 700; box-shadow: inset 0 -2px 0 var(--ink); }
+.cmp tr.key > * { background: #f9e4e8; }
+.cmp tr.key th { background: #f3d2d9; }
+/* per-officer / per-tutor request: secondary action (the filled primary stays in the nav) */
+.profile .btn-dark { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.profile .btn-dark:hover { background: var(--ink); color: #fff; }
+/* tutoring card titles back inside the type scale */
+.prog .name { font-size: 30px; }
+.beyond-card h3 { font-size: 24px; text-wrap: balance; }
+.ticks li::before { color: var(--ink); }
+/* request: success label readable on the dark panel; labels muted, crimson kept for actions */
+.done .eyebrow { color: var(--accent-lt); }
+.form-head .eyebrow, .rail-card .k, .steps-mini li::before { color: var(--muted); }
+.form-head h1 { text-wrap: balance; }
+/* KO tutoring picker question */
+html[lang=ko] .picker .lbl { font-size: 13px; font-weight: 600; color: var(--on-dark); }
+/* tutoring reports band: one accent, KO weight in line with the other section titles */
+.reports h2 em { font-style: normal; color: var(--accent-lt); }
+html[lang=ko] :is(.reports h2, .cyc-copy h2, .team-intro h2) { font-weight: 800; }
+/* home paths: featured card gets a luminance step, not only a hue */
+.support-card:first-child { background: rgba(232,84,107,0.24); border: 2px solid var(--accent-lt); }
+/* home hero choice rows: equal heights, a legible arrow */
+@media (min-width: 721px) { .hero-side { grid-auto-rows: 1fr; } }
+.hero-side .banner .arr { font-family: var(--sans); font-size: 20px; }
+/* competitions phase tables: wrapped stage names hang under the label, not under the disc */
+.phase tbody th { padding-left: calc(22px + 34px); text-indent: -34px; }
+.st-n { text-indent: 0; }
+/* accent phrase on dark bands: the lighter crimson tint narrows the luminance gap */
+.dark .sec-head h2 em { color: #f47a8c; }
+/* home: muted illustration art so the heading's accent stays the single crimson; tighter facts list */
+.section--soft .get-art img { filter: saturate(0.55); }
+.facts li { grid-template-columns: 22px 1fr; text-wrap: pretty; }
+.cyc-legend { margin-bottom: 18px; }
+/* footnotes follow the centred stacks they sit under */
+#how .note, #tutors .note--strong { margin-left: auto; margin-right: auto; justify-content: center; text-align: center; }
+/* competitions: no pastel marker highlights, no ornamental index numbers, no gold */
+.pt mark { background: none; color: var(--ink); font-weight: 600; padding: 0; }
+.comp-num { display: none; }
+.comp-head .quote { color: rgba(255,255,255,0.9); }
+.bar--key { background: #fff; color: var(--accent); box-shadow: inset 0 0 0 2px var(--accent); font-weight: 700; }
+/* phone nav: never two filled CTAs at once */
+.nav:has(#navLinks.open) .nav-cta-sm { visibility: hidden; }
+@media (max-width: 960px) { .pstat:first-child { padding-right: 16px; } }
+/* tutoring: 'Show all' only once a program is picked */
+body:not(:has([data-option][aria-pressed="true"])) .pick-status .clear { display: none; }
+
+/* KEEP LAST: phone guard (media queries add no specificity, so this must stay the final block in the file) */
+@media (max-width: 720px) {
+  .hero h1 { font-size: clamp(38px, 10.5vw, 48px); }
+  .hero--landing h1 { font-size: clamp(34px, 9.5vw, 44px); }
+  html[lang=ko] .hero h1, html[lang=ko] .hero--landing h1 { font-size: clamp(32px, 8.5vw, 42px); }
+  .sec-head h2 { font-size: clamp(30px, 8.4vw, 38px); }
+  html[lang=ko] .sec-head h2 { font-size: clamp(27px, 7.4vw, 34px); }
+  .sec-head .sub, .cta-band .sub { font-size: 16.5px; }
+  html[lang=ko] body { font-size: 16px; }
+  .btn, .hero .btn, html[lang=ko] .btn, html[lang=ko] .hero .btn { font-size: 15.5px; }
+  .cta-band h2, html[lang=ko] .cta-band h2 { font-size: clamp(28px, 7.6vw, 36px); }
+  .hero .eyebrow { display: block; padding: 0; border: 0; background: none; border-radius: 0; }
+  .faq details { padding: 0 16px; }
+  .faq summary { grid-template-columns: 22px 1fr 28px; gap: 10px; }
+  .faq .a { padding-left: 0; padding-right: 0; }
+  /* review fixes: phone */
+  .sec-head h2 { font-size: clamp(28px, 7.6vw, 34px); }
+  html[lang=ko] :is(.sec-head h2, .cta-band h2, .reports h2, .cyc-copy h2, .comp-head h2) { font-size: 26px; }
+  .hero .eyebrow { letter-spacing: 0.1em; text-wrap: balance; }
+  .hero-side .banner .arr { display: none; }
+  .hero-side .banner h2::after { content: "\00a0→"; font-family: var(--sans); }
+  .profile .actions .btn { white-space: normal; text-align: center; padding-left: 16px; padding-right: 16px; }
+  .file-viz .fv-rows li:nth-child(n+4), .file-viz .fv-note, .file-viz .fv-q { display: none; }
+  .file-viz .fv-rows li { grid-template-columns: 26px 1fr; grid-template-areas: "n l" "n bar"; }
+  .phase tbody th { padding: 14px 10px 14px 44px; font-size: 14px; }
+  .panel .note { text-align: left; justify-content: flex-start; }
+  .cal .lane { width: max-content; min-width: 100%; }
+}

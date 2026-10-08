@@ -12,10 +12,10 @@
 <script>if (new URLSearchParams(location.search).get('display') === 'serif') document.documentElement.dataset.display = 'serif';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="../../assets/site.css?v=32964b27">
-<script src="../../assets/site.js?v=76aefd3a" defer></script>
+<link rel="stylesheet" href="../../assets/site.css?v=faf311e0">
+<script src="../../assets/site.js?v=5a5ea193" defer></script>
 </head>
 <body>
 
@@ -23,6 +23,7 @@
   <div class="wrap">
     <a class="wordmark" href="../../ko/" aria-label="PrepModule — 홈"><span class="dot" aria-hidden="true"></span>PrepModule<span class="tag" aria-hidden="true">US ADMISSIONS</span></a>
     <div class="nav-right">
+      <a class="nav-cta-sm" href="../../ko/request/?service=admissions">시작하기</a>
       <a class="lang-switch" href="../../admissions/" hreflang="en" lang="en" data-lang-switch="en" aria-label="View in English">EN</a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">메뉴</button>
     </div>
@@ -51,7 +52,7 @@
           <a class="btn btn-outline" href="#experts">사정관 소개 보기 <span class="arr" aria-hidden="true">↓</span></a>
         </div>
         <div class="hero-meta">
-          <span class="t">1:1 Zoom · 영어로 진행 · Harvard · Johns Hopkins · UC San Diego 출신 사정관</span>
+          <span class="t">1:1 Zoom ·&nbsp;영어로 진행 ·&nbsp;Harvard ·&nbsp;Johns&nbsp;Hopkins ·&nbsp;UC&nbsp;San&nbsp;Diego 출신 사정관</span>
         </div>
       </div>
 
@@ -69,13 +70,25 @@
     </div>
   </section>
 
+  <!-- proof bar: real credentials from the profiles only, attributed by initials -->
+  <section class="proofbar proofbar--compact dark" aria-label="직접 만나는 입학사정관">
+    <div class="wrap">
+      <p class="proofbar-label">직접 만나는 입학사정관</p>
+      <div class="proofbar-grid">
+        <div class="pstat"><b>5,500<i>+</i></b><span>Harvard College에서 검토한 지원서&nbsp;—&nbsp;<b>N. G.</b></span></div>
+        <div class="pstat"><b>20<i>년 이상</i></b><span>대학 입학 사정 · 진학 상담 경력, 전&nbsp;Johns&nbsp;Hopkins —&nbsp;<b>S. H.</b></span></div>
+        <div class="pinst"><span class="pinst-label">사정관들이 지원서를 읽고 인터뷰한 곳</span><p class="pinst-names"><span>Harvard College</span> <span>Johns Hopkins</span> <span>UC San Diego</span> <span>Northwestern</span></p></div>
+      </div>
+    </div>
+  </section>
+
   <!-- A2 — officer profiles (E01 card + E02 detail inline). #expert-{id} opens the detail and clears the header. -->
   <section class="section" id="experts" aria-labelledby="experts-title">
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">01 · 입학사정관</span>
-          <h2 id="experts-title">전직 입학사정관을 소개해요.</h2>
+          <span class="eyebrow">입학사정관</span>
+          <h2 id="experts-title">전직 <em>입학사정관</em>을 소개해요.</h2>
         </div>
       </div>
 
@@ -174,14 +187,14 @@
   </section>
 
   <!-- A3 — topics an officer can actually speak to, kept within the service's scope -->
-  <section class="section" id="discuss" aria-labelledby="discuss-title">
+  <section class="section section--soft" id="discuss" aria-labelledby="discuss-title">
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">02 · 상담 주제</span>
-          <h2 id="discuss-title">무엇을 이야기하고 싶으세요?</h2>
+          <span class="eyebrow">상담 주제</span>
+          <h2 id="discuss-title">무엇을 <em>이야기</em>하고 싶으세요?</h2>
         </div>
-        <p class="sub">사정관이 실제로 답할 수 있는 주제예요. 하나만 가져오셔도 되고 여러 개여도 괜찮아요. 신청서에 적어 주세요.</p>
+        <p class="sub">사정관이 실제로 답할 수 있는 주제예요. 하나만 가져오셔도&nbsp;되고 여러 개여도 괜찮아요. 신청서에 적어 주세요.</p>
       </div>
       <div class="topics reveal">
         <div class="topic"><h4>지금 위치</h4><p>고려 중인 대학들을 기준으로 지금 준비 상황을 솔직하게 봐요.</p></div>
@@ -198,7 +211,7 @@
   <section class="section" id="timeline" aria-labelledby="timeline-title">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><span class="eyebrow">03 · 나의 타임라인</span><h2 id="timeline-title">지금부터 합격 발표까지.</h2></div>
+        <div><span class="eyebrow">나의 타임라인</span><h2 id="timeline-title">지금부터 <em>합격 발표</em>까지.</h2></div>
       </div>
       <div class="adm-tl reveal" id="admTimeline" data-g="{g}학년" data-class="{c}년 졸업" data-year="{a}–{b}학년도" data-fall="{y}년 가을" data-spring="{y}년 봄" data-summer="{y}년 여름">
         <div class="tl-pick" role="group" aria-label="현재 학년"><span class="lbl">현재 학년</span><button type="button" class="tl-g" data-grade="9" aria-pressed="false"><b></b><small></small></button><button type="button" class="tl-g" data-grade="10" aria-pressed="false"><b></b><small></small></button><button type="button" class="tl-g" data-grade="11" aria-pressed="true"><b></b><small></small></button><button type="button" class="tl-g" data-grade="12" aria-pressed="false"><b></b><small></small></button></div>
@@ -257,10 +270,10 @@
     </div>
   </section>
 
-  <section class="section" id="grades" aria-labelledby="grades-title">
+  <section class="section section--soft" id="grades" aria-labelledby="grades-title">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><span class="eyebrow">04 · 학년별</span><h2 id="grades-title">학년마다 묻는 것이 달라요.</h2></div>
+        <div><span class="eyebrow">학년별</span><h2 id="grades-title"><em>학년마다</em> 묻는 것이 달라요.</h2></div>
       </div>
         <div class="tbl-wrap reveal"><table class="cmp">
           <thead><tr><th scope="col" class="corner"></th><th scope="col">9–10학년</th><th scope="col">11학년</th><th scope="col">12학년</th></tr></thead>
@@ -277,8 +290,8 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">05 · 진행 방식</span>
-          <h2 id="how-title">신청에서 상담까지</h2>
+          <span class="eyebrow">진행 방식</span>
+          <h2 id="how-title">신청에서 <em>상담</em>까지</h2>
         </div>
       </div>
       <ol class="journey reveal">
@@ -292,17 +305,17 @@
   </section>
 
   <!-- A5 — FAQs, then the same request button again -->
-  <section class="section" id="faq" aria-labelledby="faq-title">
+  <section class="section section--soft" id="faq" aria-labelledby="faq-title">
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="eyebrow">06 · 신청 전 확인</span>
+          <span class="eyebrow">신청 전 확인</span>
           <h2 id="faq-title">자주 묻는 질문</h2>
         </div>
         <p class="sub">이용 조건을 간단히 정리했어요. 그 밖의 질문은 신청서에 적어 주시면 일정을 잡기 전에 답해 드려요.</p>
       </div>
       <div class="faq faq--wide reveal">
-        <details>
+        <details open>
           <summary><span class="n">01</span><span class="q">튜터링과 별개의 서비스인가요?</span><span class="plus" aria-hidden="true">+</span></summary>
           <div class="a">네. 입학 상담은 독립된 유료 서비스예요. 튜터링을 신청하지 않아도 상담을 받을 수 있고, 상담을 받았다고 해서 다른 서비스를 이용해야 하는 것도 아니에요.</div>
         </details>
@@ -329,14 +342,13 @@
   <section class="cta-band dark" aria-labelledby="cta-title">
     <div class="wrap inner">
       <div>
-        <span class="eyebrow">상담 신청</span>
-        <h2 id="cta-title" style="margin-top: 14px;">질문을 보내 주세요.</h2>
+        <h2 id="cta-title">질문을 보내 주세요.</h2>
         <p class="sub">궁금한 내용과, 원하신다면 만나고 싶은 사정관을 적어 주세요. 일정을 잡기 전에 가능한 시간과 조건을 먼저 안내해 드려요.</p>
-        <p class="path">신청 → 연락 → 일정 확정 → Zoom</p>
       </div>
       <div class="actions">
         <a class="btn btn-primary" href="../../ko/request/?service=admissions">상담 신청 <span class="arr" aria-hidden="true">→</span></a>
       </div>
+      <p class="path">신청 → 연락 → 일정 확정 → Zoom</p>
     </div>
   </section>
 
