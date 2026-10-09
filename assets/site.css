@@ -1216,7 +1216,7 @@ html[lang=ko] #hero.hero--campus .eyebrow { font-size: 14px; font-weight: 600; l
 #hero.hero--campus h1 { margin: 28px auto 0; max-width: none; color: #fff; text-shadow: 0 2px 24px rgba(var(--dark-rgb),0.45); text-wrap: balance;
   font-size: clamp(40px, 5.2vw, 70px); font-weight: 600; line-height: 1.06; letter-spacing: -0.045em; }
 html[lang=ko] #hero.hero--campus h1 { font-size: clamp(36px, 4.9vw, 64px); font-weight: 700; line-height: 1.24; letter-spacing: -0.045em; }
-#hero.hero--campus h1 em { display: inline; margin: 0; padding: 0; border-radius: 0; background: none; color: var(--accent-photo); font-style: normal; line-height: inherit; }
+#hero.hero--campus h1 em { display: inline; margin: 0; padding: 0; border-radius: 0; background: none; color: #ef5b74; font-style: normal; line-height: inherit; text-shadow: 0 2px 22px rgba(var(--dark-rgb),0.6); }
 html[lang=ko] #hero.hero--campus h1 em { white-space: nowrap; }
 .hero-sub { margin-top: 24px; font-size: clamp(16.5px, 1.45vw, 19px); line-height: 1.5; color: rgba(255,255,255,0.86); letter-spacing: -0.01em; text-shadow: 0 1px 12px rgba(var(--dark-rgb),0.5); }
 .hero-sub .sep { display: inline-block; width: 4px; height: 4px; margin: 0 0.9em; border-radius: 50%; background: rgba(255,255,255,0.55); vertical-align: middle; overflow: hidden; color: transparent; }
@@ -1302,6 +1302,28 @@ html[lang=ko] .xcard .desc { font-size: 15px; line-height: 1.65; }
   #hero.hero--campus .hero-btn { padding-left: 22px; padding-right: 22px; gap: 10px; font-size: 15.5px; }
   html[lang=ko] #hero.hero--campus .hero-btn { font-size: 15.5px; }
   html[lang=ko] #hero.hero--campus h1 { font-size: clamp(25px, 8vw, 36px); }
+}
+
+/* hero: the experts' faces rise from the bottom edge — a hint that the people are just below */
+#hero.hero--campus { padding-bottom: clamp(150px, 15vw, 190px); }
+.hero-peek { position: absolute; left: 50%; bottom: 0; z-index: 1; display: flex; align-items: flex-end; transform: translateX(-50%); }
+.hero-peek .pk { position: relative; display: block; width: clamp(104px, 9.4vw, 128px); aspect-ratio: 4 / 5; margin: 0 -6px; border-radius: 18px; overflow: hidden;
+  border: 3px solid rgba(255,255,255,0.9); background: var(--soft); box-shadow: 0 18px 40px -12px rgba(0,0,0,0.55);
+  transform: translateY(42%); animation: pk-rise .9s cubic-bezier(.22,.61,.36,1) both; transition: transform .35s cubic-bezier(.22,.61,.36,1); }
+.hero-peek .pk img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+.hero-peek .pk:nth-child(1) { --y: 52%; animation-delay: .25s; }
+.hero-peek .pk:nth-child(2) { --y: 44%; animation-delay: .15s; z-index: 1; }
+.hero-peek .pk--mid { --y: 30%; animation-delay: .05s; z-index: 2; width: clamp(122px, 11vw, 150px); }
+.hero-peek .pk:nth-child(4) { --y: 44%; animation-delay: .15s; z-index: 1; }
+.hero-peek .pk:nth-child(5) { --y: 52%; animation-delay: .25s; }
+.hero-peek .pk { transform: translateY(var(--y)); }
+.hero-peek:hover .pk { transform: translateY(calc(var(--y) - 10px)); }
+@keyframes pk-rise { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(var(--y)); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .hero-peek .pk { animation: none; } }
+@media (max-width: 720px) {
+  #hero.hero--campus { padding-bottom: 128px; }
+  .hero-peek .pk { width: 66px; margin: 0 -5px; border-radius: 14px; border-width: 2px; }
+  .hero-peek .pk--mid { width: 80px; }
 }
 
 /* ===== University rows: two rows that scroll in opposite directions — tutors, then former admissions officers. Name tiles, no official logos. ===== */
