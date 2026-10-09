@@ -168,43 +168,94 @@
 })();
 
 
-// Experts carousel (home): prev/next scroll by one card; an arrow is marked disabled at either end.
-// aria-disabled (not disabled) so a focused arrow keeps focus when it reaches the end.
+// Experts carousel (home): a looping, centred carousel. Three cards per view on desktop (two on tablets, one with peeks on phones),
+// the middle card in focus. It starts on the card named by data-start (N. G., Harvard) and advances on its own every few seconds
+// while it is on screen; hovering, focusing inside it or a hidden tab pauses it, and reduced motion turns autoplay off.
 (function () {
-  var track = document.querySelector('[data-carousel]'); if (!track) return;
-  var prev = document.querySelector('[data-carousel-prev]'), next = document.querySelector('[data-carousel-next]');
+  var car = document.querySelector('[data-xcar]'); if (!car) return;
+  var list = car.querySelector('.xlist'), orig = Array.prototype.slice.call(list.children), n = orig.length; if (n < 2) return;
+  var prev = document.querySelector('[data-xcar-prev]'), next = document.querySelector('[data-xcar-next]'), dotsBox = document.querySelector('[data-xcar-dots]');
   var reduce = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
-  // snap positions: each card's start, measured from the first card (the first card sits at scrollLeft 0)
-  function stops() {
-    var cards = track.querySelectorAll('li'); if (!cards.length) return [0];
-    var x0 = cards[0].getBoundingClientRect().left + track.scrollLeft;
-    return Array.prototype.map.call(cards, function (c) { return Math.round(c.getBoundingClientRect().left + track.scrollLeft - x0); });
+  // one copy of the set on each side, so the row can loop without a jump the visitor can see
+  function clone(li) { var c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); c.querySelectorAll('a, button').forEach(function (el) { el.setAttribute('tabindex', '-1'); }); return c; }
+  orig.slice().reverse().forEach(function (li) { list.insertBefore(clone(li), list.firstChild); });
+  orig.forEach(function (li) { list.appendChild(clone(li)); });
+  var items = list.children, start = Math.min(n - 1, Math.max(0, parseInt(car.getAttribute('data-start'), 10) || 0)), idx = n + start;
+  var dots = [];
+  if (dotsBox) orig.forEach(function (li, k) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'xdot';
+    var h = li.querySelector('h3'); b.setAttribute('aria-label', h ? h.textContent : String(k + 1));
+    b.addEventListener('click', function () { normalize(); idx = n + k; render(true); restart(); });
+    dotsBox.appendChild(b); dots.push(b);
+  });
+  car.classList.add('is-on');
+  function per(w) { return w >= 980 ? 3 : w >= 620 ? 2 : 1.18; }
+  function render(anim) {
+    var cs = getComputedStyle(car), w = car.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight), p = per(w), gap = parseFloat(getComputedStyle(list).columnGap) || 24;
+    var cw = p >= 2 ? (w - gap * (Math.ceil(p) - 1)) / Math.ceil(p) : w / p;
+    if (p === 2) cw = (w - gap) / 2;   // tablets: the middle card centred, half of each neighbour showing
+    list.style.setProperty('--cw', cw + 'px');
+    var x = (w - cw) / 2 - idx * (cw + gap);
+    if (!anim) car.classList.add('no-anim');
+    list.style.transform = 'translate3d(' + x + 'px,0,0)';
+    for (var i = 0; i < items.length; i++) items[i].classList.toggle('is-center', i === idx);
+    var real = ((idx - n) % n + n) % n;
+    dots.forEach(function (d, k) { d.setAttribute('aria-current', String(k === real)); });
+    if (!anim) { void list.offsetWidth; car.classList.remove('no-anim'); }
   }
-  var pending = null;   // where an arrow click is already scrolling to, so a quick second click goes one card further
-  function sync(e) {
-    if (e && e.type === 'scrollend') pending = null;
-    var max = track.scrollWidth - track.clientWidth - 2;
-    if (prev) prev.setAttribute('aria-disabled', String(track.scrollLeft <= 2));
-    if (next) next.setAttribute('aria-disabled', String(track.scrollLeft >= max));
+  // after a move lands on a copy, jump (without animation) to the same card in the middle set
+  function normalize() { if (idx < n || idx >= 2 * n) { idx = n + ((idx - n) % n + n) % n; render(false); } }
+  list.addEventListener('transitionend', function (e) { if (e.target === list && e.propertyName === 'transform') normalize(); });
+  function go(d) { if (idx + d < 1 || idx + d > 3 * n - 2) normalize(); idx += d; render(!reduce.matches); }
+  if (prev) prev.addEventListener('click', function () { go(-1); restart(); });
+  if (next) next.addEventListener('click', function () { go(1); restart(); });
+  // a click on a side card brings it to the middle instead of following its link
+  list.addEventListener('click', function (e) {
+    var li = e.target.closest('li'); if (!li || li.classList.contains('is-center')) return;
+    e.preventDefault(); var i = Array.prototype.indexOf.call(items, li); if (i < 0) return;
+    go(i - idx); restart();
+  });
+  car.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { go(1); restart(); } if (e.key === 'ArrowLeft') { go(-1); restart(); } });
+  // swipe on touch screens (vertical scrolling still works: touch-action pan-y)
+  var sx = null, sy = null;
+  car.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') { sx = e.clientX; sy = e.clientY; } });
+  car.addEventListener('pointerup', function (e) {
+    if (sx === null) return; var dx = e.clientX - sx, dy = e.clientY - sy; sx = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { go(dx < 0 ? 1 : -1); restart(); }
+  });
+  car.addEventListener('pointercancel', function () { sx = null; });
+  // autoplay
+  var timer = null, visible = false, hold = false;
+  function stop() { clearInterval(timer); timer = null; }
+  function restart() { stop(); if (!reduce.matches && visible && !hold && !document.hidden) timer = setInterval(function () { go(1); }, 4500); }
+  car.addEventListener('mouseenter', function () { hold = true; stop(); });
+  car.addEventListener('mouseleave', function () { hold = false; restart(); });
+  car.addEventListener('focusin', function () { hold = true; stop(); });
+  car.addEventListener('focusout', function (e) { if (!car.contains(e.relatedTarget)) { hold = false; restart(); } });
+  document.addEventListener('visibilitychange', restart);
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; restart(); }, { threshold: 0.35 }).observe(car);
+  else { visible = true; }
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { render(false); }, 80); });
+  render(false); restart();
+})();
+
+// University rows (home): repeat each list until half the row is wider than the screen, then double it so a -50% slide loops seamlessly.
+// Without JavaScript, or with reduced motion, the names simply sit centred.
+(function () {
+  var rows = document.querySelectorAll('[data-marquee]'); if (!rows.length) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function build(m) {
+    var track = m.querySelector('.marquee-track'), list = track.querySelector('ul'); if (!list) return;
+    track.querySelectorAll('[data-copy]').forEach(function (c) { c.remove(); });
+    m.classList.add('is-on');
+    var w = list.getBoundingClientRect().width; if (!w) { m.classList.remove('is-on'); return; }
+    var half = Math.max(1, Math.ceil((m.clientWidth + 1) / w));
+    for (var i = 1; i < half * 2; i++) { var c = list.cloneNode(true); c.setAttribute('aria-hidden', 'true'); c.setAttribute('data-copy', ''); track.appendChild(c); }
+    track.style.setProperty('--dur', Math.round(half * w / 38) + 's');   // about 38px a second
   }
-  function go(dir, btn) {
-    if (btn.getAttribute('aria-disabled') === 'true') return;
-    var max = track.scrollWidth - track.clientWidth;
-    var x = pending !== null ? Math.min(pending, max) : track.scrollLeft, list = stops(), target = dir > 0 ? null : 0;
-    list.forEach(function (s) { if (dir > 0 && target === null && s > x + 2) target = s; if (dir < 0 && s < x - 2) target = s; });
-    if (target === null) target = max;
-    target = Math.max(0, Math.min(target, max));
-    if (dir > 0 && target <= x + 2) return;   // already heading for the end
-    pending = target;
-    track.scrollTo({ left: target, behavior: reduce.matches ? 'auto' : 'smooth' });
-    setTimeout(function () { if (pending === target) pending = null; sync(); }, 900);   // in case no scrollend arrives (older browsers, a backgrounded tab)
-  }
-  if (prev) prev.addEventListener('click', function () { go(-1, prev); });
-  if (next) next.addEventListener('click', function () { go(1, next); });
-  track.addEventListener('scroll', sync, { passive: true });
-  track.addEventListener('scrollend', sync);
-  window.addEventListener('resize', sync);
-  sync();
+  rows.forEach(build);
+  var lastW = window.innerWidth, rt;
+  window.addEventListener('resize', function () { if (window.innerWidth === lastW) return; lastW = window.innerWidth; clearTimeout(rt); rt = setTimeout(function () { rows.forEach(build); }, 120); });
 })();
 
 // Floating chat buttons — KakaoTalk and WhatsApp, bottom right on every page.

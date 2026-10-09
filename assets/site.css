@@ -1227,17 +1227,6 @@ html[lang=ko] #hero.hero--campus h1 em { white-space: nowrap; }
 #hero.hero--campus .hero-btn:hover .arr { transform: translateY(2px); }
 html[lang=ko] #hero.hero--campus .hero-btn { font-size: 17px; font-weight: 700; }
 
-/* university band: two labelled groups split by a hairline; plain text wordmarks in a quiet logo-strip style (no logos or crests) */
-.uniband { background: var(--ground); }
-.uniband-grid { max-width: calc(var(--max) + 120px); margin: 0 auto; padding: clamp(26px, 2.8vw, 36px) var(--gutter) clamp(36px, 3.6vw, 52px);
-  display: grid; grid-template-columns: auto auto; justify-content: center; border-top: 1px solid var(--line); }
-.uni-group { min-width: 0; padding: 2px clamp(22px, 2.8vw, 40px); text-align: center; }
-.uni-group + .uni-group { border-left: 1px solid var(--line); }
-.uni-label { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-2); }
-html[lang=ko] .uni-label { font-size: 13.5px; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--muted); }
-.uni-list { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 10px clamp(20px, 2.1vw, 30px); }
-.uni-list li { font-family: var(--sans); font-size: clamp(17px, 1.42vw, 19px); font-weight: 600; line-height: 1.2; letter-spacing: -0.025em; color: rgba(var(--ink-rgb),0.62); white-space: nowrap; transition: color .15s; }
-.uni-list li:hover { color: var(--ink); }
 
 /* experts: left-aligned head with round arrows; a scroll-snap row that bleeds off the right edge */
 .xsec { padding-top: clamp(48px, 5.2vw, 72px); }
@@ -1254,15 +1243,7 @@ html[lang=ko] .xhead h2 { max-width: 17em; font-weight: 800; text-wrap: wrap; }
 .xbtn:hover { background: var(--ink); border-color: var(--ink); color: var(--ground); }
 .xbtn[aria-disabled="true"] { opacity: 0.35; cursor: default; box-shadow: none; }
 .xbtn[aria-disabled="true"]:hover { background: var(--card); border-color: var(--line); color: var(--ink); }
-.xtrack { --xpad: max(var(--gutter), calc((100% - var(--max)) / 2 + var(--gutter)));
-  overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--xpad); scrollbar-width: none;
-  padding: 6px 0 32px; }
-.xtrack::-webkit-scrollbar { display: none; }
-.xtrack:focus-visible { outline-offset: -3px; }
-.xlist { list-style: none; margin: 0; padding: 0 var(--xpad); display: flex; gap: 20px; width: max-content; }
 /* cards: rounded, hairline border, soft lift on hover; the role is a small chip (tutor = neutral, admissions officer = accent tint) */
-.xcard { flex: none; width: clamp(256px, 24vw, 308px); scroll-snap-align: start; gap: 0; padding: 10px 10px 22px; border-radius: 18px; background: var(--card);
-  box-shadow: 0 0 0 1px var(--line), 0 1px 2px rgba(var(--ink-rgb),0.04); transition: box-shadow .25s, transform .25s; }
 .xcard:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px var(--line-2), 0 24px 44px -24px rgba(var(--ink-rgb),0.28); }
 .xcard .photo { aspect-ratio: 1 / 1; margin-bottom: 18px; border-radius: 12px; }
 .xcard .role { align-self: flex-start; margin: 0 8px; padding: 4px 10px; border-radius: 999px; background: var(--soft); color: var(--body);
@@ -1277,15 +1258,11 @@ html[lang=ko] .xcard .desc { font-size: 15px; line-height: 1.65; }
 .xcard .mlink { margin-top: auto; padding: 18px 8px 0; font-size: 14.5px; color: var(--ink); }
 .xcard .mlink:hover { color: var(--accent); }
 @media (min-width: 721px) {
-  .xcard { width: max(240px, calc((min(100vw, var(--max)) - 2 * var(--gutter) - 60px) / 4)); }
   .xcard .meta { font-size: 14px; }
 }
 /* narrower desktop cards: the longest credential line can take three lines, so every card keeps the red proof line level */
 @media (min-width: 721px) and (max-width: 1279px) { .xcard .meta { min-height: calc(3 * 1.45em + 14px); } }
 @media (max-width: 1130px) {
-  .uniband-grid { grid-template-columns: 1fr; }
-  .uni-group { padding: 2px 0; }
-  .uni-group + .uni-group { border-left: 0; border-top: 1px solid var(--line); margin-top: 22px; padding-top: 22px; }
 }
 @media (max-width: 720px) {
   #hero.hero--campus { min-height: 0; padding: calc(var(--nav-h) + 56px) 0 56px;
@@ -1302,20 +1279,12 @@ html[lang=ko] .xcard .desc { font-size: 15px; line-height: 1.65; }
   .hero-sub .sep { display: block; width: 0; height: 0; margin: 0; }
   #hero.hero--campus .hero-btn { margin-top: 28px; min-height: 54px; padding: 14px 28px 14px 30px; font-size: 16px; }
   html[lang=ko] #hero.hero--campus .hero-btn { font-size: 16px; }
-  .uniband-grid { padding-top: 24px; padding-bottom: 32px; }
-  .uniband-grid { padding-left: max(var(--gutter), min(56px, calc((100vw - 232px) / 2))); padding-right: max(var(--gutter), min(56px, calc((100vw - 232px) / 2))); }
-  .uni-label { text-wrap: balance; }
-  .uni-list { margin-top: 12px; gap: 6px 20px; }
-  .uni-list li { font-size: 18px; }
   .xhead { margin-bottom: 22px; }
   .xhead h2 { font-size: clamp(26px, 7.2vw, 32px); }
   html[lang=ko] .xhead h2 { font-size: 26px; text-wrap: balance; }
   .xnav { display: none; }
   .xhead .xbr { display: none; }
   .xhead h2 { text-wrap: balance; }
-  .xlist { gap: 12px; }
-  .xcard { width: calc((100vw - var(--gutter)) / 1.16 - 12px); max-width: 340px; }
-  .xtrack { padding-bottom: 12px; }
 }
 
 /* short desktop windows (e.g. 1280×800, 1366×768 laptops): tighten the hero so the university names stay in the first screen */
@@ -1325,18 +1294,101 @@ html[lang=ko] .xcard .desc { font-size: 15px; line-height: 1.65; }
   html[lang=ko] #hero.hero--campus h1 { font-size: clamp(36px, min(4.9vw, 7.2vh), 64px); }
   .hero-sub { margin-top: 20px; }
   #hero.hero--campus .hero-btn { margin-top: 30px; }
-  .uniband-grid { padding-top: 24px; }
-  .uni-list { margin-top: 14px; }
 }
 @media (max-width: 400px) {
-  .uni-list { gap: 6px 16px; }
-  .uni-list li { font-size: 17px; }
 }
 /* very small phones: the centred button stays left of the chat buttons; the Korean second line stays whole */
 @media (max-width: 351px) {
   #hero.hero--campus .hero-btn { padding-left: 22px; padding-right: 22px; gap: 10px; font-size: 15.5px; }
   html[lang=ko] #hero.hero--campus .hero-btn { font-size: 15.5px; }
   html[lang=ko] #hero.hero--campus h1 { font-size: clamp(25px, 8vw, 36px); }
+}
+
+/* ===== University rows: two rows that scroll in opposite directions — tutors, then former admissions officers. Name tiles, no official logos. ===== */
+.uniband { background: var(--ground); padding: clamp(28px, 3vw, 40px) 0 clamp(32px, 3.4vw, 48px); border-bottom: 1px solid var(--line); }
+.unirow { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); display: grid; grid-template-columns: 200px minmax(0, 1fr); align-items: center; gap: 28px; }
+.unirow + .unirow { margin-top: 14px; }
+.uni-label { margin: 0; font-family: var(--sans); font-size: 12px; font-weight: 600; line-height: 1.45; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-wrap: balance; }
+html[lang=ko] .uni-label { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; text-transform: none; color: var(--ink); }
+.marquee { position: relative; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); }
+.marquee-track { display: flex; width: max-content; }
+.marquee.is-on .marquee-track { animation: uni-marquee var(--dur, 30s) linear infinite; }
+.marquee--rev.is-on .marquee-track { animation-direction: reverse; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes uni-marquee { to { transform: translateX(-50%); } }
+.uni-list { list-style: none; margin: 0; padding: 0 14px 0 0; display: flex; gap: 14px; flex: none; }
+.marquee:not(.is-on) .uni-list { flex-wrap: wrap; flex: 1; justify-content: flex-start; padding: 0; }
+.uni-list li { display: inline-flex; align-items: center; gap: 12px; height: 60px; padding: 0 24px 0 18px; border-radius: 14px; background: var(--card); border: 1px solid var(--line);
+  box-shadow: 0 1px 2px rgba(var(--ink-rgb),0.04); font-family: var(--sans); font-size: 18px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); white-space: nowrap; }
+.uni-list li::before { content: ""; flex: none; width: 34px; height: 34px; border-radius: 10px; background-color: var(--soft); background-repeat: no-repeat; background-position: center; background-size: 20px 20px; }
+.unirow--tutor .uni-list li::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230e1a2e' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 9.5 12 5l10 4.5L12 14z'/%3E%3Cpath d='M6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5'/%3E%3Cpath d='M22 9.5V15'/%3E%3C/svg%3E"); }
+.unirow--ao .uni-list li::before { background-color: var(--tint); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b01c35' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 9.5 12 4l9 5.5'/%3E%3Cpath d='M5 10v8M9.7 10v8M14.3 10v8M19 10v8'/%3E%3Cpath d='M3 20.5h18'/%3E%3C/svg%3E"); }
+@media (max-width: 720px) {
+  .unirow { grid-template-columns: 1fr; gap: 10px; padding: 0; }
+  .uni-label { padding: 0 var(--gutter); text-align: center; }
+  .unirow + .unirow { margin-top: 20px; }
+  .uni-list { gap: 10px; padding-right: 10px; }
+  .uni-list li { height: 52px; padding: 0 18px 0 12px; gap: 10px; font-size: 16px; border-radius: 12px; }
+  .uni-list li::before { width: 30px; height: 30px; border-radius: 8px; background-size: 18px 18px; }
+  .marquee:not(.is-on) .uni-list { justify-content: center; padding: 0 var(--gutter); }
+}
+
+/* ===== Experts: centred looping carousel — three larger cards per view, the middle one in focus; advances on its own ===== */
+.xcar { position: relative; overflow: hidden; margin: 0 -14px -22px; padding: 10px 14px 40px; touch-action: pan-y; }
+.xcar:not(.is-on) { overflow-x: auto; scrollbar-width: none; }
+.xlist { list-style: none; margin: 0; padding: 0; display: flex; gap: 24px; width: max-content; transition: transform .7s cubic-bezier(.22,.61,.36,1); will-change: transform; }
+.xcar.no-anim .xlist, .xcar.no-anim .xcard { transition: none !important; }
+.xcard { flex: none; width: var(--cw, 320px); gap: 0; padding: 12px 12px 24px; border-radius: 20px; background: var(--card);
+  box-shadow: 0 0 0 1px var(--line), 0 1px 2px rgba(var(--ink-rgb),0.04); transition: box-shadow .5s, transform .6s cubic-bezier(.22,.61,.36,1), opacity .5s; }
+.xcar.is-on .xcard { opacity: .5; transform: scale(.94); cursor: pointer; }
+.xcar.is-on .xcard:not(.is-center):hover { opacity: .75; transform: scale(.94); }
+.xcar.is-on .xcard.is-center, .xcar.is-on .xcard.is-center:hover { opacity: 1; transform: none; cursor: auto; box-shadow: 0 0 0 1px var(--line-2), 0 30px 60px -30px rgba(var(--ink-rgb),0.35); }
+.xcard .photo { aspect-ratio: 5 / 4; margin-bottom: 20px; border-radius: 14px; }
+.xcard .photo.has-img img { object-position: center 28%; }
+.xcard .role { margin: 0 10px; font-size: 12.5px; }
+html[lang=ko] .xcard .role { font-size: 13px; }
+.xcard h3 { margin-top: 14px; padding: 0 10px; font-size: 26px; }
+.xcard .meta { margin-top: 6px; padding: 0 10px 16px; font-size: 15.5px; min-height: calc(2 * 1.45em + 16px); }
+.xcard .proof { margin-top: 16px; padding: 0 10px; font-size: 15.5px; }
+.xcard .desc { margin-top: 8px; padding: 0 10px; font-size: 16px; }
+html[lang=ko] .xcard .desc { font-size: 16px; }
+.xcard .mlink { padding: 20px 10px 0; font-size: 15px; }
+@media (min-width: 721px) and (max-width: 1279px) { .xcard .meta { min-height: calc(3 * 1.45em + 16px); } }
+.xdots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+.xdot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 999px; background: var(--line-2); cursor: pointer; transition: width .3s, background .3s; }
+.xdot[aria-current="true"] { width: 26px; background: var(--accent); }
+.xdot:hover { background: var(--muted-2); }
+.xdot[aria-current="true"]:hover { background: var(--accent); }
+@media (max-width: 720px) {
+  .xcar { margin: 0 calc(-1 * var(--gutter)); padding: 8px 0 14px; }
+  .xlist { gap: 14px; }
+  .xcard { padding: 10px 10px 20px; border-radius: 18px; }
+  .xcar.is-on .xcard { transform: scale(.96); }
+  .xcard h3 { font-size: 23px; }
+  .xcard .meta { font-size: 15px; }
+  .xcard .proof, .xcard .desc { font-size: 15px; }
+  .xnav { display: none; }
+}
+
+/* ===== Floating header: the bar itself is transparent; the row inside is a rounded glass panel just below the top edge ===== */
+:root { --nav-h: 76px; }
+.nav, .nav.light { padding: 12px 16px 0; background: transparent; border-bottom: 0; backdrop-filter: none; -webkit-backdrop-filter: none; pointer-events: none; }
+.nav > .wrap, .nav .lang-banner { pointer-events: auto; }
+.nav > .wrap { position: relative; max-width: var(--max); min-height: 62px; padding: 0 10px 0 22px; border-radius: 18px;
+  background: rgba(var(--dark-rgb),0.42); border: 1px solid rgba(255,255,255,0.16); backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px);
+  box-shadow: 0 14px 34px -16px rgba(0,0,0,0.5); transition: background .25s, border-color .25s, box-shadow .25s; }
+.nav.light > .wrap { background: rgba(255,255,255,0.82); border-color: rgba(var(--ink-rgb),0.08); box-shadow: 0 1px 2px rgba(var(--ink-rgb),0.05), 0 16px 36px -18px rgba(var(--ink-rgb),0.3); }
+.nav-links a, .lang-switch, .menu-btn { border-radius: 10px; }
+.nav-links .cta a { border-radius: 11px; }
+.nav .lang-banner { max-width: var(--max); margin: 8px auto 0; border: 1px solid var(--tint-line); border-radius: 14px; box-shadow: 0 10px 24px -16px rgba(var(--ink-rgb),0.3); }
+.nav .lang-banner .wrap { padding-left: 22px; padding-right: 10px; }
+@media (max-width: 720px) {
+  .nav-links { top: calc(100% + 8px); border-radius: 16px; border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5); }
+  .nav.light .nav-links { background: var(--card); border: 1px solid var(--line); }
+  :root { --nav-h: 66px; }
+  .nav, .nav.light { padding: 8px 10px 0; }
+  .nav > .wrap { min-height: 56px; padding: 0 8px 0 16px; border-radius: 16px; }
+  .nav .lang-banner .wrap { padding-left: 16px; padding-right: 6px; }
 }
 
 /* KEEP LAST: phone guard (media queries add no specificity, so this must stay the final block in the file) */

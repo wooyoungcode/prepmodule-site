@@ -13,8 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/site.css?v=1f962333">
-<script src="./assets/site.js?v=82dfd32b" defer></script>
+<link rel="stylesheet" href="./assets/site.css?v=aedd7fe7">
+<script src="./assets/site.js?v=db0b7a2a" defer></script>
 </head>
 <body>
 
@@ -52,21 +52,19 @@
     </div>
   </section>
 
-  <!-- H01b — where the experts studied and worked, two groups. Text wordmarks only (no logos); lists live in the strings files. -->
+  <!-- H01b — where the experts studied and worked: two rows that scroll in opposite directions (tutors / former admissions officers). Name tiles, no official logos; lists live in the strings files. -->
   <section class="uniband" aria-label="Where our experts studied and worked">
-    <div class="uniband-grid">
-      <div class="uni-group">
-        <p class="uni-label">Where our tutors studied and work</p>
-        <ul class="uni-list"><li>MIT</li><li>LSE</li><li>University of Oxford</li></ul>
-      </div>
-      <div class="uni-group">
-        <p class="uni-label">Where our admissions officers worked</p>
-        <ul class="uni-list"><li>Harvard College</li><li>Johns Hopkins</li><li>Northeastern</li><li>UC San Diego</li></ul>
-      </div>
+    <div class="unirow unirow--tutor">
+      <p class="uni-label">Where our tutors studied and work</p>
+      <div class="marquee" data-marquee><div class="marquee-track"><ul class="uni-list"><li>MIT</li><li>LSE</li><li>University of Oxford</li></ul></div></div>
+    </div>
+    <div class="unirow unirow--ao">
+      <p class="uni-label">Where our admissions officers worked</p>
+      <div class="marquee marquee--rev" data-marquee><div class="marquee-track"><ul class="uni-list"><li>Harvard College</li><li>Johns Hopkins</li><li>Northeastern</li><li>UC San Diego</li></ul></div></div>
     </div>
   </section>
 
-  <!-- H02 — experts carousel. Role is always labelled; each card links to the matching landing #expert-{id}. -->
+  <!-- H02 — experts carousel: three cards per view, starts with N. G. (Harvard) in the middle, loops and advances on its own. Each card links to the matching landing #expert-{id}. -->
   <section class="section xsec" id="experts" aria-labelledby="experts-title">
     <div class="wrap">
       <div class="xhead reveal">
@@ -75,12 +73,13 @@
           <h2 id="experts-title">Tutors and admissions officers <br class="xbr">you can learn from</h2>
         </div>
         <div class="xnav">
-          <button type="button" class="xbtn" data-carousel-prev aria-controls="expertsTrack" aria-label="Previous expert"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
-          <button type="button" class="xbtn" data-carousel-next aria-controls="expertsTrack" aria-label="Next expert"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button>
+          <button type="button" class="xbtn" data-xcar-prev aria-controls="expertsCar" aria-label="Previous expert"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
+          <button type="button" class="xbtn" data-xcar-next aria-controls="expertsCar" aria-label="Next expert"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button>
         </div>
       </div>
     </div>
-    <div class="xtrack reveal" id="expertsTrack" data-carousel role="region" tabindex="0" aria-label="Our experts — scroll sideways for more">
+    <div class="wrap">
+    <div class="xcar reveal" id="expertsCar" data-xcar data-start="2" role="region" aria-roledescription="carousel" aria-label="Our experts">
      <ul class="xlist">
       <li class="card xcard">
         <div class="photo has-img"><img src="./assets/img/people/nw.jpg" alt="Portrait of N. W." width="640" height="800" loading="lazy"></div>
@@ -128,6 +127,8 @@
         <a class="mlink" href="./admissions/#expert-ds">View expertise <span class="arr" aria-hidden="true">→</span></a>
       </li>
      </ul>
+    </div>
+    <div class="xdots" data-xcar-dots></div>
     </div>
   </section>
 
