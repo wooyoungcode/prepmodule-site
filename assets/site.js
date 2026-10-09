@@ -245,7 +245,7 @@
   var rows = document.querySelectorAll('[data-marquee]'); if (!rows.length) return;
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   function build(m) {
-    var track = m.querySelector('.marquee-track'), list = track.querySelector('ul'); if (!list) return;
+    var track = m.querySelector('.marquee-track'), list = track.firstElementChild; if (!list) return;
     track.querySelectorAll('[data-copy]').forEach(function (c) { c.remove(); });
     m.classList.add('is-on');
     var w = list.getBoundingClientRect().width; if (!w) { m.classList.remove('is-on'); return; }

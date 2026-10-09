@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="../assets/site.css?v=f19d3697">
-<script src="../assets/site.js?v=db0b7a2a" defer></script>
+<link rel="stylesheet" href="../assets/site.css?v=648e727f">
+<script src="../assets/site.js?v=020b4e21" defer></script>
 </head>
 <body>
 
@@ -48,25 +48,16 @@
       <p class="hero-sub">AP · IB · SAT 과외 <span class="sep" aria-hidden="true">|</span> 미국 대학 입시 상담</p>
       <a class="btn btn-primary hero-btn" href="#experts">전문가 만나보기 <span class="arr" aria-hidden="true">↓</span></a>
     </div>
-    <!-- the experts' faces rise from the bottom edge, a hint that the people are just below (decorative; the button above is the real link) -->
-    <a class="hero-peek" href="#experts" aria-hidden="true" tabindex="-1">
-      <span class="pk"><img src="../assets/img/people/gi.jpg" alt="" width="640" height="800"></span>
-      <span class="pk"><img src="../assets/img/people/nw.jpg" alt="" width="640" height="800"></span>
-      <span class="pk pk--mid"><img src="../assets/img/people/ng.jpg" alt="" width="640" height="800"></span>
-      <span class="pk"><img src="../assets/img/people/sh.jpg" alt="" width="640" height="800"></span>
-      <span class="pk"><img src="../assets/img/people/ds.jpg" alt="" width="640" height="800"></span>
-    </a>
   </section>
 
-  <!-- H01b — where the experts studied and worked: two rows that scroll in opposite directions (tutors / former admissions officers). Name tiles, no official logos; lists live in the strings files. -->
+  <!-- H01b — where the experts studied and worked: one scrolling row of name tiles, each tagged tutor / former admissions officer. No official logos; lists live in the strings files. -->
   <section class="uniband" aria-label="전문가들이 공부하고 일한 대학">
-    <div class="unirow unirow--tutor">
-      <p class="uni-label">튜터 출신 · 소속 대학</p>
-      <div class="marquee" data-marquee><div class="marquee-track"><ul class="uni-list"><li>MIT</li><li>LSE</li><li>University of Oxford</li></ul></div></div>
-    </div>
-    <div class="unirow unirow--ao">
-      <p class="uni-label">전직 입학사정관 근무 대학</p>
-      <div class="marquee marquee--rev" data-marquee><div class="marquee-track"><ul class="uni-list"><li>Harvard College</li><li>Johns Hopkins</li><li>Northeastern</li><li>UC San Diego</li></ul></div></div>
+    <div class="unirow">
+      <p class="uni-label">전문가들이 공부하고 일한 대학</p>
+      <div class="marquee" data-marquee><div class="marquee-track"><div class="uni-set">
+        <ul class="uni-list uni-list--tutor" aria-label="튜터 출신 · 소속 대학" style="--tag: '튜터 출신·소속'"><li>MIT</li><li>LSE</li><li>University of Oxford</li></ul>
+        <ul class="uni-list uni-list--ao" aria-label="전직 입학사정관 근무 대학" style="--tag: '전직 입학사정관 근무'"><li>Harvard College</li><li>Johns Hopkins</li><li>Northeastern</li><li>UC San Diego</li></ul>
+      </div></div></div>
     </div>
   </section>
 
@@ -74,10 +65,7 @@
   <section class="section xsec" id="experts" aria-labelledby="experts-title">
     <div class="wrap">
       <div class="xhead reveal">
-        <div>
-          <span class="eyebrow">전문가 소개</span>
-          <h2 id="experts-title">직접 배우고 상담받을 <span class="nw">수 있는</span> <br class="xbr">튜터와 입학사정관</h2>
-        </div>
+        <h2 id="experts-title">직접 배우고 상담받을 <span class="nw">수 있는</span> 튜터와 입학사정관</h2>
         <div class="xnav">
           <button type="button" class="xbtn" data-xcar-prev aria-controls="expertsCar" aria-label="이전 전문가"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
           <button type="button" class="xbtn" data-xcar-next aria-controls="expertsCar" aria-label="다음 전문가"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button>
