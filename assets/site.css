@@ -1315,35 +1315,26 @@ html[lang=ko] .uni-label { font-size: 14px; font-weight: 700; letter-spacing: -0
 .marquee:hover .marquee-track { animation-play-state: paused; }
 @keyframes uni-marquee { to { transform: translateX(-50%); } }
 .uni-set { display: flex; flex: none; gap: 12px; padding-right: 12px; }
-.marquee:not(.is-on) .uni-set { flex-wrap: wrap; flex: 1; padding: 0; }
+.marquee:not(.is-on) { -webkit-mask-image: none; mask-image: none; }
+.marquee:not(.is-on) .marquee-track { width: auto; }
+.marquee:not(.is-on) .uni-set { flex-wrap: wrap; flex: 1; padding: 0; row-gap: 8px; }
 .uni-list { list-style: none; margin: 0; padding: 0; display: flex; gap: 12px; flex: none; }
 .marquee:not(.is-on) .uni-list { flex-wrap: wrap; }
-.uni-list li { display: inline-flex; align-items: center; gap: 16px; height: 64px; padding: 0 18px 0 20px; border-radius: 14px;
-  background: #fff; border: 1px solid var(--line); box-shadow: 0 1px 2px rgba(var(--ink-rgb),0.04); white-space: nowrap; }
-.ulogo { display: inline-flex; align-items: center; gap: 9px; }
-.ulogo img { display: block; width: auto; height: 32px; }
-.u-mit .ulogo img { height: 24px; }
-.u-lse .ulogo img { height: 30px; }
-.u-oxford .ulogo img { height: 34px; }
-.u-harvard .ulogo img { height: 34px; }
-.u-jhu .ulogo img { height: 27px; }
-.u-neu .ulogo img { height: 36px; }
-.u-ucsd .ulogo img { height: 26px; }
-.uname { font-family: var(--sans); font-size: 17px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
-.utag { padding-left: 14px; border-left: 1px solid var(--line); font-family: var(--sans); font-size: 12px; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; color: var(--muted); white-space: nowrap; }
-.uni-list--ao .utag { color: var(--accent); }
+.uni-set, .uni-list { gap: 56px; }
+.uni-set { padding-right: 56px; }
+.uni-list li { display: flex; align-items: center; height: 56px; }
+.uni-list li img { display: block; width: auto; height: var(--h, 32px); }
+.u-harvard { --h: 40px; } .u-yale { --h: 34px; } .u-princeton { --h: 32px; } .u-stanford { --h: 30px; } .u-mit { --h: 30px; }
+.u-columbia { --h: 30px; } .u-penn { --h: 40px; } .u-brown { --h: 22px; } .u-dartmouth { --h: 18px; } .u-cornell { --h: 24px; }
+.u-oxford { --h: 36px; } .u-lse { --h: 32px; } .u-jhu { --h: 28px; } .u-northeastern { --h: 38px; } .u-ucsd { --h: 26px; }
 @media (max-width: 720px) {
   .uniband { padding: 14px 0 16px; }
   .unirow { grid-template-columns: 1fr; gap: 10px; padding: 0; }
   .uni-label { padding: 0 var(--gutter); text-align: center; }
-  .uni-set, .uni-list { gap: 10px; }
-  .uni-set { padding-right: 10px; }
-  .uni-list li { height: 54px; gap: 12px; padding: 0 14px 0 16px; border-radius: 12px; }
-  .ulogo img { height: 26px; }
-  .u-mit .ulogo img { height: 20px; } .u-lse .ulogo img { height: 25px; } .u-oxford .ulogo img, .u-harvard .ulogo img { height: 28px; }
-  .u-jhu .ulogo img { height: 22px; } .u-neu .ulogo img { height: 30px; } .u-ucsd .ulogo img { height: 21px; }
-  .uname { font-size: 15px; }
-  .utag { padding-left: 11px; font-size: 11px; }
+  .uni-set, .uni-list { gap: 36px; }
+  .uni-set { padding-right: 36px; }
+  .uni-list li { height: 46px; }
+  .uni-list li img { height: calc(var(--h, 32px) * 0.78); }
   .marquee:not(.is-on) .uni-set { justify-content: center; padding: 0 var(--gutter); }
 }
 
