@@ -194,6 +194,7 @@
     var cs = getComputedStyle(car), w = car.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight), p = per(w), gap = parseFloat(getComputedStyle(list).columnGap) || 24;
     var cw = p >= 2 ? (w - gap * (Math.ceil(p) - 1)) / Math.ceil(p) : w / p;
     if (p === 2) cw = (w - gap) / 2;   // tablets: the middle card centred, half of each neighbour showing
+    if (p === 3) cw = Math.min(cw, 300);   // desktop: cards stay a comfortable size; the next ones peek in at the edges
     list.style.setProperty('--cw', cw + 'px');
     var x = (w - cw) / 2 - idx * (cw + gap);
     if (!anim) car.classList.add('no-anim');
