@@ -1437,6 +1437,234 @@ html[lang=ko] .xhead h2 { max-width: none; font-size: clamp(23px, 2.2vw, 29px); 
   html[lang=ko] .xhead h2 { font-size: 23px; }
 }
 
+/* ===== Home lower sections (page-home only): support · gets · steps · team-cycle · about/FAQ · CTA · footer — light system matching hero/experts ===== */
+/* Every rule is prefixed .page-home (body class on the home template only), so the shared classes on other pages stay as they were.
+   KO overrides carry html[lang=ko] .page-home to beat the older html[lang=ko] … (0,2,2) rules. */
+.page-home {
+  --sec-y: clamp(72px, 8vw, 112px);
+  --hc-shadow: 0 0 0 1px var(--line), 0 1px 2px rgba(var(--ink-rgb),0.04), 0 14px 34px -26px rgba(var(--ink-rgb),0.28);
+  --hc-shadow-hover: 0 0 0 1px var(--line-2), 0 24px 44px -24px rgba(var(--ink-rgb),0.28); /* same as .xcard:hover */
+}
+
+/* section heads: left-aligned like .xhead, optional content (sub line / tabs) on the right */
+.page-home .sec-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 48px;
+  text-align: left; margin: 0 0 clamp(28px, 3vw, 40px); padding: 0; border: 0; }
+.page-home .sec-head > div:first-child { flex: 1 1 420px; min-width: 0; }
+.page-home :is(.sec-head h2, .team-intro h2, .cyc-copy h2) { margin: 14px 0 0; max-width: 20ch; font-size: clamp(28px, 2.5vw, 32px);
+  font-weight: 700; line-height: 1.15; letter-spacing: -0.035em; color: var(--ink); text-wrap: balance; }
+html[lang=ko] .page-home :is(.sec-head h2, .team-intro h2, .cyc-copy h2) { max-width: 16em; font-size: clamp(26px, 2.6vw, 32px); font-weight: 800; line-height: 1.3; letter-spacing: -0.03em; }
+.page-home .sec-head h2 em { color: var(--accent); font-style: normal; }
+.page-home .sec-head .sub { flex: 0 1 440px; margin: 0; max-width: 440px; font-size: 16px; line-height: 1.6; color: var(--muted); text-wrap: pretty; }
+html[lang=ko] .page-home .sec-head .sub { font-size: 16px; line-height: 1.7; }
+@media (min-width: 721px) { .page-home :is(#support, #steps) .sec-head h2 { max-width: none; } }   /* one line, like the experts head */
+.page-home #gets .sec-head .sub { color: var(--body); }   /* --muted on --soft is under 4.5:1 */
+/* body copy in the lower cards: no one-word last lines */
+.page-home :is(.support-grid .support-card p, .journey .jstep p, .get p, .faq .a, .facts li, .team-intro .lead) { text-wrap: pretty; }
+/* eyebrows: the hero's pill in light form */
+.page-home :is(.sec-head, .team-intro, .cyc-copy) .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px 5px 10px;
+  border-radius: 999px; background: var(--card); box-shadow: 0 0 0 1px var(--line); font-family: var(--sans); font-size: 13px; font-weight: 600;
+  line-height: 1.4; letter-spacing: 0; text-transform: none; color: var(--body); }
+.page-home :is(.sec-head, .team-intro, .cyc-copy) .eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; flex: none;
+  background: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb),0.12); }
+html[lang=ko] .page-home :is(.sec-head, .team-intro, .cyc-copy) .eyebrow { font-size: 13.5px; font-weight: 600; letter-spacing: -0.01em; }
+
+/* 1 · support: four equal white link cards on the ground (was the navy band) */
+.page-home #support { margin-top: 0; padding: clamp(56px, 6vw, 88px) 0 var(--sec-y); background: var(--ground); color: var(--body); }
+.page-home .support-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.page-home .support-grid .support-card { display: flex; flex-direction: column; gap: 0; min-height: 0; padding: 24px 24px 22px; border: 0; border-radius: 20px;
+  background: var(--card); box-shadow: var(--hc-shadow); color: var(--body); transition: opacity .6s ease, transform .2s, box-shadow .2s; }
+.page-home .support-grid .support-card:hover { transform: translateY(-3px); box-shadow: var(--hc-shadow-hover); background: var(--card); }
+.page-home .support-grid .support-card .card-ico { width: 48px; height: 48px; border-radius: 14px; background: var(--tint); color: var(--accent); box-shadow: none; }
+.page-home .support-grid .support-card .card-ico .i { width: 24px; height: 24px; }
+.page-home .support-grid .support-card:hover .card-ico { background: var(--tint); }
+.page-home .support-grid .support-card h3 { margin-top: 20px; font-size: 20px; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
+.page-home .support-grid .support-card p { margin-top: 8px; font-size: 15px; line-height: 1.6; color: var(--muted); }
+html[lang=ko] .page-home .support-grid .support-card p { font-size: 15px; line-height: 1.65; }
+.page-home .support-grid .support-card .mlink { margin-top: auto; padding-top: 20px; font-family: var(--sans); font-size: 14.5px; font-weight: 600;
+  letter-spacing: -0.01em; text-transform: none; color: var(--ink); }
+.page-home .support-grid .support-card:hover .mlink { color: var(--accent); }
+
+/* 2 · gets: soft band, illustrations inside white cards */
+.page-home #gets { margin-top: 0; padding: var(--sec-y) 0; background: var(--soft); }
+.page-home .gets { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.page-home .get { padding: 12px 12px 26px; border-radius: 20px; background: var(--card); box-shadow: var(--hc-shadow); }
+.page-home #gets .get-art { aspect-ratio: 3 / 2; border-radius: 14px; background: linear-gradient(160deg, var(--ground) 0%, var(--soft) 100%); box-shadow: none; }
+.page-home .get h3 { margin: 18px 10px 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+html[lang=ko] .page-home .get h3 { font-size: 21px; }
+.page-home .get p { margin: 8px 10px 0; max-width: none; font-size: 15px; line-height: 1.6; color: var(--muted); }
+html[lang=ko] .page-home .get p { font-size: 15.5px; line-height: 1.65; }
+
+/* 3 · steps: head with a segmented tab control on the right; four white step cards */
+.page-home #steps { margin-top: 0; padding: var(--sec-y) 0 0; background: var(--ground); }
+.page-home .sec-head .tabs { flex: none; margin: 0; display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--soft); box-shadow: inset 0 0 0 1px var(--line); }
+.page-home .tab { min-height: 44px; padding: 8px 22px; border-radius: 999px; background: transparent; box-shadow: none; font-size: 15px; font-weight: 600; color: rgba(var(--ink-rgb),0.66); }
+.page-home .tab:hover:not([aria-selected="true"]) { background: rgba(255,255,255,0.6); color: var(--ink); }
+.page-home .tab[aria-selected="true"] { background: var(--card); color: var(--ink); box-shadow: 0 0 0 1px var(--line), 0 1px 2px rgba(var(--ink-rgb),0.06), 0 6px 14px -8px rgba(var(--ink-rgb),0.25); }
+.page-home .journey { margin-top: 0; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.page-home .journey .jstep { position: relative; display: flex; flex-direction: column; align-items: flex-start; text-align: left; padding: 24px 24px 26px;
+  border-radius: 20px; background: var(--card); box-shadow: var(--hc-shadow); }
+.page-home .journey .jstep .ring { position: static; width: 48px; height: 48px; margin: 0 0 20px; border-radius: 14px; background: var(--soft); box-shadow: none; }
+.page-home .journey .jstep .ring::before, .page-home .journey .jstep .ring::after { content: none; display: none; }
+.page-home .journey .jstep .ico { color: var(--ink); }
+.page-home .journey .jstep .ico .i { width: 24px; height: 24px; }
+.page-home .journey .jstep .jn { position: absolute; top: 24px; right: 24px; bottom: auto; font-family: var(--sans); font-size: 13px; font-weight: 600;
+  letter-spacing: 0; color: var(--muted); font-variant-numeric: tabular-nums; }
+.page-home .journey .jstep:first-child .ring { background: var(--tint); box-shadow: none; }
+.page-home .journey .jstep:first-child :is(.ico, .jn) { color: var(--accent); }
+.page-home .journey .jstep :is(h3, h4) { margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+.page-home .journey .jstep p { margin-top: 8px; max-width: none; font-size: 15px; line-height: 1.6; color: var(--muted); }
+html[lang=ko] .page-home .journey .jstep p { font-size: 15px; line-height: 1.65; }
+/* connectors: none by default (beats the old dashed arrows at every width); a small chevron in the gap on wide screens only */
+.page-home .journey .jstep::before, .page-home .journey .jstep::after { content: none; display: none; }
+@media (min-width: 961px) {
+  .page-home .journey .jstep:not(:last-child)::after { content: ""; display: block; position: absolute; top: 43px; left: auto; right: -15px; bottom: auto;
+    width: 10px; height: 10px; background: none; border: 0; border-top: 1.5px solid var(--line-2); border-right: 1.5px solid var(--line-2); transform: rotate(45deg); }
+}
+.page-home .panel .note { margin: 20px 0 0; max-width: none; justify-content: flex-start; text-align: left; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); }
+.page-home .panel .note::before { content: ""; flex: none; width: 6px; height: 6px; margin-top: 0.62em; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb),0.12); }
+
+/* 4 · team cycle: a light card (was the navy panel); the diagram recoloured in ink + crimson */
+.page-home #team-cycle { margin-top: 0; padding: clamp(56px, 6vw, 88px) 0 var(--sec-y); background: var(--ground); }
+.page-home .cyc-panel { padding: clamp(32px, 4.5vw, 56px); border-radius: 24px; background: var(--card); background-image: none; color: var(--body); box-shadow: var(--hc-shadow); }
+.page-home .cyc-panel::before { right: -6%; top: -14%; width: 62%; background: radial-gradient(closest-side, rgba(var(--accent-rgb),0.08), transparent 72%); }
+.page-home .cyc-copy h2 { color: var(--ink); max-width: 13ch; }
+html[lang=ko] .page-home .cyc-copy h2 { max-width: 12em; }
+.page-home .cyc-copy p { margin-top: 16px; max-width: 46ch; font-size: 16px; line-height: 1.65; color: var(--body); }
+.page-home .cyc-legend { margin: 24px 0 0; font-size: 14px; color: var(--body); }
+.page-home .cyc-legend .sw { border-top: 2px solid rgba(var(--ink-rgb),0.55); }
+.page-home .cyc-legend .sw.dot { border-top: 2px dotted var(--accent); }
+.page-home .cyc text { fill: var(--body); font-weight: 500; }
+.page-home .cyc .cyc-solid { stroke: rgba(var(--ink-rgb),0.5); color: rgba(var(--ink-rgb),0.5); }
+.page-home .cyc .cyc-dot { stroke: var(--accent); color: var(--accent); }
+.page-home .cyc #cyc-arrow path { fill: rgba(var(--ink-rgb),0.5); }
+.page-home .cyc #cyc-arrow-dot path { fill: var(--accent); }
+.page-home .cyc .cyc-halo { fill: rgba(var(--accent-rgb),0.04); stroke: var(--tint-line); stroke-width: 1; }
+.page-home .cyc .cyc-node { fill: var(--card); stroke: var(--line-2); stroke-width: 1.5; }
+.page-home .cyc .cyc-name { fill: var(--ink); font-weight: 600; }
+
+/* 5 · about + FAQ: soft band, tick chips, white accordion cards with a tint toggle when open */
+.page-home #about { margin-top: 0; padding: var(--sec-y) 0 clamp(56px, 6vw, 80px); background: var(--soft); }
+.page-home .team { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+@media (min-width: 961px) and (min-height: 700px) { .page-home .team-intro { position: sticky; top: calc(var(--nav-h) + 32px); } }
+.page-home .team-intro .lead { margin-top: 18px; max-width: 460px; font-size: 16px; line-height: 1.65; color: var(--body); }
+.page-home .facts { margin-top: 28px; }
+.page-home .facts li { grid-template-columns: 22px minmax(0, 1fr); gap: 12px; align-items: start; padding: 14px 0; border-top: 1px solid var(--line-2); color: var(--ink); }
+.page-home .facts li::before { content: "✓"; display: grid; place-items: center; width: 22px; height: 22px; margin-top: 2px; border-radius: 50%;
+  background: var(--card); box-shadow: 0 0 0 1px var(--tint-line); color: var(--accent); font-family: var(--sans); font-size: 12px; font-weight: 700; }
+.page-home .faq { display: grid; gap: 12px; border-top: 0; }
+.page-home .faq details { padding: 0 24px; border: 0; border-radius: 16px; background: var(--card); box-shadow: 0 0 0 1px var(--line), 0 1px 2px rgba(var(--ink-rgb),0.04); transition: box-shadow .2s; }
+.page-home .faq details[open] { box-shadow: 0 0 0 1px var(--line-2), 0 18px 40px -28px rgba(var(--ink-rgb),0.3); }
+.page-home .faq summary { grid-template-columns: minmax(0, 1fr) 32px; gap: 16px; padding: 20px 0; font-size: 17px; font-weight: 600; line-height: 1.45; letter-spacing: -0.015em; color: var(--ink); }
+.page-home .faq summary .n { display: none; }
+.page-home .faq summary .plus { width: 32px; height: 32px; border: 0; border-radius: 50%; background: var(--soft); color: var(--ink); }
+.page-home .faq summary:hover .plus { background: var(--line); }
+.page-home .faq details[open] summary .plus { transform: rotate(45deg); background: var(--tint); color: var(--accent); border-color: transparent; }
+.page-home .faq .a { padding: 0 48px 22px 0; max-width: 62ch; font-size: 15.5px; line-height: 1.7; color: var(--body); }
+@supports selector(:has(*)) {   /* focus ring follows the rounded card instead of a square box on the summary */
+  .page-home .faq summary:focus-visible { outline: none; }
+  .page-home .faq details:has(> summary:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+}
+
+/* 6 · closing CTA: the page's one dark moment, a rounded panel with the hero's campus photo under the same navy gradient */
+.page-home .cta-band { margin-top: 0; padding: 0 0 var(--sec-y); background: var(--soft); background-image: none; color: var(--body); }
+.page-home .cta-panel { position: relative; overflow: hidden; isolation: isolate; padding: clamp(52px, 6vw, 84px) clamp(24px, 5vw, 64px); border-radius: 24px;
+  color: #fff; background-color: var(--dark);
+  background-image:
+    radial-gradient(ellipse 55% 65% at 50% 50%, rgba(var(--dark-rgb),0.55) 0%, rgba(var(--dark-rgb),0.2) 65%, rgba(var(--dark-rgb),0) 85%),
+    linear-gradient(180deg, rgba(var(--dark-rgb),0.62) 0%, rgba(var(--dark-rgb),0.46) 50%, rgba(var(--dark-rgb),0.8) 100%),
+    var(--photo);
+  background-size: cover, cover, cover; background-position: center, center, center 55%; background-repeat: no-repeat;
+  box-shadow: 0 24px 48px -30px rgba(var(--ink-rgb),0.32); }
+.page-home .cta-band h2 { max-width: 20ch; margin: 0 auto; color: #fff; font-size: clamp(30px, 3.2vw, 42px); font-weight: 700; line-height: 1.12; letter-spacing: -0.035em; text-shadow: 0 2px 24px rgba(var(--dark-rgb),0.45); }
+html[lang=ko] .page-home .cta-band h2 { max-width: 16em; font-size: clamp(28px, 3vw, 38px); font-weight: 800; line-height: 1.3; letter-spacing: -0.03em; }
+.page-home .cta-band .sub { max-width: 560px; margin: 16px auto 0; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.86); text-shadow: 0 1px 12px rgba(var(--dark-rgb),0.5); }
+.page-home .cta-band .btn-primary { min-height: 56px; padding: 15px 30px 15px 34px; gap: 12px; border-radius: 12px; background: var(--accent); color: #fff; font-size: 17px; font-weight: 600;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 14px 30px -12px rgba(0,0,0,0.55); transition: background .15s, transform .15s; }
+.page-home .cta-band .btn-primary:hover { background: var(--accent-hi); color: #fff; transform: translateY(-1px); }
+.page-home .cta-band .btn-primary .arr { font-family: var(--sans); }
+html[lang=ko] .page-home .cta-band .btn-primary { font-size: 17px; font-weight: 700; }
+
+/* 7 · footer: same navy chrome, sans meta row, no extra top hairline */
+.page-home .footer { margin-top: 0; padding: 64px 0 32px; border-top: 0; }
+.page-home .footer .tagline { margin-top: 16px; font-size: 14.5px; line-height: 1.65; }
+.page-home .footer-meta { margin-top: 40px; padding-top: 20px; font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.02em; }
+html[lang=ko] .page-home .footer-meta { font-size: 12.5px; letter-spacing: 0; }
+@media (min-width: 721px) { .page-home .footer-meta { padding-right: 84px; } }   /* 54px chat button + 18px offset + 12px gap */
+
+/* tablets */
+@media (max-width: 1100px) {
+  .page-home .support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 960px) {
+  .page-home .gets { grid-template-columns: minmax(0, 1fr); }
+  .page-home .journey { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .page-home .team { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+}
+@media (min-width: 721px) and (max-width: 960px) {
+  .page-home .get { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 24px; align-content: center; padding: 12px 24px 12px 12px; }
+  .page-home #gets .get-art { grid-row: 1 / span 2; }
+  .page-home .get h3 { margin: 0; align-self: end; }
+  .page-home .get p { margin: 8px 0 0; align-self: start; }
+}
+
+/* phones */
+@media (max-width: 720px) {
+  .page-home { --sec-y: 56px; }
+  .page-home .sec-head { flex-direction: column; align-items: flex-start; gap: 14px; margin-bottom: 24px; }
+  .page-home .sec-head > div:first-child { flex: none; width: 100%; }
+  .page-home :is(.sec-head h2, .team-intro h2, .cyc-copy h2) { font-size: clamp(25px, 6.8vw, 28px); }
+  html[lang=ko] .page-home :is(.sec-head h2, .team-intro h2, .cyc-copy h2) { font-size: 24px; line-height: 1.32; }
+  .page-home .sec-head .sub { flex-basis: auto; font-size: 15.5px; }
+  html[lang=ko] .page-home .sec-head .sub { font-size: 15.5px; }
+
+  .page-home .support-grid { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .page-home .support-grid .support-card { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 16px; row-gap: 0; padding: 18px 18px 18px 16px; border-radius: 18px; }
+  .page-home .support-grid .support-card .card-ico { grid-row: 1 / span 3; width: 44px; height: 44px; border-radius: 12px; }
+  .page-home .support-grid .support-card :is(h3, p, .mlink) { grid-column: 2; }
+  .page-home .support-grid .support-card h3 { margin-top: 0; font-size: 18px; }
+  .page-home .support-grid .support-card p, html[lang=ko] .page-home .support-grid .support-card p { margin-top: 4px; font-size: 14.5px; }
+  .page-home .support-grid .support-card .mlink { padding-top: 10px; }
+
+  .page-home .gets { gap: 14px; }
+  .page-home .get { padding: 10px 10px 22px; border-radius: 18px; }
+  .page-home #gets .get-art { aspect-ratio: 16 / 9; }
+  .page-home .get h3 { margin: 16px 8px 0; }
+  .page-home .get p { margin: 6px 8px 0; }
+
+  .page-home .sec-head .tabs { display: flex; width: 100%; }
+  .page-home .tab { flex: 1 1 0; padding: 8px 12px; }
+  .page-home .journey { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .page-home .journey .jstep { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 14px; align-items: start; padding: 18px 18px 18px 16px; border-radius: 18px; }
+  .page-home .journey .jstep .ring { grid-row: 1 / span 2; width: 44px; height: 44px; border-radius: 12px; margin: 0; }
+  .page-home .journey .jstep :is(h3, h4) { margin-top: 2px; padding-right: 32px; font-size: 17px; }   /* title clears the step number */
+  .page-home .journey .jstep p, html[lang=ko] .page-home .journey .jstep p { margin-top: 4px; font-size: 14.5px; }
+  .page-home .journey .jstep .jn { top: 18px; right: 18px; }
+
+  .page-home .cyc-panel { padding: 28px 20px 20px; border-radius: 20px; }
+
+  .page-home .team { gap: 32px; }
+  .page-home .faq details { padding: 0 18px; border-radius: 14px; }
+  .page-home .faq summary { grid-template-columns: minmax(0, 1fr) 30px; gap: 12px; padding: 18px 0; font-size: 16px; }
+  .page-home .faq summary .plus { width: 30px; height: 30px; }
+  .page-home .faq .a { padding: 0 0 20px; font-size: 15px; }
+
+  .page-home .cta-panel { padding: 44px 22px; border-radius: 20px;
+    background-image:
+      radial-gradient(ellipse 55% 65% at 50% 50%, rgba(var(--dark-rgb),0.55) 0%, rgba(var(--dark-rgb),0.2) 65%, rgba(var(--dark-rgb),0) 85%),
+      linear-gradient(180deg, rgba(var(--dark-rgb),0.62) 0%, rgba(var(--dark-rgb),0.46) 50%, rgba(var(--dark-rgb),0.8) 100%),
+      var(--photo-sm);
+    background-position: center, center, center 40%; }
+  .page-home .cta-band h2 { font-size: clamp(26px, 7vw, 30px); }
+  html[lang=ko] .page-home .cta-band h2 { font-size: 25px; }
+  .page-home .cta-band .sub { font-size: 15.5px; }
+  .page-home .cta-band .btn-primary, html[lang=ko] .page-home .cta-band .btn-primary { min-height: 52px; font-size: 16px; padding: 14px 26px; }
+
+  .page-home .footer { padding-bottom: 136px; }   /* keeps the chat buttons clear, as before */
+  .page-home .footer-links { gap: 0 24px; }
+  .page-home .footer-links a { display: inline-flex; align-items: center; min-height: 44px; }   /* 44px tap targets */
+}
+@media (max-width: 340px) { .page-home .cta-panel { padding-left: 16px; padding-right: 16px; } }
+
 /* KEEP LAST: phone guard (media queries add no specificity, so this must stay the final block in the file) */
 @media (max-width: 720px) {
   .hero h1 { font-size: clamp(38px, 10.5vw, 48px); }
