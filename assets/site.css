@@ -1691,3 +1691,33 @@ html[lang=ko] .page-home .footer-meta { font-size: 12.5px; letter-spacing: 0; }
   .panel .note { text-align: left; justify-content: flex-start; }
   .cal .lane { width: max-content; min-width: 100%; }
 }
+
+/* Business identity: compact details with the service and registered operator together. */
+.footer, .page-home .footer { padding-top: 36px; padding-bottom: 24px; }
+.footer-grid { gap: 24px; }
+.footer .tagline, .page-home .footer .tagline { margin-top: 10px; max-width: 460px; font-size: 13px; line-height: 1.65; }
+.footer-links { font-size: 13px; }
+.footer .footer-meta, .page-home .footer-meta { display: block; margin-top: 24px; padding-top: 16px; padding-right: 72px; }
+.footer-business { min-width: 0; font-family: var(--sans); font-size: 12.5px; line-height: 1.8; letter-spacing: 0; }
+.business-relation { margin: 0 0 7px; color: rgba(255,255,255,.8); font-size: 13px; }
+.business-relation strong { color: #fff; font-weight: 600; }
+.business-details { margin: 0; display: flex; flex-wrap: wrap; column-gap: 18px; row-gap: 2px; }
+.business-details > div { display: inline-flex; align-items: baseline; gap: 6px; max-width: 100%; }
+.business-details dt { flex: none; color: rgba(255,255,255,.58); }
+.business-details dd { min-width: 0; margin: 0; color: rgba(255,255,255,.8); overflow-wrap: anywhere; }
+.business-details::after { content: ''; order: 1; flex-basis: 100%; }
+.business-details > div:nth-child(n+4) { order: 2; }
+.business-details a { text-decoration: underline; text-underline-offset: 3px; }
+.footer-fineprint { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 20px; margin-top: 13px; color: rgba(255,255,255,.5); font-family: var(--sans); font-size: 11px; line-height: 1.7; letter-spacing: 0; }
+.business-copyright { margin: 0; }
+@media (max-width: 720px) {
+  .footer, .page-home .footer { padding-top: 30px; padding-bottom: 112px; }
+  .footer-grid { gap: 18px; }
+  .footer .tagline, .page-home .footer .tagline { font-size: 12.5px; }
+  .footer-links { gap: 0 18px; font-size: 12px; }
+  .footer .footer-meta, .page-home .footer-meta { margin-top: 18px; padding-top: 14px; padding-right: 0; }
+  .business-details { column-gap: 16px; row-gap: 3px; }
+  .business-relation { font-size: 12.5px; }
+  .footer-fineprint { display: block; margin-top: 12px; }
+  .footer-fineprint > span { display: block; margin-top: 4px; }
+}
