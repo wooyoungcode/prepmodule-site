@@ -6,7 +6,7 @@ window.PM = {
   // Any endpoint that accepts a JSON POST works — Formspree, a Google Apps Script web app, or your own server.
   submit: { endpoint: '' },
 
-  contact: '[contact@domain]',
+  contact: 'info@prepmodule.com',
 
   // Text the form produces at runtime, per language. Static copy lives in the page (src/strings).
   i18n: {
