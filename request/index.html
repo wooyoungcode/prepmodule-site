@@ -14,10 +14,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/site.css?v=05f20536">
-<script src="../assets/data.js?v=9e1dfb67"></script>
-<script src="../assets/site.js?v=4a4c6886" defer></script>
-<script src="../assets/forms.js?v=6deb622f" defer></script>
+<link rel="stylesheet" href="../assets/site.css?v=852b7374">
+<script src="../assets/data.js?v=eeb2dbf6"></script>
+<script src="../assets/site.js?v=43b99940" defer></script>
+<script src="../assets/inquiry-transport.js?v=ada23cf7" defer></script>
+<script src="../assets/forms.js?v=4f710f5f" defer></script>
 </head>
 <body>
 
@@ -57,7 +58,7 @@
       <div data-text></div>
     </div>
 
-    <div class="notice" role="note">This form is not connected to a submission service and cannot send your request. Please email <a href="mailto:info@prepmodule.com">info@prepmodule.com</a> to enquire.</div>
+    <div class="notice" role="note"><p>Your request is sent to our team at <a href="mailto:info@prepmodule.com">info@prepmodule.com</a>. We will follow up about availability and next steps.</p></div>
 
     <form id="form" class="form" novalidate autocomplete="on" data-lroot="../">
       <span class="demo-tag" id="demoTag" hidden>Demo mode · nothing is sent</span>
@@ -79,7 +80,7 @@
         </div>
         <div class="field" id="subjectField" data-msg="Tell us the subject.">
           <label for="subject">Subject <span class="req" id="subjectReq" hidden>*</span><span class="opt" id="subjectOpt">Optional</span></label>
-          <input class="input" id="subject" name="subject" type="text" autocomplete="off">
+          <input maxlength="150" class="input" id="subject" name="subject" type="text" autocomplete="off">
           <span class="err" aria-live="polite"></span>
         </div>
       </div>
@@ -88,12 +89,12 @@
       <div class="row">
         <div class="field" data-required data-msg="Enter the name we should use when we reply.">
           <label for="name">Contact name <span class="req">*</span></label>
-          <input class="input" id="name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+          <input maxlength="100" class="input" id="name" name="name" type="text" placeholder="Name" autocomplete="name" required>
           <span class="err" aria-live="polite"></span>
         </div>
         <div class="field" data-required data-msg="Enter an email address like name@example.com — it’s how we reply.">
           <label for="email">Email <span class="req">*</span></label>
-          <input class="input" id="email" name="email" type="email" placeholder="name@example.com" autocomplete="email" inputmode="email" required>
+          <input maxlength="254" class="input" id="email" name="email" type="email" placeholder="name@example.com" autocomplete="email" inputmode="email" required>
           <span class="err" aria-live="polite"></span>
         </div>
       </div>
@@ -119,7 +120,7 @@
 
       <div class="field" data-required data-msg="Tell us at least a sentence or two — it’s what we prepare from.">
         <label for="message">What would you like help with? <span class="req">*</span></label>
-        <textarea class="input" id="message" name="message" placeholder="Tell us about your questions or learning goals." required></textarea>
+        <textarea maxlength="5000" class="input" id="message" name="message" placeholder="Tell us about your questions or learning goals." required></textarea>
         <span class="help" id="messageHelp"></span>
         <span class="err" aria-live="polite"></span>
       </div>
@@ -127,7 +128,7 @@
       <div class="field" data-required data-msg="Please confirm you’ve read the privacy notice so we can reply to you.">
         <label class="check">
           <input type="checkbox" id="consent" name="consent" required>
-          <span>I've read the <a href="../privacy/" style="color: var(--indigo); font-weight: 500;">privacy notice</a> and agree to be contacted about this request. <span class="req">*</span><small>This covers responding to your enquiry and handling your request. We seek separate consent where required for other purposes, including marketing. The privacy policy explains the information, purposes, retention and your rights.</small></span>
+          <span>I've read the <a href="../privacy/" style="color: var(--indigo); font-weight: 500;" target="_blank" rel="noopener">privacy notice</a> and agree to be contacted about this request. <span class="req">*</span><small>This covers responding to your enquiry and handling your request. We seek separate consent where required for other purposes, including marketing. The privacy policy explains the information, purposes, retention and your rights. Your request is forwarded to our team through the email delivery service FormSubmit. This does not include marketing consent.</small></span>
           <span class="err" aria-live="polite"></span>
         </label>
       </div>

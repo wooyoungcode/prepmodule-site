@@ -148,8 +148,8 @@
   form.addEventListener('change', function () { if (attempted) validate(false); });
 
   // ---- S01-02 sending · S01-03 received · S01-04 failed ----
-  var btn = $('submitBtn'), fail = $('failBanner'), done = $('done');
-  function setSending(on) { btn.disabled = on; btn.setAttribute('aria-busy', String(on)); btn.textContent = on ? T.sending : btn.getAttribute('data-label'); }
+  var btn = $('submitBtn'), fail = $('failBanner'), done = $('done'), sending = false;
+  function setSending(on) { sending = on; btn.disabled = on; btn.setAttribute('aria-busy', String(on)); btn.textContent = on ? T.sending : btn.getAttribute('data-label'); }
   function build() {
     var f = new FormData(form), o = { sentAt: new Date().toISOString(), lang: lang };
     f.forEach(function (v, k) { if (k !== 'website') o[k] = typeof v === 'string' ? v.trim() : v; });
@@ -164,6 +164,10 @@
   function send(payload) {
     if (demo) return new Promise(function (res, rej) { setTimeout(function () { demo === 'ok' ? res() : rej(new Error('demo')); }, 900); });
     if (!D.submit.endpoint) return Promise.reject(new Error('not-connected'));
+    if (D.submit.provider === 'formsubmit') {
+      if (!window.PMInquiryTransport) return Promise.reject(new Error('transport-unavailable'));
+      return window.PMInquiryTransport.send(payload, D);
+    }
     return fetch(D.submit.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) })
       .then(function (r) { if (!r.ok) throw new Error('http-' + r.status); });
   }
@@ -185,7 +189,7 @@
     done.hidden = false; done.focus(); done.scrollIntoView({ block: 'start' });
   }
   form.addEventListener('submit', function (ev) {
-    ev.preventDefault(); attempted = true; fail.hidden = true;
+    ev.preventDefault(); if (sending) return; attempted = true; fail.hidden = true;
     if (!validate(true)) return;
     if (form.website && form.website.value) return;           // honeypot: bots fill it, people never see it
     setSending(true);

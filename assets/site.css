@@ -1721,3 +1721,10 @@ html[lang=ko] .page-home .footer-meta { font-size: 12.5px; letter-spacing: 0; }
   .footer-fineprint { display: block; margin-top: 12px; }
   .footer-fineprint > span { display: block; margin-top: 4px; }
 }
+
+/* An unavailable chat route is an explicit placeholder rather than a dead link. */
+button.fab { border: 0; padding: 0; font: inherit; }
+button.fab:disabled { cursor: default; }
+button.fab:disabled::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: rgba(255,255,255,.28); pointer-events: none; }
+button.fab:disabled:hover { transform: none; }
+.fab-status { position: absolute; right: -7px; bottom: -4px; z-index: 1; padding: 2px 5px; border: 2px solid var(--ground); border-radius: 8px; background: var(--dark); color: #fff; font-size: 9px; font-weight: 600; line-height: 1.4; white-space: nowrap; }

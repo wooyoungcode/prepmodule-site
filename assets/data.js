@@ -2,9 +2,8 @@
 // Landing pages hard-code the same ids for now; the request forms validate against this file.
 // Ids are the only thing that travels in URLs (spec p.12): never names, emails, or messages.
 window.PM = {
-  // Where "Send my request" posts. Empty = not connected: the form shows a clear failure and sends nothing.
-  // Any endpoint that accepts a JSON POST works — Formspree, a Google Apps Script web app, or your own server.
-  submit: { endpoint: '' },
+  // Delivery recipient is fixed in inquiry-transport.js. Activate the recipient before publication.
+  submit: { endpoint: 'https://formsubmit.co/ajax/info@prepmodule.com', provider: 'formsubmit' },
 
   contact: 'info@prepmodule.com',
 
@@ -28,7 +27,7 @@ window.PM = {
       required: 'This field is required.', emailMsg: 'Enter an email address like name@example.com — it’s how we reply.',
       errOne: '1 field needs attention.', errMany: '{n} fields need attention.', sending: 'Sending…',
       failNotConnected: 'This form isn’t connected to our inbox yet, so nothing was sent. Your answers are still here — please email us at {contact} in the meantime.',
-      failGeneric: 'We couldn’t send your request. Nothing was lost — your answers are still here. Please try again, or email us at {contact}.',
+      failGeneric: 'We couldn’t confirm receipt of your request. Your answers are still here. Please email us at {contact} if the problem continues.',
       doneExpertAdm: 'Not sure yet — we’ll suggest', doneExpertTut: 'None — our team will suggest'
     },
     ko: {
@@ -49,7 +48,7 @@ window.PM = {
       required: '필수 항목이에요.', emailMsg: 'name@example.com 형식으로 적어 주세요. 답장은 이메일로 드려요.',
       errOne: '확인이 필요한 항목이 1개 있어요.', errMany: '확인이 필요한 항목이 {n}개 있어요.', sending: '보내는 중…',
       failNotConnected: '이 신청서는 아직 접수 시스템에 연결되지 않아 전송되지 않았어요. 적으신 내용은 그대로 남아 있어요. 우선 {contact}로 메일을 보내 주세요.',
-      failGeneric: '신청서를 보내지 못했어요. 적으신 내용은 그대로 남아 있어요. 다시 시도하거나 {contact}로 메일을 보내 주세요.',
+      failGeneric: '신청 접수를 확인하지 못했습니다. 입력 내용은 그대로 남아 있습니다. 문제가 계속되면 {contact}로 문의해 주세요.',
       doneExpertAdm: '미정 — 운영팀이 추천해 드려요', doneExpertTut: '없음 — 운영팀이 추천해 드려요'
     }
   },
