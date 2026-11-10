@@ -270,7 +270,13 @@
   }
   var box = document.createElement('div');
   box.className = 'chat-fab'; box.setAttribute('role', 'group'); box.setAttribute('aria-label', t.group);
-  box.appendChild(btn('kakao', CHAT.kakao, t.kakao, icons.kakao));
+  var kakaoLink = btn('kakao', CHAT.kakao, t.kakao, icons.kakao);
+  function trackKakaoClick() {
+    if (window.PMMarketing && window.PMMarketing.kakaoClick) window.PMMarketing.kakaoClick();
+  }
+  kakaoLink.addEventListener('click', trackKakaoClick);
+  kakaoLink.addEventListener('auxclick', function (event) { if (event.button === 1) trackKakaoClick(); });
+  box.appendChild(kakaoLink);
   box.appendChild(btn('whatsapp', waHref, t.wa, icons.wa));
   document.body.appendChild(box);
 })();

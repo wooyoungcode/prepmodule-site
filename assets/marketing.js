@@ -1,12 +1,13 @@
-// Campaign details stay in the current tab. Only the enquiry transport uses them.
+// Campaign details stay in the current tab for enquiries and opted-in click measurement.
 (function () {
   'use strict';
   var query = new URLSearchParams(location.search);
   if (query.has('demo') || /^\/admin(?:\/|$)/i.test(location.pathname)) return;
 
   var campaignKey = 'pm-campaign';
+  var utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
   var campaign = {};
-  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'gclid'].forEach(function (key) {
+  utmKeys.concat(['fbclid', 'gclid']).forEach(function (key) {
     var value = (query.get(key) || '').trim();
     if (value && value.length <= 256 && !/[\u0000-\u001f\u007f]/.test(value)) campaign[key] = value;
   });
@@ -21,11 +22,35 @@
   // No third-party advertising script runs before the visitor opts in.
   var pixelId = '1764701667969984';
   var choiceKey = 'pm-advertising';
+  var entryKey = 'pm-advertising-entry';
   var choice;
+  var entry;
   var started = false;
   var production = location.origin === 'https://prepmodule.com';
   var optedOut = navigator.globalPrivacyControl === true;
+  var ko = document.documentElement.lang === 'ko';
+  var referrer;
   try { choice = localStorage.getItem(choiceKey); } catch (_) {}
+  try { referrer = new URL(document.referrer); } catch (_) {}
+
+  function publicPath(path) {
+    if (typeof path !== 'string' || path.length > 100 || /^\/admin(?:\/|$)/i.test(path)) return '';
+    path = path.replace(/\/index\.html$/, '/');
+    return /^\/(?:[a-z0-9-]+\/)*[a-z0-9-]*$/.test(path) ? path : '';
+  }
+
+  function rememberEntry() {
+    var current = { page: publicPath(location.pathname) };
+    if (referrer && /^https?:$/.test(referrer.protocol) && referrer.origin !== location.origin) {
+      current.referrer = referrer.hostname;
+    }
+    entry = current;
+    try {
+      var saved = JSON.parse(sessionStorage.getItem(entryKey));
+      if (saved && publicPath(saved.page)) entry = saved;
+      else sessionStorage.setItem(entryKey, JSON.stringify(current));
+    } catch (_) {}
+  }
 
   function startPixel() {
     if (!production || optedOut || started || choice !== 'allow') return;
@@ -51,6 +76,7 @@
       window.fbq('set', 'autoConfig', false, pixelId);
       window.fbq('init', pixelId);
       window.fbq('trackSingle', pixelId, 'PageView');
+      rememberEntry();
     } catch (_) { started = false; }
   }
 
@@ -58,15 +84,34 @@
     if (!started || optedOut || choice !== 'allow' || (service !== 'admissions' && service !== 'tutoring')) return;
     try { window.fbq('trackSingle', pixelId, 'Lead', { content_category: service }); } catch (_) {}
   }
-  window.PMMarketing = { attribution: attribution, lead: lead };
+  function kakaoClick() {
+    if (!started || optedOut || choice !== 'allow') return;
+    var params = { site_language: ko ? 'ko' : 'en', button_location: 'floating_chat' };
+    var clickPage = publicPath(location.pathname);
+    var entryPage = entry && publicPath(entry.page);
+    var previousPage = referrer && referrer.origin === location.origin && publicPath(referrer.pathname);
+    if (clickPage) params.click_page = clickPage;
+    if (entryPage) params.entry_page = entryPage;
+    if (previousPage) params.previous_page = previousPage;
+    if (entry && typeof entry.referrer === 'string' && /^[a-z0-9.-]{1,100}$/.test(entry.referrer)) {
+      params.entry_referrer = entry.referrer;
+    }
+    var tags = attribution();
+    utmKeys.forEach(function (key) {
+      var value = tags[key];
+      if (typeof value === 'string' && /^[\p{L}\p{N}_. -]{1,100}$/u.test(value)) params[key] = value;
+    });
+    params.traffic_source = params.utm_source || params.entry_referrer || 'direct_or_unknown';
+    try { window.fbq('trackSingleCustom', pixelId, 'KakaoClick', params); } catch (_) {}
+  }
+  window.PMMarketing = { attribution: attribution, lead: lead, kakaoClick: kakaoClick };
   if (optedOut) return;
 
-  var ko = document.documentElement.lang === 'ko';
   var copy = ko ? {
-    title: '광고 측정 설정', details: '동의하시면 Meta Pixel로 페이지 방문과 상담 신청 완료를 측정합니다.',
+    title: '광고 측정 설정', details: '동의하시면 Meta Pixel로 페이지 방문, 상담 신청 완료, 카카오톡 채널 버튼 클릭을 측정합니다.',
     privacy: '개인정보처리방침', allow: '허용', deny: '거부'
   } : {
-    title: 'Advertising preferences', details: 'With your permission, we use Meta Pixel to measure page visits and completed enquiries.',
+    title: 'Advertising preferences', details: 'With your permission, we use Meta Pixel to measure page visits, completed enquiries and clicks to our KakaoTalk channel.',
     privacy: 'Privacy Policy', allow: 'Allow', deny: 'Decline'
   };
   var panel = document.createElement('aside');
@@ -97,7 +142,12 @@
     panel.hidden = choice === 'allow' || choice === 'deny';
     if (started) {
       try { window.fbq('consent', choice === 'allow' ? 'grant' : 'revoke'); } catch (_) {}
+      if (choice === 'allow' && !entry) rememberEntry();
     } else startPixel();
+    if (choice !== 'allow') {
+      entry = undefined;
+      try { sessionStorage.removeItem(entryKey); } catch (_) {}
+    }
   }
   panel.querySelectorAll('button').forEach(function (button) {
     button.addEventListener('click', function () {
