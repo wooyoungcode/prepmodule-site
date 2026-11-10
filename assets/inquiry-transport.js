@@ -14,6 +14,24 @@
     var item = (items || []).filter(function (entry) { return entry.id === id; })[0];
     return item ? item.name || item.label || item.id : id;
   }
+  function campaignFields(campaign) {
+    campaign = campaign || {};
+    var labels = {
+      utm_source: '매체 / Source', utm_medium: '유형 / Medium', utm_campaign: '캠페인 / Campaign',
+      utm_content: '광고 소재 / Ad creative', utm_term: '추가 구분값 / Term'
+    };
+    var fields = Object.keys(labels).reduce(function (lines, key) {
+      var value = campaign[key];
+      if (typeof value === 'string' && value.trim() && value.length <= 256 && !/[\u0000-\u001f\u007f]/.test(value)) {
+        lines.push(labels[key] + ' = ' + value.trim());
+      }
+      return lines;
+    }, []);
+    var result = { '유입 경로 / Attribution': fields.join(' · ') || '직접 방문 또는 알 수 없음 / Direct or unknown' };
+    var clickIds = ['fbclid', 'gclid'].filter(function (key) { return typeof campaign[key] === 'string' && campaign[key].trim(); });
+    if (clickIds.length) result['클릭 식별자 / Click IDs'] = clickIds.join(', ') + ' 있음 / present';
+    return result;
+  }
   function fields(payload, catalog) {
     if (!payload || payload.consent !== true) throw error('invalid-request');
     catalog = catalog || {};
@@ -46,7 +64,7 @@
     result['희망 전문가 / Preferred expert'] = expert
       ? choice(payload.service === 'tutoring' ? catalog.tutors : catalog.officers, expert)
       : '운영팀 추천 / Please suggest';
-    return result;
+    return Object.assign(result, campaignFields(payload.campaign));
   }
   async function send(payload, catalog, request) {
     var body = fields(payload, catalog);

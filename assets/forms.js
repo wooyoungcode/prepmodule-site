@@ -156,9 +156,7 @@
     o.form = o.service;
     if (o.service !== 'tutoring') { delete o.program; delete o.subject; }
     o.consent = !!form.consent.checked;
-    // Campaign / product identifiers only — never the message or contact details (spec p.10)
-    var utm = {}; q.forEach(function (v, k) { if (/^utm_/i.test(k)) utm[k] = v; });
-    o.source = { path: location.pathname, referrer: document.referrer ? document.referrer.split('?')[0] : '', utm: utm, fbclid: q.get('fbclid') || '', gclid: q.get('gclid') || '' };
+    o.campaign = window.PMMarketing ? window.PMMarketing.attribution() : {};
     return o;
   }
   function send(payload) {
@@ -194,7 +192,10 @@
     if (form.website && form.website.value) return;           // honeypot: bots fill it, people never see it
     setSending(true);
     var payload = build();
-    send(payload).then(function () { showDone(payload); }, function (err) { showFail(err); });
+    send(payload).then(function (receipt) {
+      if (!demo && receipt && receipt.accepted === true && window.PMMarketing) window.PMMarketing.lead(payload.service);
+      showDone(payload);
+    }, function (err) { showFail(err); });
   });
 
   // Demo mode (?demo=ok|fail): the transport is simulated and a tag says so. Add &auto=1 to fill sample values and

@@ -81,19 +81,6 @@
   });
 })();
 
-// Campaign identifiers (utm_*, fbclid, gclid) ride along from a landing to the request forms.
-// Product and campaign ids only — never names, emails, or messages (spec p.10 / p.12). Runs before the picker so it sees them.
-(function () {
-  var q = new URLSearchParams(location.search), keep = new URLSearchParams();
-  q.forEach(function (v, k) { if (/^utm_/i.test(k) || k === 'fbclid' || k === 'gclid') keep.set(k, v); });
-  if (!keep.toString()) return;
-  Array.prototype.forEach.call(document.querySelectorAll('a[href*="request/"]'), function (a) {
-    var parts = a.getAttribute('href').split('?'), p = new URLSearchParams(parts[1] || '');
-    keep.forEach(function (v, k) { if (!p.has(k)) p.set(k, v); });
-    a.setAttribute('href', parts[0] + '?' + p.toString());
-  });
-})();
-
 // Subject / area picker (P02 area, P03 apSubject): one choice kept in the URL, on every [data-carry] request link,
 // on matching .profile[data-match] cards, and in every [data-pick-label]. Invalid URL values are cleared with a notice;
 // a choice with no public profile shows #pickEmpty instead of a blank list (spec 12 / P4).
@@ -259,32 +246,26 @@
   window.addEventListener('resize', function () { if (window.innerWidth === lastW) return; lastW = window.innerWidth; clearTimeout(rt); rt = setTimeout(function () { rows.forEach(build); }, 120); });
 })();
 
-// Floating chat buttons — KakaoTalk and WhatsApp, bottom right on every page.
-// Fill in the two values below; until then the buttons show and say the link is coming soon.
+// Floating KakaoTalk and WhatsApp links on every public page.
 (function () {
   var CHAT = {
-    kakao: '',     // Awaiting the operator's public open-chat or profile-sharing URL.
+    kakao: 'https://pf.kakao.com/_xfubxiX',
     whatsapp: '821024771661'   // WhatsApp number, international format, digits only, e.g. '821012345678'
   };
   var ko = document.documentElement.lang === 'ko';
   var t = ko
-    ? { group: '채팅 문의', kakao: '카카오톡 문의', wa: 'WhatsApp 문의', soon: ' — 준비 중', hello: '안녕하세요, PrepModule 문의드려요.' }
-    : { group: 'Chat with us', kakao: 'Chat on KakaoTalk', wa: 'Chat on WhatsApp', soon: ' — coming soon', hello: 'Hi, I have a question about PrepModule.' };
-  var waHref = CHAT.whatsapp ? 'https://wa.me/' + CHAT.whatsapp.replace(/\D/g, '') + '?text=' + encodeURIComponent(t.hello) : '';
+    ? { group: '채팅 문의', kakao: '카카오톡 문의', wa: 'WhatsApp 문의', hello: '안녕하세요, PrepModule 문의드려요.' }
+    : { group: 'Chat with us', kakao: 'Chat on KakaoTalk', wa: 'Chat on WhatsApp', hello: 'Hi, I have a question about PrepModule.' };
+  var waHref = 'https://wa.me/' + CHAT.whatsapp + '?text=' + encodeURIComponent(t.hello);
   var icons = {
     kakao: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#191919" d="M12 3.6c-5.3 0-9.6 3.36-9.6 7.5 0 2.68 1.8 5.03 4.5 6.36l-.96 3.5c-.08.3.26.55.53.37l4.17-2.76c.44.05.9.08 1.36.08 5.3 0 9.6-3.36 9.6-7.5S17.3 3.6 12 3.6z"/></svg>',
     wa: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.28-.2-.57-.35zM12.05 21.78h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41z"/></svg>'
   };
   function btn(cls, href, label, icon) {
-    var a = document.createElement(href ? 'a' : 'button');
-    a.className = 'fab ' + cls; a.innerHTML = icon + '<span class="fab-label">' + label + (href ? '' : t.soon) + '</span>';
-    a.setAttribute('aria-label', label + (href ? '' : t.soon));
-    if (href) { a.href = href; a.target = '_blank'; a.rel = 'noopener'; }
-    else {
-      a.type = 'button'; a.disabled = true; a.setAttribute('aria-disabled', 'true');
-      var status = document.createElement('span'); status.className = 'fab-status';
-      status.textContent = ko ? '준비 중' : 'Soon'; a.appendChild(status);
-    }
+    var a = document.createElement('a');
+    a.className = 'fab ' + cls; a.innerHTML = icon + '<span class="fab-label">' + label + '</span>';
+    a.setAttribute('aria-label', label);
+    a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
     return a;
   }
   var box = document.createElement('div');
