@@ -11,6 +11,7 @@ export async function createTransport(){
   return {mode:'local',configured:true,init:async()=>null,session:()=>null,
     getState:month=>request(`/api/state?month=${month}`),
     preview:(month,kind,personId,sourceId)=>request(`/api/preview?month=${month}&kind=${kind}&personId=${encodeURIComponent(personId)}${sourceId?'&sourceDocumentId='+sourceId:''}`),
+    textPreview:input=>request(`/api/text-edit-preview?month=${encodeURIComponent(input.month)}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(input)}),
     post:(route,data,month)=>request(`/api/${route}?month=${month}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}),
     getFileUrl:async id=>`/api/files/${id}`,backup:async()=>request('/api/backup'),
     subscribe:()=>()=>{},signOut:async()=>{},onSession:()=>()=>{}
