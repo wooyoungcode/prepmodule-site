@@ -528,16 +528,12 @@ html[lang="ko"] .prog .top, html[lang="ko"] .prog .go { letter-spacing: 0.06em; 
 @media (max-width: 720px) { .chat-fab { right: 14px; bottom: 14px; gap: 8px; } .fab { width: 50px; height: 50px; } .fab svg { width: 25px; height: 25px; } }
 @media print { .chat-fab { display: none; } }
 
-.ad-preferences { position: fixed; z-index: 54; left: max(14px, env(safe-area-inset-left)); bottom: max(14px, env(safe-area-inset-bottom)); width: min(390px, calc(100% - 86px)); padding: 14px 16px; border: 1px solid var(--line-2); border-radius: 12px; background: var(--card); color: var(--ink); box-shadow: 0 6px 24px rgba(var(--ink-rgb), .14); font-size: 13px; }
-.ad-preferences p { margin: 0; }
-.ad-preferences p + p { margin-top: 4px; }
-.ad-preferences a { color: var(--accent); text-decoration: underline; }
-.ad-preferences-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; }
-.ad-preferences-actions button { min-height: 36px; padding: 4px 12px; border: 1px solid var(--line-2); border-radius: 6px; background: var(--card); color: var(--ink); font: inherit; cursor: pointer; }
+.ad-preferences-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.ad-preferences-actions[hidden] { display: none; }
+.ad-preferences-actions button { min-height: 44px; padding: 4px 12px; border: 1px solid var(--line-2); border-radius: 6px; background: var(--card); color: var(--ink); font: inherit; cursor: pointer; }
 .ad-preferences-actions button:hover { background: var(--soft); }
-.ad-preferences-link { padding: 0; border: 0; background: transparent; color: inherit; font: inherit; opacity: .85; cursor: pointer; }
-.ad-preferences-link:hover { opacity: 1; color: var(--accent-lt); }
-@media print { .ad-preferences, .ad-preferences-link { display: none; } }
+.ad-preferences-actions button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+@media print { .ad-preferences-actions { display: none; } }
 /* footer business details (상호 · 대표자 · 사업자등록번호 · 주소) */
 /* dividers are left borders; the 11px shift + clip hides the one at the start of every wrapped row */
 .footer-meta .biz { display: flex; flex-wrap: wrap; row-gap: 6px; max-width: 820px; margin-left: -11px; clip-path: inset(0 0 0 11px); }

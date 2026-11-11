@@ -1,4 +1,4 @@
-// Campaign details stay in the current tab for enquiries and opted-in click measurement.
+// Campaign details stay in the current tab for enquiries and advertising measurement.
 (function () {
   'use strict';
   var query = new URLSearchParams(location.search);
@@ -19,19 +19,25 @@
     try { return JSON.parse(sessionStorage.getItem(campaignKey)) || campaign; } catch (_) { return campaign; }
   }
 
-  // No third-party advertising script runs before the visitor opts in.
+  // Advertising defaults to enabled unless a saved decline or GPC overrides it.
   var pixelId = '1764701667969984';
   var choiceKey = 'pm-advertising';
   var entryKey = 'pm-advertising-entry';
-  var choice;
+  var choice = advertisingChoice();
   var entry;
   var started = false;
   var production = location.origin === 'https://prepmodule.com';
   var optedOut = navigator.globalPrivacyControl === true;
   var ko = document.documentElement.lang === 'ko';
   var referrer;
-  try { choice = localStorage.getItem(choiceKey); } catch (_) {}
   try { referrer = new URL(document.referrer); } catch (_) {}
+
+  function advertisingChoice() {
+    try {
+      if (localStorage.getItem(choiceKey) === 'deny') return 'deny';
+    } catch (_) {}
+    return 'allow';
+  }
 
   function publicPath(path) {
     if (typeof path !== 'string' || path.length > 100 || /^\/admin(?:\/|$)/i.test(path)) return '';
@@ -107,39 +113,15 @@
   window.PMMarketing = { attribution: attribution, lead: lead, kakaoClick: kakaoClick };
   if (optedOut) return;
 
-  var copy = ko ? {
-    title: '광고 측정 설정', details: '동의하시면 Meta Pixel로 페이지 방문, 상담 신청 완료, 카카오톡 채널 버튼 클릭을 측정합니다.',
-    privacy: '개인정보처리방침', allow: '허용', deny: '거부'
-  } : {
-    title: 'Advertising preferences', details: 'With your permission, we use Meta Pixel to measure page visits, completed enquiries and clicks to our KakaoTalk channel.',
-    privacy: 'Privacy Policy', allow: 'Allow', deny: 'Decline'
-  };
-  var panel = document.createElement('aside');
-  panel.className = 'ad-preferences';
-  panel.setAttribute('aria-label', copy.title);
-  panel.innerHTML = '<p><strong>' + copy.title + '</strong></p><p>' + copy.details + ' <a href="' +
-    (ko ? '/ko/privacy/' : '/privacy/') + '#privacy-9">' + copy.privacy + '</a></p>' +
-    '<div class="ad-preferences-actions"><button type="button" data-choice="deny">' + copy.deny +
-    '</button><button type="button" data-choice="allow">' + copy.allow + '</button></div>';
-  var links = document.querySelector('.footer-links');
-  var settings = document.createElement('button');
-  var returnFocus = false;
-  settings.type = 'button';
-  settings.className = 'ad-preferences-link';
-  settings.textContent = copy.title;
-  settings.addEventListener('click', function () {
-    returnFocus = true;
-    panel.hidden = false;
-    panel.querySelector('button').focus();
-  });
-  if (links) {
-    var item = document.createElement('li');
-    item.appendChild(settings);
-    links.appendChild(item);
+  var preferences = document.querySelector('[data-ad-preferences]');
+  var preferenceButtons = preferences ? preferences.querySelectorAll('button[data-choice]') : [];
+  function updatePreferenceButtons() {
+    preferenceButtons.forEach(function (button) {
+      button.setAttribute('aria-pressed', String(choice === button.dataset.choice));
+    });
   }
   function applyChoice(next) {
     choice = next;
-    panel.hidden = choice === 'allow' || choice === 'deny';
     if (started) {
       try { window.fbq('consent', choice === 'allow' ? 'grant' : 'revoke'); } catch (_) {}
       if (choice === 'allow' && !entry) rememberEntry();
@@ -148,21 +130,22 @@
       entry = undefined;
       try { sessionStorage.removeItem(entryKey); } catch (_) {}
     }
+    updatePreferenceButtons();
   }
-  panel.querySelectorAll('button').forEach(function (button) {
+  preferenceButtons.forEach(function (button) {
     button.addEventListener('click', function () {
       try { localStorage.setItem(choiceKey, button.dataset.choice); } catch (_) {}
       applyChoice(button.dataset.choice);
-      if (returnFocus) settings.focus();
-      returnFocus = false;
     });
   });
   window.addEventListener('storage', function (event) {
     if (event.key === choiceKey || event.key === null) {
-      try { applyChoice(localStorage.getItem(choiceKey)); } catch (_) {}
+      applyChoice(advertisingChoice());
     }
   });
-  panel.hidden = choice === 'allow' || choice === 'deny';
-  document.body.appendChild(panel);
+  if (preferences) {
+    updatePreferenceButtons();
+    preferences.hidden = false;
+  }
   startPixel();
 })();
