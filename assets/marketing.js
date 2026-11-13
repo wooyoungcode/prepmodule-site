@@ -21,11 +21,14 @@
 
   // Advertising defaults to enabled unless a saved decline or GPC overrides it.
   var pixelId = '1764701667969984';
+  var tagManagerId = 'GTM-WNVJBJ9N';
+  var analyticsOptOutKey = 'ga-disable-G-SNWWZ0G164';
   var choiceKey = 'pm-advertising';
   var entryKey = 'pm-advertising-entry';
   var choice = advertisingChoice();
   var entry;
   var started = false;
+  var tagManagerStarted = false;
   var production = location.origin === 'https://prepmodule.com';
   var optedOut = navigator.globalPrivacyControl === true;
   var ko = document.documentElement.lang === 'ko';
@@ -35,7 +38,7 @@
   function advertisingChoice() {
     try {
       if (localStorage.getItem(choiceKey) === 'deny') return 'deny';
-    } catch (_) {}
+    } catch (_) { return 'deny'; }
     return 'allow';
   }
 
@@ -56,6 +59,21 @@
       if (saved && publicPath(saved.page)) entry = saved;
       else sessionStorage.setItem(entryKey, JSON.stringify(current));
     } catch (_) {}
+  }
+
+  function syncTagManager() {
+    var allowed = !optedOut && choice === 'allow';
+    // The GA4 opt-out flag also stops collection if the tag is already running.
+    window[analyticsOptOutKey] = !allowed;
+    if (!production || !allowed || tagManagerStarted) return;
+
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtm.js?id=' + tagManagerId;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+    tagManagerStarted = true;
+    document.head.appendChild(script);
   }
 
   function startPixel() {
@@ -111,6 +129,7 @@
     try { window.fbq('trackSingleCustom', pixelId, 'KakaoClick', params); } catch (_) {}
   }
   window.PMMarketing = { attribution: attribution, lead: lead, kakaoClick: kakaoClick };
+  syncTagManager();
   if (optedOut) return;
 
   var preferences = document.querySelector('[data-ad-preferences]');
@@ -122,6 +141,7 @@
   }
   function applyChoice(next) {
     choice = next;
+    syncTagManager();
     if (started) {
       try { window.fbq('consent', choice === 'allow' ? 'grant' : 'revoke'); } catch (_) {}
       if (choice === 'allow' && !entry) rememberEntry();
@@ -142,6 +162,9 @@
     if (event.key === choiceKey || event.key === null) {
       applyChoice(advertisingChoice());
     }
+  });
+  window.addEventListener('pageshow', function (event) {
+    if (event.persisted) applyChoice(advertisingChoice());
   });
   if (preferences) {
     updatePreferenceButtons();
